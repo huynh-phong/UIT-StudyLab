@@ -1,0 +1,59 @@
+{
+  "name": "uit-studylab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "UIT StudyLab — nền tảng ôn tập và thi thử độc lập cho sinh viên UIT",
+  "scripts": {
+    "bank:build": "tsx scripts/build-bank.ts",
+    "bank:validate": "tsx scripts/build-bank.ts --check",
+    "bank:import": "tsx scripts/import-bank.ts",
+    "predev": "npm run bank:build",
+    "dev": "next dev",
+    "prebuild": "npm run bank:build",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "pretypecheck": "npm run bank:build",
+    "typecheck": "tsc --noEmit",
+    "pretest": "npm run bank:build",
+    "test": "vitest run",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.3.1",
+    "@radix-ui/react-slot": "^1.5.0",
+    "@upstash/redis": "^1.40.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "katex": "^0.19.1",
+    "lucide-react": "^1.66.0",
+    "motion": "^14.9.0",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.7",
+    "zustand": "^5.0.16"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "dotenv": "^18.0.9",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.3",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3",
+    "vitest": "^5.0.5"
+  }
+}

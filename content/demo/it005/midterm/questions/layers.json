@@ -1,0 +1,141 @@
+[
+  {
+    "id": "demo-layers-01",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-layers",
+    "type": "mcq",
+    "content": "Trong mô hình OSI, tầng nào chịu trách nhiệm **định tuyến** gói tin giữa các mạng khác nhau?",
+    "options": [
+      { "id": "A", "content": "Tầng Liên kết dữ liệu (Data Link)" },
+      { "id": "B", "content": "Tầng Mạng (Network)" },
+      { "id": "C", "content": "Tầng Giao vận (Transport)" },
+      { "id": "D", "content": "Tầng Phiên (Session)" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Tầng Mạng (tầng 3) dùng địa chỉ logic (IP) để chọn đường đi cho gói tin qua nhiều mạng — đây là chức năng định tuyến.",
+      "whyCorrect": "Định tuyến là chọn đường đi liên mạng dựa trên địa chỉ logic. Router và giao thức IP hoạt động ở tầng Mạng.",
+      "whyWrong": {
+        "A": "Tầng Liên kết dữ liệu chuyển frame giữa các nút trong cùng một mạng cục bộ dựa trên địa chỉ MAC, không định tuyến liên mạng.",
+        "C": "Tầng Giao vận đảm bảo truyền dữ liệu giữa hai tiến trình đầu cuối (cổng, kiểm soát luồng), không chọn đường đi trong mạng.",
+        "D": "Tầng Phiên quản lý việc thiết lập, duy trì và kết thúc phiên giao tiếp giữa ứng dụng, không liên quan định tuyến."
+      },
+      "related": "Thiết bị tiêu biểu: Hub/Repeater — tầng 1, Switch — tầng 2, Router — tầng 3.",
+      "tip": "\"Router ↔ tầng 3 ↔ IP\"."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-layers-02",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-layers",
+    "type": "mcq",
+    "content": "Đơn vị dữ liệu (PDU) ở tầng Giao vận khi sử dụng giao thức **TCP** được gọi là gì?",
+    "options": [
+      { "id": "A", "content": "Frame" },
+      { "id": "B", "content": "Packet (Datagram)" },
+      { "id": "C", "content": "Segment" },
+      { "id": "D", "content": "Bit" }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Tầng Giao vận với TCP đóng gói dữ liệu thành segment, có header chứa cổng nguồn/đích và số thứ tự.",
+      "whyCorrect": "Mỗi tầng có tên PDU riêng: Application — data/message, Transport — segment (TCP), Network — packet, Data Link — frame, Physical — bit.",
+      "whyWrong": {
+        "A": "Frame là PDU của tầng Liên kết dữ liệu (tầng 2).",
+        "B": "Packet là PDU của tầng Mạng (tầng 3), được tạo khi thêm IP header vào segment.",
+        "D": "Bit là đơn vị truyền ở tầng Vật lý (tầng 1)."
+      },
+      "related": "| Tầng | PDU |\n|---|---|\n| Giao vận | Segment |\n| Mạng | Packet |\n| Liên kết dữ liệu | Frame |\n| Vật lý | Bit |",
+      "tip": "Từ trên xuống: Segment → Packet → Frame → Bit (\"S-P-F-B\")."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-layers-03",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-layers",
+    "type": "mcq",
+    "content": "Cho bảng các thiết bị sau:\n\n| Thiết bị | Mô tả |\n|---|---|\n| X | Chuyển tiếp frame dựa trên bảng địa chỉ MAC |\n\nThiết bị X là:",
+    "options": [
+      { "id": "A", "content": "Hub" },
+      { "id": "B", "content": "Switch" },
+      { "id": "C", "content": "Router" },
+      { "id": "D", "content": "Repeater" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Switch học địa chỉ MAC vào bảng MAC và chuyển frame tới đúng cổng — hoạt động chủ yếu ở tầng 2.",
+      "whyCorrect": "Bảng địa chỉ MAC (MAC address table/CAM table) là đặc trưng của switch, giúp chuyển frame có chọn lọc thay vì phát ra mọi cổng.",
+      "whyWrong": {
+        "A": "Hub hoạt động ở tầng 1, phát lại tín hiệu ra tất cả cổng, không đọc địa chỉ MAC.",
+        "C": "Router chuyển tiếp packet dựa trên bảng định tuyến và địa chỉ IP (tầng 3), không dựa trên bảng MAC.",
+        "D": "Repeater chỉ khuếch đại/tái tạo tín hiệu ở tầng 1, không xử lý frame."
+      },
+      "related": "Switch chia collision domain theo từng cổng; router chia broadcast domain."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-layers-04",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-layers",
+    "type": "mcq",
+    "content": "Giao thức **HTTP** thuộc tầng nào trong mô hình TCP/IP?",
+    "options": [
+      { "id": "A", "content": "Tầng Ứng dụng (Application)" },
+      { "id": "B", "content": "Tầng Giao vận (Transport)" },
+      { "id": "C", "content": "Tầng Internet" },
+      { "id": "D", "content": "Tầng Truy cập mạng (Link)" }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "HTTP là giao thức của ứng dụng web, định nghĩa định dạng request/response giữa trình duyệt và máy chủ nên thuộc tầng Ứng dụng.",
+      "whyWrong": {
+        "B": "Tầng Giao vận gồm TCP/UDP. HTTP chạy trên TCP nhưng bản thân nó không phải giao thức giao vận.",
+        "C": "Tầng Internet gồm IP, ICMP… phụ trách địa chỉ logic và định tuyến, không định nghĩa thông điệp web.",
+        "D": "Tầng Truy cập mạng gồm Ethernet, Wi-Fi… phụ trách truyền frame trên đường truyền vật lý."
+      },
+      "related": "Giao thức tầng Ứng dụng thường gặp: HTTP/HTTPS, DNS, SMTP, FTP, DHCP.",
+      "tip": "Giao thức mà người dùng/ứng dụng \"nhìn thấy\" thường thuộc tầng Ứng dụng."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-layers-essay-01",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-layers",
+    "type": "essay",
+    "content": "Trình bày quá trình **đóng gói dữ liệu (encapsulation)** khi một trình duyệt gửi yêu cầu HTTP tới máy chủ web theo mô hình TCP/IP. Nêu thông tin chính được thêm vào ở mỗi tầng.",
+    "essay": {
+      "modelAnswer": "Khi gửi, dữ liệu đi từ tầng trên xuống tầng dưới, mỗi tầng thêm header của mình:\n\n1. **Ứng dụng:** trình duyệt tạo thông điệp HTTP request (phương thức, URL, header HTTP).\n2. **Giao vận:** TCP thêm header gồm cổng nguồn, cổng đích (80/443), số thứ tự, ACK… tạo thành segment.\n3. **Internet:** IP thêm header gồm địa chỉ IP nguồn và đích, TTL… tạo thành packet.\n4. **Truy cập mạng:** thêm header/trailer gồm địa chỉ MAC nguồn/đích và FCS tạo thành frame, sau đó được chuyển thành bit để truyền.\n\nỞ phía nhận, quá trình ngược lại (decapsulation): mỗi tầng đọc và gỡ header tương ứng rồi chuyển dữ liệu lên trên.",
+      "rubric": [
+        { "id": "r1", "criterion": "Nêu đúng thứ tự đi từ tầng trên xuống tầng dưới và mỗi tầng thêm header", "points": 1 },
+        { "id": "r2", "criterion": "Tầng Giao vận: TCP header với cổng nguồn/đích, tạo segment", "points": 1, "keyPoints": ["cổng", "segment"] },
+        { "id": "r3", "criterion": "Tầng Internet: IP header với địa chỉ IP nguồn/đích, tạo packet", "points": 1, "keyPoints": ["địa chỉ IP", "packet"] },
+        { "id": "r4", "criterion": "Tầng Truy cập mạng: địa chỉ MAC, FCS, tạo frame rồi truyền thành bit", "points": 1, "keyPoints": ["MAC", "frame"] }
+      ]
+    },
+    "difficulty": "medium",
+    "points": 4,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  }
+]

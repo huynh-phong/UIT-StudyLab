@@ -1,0 +1,4006 @@
+[
+  {
+    "id": "it005-mid-c2-001",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong một ứng dụng mạng kiểu client - server, thành phần nào chủ động khởi tạo kết nối?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Client"
+      },
+      {
+        "id": "B",
+        "content": "Cả client và server"
+      },
+      {
+        "id": "C",
+        "content": "Router"
+      },
+      {
+        "id": "D",
+        "content": "Server"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Trong mô hình client–server, client luôn là bên chủ động khởi tạo liên lạc; server chạy liên tục và chờ yêu cầu.",
+      "whyCorrect": "Trong mô hình client–server, client luôn là bên chủ động khởi tạo liên lạc; server chạy liên tục và chờ yêu cầu.",
+      "whyWrong": {
+        "B": "Server không chủ động liên lạc với client.",
+        "C": "Router chỉ chuyển tiếp gói tin, không khởi tạo kết nối ứng dụng.",
+        "D": "Server thụ động chờ yêu cầu từ client."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-002",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong mô hình Peer-to-Peer (P2P), đặc điểm nào sau đây là đúng nhất?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chỉ có một máy chủ trung tâm quản lý toàn bộ hệ thống"
+      },
+      {
+        "id": "B",
+        "content": "Dữ liệu chỉ có thể được tải xuống, không thể tải lên"
+      },
+      {
+        "id": "C",
+        "content": "Mọi nút mạng đều có thể vừa chia sẻ vừa nhận dữ liệu"
+      },
+      {
+        "id": "D",
+        "content": "Các peer không thể kết nối trực tiếp với nhau"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Trong P2P, mỗi peer vừa yêu cầu vừa cung cấp dịch vụ (vừa tải lên vừa tải xuống), các peer liên lạc trực tiếp với nhau.",
+      "whyCorrect": "Trong P2P, mỗi peer vừa yêu cầu vừa cung cấp dịch vụ (vừa tải lên vừa tải xuống), các peer liên lạc trực tiếp với nhau.",
+      "whyWrong": {
+        "A": "Máy chủ trung tâm là đặc điểm của client–server.",
+        "B": "Peer vừa tải xuống vừa tải lên cho peer khác.",
+        "D": "Các peer kết nối trực tiếp với nhau."
+      },
+      "related": "P2P có khả năng **tự mở rộng**: peer mới vừa tăng nhu cầu vừa tăng năng lực phục vụ."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-003",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Khi một máy chủ không biết địa chỉ IP của một tên miền, bước đầu tiên nó sẽ làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Hỏi trực tiếp máy chủ gốc"
+      },
+      {
+        "id": "B",
+        "content": "Gửi yêu cầu đến máy chủ của trang web đó"
+      },
+      {
+        "id": "C",
+        "content": "Dò địa chỉ MAC của tên miền bằng ARP"
+      },
+      {
+        "id": "D",
+        "content": "Gửi truy vấn đến DNS cục bộ (local DNS server)"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Host gửi truy vấn đến máy chủ DNS cục bộ (local DNS) trước; local DNS sẽ đi hỏi tiếp root, TLD, authoritative nếu cần.",
+      "whyCorrect": "Host gửi truy vấn đến máy chủ DNS cục bộ (local DNS) trước; local DNS sẽ đi hỏi tiếp root, TLD, authoritative nếu cần.",
+      "whyWrong": {
+        "A": "Host không hỏi trực tiếp máy chủ gốc.",
+        "B": "Chưa biết IP thì không thể gửi yêu cầu đến máy chủ web.",
+        "C": "ARP phân giải IP → MAC trong mạng LAN, không phân giải tên miền."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-004",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Cho danh sách các giao thức và dịch vụ sau. Chọn đáp án ghép nối đúng?  \n1 - Duyệt web  \n2 - Gửi mail  \n3 - Xem mail  \n4 - Phân giải tên miền  \n5 - Gọi điện qua Internet  \na - SMTP  \nb - IMAP  \nc - HTTP  \nd - SIP  \ne - POP  \nf - DNS",
+    "options": [
+      {
+        "id": "A",
+        "content": "1-c, 2-a, 3-e, 4-f, 5-d"
+      },
+      {
+        "id": "B",
+        "content": "1-d, 2-a, 3-e, 4-f, 5-c"
+      },
+      {
+        "id": "C",
+        "content": "1-c, 2-b, 3-a, 4-d, 4-e"
+      },
+      {
+        "id": "D",
+        "content": "1-c, 2-b, 3-a, 4-d, 5-f"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Duyệt web – HTTP, gửi mail – SMTP, xem mail – POP (hoặc IMAP), phân giải tên miền – DNS, gọi điện qua Internet – SIP.",
+      "whyCorrect": "Duyệt web – HTTP, gửi mail – SMTP, xem mail – POP (hoặc IMAP), phân giải tên miền – DNS, gọi điện qua Internet – SIP.",
+      "whyWrong": {
+        "B": "Duyệt web dùng HTTP chứ không phải SIP; gọi điện dùng SIP chứ không phải HTTP.",
+        "C": "Ghép gửi mail với IMAP, xem mail với SMTP là ngược; còn ghép số 4 hai lần.",
+        "D": "Gửi mail dùng SMTP; DNS không dùng cho gọi điện."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-005",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong giao tiếp ứng dụng, một socket được định danh bởi thông tin gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "(Tên miền, giao thức)"
+      },
+      {
+        "id": "B",
+        "content": "(Địa chỉ IP, số cổng)"
+      },
+      {
+        "id": "C",
+        "content": "(Địa chỉ MAC, số cổng)"
+      },
+      {
+        "id": "D",
+        "content": "(Địa chỉ IP nguồn, địa chỉ IP đích)"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Socket được định danh bởi địa chỉ IP của host và số cổng gắn với tiến trình.",
+      "whyCorrect": "Socket được định danh bởi địa chỉ IP của host và số cổng gắn với tiến trình.",
+      "whyWrong": {
+        "A": "Tên miền phải được phân giải thành IP; socket không định danh bằng tên miền.",
+        "C": "Địa chỉ MAC thuộc tầng liên kết, không dùng định danh socket.",
+        "D": "Chỉ có địa chỉ IP thì không phân biệt được tiến trình nào trên host."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-006",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Kỹ thuật nào có thể giữ phiên làm việc cho người dùng sau khi đăng nhập vào một website?",
+    "options": [
+      {
+        "id": "A",
+        "content": "DNS caching"
+      },
+      {
+        "id": "B",
+        "content": "Web cache"
+      },
+      {
+        "id": "C",
+        "content": "Proxy trung gian"
+      },
+      {
+        "id": "D",
+        "content": "Cookies"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "HTTP là giao thức không lưu trạng thái; cookie giúp website nhận ra người dùng và giữ phiên đăng nhập.",
+      "whyCorrect": "HTTP là giao thức không lưu trạng thái; cookie giúp website nhận ra người dùng và giữ phiên đăng nhập.",
+      "whyWrong": {
+        "A": "DNS caching lưu kết quả phân giải tên miền.",
+        "B": "Web cache lưu bản sao đối tượng web để phản hồi nhanh hơn.",
+        "C": "Proxy trung gian chuyển tiếp/lưu đệm yêu cầu, không giữ phiên người dùng."
+      },
+      "related": "4 thành phần cookie: header `Set-cookie` trong response, header `Cookie` trong request, file cookie ở trình duyệt, CSDL ở server."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-007",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong giao thức HTTP, yêu cầu từ trình duyệt thường được gửi bằng phương thức nào để lấy nội dung của một trang web?",
+    "options": [
+      {
+        "id": "A",
+        "content": "GET"
+      },
+      {
+        "id": "B",
+        "content": "PUT"
+      },
+      {
+        "id": "C",
+        "content": "UPDATED"
+      },
+      {
+        "id": "D",
+        "content": "POST"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Trình duyệt dùng phương thức GET để yêu cầu (lấy) nội dung một trang web.",
+      "whyCorrect": "Trình duyệt dùng phương thức GET để yêu cầu (lấy) nội dung một trang web.",
+      "whyWrong": {
+        "B": "PUT dùng để tải đối tượng lên một đường dẫn trên server.",
+        "C": "UPDATED không phải phương thức HTTP.",
+        "D": "POST dùng để gửi dữ liệu (ví dụ form) lên server."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-008",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Mục đích chính của web cache (bộ nhớ đệm web) là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Mã hóa dữ liệu khi truyền qua HTTP"
+      },
+      {
+        "id": "B",
+        "content": "Lưu trữ trang web vĩnh viễn để sao lưu"
+      },
+      {
+        "id": "C",
+        "content": "Giảm thời gian phản hồi và tăng băng thông khi truy cập lại cùng tài nguyên"
+      },
+      {
+        "id": "D",
+        "content": "Chặn truy cập các trang web không an toàn"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Web cache thỏa mãn yêu cầu ngay tại chỗ, giảm thời gian phản hồi và giảm lưu lượng trên đường truy cập khi truy cập lại cùng tài nguyên.",
+      "whyCorrect": "Web cache thỏa mãn yêu cầu ngay tại chỗ, giảm thời gian phản hồi và giảm lưu lượng trên đường truy cập khi truy cập lại cùng tài nguyên.",
+      "whyWrong": {
+        "A": "Mã hóa HTTP là việc của TLS (HTTPS).",
+        "B": "Cache lưu tạm và có thể hết hạn, không phải sao lưu vĩnh viễn.",
+        "D": "Chặn trang web là chức năng tường lửa/bộ lọc nội dung."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-009",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Khi người dùng truy cập một trang web qua HTTPS, sự khác biệt chính so với HTTP là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Không thể truyền file đa phương tiện"
+      },
+      {
+        "id": "B",
+        "content": "Dữ liệu được mã hóa qua TLS/SSL trước khi truyền"
+      },
+      {
+        "id": "C",
+        "content": "Dữ liệu truyền đi nhanh hơn HTTP"
+      },
+      {
+        "id": "D",
+        "content": "Sử dụng cổng 8080 thay vì 80"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "HTTPS = HTTP chạy trên TLS/SSL: dữ liệu được mã hóa trước khi truyền.",
+      "whyCorrect": "HTTPS = HTTP chạy trên TLS/SSL: dữ liệu được mã hóa trước khi truyền.",
+      "whyWrong": {
+        "A": "HTTPS vẫn truyền được mọi loại nội dung.",
+        "C": "Mã hóa không làm truyền nhanh hơn; thường còn tốn thêm bước bắt tay.",
+        "D": "HTTPS mặc định dùng cổng 443, không phải 8080."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-010",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Phát biểu nào sau đây đúng về việc gửi nhận thư điện tử?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Gửi và nhận thư điện tử đều cần dùng dịch vụ của TCP"
+      },
+      {
+        "id": "B",
+        "content": "Có thể dùng SMTP kết nối đến máy chủ thư và lấy thư điện tử về đọc"
+      },
+      {
+        "id": "C",
+        "content": "SMTP, IMAP có thể dùng để gửi thư điện tử"
+      },
+      {
+        "id": "D",
+        "content": "A, B, C đều đúng"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Mọi giao thức email (SMTP để gửi; POP3, IMAP, HTTP để nhận) đều chạy trên TCP.",
+      "whyCorrect": "Mọi giao thức email (SMTP để gửi; POP3, IMAP, HTTP để nhận) đều chạy trên TCP.",
+      "whyWrong": {
+        "B": "SMTP là giao thức đẩy, chỉ dùng để gửi/chuyển thư, không lấy thư về đọc.",
+        "C": "IMAP dùng để truy cập/đọc thư, không dùng để gửi.",
+        "D": "B và C sai nên D sai."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-011",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Khi nào kết nối TCP của HTTP không bền vững sẽ được đóng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Khi client nhận được tất cả các đối tượng mà nó yêu cầu."
+      },
+      {
+        "id": "B",
+        "content": "Khi server gửi tất cả các đối tượng mà nó có."
+      },
+      {
+        "id": "C",
+        "content": "Ngay sau khi một đối tượng duy nhất đã được gửi qua kết nối."
+      },
+      {
+        "id": "D",
+        "content": "Khi không có bất kỳ truy vấn nào từ client."
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "HTTP không bền vững: mỗi kết nối TCP chỉ chở tối đa một đối tượng, gửi xong đối tượng đó thì đóng ngay.",
+      "whyCorrect": "HTTP không bền vững: mỗi kết nối TCP chỉ chở tối đa một đối tượng, gửi xong đối tượng đó thì đóng ngay.",
+      "whyWrong": {
+        "A": "Đóng khi nhận đủ mọi đối tượng là gần với hành vi của kết nối bền vững.",
+        "B": "Server không gửi \"tất cả đối tượng nó có\" trên một kết nối.",
+        "D": "Kết nối đóng ngay sau một đối tượng, không chờ client ngừng truy vấn."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-012",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Mã 404 trong thông điệp trả lời từ Web server về trình duyệt có ý nghĩa là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Server không hiểu yêu cầu của client"
+      },
+      {
+        "id": "B",
+        "content": "Đối tượng client yêu cầu không có"
+      },
+      {
+        "id": "C",
+        "content": "Không tìm thấy Server"
+      },
+      {
+        "id": "D",
+        "content": "Yêu cầu của Client không hợp lệ"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "404 Not Found: đối tượng client yêu cầu không có trên server.",
+      "whyCorrect": "404 Not Found: đối tượng client yêu cầu không có trên server.",
+      "whyWrong": {
+        "A": "Server không hiểu yêu cầu là 400 Bad Request.",
+        "C": "Không tìm thấy server là lỗi kết nối/DNS, không có mã trạng thái HTTP.",
+        "D": "Yêu cầu không hợp lệ là 400 Bad Request."
+      },
+      "related": "| Mã | Ý nghĩa |\n|---|---|\n| 200 | OK |\n| 301 | Moved Permanently |\n| 304 | Not Modified |\n| 400 | Bad Request |\n| 404 | Not Found |\n| 505 | HTTP Version Not Supported |"
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-013",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Thời gian đáp ứng khi một trình duyệt yêu cầu một đối tượng trên Web server nếu HTTP không bền vững là bao nhiêu?",
+    "options": [
+      {
+        "id": "A",
+        "content": "RTT+ thời gian truyền tập tin"
+      },
+      {
+        "id": "B",
+        "content": "2RTT+ thời gian truyền tập tin"
+      },
+      {
+        "id": "C",
+        "content": "3RTT+ thời gian truyền tập tin"
+      },
+      {
+        "id": "D",
+        "content": "nRTT+ thời gian truyền tập tin"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Non-persistent HTTP: 1 RTT để thiết lập TCP + 1 RTT cho request/response, cộng thời gian truyền file → 2RTT + thời gian truyền.",
+      "whyCorrect": "Non-persistent HTTP: 1 RTT để thiết lập TCP + 1 RTT cho request/response, cộng thời gian truyền file → 2RTT + thời gian truyền.",
+      "whyWrong": {
+        "A": "Thiếu 1 RTT bắt tay TCP.",
+        "C": "Thừa 1 RTT.",
+        "D": "Mỗi đối tượng chỉ tốn 2 RTT, không phải n RTT."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-014",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trình duyệt đang sử dụng phiên bản HTTP nào?\n\n```http\nGET /cs453/index.html HTTP/1.1\r\nHost: gaia.cs.umass.edu\r\nUserAgent: Mozilla/5.0 (Windows;U; Windows NT 5.1; en -US; rv:1.7.2)Gecko/20040804 Netscape/7.2 (ax)\r\nAccept:ext/xml, application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nAccept-Language:en-us,en;q=0.5\r\nAccept-Encoding: zip,deflate\r\nAccept -Charset:ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\nKeep-Alive:300\r\nConnection:keep-alive\n```",
+    "options": [
+      {
+        "id": "A",
+        "content": "5.0"
+      },
+      {
+        "id": "B",
+        "content": "1.1"
+      },
+      {
+        "id": "C",
+        "content": "7.2"
+      },
+      {
+        "id": "D",
+        "content": "1.0"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Phiên bản HTTP nằm ở cuối dòng yêu cầu: `GET /cs453/index.html HTTP/1.1` → HTTP 1.1.",
+      "whyCorrect": "Phiên bản HTTP nằm ở cuối dòng yêu cầu: `GET /cs453/index.html HTTP/1.1` → HTTP 1.1.",
+      "whyWrong": {
+        "A": "5.0 là phiên bản của Mozilla trong header User-Agent.",
+        "C": "7.2 là phiên bản Netscape trong User-Agent.",
+        "D": "Dòng yêu cầu ghi rõ HTTP/1.1."
+      },
+      "tip": "Dòng yêu cầu: **phương thức – URL – phiên bản**."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-015",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "HTTP (Hypertext Transfer Protocol) là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Giao thức ứng dụng cho phép các máy tính giao tiếp với nhau qua Web và có khả năng liên kết các trang Web với nhau."
+      },
+      {
+        "id": "B",
+        "content": "Giao thức tầng vận chuyển cho phép truyền tải các trang Web."
+      },
+      {
+        "id": "C",
+        "content": "Một thành phần tên miền."
+      },
+      {
+        "id": "D",
+        "content": "Giao diện Web."
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "HTTP là giao thức tầng ứng dụng của Web, cho phép client và server trao đổi các trang web (có siêu liên kết).",
+      "whyCorrect": "HTTP là giao thức tầng ứng dụng của Web, cho phép client và server trao đổi các trang web (có siêu liên kết).",
+      "whyWrong": {
+        "B": "HTTP không phải giao thức tầng vận chuyển; nó chạy trên TCP.",
+        "C": "Tên miền thuộc hệ thống DNS.",
+        "D": "Giao diện web là phần trình duyệt hiển thị."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-016",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Các giao thức ứng dụng hoạt động trên:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tầng trình diễn"
+      },
+      {
+        "id": "B",
+        "content": "Tầng phiên"
+      },
+      {
+        "id": "C",
+        "content": "Tầng ứng dụng"
+      },
+      {
+        "id": "D",
+        "content": "Tầng liên kết dữ liệu"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Các giao thức ứng dụng (HTTP, SMTP, DNS…) hoạt động ở tầng ứng dụng.",
+      "whyCorrect": "Các giao thức ứng dụng (HTTP, SMTP, DNS…) hoạt động ở tầng ứng dụng.",
+      "whyWrong": {
+        "A": "Tầng trình diễn chỉ có trong OSI.",
+        "B": "Tầng phiên chỉ có trong OSI.",
+        "D": "Tầng liên kết lo truyền frame giữa các nút kề nhau."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-017",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "HTTP làm nhiệm vụ gì:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cung cấp một cơ chế để lấy dữ liệu từ server chuyển đến client"
+      },
+      {
+        "id": "B",
+        "content": "Hiển thị các trang Web từ xa trên màn hình và giúp người dùng tương tác với chúng"
+      },
+      {
+        "id": "C",
+        "content": "Cung cấp giao diện người dùng như các nút bấm, thanh trượt,..."
+      },
+      {
+        "id": "D",
+        "content": "Cung cấp dữ liệu từ server sử dụng giao thức chuyển file (File Transport Protocol)"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "HTTP định nghĩa cách client yêu cầu và server trả về đối tượng web — tức cơ chế lấy dữ liệu từ server về client.",
+      "whyCorrect": "HTTP định nghĩa cách client yêu cầu và server trả về đối tượng web — tức cơ chế lấy dữ liệu từ server về client.",
+      "whyWrong": {
+        "B": "Hiển thị trang là việc của trình duyệt.",
+        "C": "Giao diện người dùng là việc của trình duyệt/ứng dụng.",
+        "D": "HTTP không dùng FTP để chuyển dữ liệu."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-018",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trên Internet, email được gửi từ máy nguồn bằng cách thiết lập một kết nối TCP đến một cổng cụ thể trên máy đích. Cổng đó là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "`80`"
+      },
+      {
+        "id": "B",
+        "content": "`110`"
+      },
+      {
+        "id": "C",
+        "content": "`25`"
+      },
+      {
+        "id": "D",
+        "content": "`404`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Email được gửi bằng SMTP qua kết nối TCP đến cổng 25 của mail server đích.",
+      "whyCorrect": "Email được gửi bằng SMTP qua kết nối TCP đến cổng 25 của mail server đích.",
+      "whyWrong": {
+        "A": "80 là cổng HTTP.",
+        "B": "110 là cổng POP3 (lấy thư về).",
+        "D": "404 là mã trạng thái HTTP, không phải số cổng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-019",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giả sử có một bản ghi của dịch vụ DNS là `(cnn.com, r1.infor.cnn.com, CNAME)`",
+    "options": [
+      {
+        "id": "A",
+        "content": "`cnn.com` là tên viết tắt (rút gọn) của `r1.infor.cnn.com`"
+      },
+      {
+        "id": "B",
+        "content": "`r1.infor.cnn.com` là tên viết tắt (rút gọn) của `cnn.com`"
+      },
+      {
+        "id": "C",
+        "content": "Cả A và B đều đúng"
+      },
+      {
+        "id": "D",
+        "content": "Cả A và B đều sai"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Bản ghi CNAME (name, value): name là bí danh, value là tên gốc (canonical). Vậy `cnn.com` là tên rút gọn của `r1.infor.cnn.com`.",
+      "whyCorrect": "Bản ghi CNAME (name, value): name là bí danh, value là tên gốc (canonical). Vậy `cnn.com` là tên rút gọn của `r1.infor.cnn.com`.",
+      "whyWrong": {
+        "B": "Đảo ngược quan hệ: value mới là tên gốc.",
+        "C": "Chỉ A đúng.",
+        "D": "A đúng nên D sai."
+      },
+      "related": "| Type | name | value |\n|---|---|---|\n| A | tên máy | IPv4 |\n| NS | tên miền | máy chủ DNS có thẩm quyền |\n| CNAME | bí danh | tên gốc |\n| MX | tên miền | mail server |"
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-020",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giao thức được sử dụng để 2 bên truyền file là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "HTTP"
+      },
+      {
+        "id": "B",
+        "content": "FTP"
+      },
+      {
+        "id": "C",
+        "content": "SMTP"
+      },
+      {
+        "id": "D",
+        "content": "SNMP"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "FTP (File Transfer Protocol) dùng để truyền file giữa hai máy.",
+      "whyCorrect": "FTP (File Transfer Protocol) dùng để truyền file giữa hai máy.",
+      "whyWrong": {
+        "A": "HTTP dùng cho web.",
+        "C": "SMTP dùng để chuyển thư.",
+        "D": "SNMP dùng để quản lý thiết bị mạng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-021",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giả sử có một bản ghi của dịch vụ DNS là `(alpha.com, 123.4.5.7, NS)`. Chọn câu trả lời đúng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "`123.4.5.7` là địa chỉ IP của máy `alpha.com`"
+      },
+      {
+        "id": "B",
+        "content": "`alpha.com` là một tên miền, không phải là một máy"
+      },
+      {
+        "id": "C",
+        "content": "`123.4.5.7` là địa chỉ IP của máy phục vụ thư (mail server) có tên miền là `google.com`"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả đều sai"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Bản ghi NS có name là một tên miền (không phải tên máy), value trỏ đến máy chủ DNS có thẩm quyền của miền đó.",
+      "whyCorrect": "Bản ghi NS có name là một tên miền (không phải tên máy), value trỏ đến máy chủ DNS có thẩm quyền của miền đó.",
+      "whyWrong": {
+        "A": "Ánh xạ tên máy → IP là bản ghi A, không phải NS.",
+        "C": "Mail server là bản ghi MX; `google.com` không liên quan.",
+        "D": "B đúng nên D sai."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-022",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Web server thường sử dụng phần mềm chạy trên:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cổng `25`"
+      },
+      {
+        "id": "B",
+        "content": "Cổng `404`"
+      },
+      {
+        "id": "C",
+        "content": "Cổng `125`"
+      },
+      {
+        "id": "D",
+        "content": "Cổng `80`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Web server mặc định lắng nghe trên cổng TCP 80 (HTTP).",
+      "whyCorrect": "Web server mặc định lắng nghe trên cổng TCP 80 (HTTP).",
+      "whyWrong": {
+        "A": "25 là cổng SMTP.",
+        "B": "404 là mã trạng thái, không phải cổng.",
+        "C": "125 không phải cổng chuẩn của web."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-023",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong những thông điệp HTTP trả lời dưới đây, thông điệp nào đúng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "200 \"OK\""
+      },
+      {
+        "id": "B",
+        "content": "201 \"Moved Permanently\""
+      },
+      {
+        "id": "C",
+        "content": "404 \"Not Modified\""
+      },
+      {
+        "id": "D",
+        "content": "20 \"Not Implemented\""
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "200 OK là dòng trạng thái đúng: yêu cầu thành công.",
+      "whyCorrect": "200 OK là dòng trạng thái đúng: yêu cầu thành công.",
+      "whyWrong": {
+        "B": "\"Moved Permanently\" là mã 301.",
+        "C": "\"Not Modified\" là mã 304; 404 là Not Found.",
+        "D": "\"Not Implemented\" là 501; mã HTTP có 3 chữ số."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-024",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Những thông điệp nào dưới đây được giao thức POP3 hỗ trợ:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Kiểm chứng (Authorization)"
+      },
+      {
+        "id": "B",
+        "content": "Đọc một thư (Retrieving a message)"
+      },
+      {
+        "id": "C",
+        "content": "Xoá một thư"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả đều đúng"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "POP3 có giai đoạn kiểm chứng (user/pass), sau đó cho phép liệt kê, đọc (retr) và xóa (dele) thư.",
+      "whyCorrect": "POP3 có giai đoạn kiểm chứng (user/pass), sau đó cho phép liệt kê, đọc (retr) và xóa (dele) thư.",
+      "whyWrong": {
+        "A": "Đúng nhưng chưa đủ.",
+        "B": "Đúng nhưng chưa đủ.",
+        "C": "Đúng nhưng chưa đủ."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-025",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Cho biết ứng dụng nào thuộc loại Client/Server:",
+    "options": [
+      {
+        "id": "A",
+        "content": "WinWord"
+      },
+      {
+        "id": "B",
+        "content": "WWW (World Wide Web)"
+      },
+      {
+        "id": "C",
+        "content": "Excel"
+      },
+      {
+        "id": "D",
+        "content": "Photoshop"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "WWW là ứng dụng client–server: trình duyệt (client) yêu cầu trang từ web server.",
+      "whyCorrect": "WWW là ứng dụng client–server: trình duyệt (client) yêu cầu trang từ web server.",
+      "whyWrong": {
+        "A": "WinWord là ứng dụng chạy cục bộ, không phải ứng dụng mạng.",
+        "C": "Excel là ứng dụng cục bộ.",
+        "D": "Photoshop là ứng dụng cục bộ."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-026",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giao thức được sử dụng để truyền thư giữa các máy chủ phục vụ thư (Mail server) là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "HTTP"
+      },
+      {
+        "id": "B",
+        "content": "FTP"
+      },
+      {
+        "id": "C",
+        "content": "SMTP"
+      },
+      {
+        "id": "D",
+        "content": "POP"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "SMTP dùng để chuyển thư giữa các mail server (và từ UA lên mail server của người gửi).",
+      "whyCorrect": "SMTP dùng để chuyển thư giữa các mail server (và từ UA lên mail server của người gửi).",
+      "whyWrong": {
+        "A": "HTTP dùng cho web/webmail giữa người dùng và server.",
+        "B": "FTP dùng để truyền file.",
+        "D": "POP dùng để người nhận lấy thư về từ server."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-027",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Ứng dụng nào sử dụng mô hình client/server:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Bit Torrent"
+      },
+      {
+        "id": "B",
+        "content": "Email, Web"
+      },
+      {
+        "id": "C",
+        "content": "Skype"
+      },
+      {
+        "id": "D",
+        "content": "KaZaA"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Email và Web dùng mô hình client–server.",
+      "whyCorrect": "Email và Web dùng mô hình client–server.",
+      "whyWrong": {
+        "A": "BitTorrent là P2P.",
+        "C": "Skype (kiến trúc cổ điển) là P2P.",
+        "D": "KaZaA là P2P."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-028",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Ứng dụng nào sử dụng mô hình P2P:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Telnet"
+      },
+      {
+        "id": "B",
+        "content": "Email"
+      },
+      {
+        "id": "C",
+        "content": "Web"
+      },
+      {
+        "id": "D",
+        "content": "Skype"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Skype (kiến trúc được dạy trong giáo trình) là ứng dụng P2P: các peer gọi trực tiếp cho nhau.",
+      "whyCorrect": "Skype (kiến trúc được dạy trong giáo trình) là ứng dụng P2P: các peer gọi trực tiếp cho nhau.",
+      "whyWrong": {
+        "A": "Telnet là client–server.",
+        "B": "Email là client–server.",
+        "C": "Web là client–server."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-029",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Định danh (identifier) của tiến trình bao gồm:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Địa chỉ IP của host"
+      },
+      {
+        "id": "B",
+        "content": "Địa chỉ IP và số hiệu cổng liên kết với tiến trình trên host"
+      },
+      {
+        "id": "C",
+        "content": "Địa chỉ IP nguồn và địa chỉ IP đích"
+      },
+      {
+        "id": "D",
+        "content": "Địa chỉ IP nguồn, số hiệu cổng nguồn, địa chỉ IP đích, số hiệu cổng đích"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Định danh tiến trình = địa chỉ IP của host + số hiệu cổng gắn với tiến trình đó.",
+      "whyCorrect": "Định danh tiến trình = địa chỉ IP của host + số hiệu cổng gắn với tiến trình đó.",
+      "whyWrong": {
+        "A": "Chỉ có IP thì không phân biệt được các tiến trình trên cùng host.",
+        "C": "Cặp IP nguồn/đích không xác định tiến trình.",
+        "D": "Bộ 4 thông số định danh một kết nối TCP, không phải một tiến trình."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-030",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Đâu là một URL:",
+    "options": [
+      {
+        "id": "A",
+        "content": "`www.someschool.edu`"
+      },
+      {
+        "id": "B",
+        "content": "`192.168.1.1`"
+      },
+      {
+        "id": "C",
+        "content": "`.../someDept/pic.gif`"
+      },
+      {
+        "id": "D",
+        "content": "`www.someschool.edu/someDept/pic.gif`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "URL gồm tên host và đường dẫn đến đối tượng: `www.someschool.edu/someDept/pic.gif`.",
+      "whyCorrect": "URL gồm tên host và đường dẫn đến đối tượng: `www.someschool.edu/someDept/pic.gif`.",
+      "whyWrong": {
+        "A": "Chỉ là tên host, thiếu đường dẫn đối tượng.",
+        "B": "Chỉ là địa chỉ IP.",
+        "C": "Chỉ là một phần đường dẫn, thiếu tên host."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-031",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong cơ sở dữ liệu của DNS lưu trữ các resource record (RR) có dạng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "`(name, value, type, ttl)`"
+      },
+      {
+        "id": "B",
+        "content": "`(value, name, ttl, type)`"
+      },
+      {
+        "id": "C",
+        "content": "`(value, ttl, name, type)`"
+      },
+      {
+        "id": "D",
+        "content": "`(name, type, ttl, value)`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Bản ghi tài nguyên DNS có dạng (name, value, type, ttl).",
+      "whyCorrect": "Bản ghi tài nguyên DNS có dạng (name, value, type, ttl).",
+      "whyWrong": {
+        "B": "Sai thứ tự các trường.",
+        "C": "Sai thứ tự các trường.",
+        "D": "Sai thứ tự: value đứng ngay sau name."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-032",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong các cơ chế sau đây, cơ chế nào được sử dụng để cài đặt Web cache:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Kiểm chứng và Mã kiểm chứng 401 Authorization require"
+      },
+      {
+        "id": "B",
+        "content": "Trường tiêu đề \"Last-Modified\" và \"If-Modified-Since\""
+      },
+      {
+        "id": "C",
+        "content": "Phương thức yêu cầu POST"
+      },
+      {
+        "id": "D",
+        "content": "A và B"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Web cache dùng GET có điều kiện: header `If-Modified-Since` (dựa vào `Last-Modified`); nếu chưa đổi, server trả `304 Not Modified`.",
+      "whyCorrect": "Web cache dùng GET có điều kiện: header `If-Modified-Since` (dựa vào `Last-Modified`); nếu chưa đổi, server trả `304 Not Modified`.",
+      "whyWrong": {
+        "A": "401 Authorization Required liên quan đến xác thực.",
+        "C": "POST gửi dữ liệu lên server, không dùng để kiểm tra cache.",
+        "D": "Chỉ B đúng nên D sai."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-033",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Ứng dụng mạng (Network applications) có thể được xây dựng theo các kiến trúc nào sau đây?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cả C, B và D"
+      },
+      {
+        "id": "B",
+        "content": "Peer-to-peer"
+      },
+      {
+        "id": "C",
+        "content": "Client-Server"
+      },
+      {
+        "id": "D",
+        "content": "Hybrid"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Ứng dụng mạng có thể theo kiến trúc client–server, P2P hoặc lai (hybrid).",
+      "whyCorrect": "Ứng dụng mạng có thể theo kiến trúc client–server, P2P hoặc lai (hybrid).",
+      "whyWrong": {
+        "B": "P2P chỉ là một trong các kiến trúc.",
+        "C": "Client–server chỉ là một trong các kiến trúc.",
+        "D": "Hybrid chỉ là một trong các kiến trúc."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-034",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Khi Bob gửi e-mail cho Alice, máy tính của Alice không kết nối mạng. Khi đó, email của Bob sẽ nằm ở đâu?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trong mail box của Bob trên mail server của Bob"
+      },
+      {
+        "id": "B",
+        "content": "Trong hàng thư chờ gửi trên mail server của Alice"
+      },
+      {
+        "id": "C",
+        "content": "Trong hàng thư chờ gửi trên mail server của Bob"
+      },
+      {
+        "id": "D",
+        "content": "Trong mail box của Alice trên mail server của Alice"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "SMTP đẩy thư đến mail server của Alice và đặt vào mailbox của Alice; thư nằm đó chờ Alice dùng POP/IMAP/HTTP lấy về.",
+      "whyCorrect": "SMTP đẩy thư đến mail server của Alice và đặt vào mailbox của Alice; thư nằm đó chờ Alice dùng POP/IMAP/HTTP lấy về.",
+      "whyWrong": {
+        "A": "Thư không nằm trong mailbox của Bob.",
+        "B": "Mail server của Alice nhận thư vào mailbox, không phải hàng thư chờ gửi.",
+        "C": "Hàng đợi trên server của Bob chỉ giữ thư khi chưa chuyển được sang server Alice; việc Alice tắt máy không ảnh hưởng."
+      },
+      "tip": "Máy người nhận tắt không ngăn SMTP: thư vẫn được giao vào **mailbox trên server**."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-035",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "FTP là từ viết tắt của:",
+    "options": [
+      {
+        "id": "A",
+        "content": "File Transfer Protocol"
+      },
+      {
+        "id": "B",
+        "content": "Folder Transfer Protocol"
+      },
+      {
+        "id": "C",
+        "content": "Protocol Transfer Program"
+      },
+      {
+        "id": "D",
+        "content": "Protocol Transfer Folder"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "FTP = File Transfer Protocol.",
+      "whyCorrect": "FTP = File Transfer Protocol.",
+      "whyWrong": {
+        "B": "Không có \"Folder Transfer Protocol\".",
+        "C": "Sai tên viết tắt.",
+        "D": "Sai tên viết tắt."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-036",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "HTTP là từ viết tắt của:",
+    "options": [
+      {
+        "id": "A",
+        "content": "HyperText Transmission Protocol"
+      },
+      {
+        "id": "B",
+        "content": "HyperText Transit Protocol"
+      },
+      {
+        "id": "C",
+        "content": "HyperText Transfer Protocol"
+      },
+      {
+        "id": "D",
+        "content": "HyperText Treat Protocol"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "HTTP = HyperText Transfer Protocol.",
+      "whyCorrect": "HTTP = HyperText Transfer Protocol.",
+      "whyWrong": {
+        "A": "Transmission không phải chữ T trong HTTP.",
+        "B": "Transit không đúng.",
+        "D": "Treat không đúng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-037",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giao thức POP3 sử dụng cổng dịch vụ số:",
+    "options": [
+      {
+        "id": "A",
+        "content": "53"
+      },
+      {
+        "id": "B",
+        "content": "23"
+      },
+      {
+        "id": "C",
+        "content": "25"
+      },
+      {
+        "id": "D",
+        "content": "110"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "POP3 dùng cổng TCP 110.",
+      "whyCorrect": "POP3 dùng cổng TCP 110.",
+      "whyWrong": {
+        "A": "53 là cổng DNS.",
+        "B": "23 là cổng Telnet.",
+        "C": "25 là cổng SMTP."
+      },
+      "related": "HTTP 80 · HTTPS 443 · SMTP 25 · POP3 110 · IMAP 143 · DNS 53 · FTP 20/21 · Telnet 23 · SSH 22"
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-038",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Dịch vụ DNS có chức năng chính là gì:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phân giải tên NetBIOS"
+      },
+      {
+        "id": "B",
+        "content": "Phân giải tên miền (IP sang tên và ngược lại)"
+      },
+      {
+        "id": "C",
+        "content": "Phân giải địa chỉ MAC"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả đều sai"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "DNS phân giải tên miền thành địa chỉ IP (và ngược lại với truy vấn ngược).",
+      "whyCorrect": "DNS phân giải tên miền thành địa chỉ IP (và ngược lại với truy vấn ngược).",
+      "whyWrong": {
+        "A": "NetBIOS là cơ chế tên của mạng Windows cũ, không phải chức năng chính của DNS.",
+        "C": "Phân giải IP → MAC là ARP.",
+        "D": "B đúng nên D sai."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-039",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Nhược điểm nếu xây dựng hệ thống dịch vụ tên miền (DNS) theo mô hình tập trung là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nếu điểm tập trung bị hỏng, toàn bộ hệ thống sẽ bị tê liệt"
+      },
+      {
+        "id": "B",
+        "content": "Số lượng yêu cầu phục vụ tại điểm tập trung duy nhất sẽ rất lớn"
+      },
+      {
+        "id": "C",
+        "content": "Chi phí bảo trì hệ thống rất lớn"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả câu trả lời trên"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "DNS tập trung có một điểm chết duy nhất, dồn lưu lượng rất lớn về một chỗ, ở xa người dùng và khó bảo trì → cả ba nhược điểm.",
+      "whyCorrect": "DNS tập trung có một điểm chết duy nhất, dồn lưu lượng rất lớn về một chỗ, ở xa người dùng và khó bảo trì → cả ba nhược điểm.",
+      "whyWrong": {
+        "A": "Đúng nhưng chưa đủ.",
+        "B": "Đúng nhưng chưa đủ.",
+        "C": "Đúng nhưng chưa đủ."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-040",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Số hiệu cổng (port) của giao thức truyền mail SMTP là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "23"
+      },
+      {
+        "id": "B",
+        "content": "25"
+      },
+      {
+        "id": "C",
+        "content": "21"
+      },
+      {
+        "id": "D",
+        "content": "110"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "SMTP dùng cổng TCP 25.",
+      "whyCorrect": "SMTP dùng cổng TCP 25.",
+      "whyWrong": {
+        "A": "23 là Telnet.",
+        "C": "21 là kênh điều khiển FTP.",
+        "D": "110 là POP3."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-041",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giao thức truyền thông trong DNS sử dụng cổng dịch vụ số:",
+    "options": [
+      {
+        "id": "A",
+        "content": "21"
+      },
+      {
+        "id": "B",
+        "content": "25"
+      },
+      {
+        "id": "C",
+        "content": "53"
+      },
+      {
+        "id": "D",
+        "content": "110"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "DNS dùng cổng 53 (chủ yếu UDP, có thể TCP).",
+      "whyCorrect": "DNS dùng cổng 53 (chủ yếu UDP, có thể TCP).",
+      "whyWrong": {
+        "A": "21 là FTP.",
+        "B": "25 là SMTP.",
+        "D": "110 là POP3."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-042",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong số các cặp giao thức và cổng dịch vụ sau, cặp nào là sai:",
+    "options": [
+      {
+        "id": "A",
+        "content": "SMTP: TCP Port `25`"
+      },
+      {
+        "id": "B",
+        "content": "FTP: UDP Port `22`"
+      },
+      {
+        "id": "C",
+        "content": "HTTP: TCP Port `80`"
+      },
+      {
+        "id": "D",
+        "content": "DNS: UDP Port `53`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "FTP chạy trên TCP với cổng 21 (điều khiển) và 20 (dữ liệu); \"FTP: UDP port 22\" sai cả giao thức lẫn cổng (22 là SSH).",
+      "whyCorrect": "FTP chạy trên TCP với cổng 21 (điều khiển) và 20 (dữ liệu); \"FTP: UDP port 22\" sai cả giao thức lẫn cổng (22 là SSH).",
+      "whyWrong": {
+        "A": "SMTP dùng TCP cổng 25 — đúng.",
+        "C": "HTTP dùng TCP cổng 80 — đúng.",
+        "D": "DNS dùng UDP cổng 53 — đúng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-043",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giao thức nào sau đây hoạt động trên nền giao thức UDP:",
+    "options": [
+      {
+        "id": "A",
+        "content": "ARP"
+      },
+      {
+        "id": "B",
+        "content": "DNS"
+      },
+      {
+        "id": "C",
+        "content": "Telnet"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả các câu trên đều đúng"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "DNS thường chạy trên UDP (cổng 53) vì truy vấn ngắn, cần nhanh.",
+      "whyCorrect": "DNS thường chạy trên UDP (cổng 53) vì truy vấn ngắn, cần nhanh.",
+      "whyWrong": {
+        "A": "ARP hoạt động trực tiếp trên tầng liên kết, không dùng UDP.",
+        "C": "Telnet chạy trên TCP.",
+        "D": "Chỉ DNS đúng nên D sai."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-044",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Khẳng định nào sau đây là đúng khi nói về tên gọi loại máy chủ cung cấp dịch vụ thư điện tử:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Web Server"
+      },
+      {
+        "id": "B",
+        "content": "Mail Server"
+      },
+      {
+        "id": "C",
+        "content": "FTP Server"
+      },
+      {
+        "id": "D",
+        "content": "Proxy"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Máy chủ cung cấp dịch vụ thư điện tử gọi là Mail Server.",
+      "whyCorrect": "Máy chủ cung cấp dịch vụ thư điện tử gọi là Mail Server.",
+      "whyWrong": {
+        "A": "Web Server phục vụ trang web.",
+        "C": "FTP Server phục vụ truyền file.",
+        "D": "Proxy là máy trung gian chuyển tiếp yêu cầu."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-045",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Khẳng định nào sau đây là đúng khi nói về đơn vị dữ liệu của tầng Ứng dụng (Application):",
+    "options": [
+      {
+        "id": "A",
+        "content": "Message (Thông điệp)"
+      },
+      {
+        "id": "B",
+        "content": "Segment/ Datagram (Đoạn/Bó dữ liệu)"
+      },
+      {
+        "id": "C",
+        "content": "Packet (Gói dữ liệu)"
+      },
+      {
+        "id": "D",
+        "content": "Frame (Khung dữ liệu)"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Đơn vị dữ liệu của tầng ứng dụng là message (thông điệp).",
+      "whyCorrect": "Đơn vị dữ liệu của tầng ứng dụng là message (thông điệp).",
+      "whyWrong": {
+        "B": "Segment/datagram (UDP) là của tầng vận chuyển.",
+        "C": "Packet là của tầng mạng.",
+        "D": "Frame là của tầng liên kết."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-046",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Alice thực hiện truy cập vào một trang web 4 lần và các mã trạng thái lần lượt nhận được là `200`, `304`, `404`, `502`. Số lần Alice xem nội dung trang web thành công?",
+    "options": [
+      {
+        "id": "A",
+        "content": "1 lần"
+      },
+      {
+        "id": "B",
+        "content": "2 lần"
+      },
+      {
+        "id": "C",
+        "content": "3 lần"
+      },
+      {
+        "id": "D",
+        "content": "4 lần"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "200 OK trả về nội dung; 304 Not Modified cho phép trình duyệt hiển thị bản đã lưu trong cache → 2 lần xem được. 404 và 502 là lỗi.",
+      "whyCorrect": "200 OK trả về nội dung; 304 Not Modified cho phép trình duyệt hiển thị bản đã lưu trong cache → 2 lần xem được. 404 và 502 là lỗi.",
+      "whyWrong": {
+        "A": "Bỏ sót 304: nội dung vẫn được hiển thị từ cache.",
+        "C": "404 (không tìm thấy) không hiển thị được nội dung.",
+        "D": "502 Bad Gateway là lỗi phía server/proxy."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-047",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong số các cặp giao thức và cổng dịch vụ sau, cặp nào là đúng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "FTP: TCP Port `22`"
+      },
+      {
+        "id": "B",
+        "content": "Telnet: UDP Port `23`"
+      },
+      {
+        "id": "C",
+        "content": "DNS: TCP Port `50`"
+      },
+      {
+        "id": "D",
+        "content": "SMTP: TCP Port `25`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "SMTP dùng TCP, cổng 25 — cặp đúng.",
+      "whyCorrect": "SMTP dùng TCP, cổng 25 — cặp đúng.",
+      "whyWrong": {
+        "A": "FTP dùng cổng 20/21; 22 là SSH.",
+        "B": "Telnet dùng TCP, không phải UDP.",
+        "C": "DNS dùng cổng 53, không phải 50."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-048",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Hãy chọn đáp án đúng khi mô tả về Cookie:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Là một chuỗi kí tự trong dòng địa chỉ web"
+      },
+      {
+        "id": "B",
+        "content": "Là một tập tin lưu trên server"
+      },
+      {
+        "id": "C",
+        "content": "Là một tập tin lưu ở Client"
+      },
+      {
+        "id": "D",
+        "content": "Là một tập tin .XML"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Cookie là tập tin nhỏ lưu ở phía client, do trình duyệt quản lý; server lưu thông tin tương ứng trong CSDL của mình.",
+      "whyCorrect": "Cookie là tập tin nhỏ lưu ở phía client, do trình duyệt quản lý; server lưu thông tin tương ứng trong CSDL của mình.",
+      "whyWrong": {
+        "A": "Cookie không nằm trong dòng địa chỉ web.",
+        "B": "Server lưu CSDL người dùng, còn file cookie nằm ở client.",
+        "D": "Cookie không phải file XML."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-049",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Một người dùng sử dụng dịch vụ Persistent without pipelining của HTTP truy cập vào một website bao gồm 1 trang HTML và 5 hình ảnh được tham chiếu. Biết phiên bản của Server là HTTP 1.1, giả sử thời gian truyền file của mỗi đối tượng là 0.5 RTT. Cho biết tổng thời gian (theo RTT) để người dùng tải và xem hết website này.",
+    "options": [
+      {
+        "id": "A",
+        "content": "3 RTT"
+      },
+      {
+        "id": "B",
+        "content": "5 RTT"
+      },
+      {
+        "id": "C",
+        "content": "6 RTT"
+      },
+      {
+        "id": "D",
+        "content": "10 RTT"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Persistent không pipelining: 1 RTT mở kết nối TCP, sau đó mỗi đối tượng tốn 1 RTT (request/response) + 0,5 RTT truyền. 6 đối tượng × 1,5 RTT = 9 RTT, cộng 1 RTT bắt tay = 10 RTT.",
+      "whyCorrect": "Persistent không pipelining: 1 RTT mở kết nối TCP, sau đó mỗi đối tượng tốn 1 RTT (request/response) + 0,5 RTT truyền. 6 đối tượng × 1,5 RTT = 9 RTT, cộng 1 RTT bắt tay = 10 RTT.",
+      "whyWrong": {
+        "A": "3 RTT bỏ qua việc mỗi đối tượng phải chờ request/response riêng.",
+        "B": "5 RTT bỏ sót trang HTML hoặc thời gian truyền.",
+        "C": "6 RTT chỉ tính 1 RTT cho mỗi đối tượng, quên bắt tay TCP và thời gian truyền."
+      },
+      "related": "Non-persistent: mỗi đối tượng 2 RTT + truyền. Persistent không pipelining: 1 RTT bắt tay + mỗi đối tượng 1 RTT + truyền. Persistent có pipelining: 1 RTT bắt tay + 1 RTT cho trang HTML + 1 RTT cho tất cả ảnh (+ truyền)."
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-050",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Phát biểu nào sau đây là SAI về kiến trúc Client – Server (Máy khách – Máy chủ)?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Server luôn hoạt động, có địa chỉ IP cố định"
+      },
+      {
+        "id": "B",
+        "content": "Client có thể thay đổi địa chỉ IP"
+      },
+      {
+        "id": "C",
+        "content": "Client có thể kết nối trực tiếp với nhau"
+      },
+      {
+        "id": "D",
+        "content": "Client có thể kết nối với Server không liên tục"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Trong client–server, các client không liên lạc trực tiếp với nhau mà đều thông qua server.",
+      "whyCorrect": "Trong client–server, các client không liên lạc trực tiếp với nhau mà đều thông qua server.",
+      "whyWrong": {
+        "A": "Đúng: server luôn bật, có IP cố định.",
+        "B": "Đúng: client có thể đổi IP (IP động).",
+        "D": "Đúng: client có thể kết nối không liên tục."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-051",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Phân tích một phần gói tin HTTP request từ trình duyệt gửi lên Web server như sau:\n```http\nGET /docs/index.html HTTP/1.1\\r\\n\nHost: www-net.cs.umass.edu\\r\\n\n```\nTa biết được một số thông tin về trình duyệt là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trình duyệt dùng kết nối bền vững (persistent) và URL đầy đủ của trang web được yêu cầu là: `www-net.cs.umass.edu/index.html`"
+      },
+      {
+        "id": "B",
+        "content": "Trình duyệt dùng kết nối không bền vững (non-persistent) và URL đầy đủ của trang web được yêu cầu là: `www-net.cs.umass.edu/docs/index.html`"
+      },
+      {
+        "id": "C",
+        "content": "Trình duyệt dùng kết nối bền vững (persistent) và URL đầy đủ của trang web được yêu cầu là: `www-net.cs.umass.edu/docs/index.html`"
+      },
+      {
+        "id": "D",
+        "content": "Trình duyệt dùng kết nối bền vững (persistent) và URL đầy đủ của trang web được yêu cầu là: `www-net.cs.umass.edu`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "HTTP/1.1 mặc định dùng kết nối bền vững; URL = Host + đường dẫn = `www-net.cs.umass.edu/docs/index.html`.",
+      "whyCorrect": "HTTP/1.1 mặc định dùng kết nối bền vững; URL = Host + đường dẫn = `www-net.cs.umass.edu/docs/index.html`.",
+      "whyWrong": {
+        "A": "URL thiếu thư mục `/docs`.",
+        "B": "HTTP/1.1 mặc định là bền vững, không phải không bền vững.",
+        "D": "URL thiếu đường dẫn đến đối tượng."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-052",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Mô tả nào sau đây SAI về giao thức IMAP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Là giao thức cho phép gửi mail"
+      },
+      {
+        "id": "B",
+        "content": "Sử dụng cổng 143"
+      },
+      {
+        "id": "C",
+        "content": "Hoạt động dựa trên TCP"
+      },
+      {
+        "id": "D",
+        "content": "Là Internet Mail Access Protocol"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "IMAP là giao thức truy cập/đọc thư (cổng 143, chạy trên TCP), không dùng để gửi thư.",
+      "whyCorrect": "IMAP là giao thức truy cập/đọc thư (cổng 143, chạy trên TCP), không dùng để gửi thư.",
+      "whyWrong": {
+        "B": "Đúng: IMAP dùng cổng 143.",
+        "C": "Đúng: IMAP chạy trên TCP.",
+        "D": "Đúng: IMAP = Internet Mail Access Protocol."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-053",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong các mô hình sau, mô hình nào là mô hình mạng được dùng phổ biến hiện nay:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Peer - to - Peer"
+      },
+      {
+        "id": "B",
+        "content": "Remote Access"
+      },
+      {
+        "id": "C",
+        "content": "Ethernet"
+      },
+      {
+        "id": "D",
+        "content": "Client - Server"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Client–server là mô hình phổ biến nhất hiện nay (web, email…).",
+      "whyCorrect": "Client–server là mô hình phổ biến nhất hiện nay (web, email…).",
+      "whyWrong": {
+        "A": "P2P phổ biến trong một số ứng dụng (chia sẻ file) nhưng không phải phổ biến nhất.",
+        "B": "Remote Access là hình thức truy cập từ xa, không phải mô hình ứng dụng mạng chung.",
+        "C": "Ethernet là công nghệ tầng liên kết."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-054",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong giao thức FTP (File Transfer Protocol), cổng kết nối dữ liệu TCP trên máy chủ là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "20"
+      },
+      {
+        "id": "B",
+        "content": "21"
+      },
+      {
+        "id": "C",
+        "content": "22"
+      },
+      {
+        "id": "D",
+        "content": "23"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "FTP dùng cổng 20 cho kết nối dữ liệu và cổng 21 cho kết nối điều khiển.",
+      "whyCorrect": "FTP dùng cổng 20 cho kết nối dữ liệu và cổng 21 cho kết nối điều khiển.",
+      "whyWrong": {
+        "B": "21 là cổng điều khiển (lệnh).",
+        "C": "22 là SSH.",
+        "D": "23 là Telnet."
+      },
+      "tip": "FTP: **21 điều khiển (out-of-band), 20 dữ liệu**."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-055",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong quá trình phân giải tên miền, việc đẩy trách nhiệm phân giải tên cho máy chủ tên miền được hỏi gọi là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Truy vấn đệ quy"
+      },
+      {
+        "id": "B",
+        "content": "Truy vấn tuần tự"
+      },
+      {
+        "id": "C",
+        "content": "Truy vấn tương tác"
+      },
+      {
+        "id": "D",
+        "content": "Truy vấn liên tục"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Truy vấn đệ quy: máy chủ được hỏi nhận trách nhiệm tự đi phân giải tiếp và trả kết quả cuối cùng.",
+      "whyCorrect": "Truy vấn đệ quy: máy chủ được hỏi nhận trách nhiệm tự đi phân giải tiếp và trả kết quả cuối cùng.",
+      "whyWrong": {
+        "B": "Truy vấn tuần tự: máy chủ được hỏi chỉ chỉ ra máy chủ cần hỏi tiếp.",
+        "C": "\"Truy vấn tương tác\" không phải thuật ngữ DNS.",
+        "D": "\"Truy vấn liên tục\" không phải thuật ngữ DNS."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-056",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Port mặc định của dịch vụ HTTPS là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "25"
+      },
+      {
+        "id": "B",
+        "content": "53"
+      },
+      {
+        "id": "C",
+        "content": "80"
+      },
+      {
+        "id": "D",
+        "content": "443"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "HTTPS dùng cổng mặc định 443.",
+      "whyCorrect": "HTTPS dùng cổng mặc định 443.",
+      "whyWrong": {
+        "A": "25 là SMTP.",
+        "B": "53 là DNS.",
+        "C": "80 là HTTP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-057",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Cho\n```http\nGET /kurose_ross_sandbox/interactive/quotation3.htm HTTP/1.1\nHost: gaia.cs.umass.edu\nAccept: text/plain, text/html, text/xml, image/png, image/gif, audio/vnf.wave, audio/mp4, video/wmv, video/mp4,\nAccept-Language: en-us, en-gb;q=0.6, en;q=0.5, fr, fr-ch, zh, fi, ar, cs\nIf-Modified-Since: Thu, 02 Nov 2023 01:10:23 -0700\nUser Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.2) Gecko/20100101 Firefox/10.0.2\n```\n\nTên của tệp đang được truy xuất trong thông báo `GET` này là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "quotation3.htm"
+      },
+      {
+        "id": "B",
+        "content": "kurose_ross_sandbox/interactive/quotation3.htm HTTP/1.1"
+      },
+      {
+        "id": "C",
+        "content": "gaia.cs.umass.edu"
+      },
+      {
+        "id": "D",
+        "content": "quotation3.htm HTTP/1.1"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Tên tệp là phần cuối đường dẫn trong dòng GET: `quotation3.htm`.",
+      "whyCorrect": "Tên tệp là phần cuối đường dẫn trong dòng GET: `quotation3.htm`.",
+      "whyWrong": {
+        "B": "Đây là đường dẫn đầy đủ kèm phiên bản HTTP, không phải tên tệp.",
+        "C": "Đây là tên host.",
+        "D": "Kèm cả phiên bản HTTP nên không phải tên tệp."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-058",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong giao thức HTTP, phương thức nào được sử dụng để yêu cầu dữ liệu từ máy chủ?",
+    "options": [
+      {
+        "id": "A",
+        "content": "GET"
+      },
+      {
+        "id": "B",
+        "content": "POST"
+      },
+      {
+        "id": "C",
+        "content": "PUT"
+      },
+      {
+        "id": "D",
+        "content": "DELETE"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "GET dùng để yêu cầu (lấy) dữ liệu từ máy chủ.",
+      "whyCorrect": "GET dùng để yêu cầu (lấy) dữ liệu từ máy chủ.",
+      "whyWrong": {
+        "B": "POST gửi dữ liệu lên máy chủ.",
+        "C": "PUT tải một đối tượng lên vị trí xác định trên máy chủ.",
+        "D": "DELETE xóa đối tượng trên máy chủ."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-059",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong giao thức DNS, bản ghi nào được sử dụng để ánh xạ tên miền thành địa chỉ IP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "A record"
+      },
+      {
+        "id": "B",
+        "content": "CNAME record"
+      },
+      {
+        "id": "C",
+        "content": "MX record"
+      },
+      {
+        "id": "D",
+        "content": "PTR record"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Bản ghi A ánh xạ tên máy sang địa chỉ IPv4.",
+      "whyCorrect": "Bản ghi A ánh xạ tên máy sang địa chỉ IPv4.",
+      "whyWrong": {
+        "B": "CNAME ánh xạ bí danh sang tên gốc.",
+        "C": "MX chỉ ra mail server của tên miền.",
+        "D": "PTR dùng cho phân giải ngược (IP → tên)."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-060",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong giao thức HTTP, phương thức nào được sử dụng để gửi dữ liệu biểu mẫu từ máy khách đến máy chủ?",
+    "options": [
+      {
+        "id": "A",
+        "content": "GET"
+      },
+      {
+        "id": "B",
+        "content": "POST"
+      },
+      {
+        "id": "C",
+        "content": "PUT"
+      },
+      {
+        "id": "D",
+        "content": "DELETE"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "POST gửi dữ liệu biểu mẫu (form) lên server trong phần thân thông điệp.",
+      "whyCorrect": "POST gửi dữ liệu biểu mẫu (form) lên server trong phần thân thông điệp.",
+      "whyWrong": {
+        "A": "GET chỉ đưa dữ liệu lên URL (query string), không phải trong thân.",
+        "C": "PUT dùng để tải đối tượng lên vị trí xác định.",
+        "D": "DELETE xóa đối tượng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-061",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Ứng dụng nào dưới đây sử dụng mô hình P2P?",
+    "options": [
+      {
+        "id": "A",
+        "content": "BitTorrent"
+      },
+      {
+        "id": "B",
+        "content": "Web"
+      },
+      {
+        "id": "C",
+        "content": "Email"
+      },
+      {
+        "id": "D",
+        "content": "FTP"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "BitTorrent là ứng dụng chia sẻ file P2P.",
+      "whyCorrect": "BitTorrent là ứng dụng chia sẻ file P2P.",
+      "whyWrong": {
+        "B": "Web là client–server.",
+        "C": "Email là client–server.",
+        "D": "FTP là client–server."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-062",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Socket được hiểu là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Một loại cáp mạng"
+      },
+      {
+        "id": "B",
+        "content": "Địa chỉ vật lý của card mạng"
+      },
+      {
+        "id": "C",
+        "content": "Cánh cửa giữa tiến trình ứng dụng và tầng vận chuyển"
+      },
+      {
+        "id": "D",
+        "content": "Một giao thức của tầng mạng"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Socket là \"cánh cửa\" giữa tiến trình ứng dụng và tầng vận chuyển: tiến trình gửi/nhận thông điệp qua socket.",
+      "whyCorrect": "Socket là \"cánh cửa\" giữa tiến trình ứng dụng và tầng vận chuyển: tiến trình gửi/nhận thông điệp qua socket.",
+      "whyWrong": {
+        "A": "Socket là khái niệm phần mềm, không phải cáp.",
+        "B": "Địa chỉ vật lý card mạng là địa chỉ MAC.",
+        "D": "Socket không phải giao thức tầng mạng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-063",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Địa chỉ IPv4 có độ dài:",
+    "options": [
+      {
+        "id": "A",
+        "content": "16 byte"
+      },
+      {
+        "id": "B",
+        "content": "4 byte (32 bit)"
+      },
+      {
+        "id": "C",
+        "content": "8 byte"
+      },
+      {
+        "id": "D",
+        "content": "32 byte"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Địa chỉ IPv4 dài 32 bit = 4 byte.",
+      "whyCorrect": "Địa chỉ IPv4 dài 32 bit = 4 byte.",
+      "whyWrong": {
+        "A": "16 byte (128 bit) là độ dài địa chỉ IPv6.",
+        "C": "8 byte không đúng với IPv4.",
+        "D": "32 là số bit, không phải số byte."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-064",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Cặp giao thức – cổng nào sau đây là ĐÚNG?",
+    "options": [
+      {
+        "id": "A",
+        "content": "HTTP: UDP, port 80"
+      },
+      {
+        "id": "B",
+        "content": "SMTP: TCP, port 110"
+      },
+      {
+        "id": "C",
+        "content": "DNS: TCP, port 50"
+      },
+      {
+        "id": "D",
+        "content": "FTP: TCP, port 21"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "FTP chạy trên TCP, cổng điều khiển 21 — cặp đúng.",
+      "whyCorrect": "FTP chạy trên TCP, cổng điều khiển 21 — cặp đúng.",
+      "whyWrong": {
+        "A": "HTTP chạy trên TCP, không phải UDP.",
+        "B": "SMTP dùng cổng 25; 110 là POP3.",
+        "C": "DNS dùng cổng 53."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-065",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giao thức POP3 và IMAP lần lượt sử dụng cổng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "25 và 110"
+      },
+      {
+        "id": "B",
+        "content": "53 và 143"
+      },
+      {
+        "id": "C",
+        "content": "143 và 110"
+      },
+      {
+        "id": "D",
+        "content": "110 và 143"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "POP3 dùng cổng 110, IMAP dùng cổng 143.",
+      "whyCorrect": "POP3 dùng cổng 110, IMAP dùng cổng 143.",
+      "whyWrong": {
+        "A": "25 là SMTP.",
+        "B": "53 là DNS.",
+        "C": "Đảo ngược thứ tự hai cổng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-066",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Giao thức nào dưới đây sử dụng UDP và cung cấp địa chỉ IP cấp phát tự động?",
+    "options": [
+      {
+        "id": "A",
+        "content": "TCP"
+      },
+      {
+        "id": "B",
+        "content": "HTTP"
+      },
+      {
+        "id": "C",
+        "content": "SMTP"
+      },
+      {
+        "id": "D",
+        "content": "DHCP"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "DHCP chạy trên UDP và cấp phát địa chỉ IP tự động cho host.",
+      "whyCorrect": "DHCP chạy trên UDP và cấp phát địa chỉ IP tự động cho host.",
+      "whyWrong": {
+        "A": "TCP là giao thức vận chuyển.",
+        "B": "HTTP chạy trên TCP và dùng cho web.",
+        "C": "SMTP chạy trên TCP và dùng cho email."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-067",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "HTTP được gọi là giao thức \"không lưu trạng thái\" (stateless) vì:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Server không lưu thông tin về các yêu cầu trước đó của client"
+      },
+      {
+        "id": "B",
+        "content": "Không dùng TCP"
+      },
+      {
+        "id": "C",
+        "content": "Không có mã trạng thái"
+      },
+      {
+        "id": "D",
+        "content": "Client không lưu cookie"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "HTTP không lưu trạng thái: server không giữ thông tin về các yêu cầu trước đó của client.",
+      "whyCorrect": "HTTP không lưu trạng thái: server không giữ thông tin về các yêu cầu trước đó của client.",
+      "whyWrong": {
+        "B": "HTTP chạy trên TCP.",
+        "C": "HTTP có mã trạng thái (200, 404…); \"trạng thái\" ở đây là trạng thái phiên.",
+        "D": "Cookie được dùng chính để bù cho tính stateless của HTTP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-068",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Phát biểu nào SAI về HTTP không bền vững (non-persistent)?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Mỗi đối tượng cần 2RTT"
+      },
+      {
+        "id": "B",
+        "content": "Có thể gửi nhiều đối tượng trên một kết nối"
+      },
+      {
+        "id": "C",
+        "content": "Mỗi kết nối TCP gửi tối đa 1 đối tượng rồi đóng"
+      },
+      {
+        "id": "D",
+        "content": "Tải nhiều đối tượng cần nhiều kết nối"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Non-persistent HTTP gửi tối đa một đối tượng trên mỗi kết nối TCP, nên \"gửi nhiều đối tượng trên một kết nối\" là sai.",
+      "whyCorrect": "Non-persistent HTTP gửi tối đa một đối tượng trên mỗi kết nối TCP, nên \"gửi nhiều đối tượng trên một kết nối\" là sai.",
+      "whyWrong": {
+        "A": "Đúng: mỗi đối tượng tốn 2 RTT.",
+        "C": "Đúng: gửi một đối tượng rồi đóng kết nối.",
+        "D": "Đúng: nhiều đối tượng cần nhiều kết nối."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-069",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trang web gồm 1 file HTML và 10 ảnh nhỏ (bỏ qua thời gian truyền). Với HTTP không bền vững, tải tuần tự, tổng thời gian là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "11 RTT"
+      },
+      {
+        "id": "B",
+        "content": "12 RTT"
+      },
+      {
+        "id": "C",
+        "content": "20 RTT"
+      },
+      {
+        "id": "D",
+        "content": "22 RTT"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "11 đối tượng (1 HTML + 10 ảnh), mỗi đối tượng 2 RTT với non-persistent tuần tự → 22 RTT.",
+      "whyCorrect": "11 đối tượng (1 HTML + 10 ảnh), mỗi đối tượng 2 RTT với non-persistent tuần tự → 22 RTT.",
+      "whyWrong": {
+        "A": "11 RTT chỉ tính 1 RTT cho mỗi đối tượng.",
+        "B": "12 RTT tính như kết nối bền vững.",
+        "C": "20 RTT bỏ sót file HTML."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-070",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Xác định URL của đối tượng trong thông điệp HTTP GET sau:  \n```http\nGET /favicon.ico HTTP/1.1\nHost: thuvien.uit.edu.vn\nConnection: keep-alive\nReferer: http://thuvien.uit.edu.vn/\n```",
+    "options": [
+      {
+        "id": "A",
+        "content": "thuvien.uit.edu.vn/favicon.ico"
+      },
+      {
+        "id": "B",
+        "content": "/favicon.ico"
+      },
+      {
+        "id": "C",
+        "content": "thuvien.uit.edu.vn/"
+      },
+      {
+        "id": "D",
+        "content": "http://thuvien.uit.edu.vn/"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "URL = Host + đường dẫn trong dòng GET: `thuvien.uit.edu.vn/favicon.ico`.",
+      "whyCorrect": "URL = Host + đường dẫn trong dòng GET: `thuvien.uit.edu.vn/favicon.ico`.",
+      "whyWrong": {
+        "B": "Chỉ là đường dẫn, thiếu tên host.",
+        "C": "Chỉ là tên host và thư mục gốc.",
+        "D": "Đây là giá trị header Referer (trang dẫn tới), không phải đối tượng được yêu cầu."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-071",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Phương thức HEAD của HTTP dùng để:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chỉ lấy các dòng header, không lấy đối tượng"
+      },
+      {
+        "id": "B",
+        "content": "Lấy toàn bộ đối tượng"
+      },
+      {
+        "id": "C",
+        "content": "Xóa đối tượng trên server"
+      },
+      {
+        "id": "D",
+        "content": "Tải file lên server"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "HEAD giống GET nhưng server chỉ trả về các dòng header, không gửi đối tượng.",
+      "whyCorrect": "HEAD giống GET nhưng server chỉ trả về các dòng header, không gửi đối tượng.",
+      "whyWrong": {
+        "B": "Lấy toàn bộ đối tượng là GET.",
+        "C": "Xóa đối tượng là DELETE.",
+        "D": "Tải file lên là PUT/POST."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-072",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Header nào được server dùng để gửi cookie cho client lần đầu?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cookie:"
+      },
+      {
+        "id": "B",
+        "content": "Set-cookie:"
+      },
+      {
+        "id": "C",
+        "content": "If-modified-since:"
+      },
+      {
+        "id": "D",
+        "content": "Host:"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Server gửi cookie cho client lần đầu bằng header `Set-cookie:` trong thông điệp phản hồi.",
+      "whyCorrect": "Server gửi cookie cho client lần đầu bằng header `Set-cookie:` trong thông điệp phản hồi.",
+      "whyWrong": {
+        "A": "Header `Cookie:` do client gửi trong các yêu cầu sau.",
+        "C": "`If-modified-since:` dùng cho GET có điều kiện.",
+        "D": "`Host:` chỉ tên máy chủ trong yêu cầu."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-073",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Phát biểu nào đúng về web cache?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chỉ đóng vai trò server"
+      },
+      {
+        "id": "B",
+        "content": "Chỉ đóng vai trò client"
+      },
+      {
+        "id": "C",
+        "content": "Không liên quan đến HTTP"
+      },
+      {
+        "id": "D",
+        "content": "Vừa là server (với client) vừa là client (với server gốc)"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Web cache vừa là server (đối với client gửi yêu cầu) vừa là client (đối với server gốc).",
+      "whyCorrect": "Web cache vừa là server (đối với client gửi yêu cầu) vừa là client (đối với server gốc).",
+      "whyWrong": {
+        "A": "Cache còn đóng vai client khi đi lấy đối tượng từ server gốc.",
+        "B": "Cache còn đóng vai server khi trả lời client.",
+        "C": "Web cache hoạt động bằng HTTP."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-074",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Đường truy cập 1,54 Mbps, lưu lượng yêu cầu 1,5 Mbps. Lắp web cache có tỉ lệ trúng 40%. Độ khả dụng (utilization) của đường truy cập xấp xỉ:",
+    "options": [
+      {
+        "id": "A",
+        "content": "0,58"
+      },
+      {
+        "id": "B",
+        "content": "0,97"
+      },
+      {
+        "id": "C",
+        "content": "0,40"
+      },
+      {
+        "id": "D",
+        "content": "0,0097"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Chỉ 60% yêu cầu phải ra Internet: 0,6 × 1,5 = 0,9 Mbps; độ khả dụng = 0,9 / 1,54 ≈ 0,58.",
+      "whyCorrect": "Chỉ 60% yêu cầu phải ra Internet: 0,6 × 1,5 = 0,9 Mbps; độ khả dụng = 0,9 / 1,54 ≈ 0,58.",
+      "whyWrong": {
+        "B": "0,97 = 1,5/1,54 là độ khả dụng khi chưa có cache.",
+        "C": "0,40 là tỉ lệ trúng cache.",
+        "D": "0,0097 do nhầm đơn vị."
+      }
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-075",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "HTTP/2 cải tiến so với HTTP/1.1 chủ yếu ở điểm nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Đổi toàn bộ phương thức và mã trạng thái"
+      },
+      {
+        "id": "B",
+        "content": "Bỏ header"
+      },
+      {
+        "id": "C",
+        "content": "Không dùng TCP nữa"
+      },
+      {
+        "id": "D",
+        "content": "Chia đối tượng thành frame, gửi xen kẽ để giảm chặn đầu hàng (HOL blocking)"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "HTTP/2 chia đối tượng thành các frame và gửi xen kẽ, giảm chặn đầu hàng (HOL blocking) trên một kết nối.",
+      "whyCorrect": "HTTP/2 chia đối tượng thành các frame và gửi xen kẽ, giảm chặn đầu hàng (HOL blocking) trên một kết nối.",
+      "whyWrong": {
+        "A": "HTTP/2 giữ nguyên phương thức, mã trạng thái.",
+        "B": "HTTP/2 vẫn có header (còn nén header).",
+        "C": "HTTP/2 vẫn chạy trên TCP; HTTP/3 mới chạy trên QUIC/UDP."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-076",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trình tự lệnh đúng của client trong một phiên SMTP là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "HELO, MAIL FROM, DATA, RCPT TO, QUIT"
+      },
+      {
+        "id": "B",
+        "content": "HELO, MAIL FROM, RCPT TO, DATA, QUIT"
+      },
+      {
+        "id": "C",
+        "content": "HELO, DATA, MAIL FROM, QUIT, RCPT TO"
+      },
+      {
+        "id": "D",
+        "content": "HELO, RCPT TO, DATA, QUIT, MAIL FROM"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Phiên SMTP: HELO → MAIL FROM → RCPT TO → DATA → QUIT.",
+      "whyCorrect": "Phiên SMTP: HELO → MAIL FROM → RCPT TO → DATA → QUIT.",
+      "whyWrong": {
+        "A": "RCPT TO phải đứng trước DATA.",
+        "C": "DATA không thể trước MAIL FROM; QUIT luôn ở cuối.",
+        "D": "MAIL FROM phải đứng trước RCPT TO; QUIT luôn ở cuối."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-077",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Phát biểu nào đúng khi so sánh SMTP và HTTP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "SMTP là giao thức kéo (pull), HTTP là giao thức đẩy (push)"
+      },
+      {
+        "id": "B",
+        "content": "Cả hai đều chạy trên UDP"
+      },
+      {
+        "id": "C",
+        "content": "Cả hai đều là giao thức đẩy"
+      },
+      {
+        "id": "D",
+        "content": "SMTP là giao thức đẩy (push), HTTP là giao thức kéo (pull)"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "SMTP là giao thức đẩy (bên gửi đẩy thư đi), HTTP là giao thức kéo (client kéo đối tượng về).",
+      "whyCorrect": "SMTP là giao thức đẩy (bên gửi đẩy thư đi), HTTP là giao thức kéo (client kéo đối tượng về).",
+      "whyWrong": {
+        "A": "Đảo ngược.",
+        "B": "Cả hai đều chạy trên TCP.",
+        "C": "HTTP là giao thức kéo."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-078",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "SMTP xác định điểm kết thúc của một thông điệp bằng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ký tự EOF"
+      },
+      {
+        "id": "B",
+        "content": "Một dòng chỉ chứa dấu chấm (CRLF.CRLF)"
+      },
+      {
+        "id": "C",
+        "content": "Lệnh QUIT"
+      },
+      {
+        "id": "D",
+        "content": "Header Content-Length"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "SMTP đánh dấu hết thông điệp bằng một dòng chỉ chứa dấu chấm (CRLF.CRLF).",
+      "whyCorrect": "SMTP đánh dấu hết thông điệp bằng một dòng chỉ chứa dấu chấm (CRLF.CRLF).",
+      "whyWrong": {
+        "A": "SMTP không dùng ký tự EOF.",
+        "C": "QUIT kết thúc cả phiên, không phải một thông điệp.",
+        "D": "SMTP không dùng Content-Length như HTTP."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-079",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Quá trình Alice gửi thư cho Bob (Alice dùng webmail, Bob dùng ứng dụng mail trên máy) gồm 6 bước. Giao thức ở bước 2 (UA gửi thư lên mail server của Alice), bước 4 (server Alice gửi sang server Bob) và bước 6 (Bob đọc thư) lần lượt là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "SMTP; SMTP; SMTP"
+      },
+      {
+        "id": "B",
+        "content": "POP3; SMTP; HTTP"
+      },
+      {
+        "id": "C",
+        "content": "HTTP; SMTP; POP3 hoặc IMAP"
+      },
+      {
+        "id": "D",
+        "content": "HTTP; HTTP; SMTP"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Bước 2: Alice dùng webmail nên gửi lên server bằng HTTP; bước 4: server–server dùng SMTP; bước 6: Bob dùng ứng dụng mail nên đọc bằng POP3 hoặc IMAP.",
+      "whyCorrect": "Bước 2: Alice dùng webmail nên gửi lên server bằng HTTP; bước 4: server–server dùng SMTP; bước 6: Bob dùng ứng dụng mail nên đọc bằng POP3 hoặc IMAP.",
+      "whyWrong": {
+        "A": "Bước 2 qua webmail dùng HTTP; bước 6 không dùng SMTP.",
+        "B": "POP3 không dùng để gửi thư ở bước 2.",
+        "D": "Chuyển giữa các server dùng SMTP; bước 6 không dùng SMTP."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-080",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong truy vấn tuần tự, máy chủ gốc (root) trả lời local DNS như thế nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trả về địa chỉ IP cuối cùng"
+      },
+      {
+        "id": "B",
+        "content": "Trả về địa chỉ máy chủ TLD cần hỏi tiếp"
+      },
+      {
+        "id": "C",
+        "content": "Tự hỏi máy chủ TLD thay cho local DNS"
+      },
+      {
+        "id": "D",
+        "content": "Từ chối trả lời"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Trong truy vấn tuần tự, root server chỉ trả về địa chỉ máy chủ TLD để local DNS tự hỏi tiếp.",
+      "whyCorrect": "Trong truy vấn tuần tự, root server chỉ trả về địa chỉ máy chủ TLD để local DNS tự hỏi tiếp.",
+      "whyWrong": {
+        "A": "Root không trả IP cuối cùng.",
+        "C": "Tự hỏi thay là truy vấn đệ quy.",
+        "D": "Root vẫn trả lời bằng cách giới thiệu máy chủ TLD."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-081",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Cho bản ghi DNS (alpha.com, dns.alpha.com, NS). Phát biểu nào đúng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "dns.alpha.com là địa chỉ IP của alpha.com"
+      },
+      {
+        "id": "B",
+        "content": "alpha.com là bí danh của dns.alpha.com"
+      },
+      {
+        "id": "C",
+        "content": "dns.alpha.com là mail server của alpha.com"
+      },
+      {
+        "id": "D",
+        "content": "alpha.com là một tên miền; dns.alpha.com là máy chủ DNS có thẩm quyền của miền đó"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Bản ghi NS: name là tên miền (alpha.com), value là tên máy chủ DNS có thẩm quyền của miền đó (dns.alpha.com).",
+      "whyCorrect": "Bản ghi NS: name là tên miền (alpha.com), value là tên máy chủ DNS có thẩm quyền của miền đó (dns.alpha.com).",
+      "whyWrong": {
+        "A": "Value của NS là tên máy chủ, không phải địa chỉ IP.",
+        "B": "Quan hệ bí danh là bản ghi CNAME.",
+        "C": "Mail server được chỉ ra bằng bản ghi MX."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-082",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Bản ghi MX trong DNS dùng để:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ánh xạ tên máy sang IP"
+      },
+      {
+        "id": "B",
+        "content": "Chỉ ra máy chủ DNS có thẩm quyền"
+      },
+      {
+        "id": "C",
+        "content": "Chỉ ra tên mail server của một tên miền"
+      },
+      {
+        "id": "D",
+        "content": "Ánh xạ bí danh sang tên gốc"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Bản ghi MX cho biết tên mail server phục vụ một tên miền.",
+      "whyCorrect": "Bản ghi MX cho biết tên mail server phục vụ một tên miền.",
+      "whyWrong": {
+        "A": "Tên máy → IP là bản ghi A.",
+        "B": "Máy chủ DNS có thẩm quyền là bản ghi NS.",
+        "D": "Bí danh → tên gốc là bản ghi CNAME."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-083",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Các mục trong DNS cache sẽ bị xóa khi nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Khi hết thời gian TTL"
+      },
+      {
+        "id": "B",
+        "content": "Khi tắt máy client"
+      },
+      {
+        "id": "C",
+        "content": "Không bao giờ bị xóa"
+      },
+      {
+        "id": "D",
+        "content": "Sau mỗi truy vấn"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Mỗi mục trong DNS cache có thời gian sống TTL; hết TTL thì mục bị xóa.",
+      "whyCorrect": "Mỗi mục trong DNS cache có thời gian sống TTL; hết TTL thì mục bị xóa.",
+      "whyWrong": {
+        "B": "Cache cũng tồn tại ở các máy chủ DNS, không phụ thuộc việc tắt client.",
+        "C": "Mục cache có hạn sống, không lưu mãi.",
+        "D": "Cache dùng cho nhiều truy vấn, không bị xóa sau mỗi lần."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-084",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Phân phối file kích thước F đến N máy. Thời gian tối thiểu với mô hình client – server là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "max{F/us, F/dmin}"
+      },
+      {
+        "id": "B",
+        "content": "max{NF/us, F/dmin}"
+      },
+      {
+        "id": "C",
+        "content": "max{F/us, F/dmin, NF/(us + Σui)}"
+      },
+      {
+        "id": "D",
+        "content": "NF/dmin"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Client–server: server phải gửi N bản sao (NF/us) và client chậm nhất cần F/dmin → $D_{cs} \\ge \\max\\{NF/u_s, F/d_{min}\\}$.",
+      "whyCorrect": "Client–server: server phải gửi N bản sao (NF/us) và client chậm nhất cần F/dmin → $D_{cs} \\ge \\max\\{NF/u_s, F/d_{min}\\}$.",
+      "whyWrong": {
+        "A": "Quên rằng server phải gửi N bản sao.",
+        "C": "Đây là công thức cho mô hình P2P.",
+        "D": "Thiếu giới hạn tải lên của server."
+      }
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-085",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong BitTorrent, cơ chế \"tit-for-tat\" có nghĩa là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chỉ tải xuống, không tải lên"
+      },
+      {
+        "id": "B",
+        "content": "Gửi khối cho tất cả các peer"
+      },
+      {
+        "id": "C",
+        "content": "Gửi khối cho 4 peer đang gửi cho mình nhanh nhất"
+      },
+      {
+        "id": "D",
+        "content": "Tracker gửi file cho mọi peer"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Tit-for-tat: peer gửi khối cho 4 peer đang gửi cho mình nhanh nhất (cập nhật định kỳ), kèm một peer chọn ngẫu nhiên (optimistic unchoke).",
+      "whyCorrect": "Tit-for-tat: peer gửi khối cho 4 peer đang gửi cho mình nhanh nhất (cập nhật định kỳ), kèm một peer chọn ngẫu nhiên (optimistic unchoke).",
+      "whyWrong": {
+        "A": "Peer vừa tải xuống vừa tải lên.",
+        "B": "Không gửi cho tất cả peer.",
+        "D": "Tracker chỉ quản lý danh sách peer, không gửi file."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c2-086",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch2-application",
+    "type": "mcq",
+    "content": "Trong lập trình socket TCP, khi server gọi accept() thì:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Một socket mới được tạo riêng để trao đổi với client vừa kết nối"
+      },
+      {
+        "id": "B",
+        "content": "Server gửi dữ liệu cho client"
+      },
+      {
+        "id": "C",
+        "content": "Server đóng socket chào đón"
+      },
+      {
+        "id": "D",
+        "content": "Client bắt đầu bắt tay 3 bước"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "accept() tạo một socket mới dành riêng cho client vừa kết nối; socket chào đón vẫn mở để nhận kết nối khác.",
+      "whyCorrect": "accept() tạo một socket mới dành riêng cho client vừa kết nối; socket chào đón vẫn mở để nhận kết nối khác.",
+      "whyWrong": {
+        "B": "accept() chỉ chấp nhận kết nối, chưa gửi dữ liệu.",
+        "C": "Socket chào đón vẫn mở.",
+        "D": "Bắt tay 3 bước do client khởi động bằng connect()."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  }
+]

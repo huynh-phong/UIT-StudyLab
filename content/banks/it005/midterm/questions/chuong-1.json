@@ -1,0 +1,2105 @@
+[
+  {
+    "id": "it005-mid-c1-001",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Trong mạng Internet, mạng biên (edge network) chủ yếu bao gồm những gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Các đường truyền cáp quang quốc tế"
+      },
+      {
+        "id": "B",
+        "content": "Các router trung tâm của nhà cung cấp dịch vụ Internet"
+      },
+      {
+        "id": "C",
+        "content": "Các router lõi có băng thông cao"
+      },
+      {
+        "id": "D",
+        "content": "Các thiết bị đầu cuối như PC, smartphone, và máy chủ web"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Mạng biên (network edge) là nơi đặt các hệ thống đầu cuối (host): PC, điện thoại, máy chủ… chạy ứng dụng mạng.",
+      "whyCorrect": "Mạng biên (network edge) là nơi đặt các hệ thống đầu cuối (host): PC, điện thoại, máy chủ… chạy ứng dụng mạng.",
+      "whyWrong": {
+        "A": "Cáp quang quốc tế là đường truyền thuộc hạ tầng lõi/kết nối giữa các ISP, không phải mạng biên.",
+        "B": "Router trung tâm của ISP thuộc mạng lõi (network core).",
+        "C": "Router lõi băng thông cao chính là thành phần của mạng lõi."
+      },
+      "related": "Internet = **mạng biên** (host + mạng truy cập) + **mạng lõi** (các router nối với nhau)."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-002",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Khi dữ liệu di chuyển từ tầng Ứng dụng xuống tầng Vật lý, mỗi tầng sẽ làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tăng tốc độ truyền dữ liệu"
+      },
+      {
+        "id": "B",
+        "content": "Thêm tiêu đề (header) của lớp mình vào dữ liệu nhận được"
+      },
+      {
+        "id": "C",
+        "content": "Nén dữ liệu lại để tiết kiệm băng thông"
+      },
+      {
+        "id": "D",
+        "content": "Xóa bỏ phần tiêu đề của lớp trước"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Khi đi xuống, mỗi tầng đóng gói: thêm header của tầng mình vào dữ liệu nhận từ tầng trên (encapsulation).",
+      "whyCorrect": "Khi đi xuống, mỗi tầng đóng gói: thêm header của tầng mình vào dữ liệu nhận từ tầng trên (encapsulation).",
+      "whyWrong": {
+        "A": "Việc đi qua các tầng không làm tăng tốc độ truyền.",
+        "C": "Nén dữ liệu không phải nhiệm vụ chung của mọi tầng.",
+        "D": "Gỡ header là quá trình ngược (decapsulation) khi dữ liệu đi lên ở phía nhận."
+      },
+      "tip": "Đi xuống: **thêm** header · Đi lên: **gỡ** header."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-003",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Tầng nào dưới đây không thuộc mô hình TCP/IP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tầng Application"
+      },
+      {
+        "id": "B",
+        "content": "Tầng Session"
+      },
+      {
+        "id": "C",
+        "content": "Tầng Link"
+      },
+      {
+        "id": "D",
+        "content": "Tầng Network"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Chồng giao thức TCP/IP gồm Application, Transport, Network, Link, Physical — không có tầng Session.",
+      "whyCorrect": "Chồng giao thức TCP/IP gồm Application, Transport, Network, Link, Physical — không có tầng Session.",
+      "whyWrong": {
+        "A": "Application là tầng trên cùng của TCP/IP.",
+        "C": "Link (liên kết) là một tầng của TCP/IP.",
+        "D": "Network (mạng) là tầng của TCP/IP, nơi IP hoạt động."
+      },
+      "related": "Session và Presentation chỉ có trong mô hình OSI 7 tầng; trong Internet, ứng dụng tự đảm nhận các chức năng này."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập; Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "de45",
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-004",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "RTT (Round Trip Time) là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thời gian khởi tạo kết nối TCP"
+      },
+      {
+        "id": "B",
+        "content": "Thời gian để gửi một gói nhỏ đi từ client đến server"
+      },
+      {
+        "id": "C",
+        "content": "Thời gian để gửi một gói nhỏ đi từ client đến server và quay lại"
+      },
+      {
+        "id": "D",
+        "content": "Thời gian truyền file"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "RTT là thời gian để một gói nhỏ đi từ client đến server rồi quay về client.",
+      "whyCorrect": "RTT là thời gian để một gói nhỏ đi từ client đến server rồi quay về client.",
+      "whyWrong": {
+        "A": "Khởi tạo kết nối TCP tốn khoảng 1 RTT, nhưng RTT không được định nghĩa là thời gian đó.",
+        "B": "Đó chỉ là thời gian một chiều, RTT tính cả chiều về.",
+        "D": "Thời gian truyền file phụ thuộc kích thước file và tốc độ đường truyền, không phải RTT."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-005",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Đơn vị cơ bản đo tốc độ truyền dữ liệu (băng thông) là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Bit"
+      },
+      {
+        "id": "B",
+        "content": "bps (bit per second)"
+      },
+      {
+        "id": "C",
+        "content": "Byte"
+      },
+      {
+        "id": "D",
+        "content": "Hz"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Tốc độ truyền (băng thông) đo bằng số bit truyền được mỗi giây: bps.",
+      "whyCorrect": "Tốc độ truyền (băng thông) đo bằng số bit truyền được mỗi giây: bps.",
+      "whyWrong": {
+        "A": "Bit là đơn vị lượng thông tin, không phải tốc độ.",
+        "C": "Byte là đơn vị dung lượng (8 bit), không gắn với thời gian.",
+        "D": "Hz là đơn vị tần số, không phải đơn vị tốc độ dữ liệu."
+      },
+      "tip": "Tốc độ = lượng dữ liệu / thời gian → **bit/giây**."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-006",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Quá trình dữ liệu di chuyển từ hệ thống máy tính này sang hệ thống máy tính khác phải trải qua giai đoạn nào:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phân tích dữ liệu"
+      },
+      {
+        "id": "B",
+        "content": "Nén dữ liệu"
+      },
+      {
+        "id": "C",
+        "content": "Đóng gói"
+      },
+      {
+        "id": "D",
+        "content": "Lọc dữ liệu"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Để gửi qua mạng, dữ liệu phải được đóng gói qua từng tầng (mỗi tầng thêm header).",
+      "whyCorrect": "Để gửi qua mạng, dữ liệu phải được đóng gói qua từng tầng (mỗi tầng thêm header).",
+      "whyWrong": {
+        "A": "Phân tích dữ liệu không phải một giai đoạn bắt buộc của việc truyền.",
+        "B": "Nén dữ liệu là tùy chọn, không phải giai đoạn bắt buộc.",
+        "D": "Lọc dữ liệu không thuộc quá trình truyền dữ liệu giữa hai hệ thống."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-007",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Thời gian trễ do truyền (transmission delay) của một gói có độ dài $2000\\text{ bytes}$ truyền qua liên kết có tốc độ truyền $2\\text{ Mbps}$?",
+    "options": [
+      {
+        "id": "A",
+        "content": "5s"
+      },
+      {
+        "id": "B",
+        "content": "1000ms"
+      },
+      {
+        "id": "C",
+        "content": "1ms"
+      },
+      {
+        "id": "D",
+        "content": "8ms"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "$d_{trans} = L/R = (2000 \\times 8)\\ \\text{bit} / (2 \\times 10^6\\ \\text{bps}) = 0{,}008\\ s = 8\\ ms$.",
+      "whyCorrect": "$d_{trans} = L/R = (2000 \\times 8)\\ \\text{bit} / (2 \\times 10^6\\ \\text{bps}) = 0{,}008\\ s = 8\\ ms$.",
+      "whyWrong": {
+        "A": "5 s là do chia sai đơn vị (quên đổi Mbps sang bps hoặc đảo phép chia).",
+        "B": "1000 ms = 1 s, lớn gấp 125 lần kết quả đúng.",
+        "C": "1 ms là kết quả khi quên đổi byte sang bit (16000 → 2000)."
+      },
+      "tip": "Nhớ đổi **byte → bit (×8)** trước khi chia cho R."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-008",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Thời gian trễ do truyền (transmission delay) của một gói có độ dài 2000 bytes truyền qua liên kết có tốc độ truyền 2 Mbps?",
+    "options": [
+      {
+        "id": "A",
+        "content": "5s"
+      },
+      {
+        "id": "B",
+        "content": "1000ms"
+      },
+      {
+        "id": "C",
+        "content": "1ms"
+      },
+      {
+        "id": "D",
+        "content": "Đáp án khác"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "$L/R = 16000 / (2 \\times 10^6) = 8\\ ms$; không có phương án 8 ms nên chọn \"Đáp án khác\".",
+      "whyCorrect": "$L/R = 16000 / (2 \\times 10^6) = 8\\ ms$; không có phương án 8 ms nên chọn \"Đáp án khác\".",
+      "whyWrong": {
+        "A": "5 s là kết quả của phép chia sai đơn vị.",
+        "B": "1000 ms = 1 s, sai lệch quá lớn.",
+        "C": "1 ms là kết quả khi quên nhân 8 để đổi byte sang bit."
+      },
+      "tip": "Kiểm tra kỹ đơn vị: 2000 **byte** = 16000 bit."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-009",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Đường truyền từ host X đến host Y đi qua 3 liên kết có tốc độ lần lượt 1 Mbps, 2 Mbps, 3 Mbps. Thông lượng đầu cuối là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "1 Mbps"
+      },
+      {
+        "id": "B",
+        "content": "2 Mbps"
+      },
+      {
+        "id": "C",
+        "content": "3 Mbps"
+      },
+      {
+        "id": "D",
+        "content": "6 Mbps"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Thông lượng đầu cuối bằng tốc độ của liên kết chậm nhất (nút cổ chai): min(1, 2, 3) = 1 Mbps.",
+      "whyCorrect": "Thông lượng đầu cuối bằng tốc độ của liên kết chậm nhất (nút cổ chai): min(1, 2, 3) = 1 Mbps.",
+      "whyWrong": {
+        "B": "2 Mbps vượt quá khả năng của Link1 (1 Mbps).",
+        "C": "3 Mbps là tốc độ liên kết nhanh nhất, không phải nút cổ chai.",
+        "D": "Thông lượng không phải tổng tốc độ các liên kết nối tiếp."
+      },
+      "tip": "Nối tiếp → lấy **min**."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-010",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Thứ tự đúng từ trên xuống dưới trong mô hình chồng giao thức Internet phân tầng",
+    "options": [
+      {
+        "id": "A",
+        "content": "Application – Transport – Network – Physical – Link"
+      },
+      {
+        "id": "B",
+        "content": "Physical – Link – Network – Transport - Application"
+      },
+      {
+        "id": "C",
+        "content": "Application – Network – Transport – Link - Physical"
+      },
+      {
+        "id": "D",
+        "content": "Application – Transport – Network – Link – Physical"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Từ trên xuống: Application – Transport – Network – Link – Physical.",
+      "whyCorrect": "Từ trên xuống: Application – Transport – Network – Link – Physical.",
+      "whyWrong": {
+        "A": "Đảo vị trí Link và Physical: Physical luôn ở dưới cùng.",
+        "B": "Đây là thứ tự từ dưới lên, không phải từ trên xuống.",
+        "C": "Đảo Network và Transport: Transport nằm ngay dưới Application."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-011",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Quá trình một thông diệp (message) được đưa qua các tầng (layer) và được thêm các thông tin điều khiển vào đầu (header) trong hoạt động của thiết bị mạng được gọi là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Compress"
+      },
+      {
+        "id": "B",
+        "content": "Encapsulation"
+      },
+      {
+        "id": "C",
+        "content": "De-Encapsulation"
+      },
+      {
+        "id": "D",
+        "content": "Header-Adding"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Thêm header ở mỗi tầng khi đi xuống gọi là đóng gói (encapsulation).",
+      "whyCorrect": "Thêm header ở mỗi tầng khi đi xuống gọi là đóng gói (encapsulation).",
+      "whyWrong": {
+        "A": "Compress là nén dữ liệu, không phải thêm header.",
+        "C": "De-encapsulation là quá trình ngược: gỡ header ở phía nhận.",
+        "D": "\"Header-Adding\" không phải thuật ngữ chuẩn."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-012",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Băng thông là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tốc độ (đơn vị bits/sec) mà tại đó các bits được truyền"
+      },
+      {
+        "id": "B",
+        "content": "Khoảng thời gian truyền mỗi gói tin trên mạng"
+      },
+      {
+        "id": "C",
+        "content": "Thời gian chờ của mỗi gói tin khi truyền đi"
+      },
+      {
+        "id": "D",
+        "content": "Lượng dữ liệu truyền tối đa trong một đơn vị thời gian"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Theo cách dùng trong bộ đề, băng thông là lượng dữ liệu tối đa có thể truyền trong một đơn vị thời gian (khả năng tối đa của đường truyền).",
+      "whyCorrect": "Theo cách dùng trong bộ đề, băng thông là lượng dữ liệu tối đa có thể truyền trong một đơn vị thời gian (khả năng tối đa của đường truyền).",
+      "whyWrong": {
+        "A": "\"Tốc độ mà tại đó các bit được truyền giữa bên gửi/nhận\" là định nghĩa thông lượng (throughput).",
+        "B": "Khoảng thời gian truyền gói tin là độ trễ, không phải băng thông.",
+        "C": "Thời gian chờ của gói tin là trễ hàng đợi."
+      },
+      "related": "**Băng thông**: khả năng tối đa của liên kết. **Thông lượng**: tốc độ thực tế đạt được giữa hai đầu."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-013",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Phát biểu \"Tốc độ mà tại đó các bits được truyền giữa bên gửi/bên nhận\" là?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Băng thông"
+      },
+      {
+        "id": "B",
+        "content": "Thông lượng"
+      },
+      {
+        "id": "C",
+        "content": "Độ trễ"
+      },
+      {
+        "id": "D",
+        "content": "Mất tin"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Thông lượng (throughput) là tốc độ thực tế mà các bit được truyền giữa bên gửi và bên nhận.",
+      "whyCorrect": "Thông lượng (throughput) là tốc độ thực tế mà các bit được truyền giữa bên gửi và bên nhận.",
+      "whyWrong": {
+        "A": "Băng thông là khả năng truyền tối đa của liên kết, không phải tốc độ thực tế giữa hai đầu.",
+        "C": "Độ trễ đo bằng thời gian, không phải tốc độ.",
+        "D": "Mất tin là hiện tượng gói bị loại bỏ."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-014",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Khi hàng đợi bị đầy sẽ gây ra hiện tượng gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tràn băng thông"
+      },
+      {
+        "id": "B",
+        "content": "Độ trễ"
+      },
+      {
+        "id": "C",
+        "content": "Mất tin"
+      },
+      {
+        "id": "D",
+        "content": "Bị đánh cắp thông tin"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Hàng đợi (bộ đệm) của router có kích thước hữu hạn; khi đầy, gói đến sau bị loại bỏ → mất tin.",
+      "whyCorrect": "Hàng đợi (bộ đệm) của router có kích thước hữu hạn; khi đầy, gói đến sau bị loại bỏ → mất tin.",
+      "whyWrong": {
+        "A": "\"Tràn băng thông\" không phải hiện tượng đúng; băng thông là cố định.",
+        "B": "Trễ tăng khi hàng đợi dài ra, nhưng khi đầy hẳn thì hệ quả đặc trưng là mất gói.",
+        "D": "Hàng đợi đầy không liên quan đến bảo mật."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-015",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Nguyên nhân gây ra độ trễ và mất tin là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tốc độ đến của các gói tin vượt quá khả năng đường ra"
+      },
+      {
+        "id": "B",
+        "content": "Các gói tin phải xếp hàng chờ đến lượt"
+      },
+      {
+        "id": "C",
+        "content": "Băng thông của đường truyền bị thu hẹp"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả các câu trên đều đúng"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Gói đến nhanh hơn khả năng đường ra → phải xếp hàng (trễ), hàng đợi đầy thì mất gói; băng thông hẹp làm tình trạng này nặng hơn.",
+      "whyCorrect": "Gói đến nhanh hơn khả năng đường ra → phải xếp hàng (trễ), hàng đợi đầy thì mất gói; băng thông hẹp làm tình trạng này nặng hơn.",
+      "whyWrong": {
+        "A": "Đúng nhưng chưa đủ, các ý khác cũng là nguyên nhân.",
+        "B": "Đúng nhưng chưa đủ.",
+        "C": "Đúng nhưng chưa đủ."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-016",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Hãy chọn từ/cụm từ tương ứng để hoàn thiện khẳng định sau: \"Mất tin là nguyên nhân do ... của mỗi đường truyền bị đầy\".",
+    "options": [
+      {
+        "id": "A",
+        "content": "Độ trễ"
+      },
+      {
+        "id": "B",
+        "content": "Giao thức"
+      },
+      {
+        "id": "C",
+        "content": "Hàng đợi"
+      },
+      {
+        "id": "D",
+        "content": "Tốc độ"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Mất tin xảy ra khi hàng đợi (bộ đệm) của đường truyền bị đầy và gói đến sau bị loại bỏ.",
+      "whyCorrect": "Mất tin xảy ra khi hàng đợi (bộ đệm) của đường truyền bị đầy và gói đến sau bị loại bỏ.",
+      "whyWrong": {
+        "A": "Độ trễ là hệ quả, không phải thứ \"bị đầy\".",
+        "B": "Giao thức không có trạng thái \"bị đầy\".",
+        "D": "Tốc độ không \"đầy\"; hàng đợi mới đầy."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-017",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Đơn vị dữ liệu theo các tầng trong mô hình TCP/IP",
+    "options": [
+      {
+        "id": "A",
+        "content": "Data, Packet, Segment, Bit, Frame"
+      },
+      {
+        "id": "B",
+        "content": "Data, Packet, Segment, Frame, Bit"
+      },
+      {
+        "id": "C",
+        "content": "Data, Segment, Packet, Frame, Bit"
+      },
+      {
+        "id": "D",
+        "content": "Data, Segment, Packet, Bit, Frame"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Từ trên xuống: Data/Message (ứng dụng) – Segment (vận chuyển) – Packet/Datagram (mạng) – Frame (liên kết) – Bit (vật lý).",
+      "whyCorrect": "Từ trên xuống: Data/Message (ứng dụng) – Segment (vận chuyển) – Packet/Datagram (mạng) – Frame (liên kết) – Bit (vật lý).",
+      "whyWrong": {
+        "A": "Đặt Packet trước Segment và Bit trước Frame là sai thứ tự.",
+        "B": "Packet (tầng mạng) không nằm trên Segment (tầng vận chuyển).",
+        "D": "Bit (vật lý) phải nằm dưới Frame (liên kết)."
+      },
+      "tip": "**M – S – P – F – B**: Message, Segment, Packet, Frame, Bit."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-018",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Thứ tự đúng từ trên xuống dưới trong mô hình OSI là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Application – Transport – Session – Presentation – Network – Physical – Data Link"
+      },
+      {
+        "id": "B",
+        "content": "Application – Presentation – Session – Transport – Network – Data Link - Physical"
+      },
+      {
+        "id": "C",
+        "content": "Application – Session – Presentation – Transport – Network – Data Link – Physical"
+      },
+      {
+        "id": "D",
+        "content": "Application – Presentation – Session – Transport – Internet – Data Link – Physical"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "OSI từ trên xuống: Application – Presentation – Session – Transport – Network – Data Link – Physical.",
+      "whyCorrect": "OSI từ trên xuống: Application – Presentation – Session – Transport – Network – Data Link – Physical.",
+      "whyWrong": {
+        "A": "Sai thứ tự nhiều tầng (Transport đặt trên Session, Physical trên Data Link).",
+        "C": "Đảo Session và Presentation: Presentation ở ngay dưới Application.",
+        "D": "\"Internet\" là tên tầng trong TCP/IP, OSI gọi là Network."
+      },
+      "tip": "\"**A**ll **P**eople **S**eem **T**o **N**eed **D**ata **P**rocessing\"."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-019",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Mô hình OSI có bao nhiêu lớp",
+    "options": [
+      {
+        "id": "A",
+        "content": "5"
+      },
+      {
+        "id": "B",
+        "content": "6"
+      },
+      {
+        "id": "C",
+        "content": "7"
+      },
+      {
+        "id": "D",
+        "content": "8"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Mô hình OSI có 7 tầng.",
+      "whyCorrect": "Mô hình OSI có 7 tầng.",
+      "whyWrong": {
+        "A": "5 tầng là chồng giao thức Internet (TCP/IP theo Kurose).",
+        "B": "Không có mô hình chuẩn 6 tầng.",
+        "D": "OSI không có tầng thứ 8."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-020",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Khi gói dữ liệu di chuyển từ lớp cao xuống lớp thấp hơn thì các header được",
+    "options": [
+      {
+        "id": "A",
+        "content": "Loại bỏ dần"
+      },
+      {
+        "id": "B",
+        "content": "Thêm vào dần"
+      },
+      {
+        "id": "C",
+        "content": "Sắp xếp lại"
+      },
+      {
+        "id": "D",
+        "content": "Đổi vị trí"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Đi từ tầng cao xuống tầng thấp (bên gửi), mỗi tầng thêm header của mình → header được thêm vào dần.",
+      "whyCorrect": "Đi từ tầng cao xuống tầng thấp (bên gửi), mỗi tầng thêm header của mình → header được thêm vào dần.",
+      "whyWrong": {
+        "A": "Loại bỏ dần xảy ra khi đi lên ở bên nhận.",
+        "C": "Header không được sắp xếp lại.",
+        "D": "Header không đổi vị trí; header của tầng dưới luôn bọc ngoài."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-021",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Khi gói dữ liệu di chuyển từ lớp thấp lên lớp cao hơn thì các header được",
+    "options": [
+      {
+        "id": "A",
+        "content": "Loại bỏ dần"
+      },
+      {
+        "id": "B",
+        "content": "Thêm vào dần"
+      },
+      {
+        "id": "C",
+        "content": "Sắp xếp lại"
+      },
+      {
+        "id": "D",
+        "content": "Đổi vị trí"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Đi từ tầng thấp lên tầng cao (bên nhận), mỗi tầng đọc và gỡ header của mình → header bị loại bỏ dần.",
+      "whyCorrect": "Đi từ tầng thấp lên tầng cao (bên nhận), mỗi tầng đọc và gỡ header của mình → header bị loại bỏ dần.",
+      "whyWrong": {
+        "B": "Thêm header là khi đi xuống ở bên gửi.",
+        "C": "Header không được sắp xếp lại.",
+        "D": "Header không đổi vị trí."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-022",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Các đơn vị dữ liệu giao thức trong mô hình OSI được gọi là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "UDP"
+      },
+      {
+        "id": "B",
+        "content": "PDU"
+      },
+      {
+        "id": "C",
+        "content": "OSI"
+      },
+      {
+        "id": "D",
+        "content": "Packet"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Đơn vị dữ liệu của mỗi tầng gọi chung là PDU (Protocol Data Unit).",
+      "whyCorrect": "Đơn vị dữ liệu của mỗi tầng gọi chung là PDU (Protocol Data Unit).",
+      "whyWrong": {
+        "A": "UDP là một giao thức tầng vận chuyển.",
+        "C": "OSI là tên mô hình.",
+        "D": "Packet chỉ là PDU của tầng mạng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-023",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Chọn lớp OSI nào sau đây không tồn tại?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Internet"
+      },
+      {
+        "id": "B",
+        "content": "Network"
+      },
+      {
+        "id": "C",
+        "content": "Session"
+      },
+      {
+        "id": "D",
+        "content": "Data Link"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "\"Internet\" là tên tầng trong mô hình TCP/IP; OSI không có tầng tên Internet.",
+      "whyCorrect": "\"Internet\" là tên tầng trong mô hình TCP/IP; OSI không có tầng tên Internet.",
+      "whyWrong": {
+        "B": "Network là tầng 3 của OSI.",
+        "C": "Session là tầng 5 của OSI.",
+        "D": "Data Link là tầng 2 của OSI."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-024",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Gói tin L = 30.000 bit, R = 10 Mbps, d = 300 km, s = 3×10⁸ m/s (bỏ qua trễ xử lý, hàng đợi). Để giảm trễ đầu cuối còn một nửa, tốc độ truyền mới phải là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "R_new = 2R"
+      },
+      {
+        "id": "B",
+        "content": "R_new = 4R"
+      },
+      {
+        "id": "C",
+        "content": "R_new = 3R"
+      },
+      {
+        "id": "D",
+        "content": "R_new = R"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Ban đầu: $d_{trans} = 30000/10^7 = 3$ ms, $d_{prop} = 300\\,km / 3\\cdot10^8 = 1$ ms → tổng 4 ms. Muốn còn 2 ms thì $d_{trans}$ mới = 1 ms → $R_{new} = 30000/0{,}001 = 30$ Mbps = 3R.",
+      "whyCorrect": "Ban đầu: $d_{trans} = 30000/10^7 = 3$ ms, $d_{prop} = 300\\,km / 3\\cdot10^8 = 1$ ms → tổng 4 ms. Muốn còn 2 ms thì $d_{trans}$ mới = 1 ms → $R_{new} = 30000/0{,}001 = 30$ Mbps = 3R.",
+      "whyWrong": {
+        "A": "2R cho $d_{trans}$ = 1,5 ms → tổng 2,5 ms, chưa giảm một nửa.",
+        "B": "4R cho tổng 1,75 ms, giảm quá nửa; không phải giá trị cần.",
+        "D": "Giữ nguyên R thì trễ không đổi."
+      },
+      "related": "Trễ lan truyền không phụ thuộc R, nên chỉ giảm được phần trễ truyền.",
+      "tip": "Tính riêng $d_{trans}$ và $d_{prop}$ trước khi điều chỉnh R."
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-025",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Theo góc nhìn thực tế (cấu tạo), Internet được mô tả là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Một mạng LAN rất lớn"
+      },
+      {
+        "id": "B",
+        "content": "Một máy chủ trung tâm phục vụ toàn thế giới"
+      },
+      {
+        "id": "C",
+        "content": "\"Mạng của các mạng\" – các ISP kết nối với nhau"
+      },
+      {
+        "id": "D",
+        "content": "Tập hợp các trang web"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Theo góc nhìn cấu tạo, Internet là \"mạng của các mạng\": các ISP kết nối với nhau.",
+      "whyCorrect": "Theo góc nhìn cấu tạo, Internet là \"mạng của các mạng\": các ISP kết nối với nhau.",
+      "whyWrong": {
+        "A": "Internet gồm rất nhiều mạng đủ loại, không phải một LAN.",
+        "B": "Internet không có một máy chủ trung tâm.",
+        "D": "Trang web chỉ là một dịch vụ chạy trên Internet."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-026",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Các tiêu chuẩn Internet được công bố trong tài liệu nào và do tổ chức nào xây dựng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "RFC – IETF"
+      },
+      {
+        "id": "B",
+        "content": "ISO – IEEE"
+      },
+      {
+        "id": "C",
+        "content": "RFC – ICANN"
+      },
+      {
+        "id": "D",
+        "content": "OSI – IETF"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Tiêu chuẩn Internet được công bố trong các tài liệu RFC (Request for Comments) do IETF xây dựng.",
+      "whyCorrect": "Tiêu chuẩn Internet được công bố trong các tài liệu RFC (Request for Comments) do IETF xây dựng.",
+      "whyWrong": {
+        "B": "ISO, IEEE xây dựng các chuẩn khác (OSI, Ethernet/Wi-Fi), không công bố tiêu chuẩn Internet.",
+        "C": "ICANN quản lý tên miền và địa chỉ IP, không viết RFC.",
+        "D": "OSI là mô hình tham chiếu của ISO, không phải dạng tài liệu."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-027",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Giao thức (protocol) định nghĩa những gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chỉ định dạng của thông điệp"
+      },
+      {
+        "id": "B",
+        "content": "Tốc độ truyền của đường truyền"
+      },
+      {
+        "id": "C",
+        "content": "Địa chỉ IP của các máy trong mạng"
+      },
+      {
+        "id": "D",
+        "content": "Định dạng, thứ tự thông điệp gửi/nhận và hành động khi gửi/nhận"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Giao thức định nghĩa định dạng, thứ tự các thông điệp gửi/nhận giữa các thực thể và hành động thực hiện khi gửi/nhận.",
+      "whyCorrect": "Giao thức định nghĩa định dạng, thứ tự các thông điệp gửi/nhận giữa các thực thể và hành động thực hiện khi gửi/nhận.",
+      "whyWrong": {
+        "A": "Chỉ nêu định dạng là thiếu thứ tự và hành động.",
+        "B": "Tốc độ đường truyền là đặc tính vật lý, không do giao thức định nghĩa.",
+        "C": "Địa chỉ IP là thông tin cấu hình, không phải định nghĩa của giao thức."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-028",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Đặc điểm nào đúng với mạng truy cập bằng cáp (HFC)?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Mỗi nhà có một đường riêng đến tổng đài"
+      },
+      {
+        "id": "B",
+        "content": "Dùng đường dây điện thoại có sẵn"
+      },
+      {
+        "id": "C",
+        "content": "Nhiều hộ gia đình dùng chung đường cáp đến cable headend"
+      },
+      {
+        "id": "D",
+        "content": "Tốc độ tải lên luôn bằng tốc độ tải xuống"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Mạng cáp HFC là môi trường chia sẻ: nhiều hộ dùng chung đường cáp đến cable headend.",
+      "whyCorrect": "Mạng cáp HFC là môi trường chia sẻ: nhiều hộ dùng chung đường cáp đến cable headend.",
+      "whyWrong": {
+        "A": "Đường riêng đến tổng đài là đặc điểm của DSL.",
+        "B": "Dùng đường dây điện thoại là DSL.",
+        "D": "Cáp HFC thường bất đối xứng: tải xuống nhanh hơn tải lên."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-029",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Đường truyền vật lý nào KHÔNG bị ảnh hưởng bởi nhiễu điện từ?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cáp xoắn đôi"
+      },
+      {
+        "id": "B",
+        "content": "Cáp quang"
+      },
+      {
+        "id": "C",
+        "content": "Cáp đồng trục"
+      },
+      {
+        "id": "D",
+        "content": "Sóng vô tuyến"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Cáp quang truyền tín hiệu ánh sáng nên không bị nhiễu điện từ.",
+      "whyCorrect": "Cáp quang truyền tín hiệu ánh sáng nên không bị nhiễu điện từ.",
+      "whyWrong": {
+        "A": "Cáp xoắn đôi truyền tín hiệu điện, dễ bị nhiễu điện từ.",
+        "C": "Cáp đồng trục vẫn truyền tín hiệu điện, có thể bị nhiễu.",
+        "D": "Sóng vô tuyến chịu ảnh hưởng mạnh của nhiễu và vật cản."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-030",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Hai chức năng chính của mạng lõi là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Điều khiển luồng và điều khiển tắc nghẽn"
+      },
+      {
+        "id": "B",
+        "content": "Mã hóa và nén dữ liệu"
+      },
+      {
+        "id": "C",
+        "content": "Phân giải tên miền và cấp địa chỉ IP"
+      },
+      {
+        "id": "D",
+        "content": "Định tuyến và chuyển tiếp"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Mạng lõi có hai chức năng chính: định tuyến (tìm đường, toàn cục) và chuyển tiếp (đưa gói sang cổng ra, cục bộ).",
+      "whyCorrect": "Mạng lõi có hai chức năng chính: định tuyến (tìm đường, toàn cục) và chuyển tiếp (đưa gói sang cổng ra, cục bộ).",
+      "whyWrong": {
+        "A": "Điều khiển luồng/tắc nghẽn là chức năng của TCP ở tầng vận chuyển.",
+        "B": "Mã hóa, nén không phải chức năng của mạng lõi.",
+        "C": "Phân giải tên miền (DNS) và cấp IP (DHCP) là dịch vụ tầng ứng dụng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-031",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Phát biểu nào đúng về \"chuyển tiếp\" (forwarding) trong router?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Là hành động cục bộ: đưa gói từ cổng vào sang cổng ra phù hợp dựa vào bảng chuyển tiếp"
+      },
+      {
+        "id": "B",
+        "content": "Là hành động toàn cục xác định đường đi từ nguồn đến đích"
+      },
+      {
+        "id": "C",
+        "content": "Là việc gửi gói tin về lại máy nguồn"
+      },
+      {
+        "id": "D",
+        "content": "Là việc mã hóa gói tin trước khi gửi"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Chuyển tiếp là hành động cục bộ trong router: đưa gói từ cổng vào sang cổng ra phù hợp theo bảng chuyển tiếp.",
+      "whyCorrect": "Chuyển tiếp là hành động cục bộ trong router: đưa gói từ cổng vào sang cổng ra phù hợp theo bảng chuyển tiếp.",
+      "whyWrong": {
+        "B": "Xác định đường đi toàn cục là định tuyến (routing).",
+        "C": "Router không gửi gói ngược về máy nguồn.",
+        "D": "Mã hóa không phải chức năng chuyển tiếp."
+      },
+      "tip": "Định tuyến = lập bản đồ đường đi; chuyển tiếp = rẽ đúng ở từng ngã tư."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-032",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Đặc điểm nào là của chuyển mạch kênh (circuit switching)?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tài nguyên được dành riêng cho mỗi cuộc gọi, đảm bảo hiệu suất"
+      },
+      {
+        "id": "B",
+        "content": "Không cần thiết lập trước khi truyền"
+      },
+      {
+        "id": "C",
+        "content": "Chia sẻ tài nguyên theo nhu cầu"
+      },
+      {
+        "id": "D",
+        "content": "Gói tin có thể bị mất khi bộ đệm đầy"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Chuyển mạch kênh dành riêng tài nguyên (băng thông) cho mỗi cuộc gọi suốt thời gian kết nối nên hiệu suất được đảm bảo.",
+      "whyCorrect": "Chuyển mạch kênh dành riêng tài nguyên (băng thông) cho mỗi cuộc gọi suốt thời gian kết nối nên hiệu suất được đảm bảo.",
+      "whyWrong": {
+        "B": "Chuyển mạch kênh cần thiết lập kết nối trước.",
+        "C": "Chia sẻ tài nguyên theo nhu cầu là chuyển mạch gói.",
+        "D": "Mất gói khi bộ đệm đầy là đặc trưng của chuyển mạch gói."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-033",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Liên kết 1 Gbps, mỗi người dùng cần 100 Mbps khi hoạt động. Với chuyển mạch kênh, liên kết phục vụ tối đa bao nhiêu người dùng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "1000"
+      },
+      {
+        "id": "B",
+        "content": "35"
+      },
+      {
+        "id": "C",
+        "content": "100"
+      },
+      {
+        "id": "D",
+        "content": "10"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Chuyển mạch kênh cấp cố định 100 Mbps cho mỗi người: 1 Gbps / 100 Mbps = 10 người.",
+      "whyCorrect": "Chuyển mạch kênh cấp cố định 100 Mbps cho mỗi người: 1 Gbps / 100 Mbps = 10 người.",
+      "whyWrong": {
+        "A": "1000 là kết quả khi nhầm đơn vị (1 Gbps = 1000 Mbps chứ không chia cho 1 Mbps).",
+        "B": "35 là con số trong ví dụ chuyển mạch gói của giáo trình, không áp dụng ở đây.",
+        "C": "100 là tốc độ của mỗi người dùng, không phải số người."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-034",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Cơ chế \"lưu và chuyển\" (store-and-forward) có nghĩa là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Router lưu gói tin vĩnh viễn"
+      },
+      {
+        "id": "B",
+        "content": "Router phải nhận đủ toàn bộ gói tin rồi mới truyền sang liên kết tiếp theo"
+      },
+      {
+        "id": "C",
+        "content": "Router chuyển từng bit ngay khi nhận được"
+      },
+      {
+        "id": "D",
+        "content": "Máy nguồn lưu gói tin chờ ACK"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Store-and-forward: router phải nhận đủ toàn bộ gói rồi mới truyền gói đó sang liên kết tiếp theo.",
+      "whyCorrect": "Store-and-forward: router phải nhận đủ toàn bộ gói rồi mới truyền gói đó sang liên kết tiếp theo.",
+      "whyWrong": {
+        "A": "Router chỉ lưu tạm trong bộ đệm, không lưu vĩnh viễn.",
+        "C": "Chuyển từng bit ngay là cut-through, không phải store-and-forward.",
+        "D": "Chờ ACK là cơ chế truyền tin cậy ở tầng vận chuyển."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-035",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Bốn nguồn gây trễ tại một nút gồm:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Truyền, lan truyền, mã hóa, giải mã"
+      },
+      {
+        "id": "B",
+        "content": "Xử lý, định tuyến, chuyển tiếp, truyền"
+      },
+      {
+        "id": "C",
+        "content": "Xử lý, hàng đợi, truyền, lan truyền"
+      },
+      {
+        "id": "D",
+        "content": "Hàng đợi, nén, truyền, lan truyền"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Trễ tại nút = trễ xử lý + trễ hàng đợi + trễ truyền + trễ lan truyền.",
+      "whyCorrect": "Trễ tại nút = trễ xử lý + trễ hàng đợi + trễ truyền + trễ lan truyền.",
+      "whyWrong": {
+        "A": "Mã hóa/giải mã không phải thành phần trễ trong mô hình.",
+        "B": "Định tuyến, chuyển tiếp là chức năng, không phải nguồn trễ.",
+        "D": "Nén không thuộc các nguồn trễ cơ bản."
+      },
+      "related": "$d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}$"
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-036",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Độ trễ nào phụ thuộc vào khoảng cách giữa hai router?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trễ xử lý"
+      },
+      {
+        "id": "B",
+        "content": "Trễ hàng đợi"
+      },
+      {
+        "id": "C",
+        "content": "Trễ truyền"
+      },
+      {
+        "id": "D",
+        "content": "Trễ lan truyền"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Trễ lan truyền = khoảng cách / tốc độ lan truyền nên phụ thuộc khoảng cách giữa hai router.",
+      "whyCorrect": "Trễ lan truyền = khoảng cách / tốc độ lan truyền nên phụ thuộc khoảng cách giữa hai router.",
+      "whyWrong": {
+        "A": "Trễ xử lý phụ thuộc tốc độ xử lý của router.",
+        "B": "Trễ hàng đợi phụ thuộc mức tắc nghẽn.",
+        "C": "Trễ truyền = L/R, không phụ thuộc khoảng cách."
+      },
+      "tip": "$d_{prop} = d/s$ · $d_{trans} = L/R$."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-037",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Một gói 1500 byte gửi qua đường truyền 2 Mbps, dài 2000 km, tốc độ lan truyền 2×10⁸ m/s. Tổng trễ truyền + trễ lan truyền là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "6 ms"
+      },
+      {
+        "id": "B",
+        "content": "16 ms"
+      },
+      {
+        "id": "C",
+        "content": "11 ms"
+      },
+      {
+        "id": "D",
+        "content": "10 ms"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$d_{trans} = 1500 \\times 8 / (2\\cdot10^6) = 6$ ms; $d_{prop} = 2\\cdot10^6\\,m / 2\\cdot10^8 = 10$ ms → tổng 16 ms.",
+      "whyCorrect": "$d_{trans} = 1500 \\times 8 / (2\\cdot10^6) = 6$ ms; $d_{prop} = 2\\cdot10^6\\,m / 2\\cdot10^8 = 10$ ms → tổng 16 ms.",
+      "whyWrong": {
+        "A": "6 ms mới chỉ là trễ truyền.",
+        "C": "11 ms không ứng với phép tính nào đúng.",
+        "D": "10 ms mới chỉ là trễ lan truyền."
+      },
+      "tip": "Đổi 2000 km = $2\\cdot10^6$ m."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-038",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Một gói 8000 bit đi từ nguồn đến đích qua 3 liên kết giống nhau, mỗi liên kết 1 Mbps (store-and-forward, bỏ qua các trễ khác). Trễ đầu cuối là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "24 ms"
+      },
+      {
+        "id": "B",
+        "content": "16 ms"
+      },
+      {
+        "id": "C",
+        "content": "8 ms"
+      },
+      {
+        "id": "D",
+        "content": "32 ms"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Với store-and-forward, mỗi liên kết tốn $L/R = 8000/10^6 = 8$ ms; qua 3 liên kết: 3 × 8 = 24 ms.",
+      "whyCorrect": "Với store-and-forward, mỗi liên kết tốn $L/R = 8000/10^6 = 8$ ms; qua 3 liên kết: 3 × 8 = 24 ms.",
+      "whyWrong": {
+        "B": "16 ms chỉ tính 2 liên kết.",
+        "C": "8 ms là trễ truyền trên một liên kết.",
+        "D": "32 ms tính thừa một liên kết."
+      },
+      "tip": "N liên kết store-and-forward: $N \\cdot L/R$."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-039",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Gói dài L = 1000 bit, trung bình 1500 gói/giây đến một liên kết R = 2 Mbps. Cường độ lưu lượng La/R bằng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "0,5"
+      },
+      {
+        "id": "B",
+        "content": "1,5"
+      },
+      {
+        "id": "C",
+        "content": "1,33"
+      },
+      {
+        "id": "D",
+        "content": "0,75"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "La/R = 1000 × 1500 / (2 × 10⁶) = 1,5 × 10⁶ / 2 × 10⁶ = 0,75.",
+      "whyCorrect": "La/R = 1000 × 1500 / (2 × 10⁶) = 1,5 × 10⁶ / 2 × 10⁶ = 0,75.",
+      "whyWrong": {
+        "A": "0,5 không khớp với số liệu.",
+        "B": "1,5 quên chia cho R = 2 Mbps.",
+        "C": "1,33 là R/(La), đảo ngược tỉ số."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-040",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Khi cường độ lưu lượng La/R > 1 thì:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trễ hàng đợi xấp xỉ 0"
+      },
+      {
+        "id": "B",
+        "content": "Trễ hàng đợi nhỏ và ổn định"
+      },
+      {
+        "id": "C",
+        "content": "Trễ hàng đợi tăng đến vô hạn"
+      },
+      {
+        "id": "D",
+        "content": "Không xảy ra mất gói"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "La/R > 1: tốc độ đến vượt khả năng phục vụ, hàng đợi tăng mãi → trễ hàng đợi tiến tới vô hạn.",
+      "whyCorrect": "La/R > 1: tốc độ đến vượt khả năng phục vụ, hàng đợi tăng mãi → trễ hàng đợi tiến tới vô hạn.",
+      "whyWrong": {
+        "A": "Trễ xấp xỉ 0 chỉ khi La/R ≈ 0.",
+        "B": "Trễ nhỏ, ổn định khi La/R nhỏ.",
+        "D": "Thực tế hàng đợi có giới hạn nên sẽ mất gói."
+      },
+      "tip": "La/R ≈ 0: trễ nhỏ · → 1: trễ lớn · > 1: vô hạn."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-041",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Hiện tượng mất gói (packet loss) xảy ra khi:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Đường truyền quá dài"
+      },
+      {
+        "id": "B",
+        "content": "Bộ đệm (hàng đợi) của router bị đầy"
+      },
+      {
+        "id": "C",
+        "content": "Gói tin quá nhỏ"
+      },
+      {
+        "id": "D",
+        "content": "Router xử lý quá nhanh"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Mất gói xảy ra khi bộ đệm (hàng đợi) của router đầy, gói đến sau bị bỏ.",
+      "whyCorrect": "Mất gói xảy ra khi bộ đệm (hàng đợi) của router đầy, gói đến sau bị bỏ.",
+      "whyWrong": {
+        "A": "Đường dài làm tăng trễ lan truyền, không trực tiếp gây mất gói.",
+        "C": "Gói nhỏ không gây mất gói.",
+        "D": "Router xử lý nhanh giúp giảm mất gói."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-042",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Chương trình traceroute đo độ trễ đến mỗi router bằng cách:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Gửi 1 gói đến router đích"
+      },
+      {
+        "id": "B",
+        "content": "Hỏi máy chủ DNS"
+      },
+      {
+        "id": "C",
+        "content": "Gửi 3 gói đến mỗi router thứ i với TTL = i"
+      },
+      {
+        "id": "D",
+        "content": "Đo tốc độ tải file"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "traceroute gửi 3 gói đến mỗi router thứ i (TTL = i); router thứ i trả về thông báo khi TTL hết, từ đó đo RTT.",
+      "whyCorrect": "traceroute gửi 3 gói đến mỗi router thứ i (TTL = i); router thứ i trả về thông báo khi TTL hết, từ đó đo RTT.",
+      "whyWrong": {
+        "A": "Chỉ gửi đến đích không đo được trễ từng chặng.",
+        "B": "DNS không cung cấp độ trễ đến router.",
+        "D": "Tải file không phải cách traceroute hoạt động."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-043",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Rs = 5 Mbps, Rc = 3 Mbps, một đường trục R = 20 Mbps chia đều cho 10 kết nối. Thông lượng của mỗi kết nối là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "5 Mbps"
+      },
+      {
+        "id": "B",
+        "content": "3 Mbps"
+      },
+      {
+        "id": "C",
+        "content": "20 Mbps"
+      },
+      {
+        "id": "D",
+        "content": "2 Mbps"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Mỗi kết nối nhận 20/10 = 2 Mbps trên đường trục; thông lượng = min(Rs, Rc, R/10) = min(5, 3, 2) = 2 Mbps.",
+      "whyCorrect": "Mỗi kết nối nhận 20/10 = 2 Mbps trên đường trục; thông lượng = min(Rs, Rc, R/10) = min(5, 3, 2) = 2 Mbps.",
+      "whyWrong": {
+        "A": "5 Mbps là Rs, không phải nút cổ chai.",
+        "B": "3 Mbps là Rc, vẫn lớn hơn phần chia của đường trục.",
+        "C": "20 Mbps là toàn bộ đường trục, phải chia cho 10 kết nối."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-044",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Tầng nào trong mô hình OSI thực hiện chuyển đổi định dạng, mã hóa và nén dữ liệu?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Session"
+      },
+      {
+        "id": "B",
+        "content": "Network"
+      },
+      {
+        "id": "C",
+        "content": "Presentation"
+      },
+      {
+        "id": "D",
+        "content": "Application"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Tầng Presentation (trình diễn) lo chuyển đổi định dạng, mã hóa và nén dữ liệu.",
+      "whyCorrect": "Tầng Presentation (trình diễn) lo chuyển đổi định dạng, mã hóa và nén dữ liệu.",
+      "whyWrong": {
+        "A": "Session lo đồng bộ, đặt điểm kiểm tra, khôi phục phiên.",
+        "B": "Network lo định tuyến gói tin.",
+        "D": "Application cung cấp dịch vụ trực tiếp cho ứng dụng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c1-045",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch1-internet",
+    "type": "mcq",
+    "content": "Đơn vị dữ liệu theo thứ tự các tầng TCP/IP từ trên xuống là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Message, Segment, Datagram, Frame, Bit"
+      },
+      {
+        "id": "B",
+        "content": "Message, Datagram, Segment, Frame, Bit"
+      },
+      {
+        "id": "C",
+        "content": "Message, Segment, Frame, Datagram, Bit"
+      },
+      {
+        "id": "D",
+        "content": "Segment, Message, Datagram, Bit, Frame"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Từ trên xuống: Message (ứng dụng) – Segment (vận chuyển) – Datagram (mạng) – Frame (liên kết) – Bit (vật lý).",
+      "whyCorrect": "Từ trên xuống: Message (ứng dụng) – Segment (vận chuyển) – Datagram (mạng) – Frame (liên kết) – Bit (vật lý).",
+      "whyWrong": {
+        "B": "Datagram (tầng mạng) không nằm trên Segment.",
+        "C": "Frame (liên kết) không nằm trên Datagram (mạng).",
+        "D": "Message phải ở trên cùng, Bit ở dưới cùng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  }
+]

@@ -1,0 +1,3730 @@
+[
+  {
+    "id": "it005-mid-c3-001",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong giai đoạn bắt tay 3 bước, nếu client gửi gói `SYN`, server phản hồi `SYN` + `ACK` nhưng client không gửi lại `ACK`, điều gì xảy ra?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Server vẫn coi kết nối đã thiết lập thành công"
+      },
+      {
+        "id": "B",
+        "content": "Server chờ một thời gian rồi hủy kết nối (timeout)"
+      },
+      {
+        "id": "C",
+        "content": "Server tự gửi ACK thay client"
+      },
+      {
+        "id": "D",
+        "content": "Server đóng/ngắt kết nối mà không chờ."
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Server đang ở trạng thái SYN_RCVD chờ ACK; nếu hết thời gian chờ mà không nhận được, server hủy kết nối dở dang (có thể gửi lại SYNACK vài lần trước đó).",
+      "whyCorrect": "Server đang ở trạng thái SYN_RCVD chờ ACK; nếu hết thời gian chờ mà không nhận được, server hủy kết nối dở dang (có thể gửi lại SYNACK vài lần trước đó).",
+      "whyWrong": {
+        "A": "Kết nối chỉ được thiết lập khi server nhận ACK của bước 3.",
+        "C": "Server không thể tự gửi ACK thay client.",
+        "D": "Server không đóng ngay mà chờ hết thời gian (timeout)."
+      },
+      "related": "> **Lưu ý:** đáp án tham khảo trong tài liệu (Đề GK1 2025–2026 (BHT CNPM) ghi C) chưa chính xác — đáp án đúng là **B**."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-002",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Chọn mô tả đúng nhất về giao thức UDP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Không kết nối, có kiểm tra lỗi tự động sửa"
+      },
+      {
+        "id": "B",
+        "content": "Có kết nối, tin cậy, chậm hơn TCP"
+      },
+      {
+        "id": "C",
+        "content": "Có kết nối, không tin cậy"
+      },
+      {
+        "id": "D",
+        "content": "Không kết nối, không tin cậy, nhanh hơn TCP"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "UDP không kết nối, không tin cậy, header nhỏ và không có bắt tay nên nhanh hơn TCP.",
+      "whyCorrect": "UDP không kết nối, không tin cậy, header nhỏ và không có bắt tay nên nhanh hơn TCP.",
+      "whyWrong": {
+        "A": "UDP chỉ phát hiện lỗi bằng checksum, không tự sửa lỗi.",
+        "B": "Có kết nối, tin cậy là TCP.",
+        "C": "UDP không hướng kết nối."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-003",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Giả sử một thông điệp có độ dài 1000 byte được gửi từ tầng ứng dụng sử dụng dịch vụ UDP của tầng vận chuyển. Khi sử dụng Wireshark để bắt gói tin này thì độ dài (tính bằng byte) được chỉ ra trong trường Length (của UDP header) là bao nhiêu?",
+    "options": [
+      {
+        "id": "A",
+        "content": "992"
+      },
+      {
+        "id": "B",
+        "content": "980"
+      },
+      {
+        "id": "C",
+        "content": "1008"
+      },
+      {
+        "id": "D",
+        "content": "1080"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Trường Length = độ dài cả segment (header 8 byte + dữ liệu) = 1000 + 8 = 1008.",
+      "whyCorrect": "Trường Length = độ dài cả segment (header 8 byte + dữ liệu) = 1000 + 8 = 1008.",
+      "whyWrong": {
+        "A": "992 là trừ 8 byte thay vì cộng.",
+        "B": "980 không ứng với phép tính nào đúng.",
+        "D": "1080 nhầm header thành 80 byte."
+      },
+      "tip": "UDP Length = **8 + payload**."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-004",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Tính checksum của 2 chuỗi 16-bit nhị phân sau đây?  \n`0100 1100 0110 1110` và `1010 0101 0110 0001`",
+    "options": [
+      {
+        "id": "A",
+        "content": "0111 1011 0100 0000"
+      },
+      {
+        "id": "B",
+        "content": "1111 0001 1100 1111"
+      },
+      {
+        "id": "C",
+        "content": "0000 1110 0011 0000"
+      },
+      {
+        "id": "D",
+        "content": "Khác"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Cộng: `0100110001101110` + `1010010101100001` = `1111000111001111` (không tràn). Lấy bù 1 → checksum = `0000 1110 0011 0000`.",
+      "whyCorrect": "Cộng: `0100110001101110` + `1010010101100001` = `1111000111001111` (không tràn). Lấy bù 1 → checksum = `0000 1110 0011 0000`.",
+      "whyWrong": {
+        "A": "Kết quả sai do cộng nhầm.",
+        "B": "Đây là tổng, chưa lấy bù 1.",
+        "D": "Không cần chọn \"Khác\" vì C đúng."
+      },
+      "tip": "Checksum = **bù 1 của tổng** (nhớ cộng phần tràn vòng về bit thấp)."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-005",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trường Sequence Number trong header TCP biểu thị cho thông tin gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Số thứ tự của gói tin IP tương ứng"
+      },
+      {
+        "id": "B",
+        "content": "Số thứ tự của ACK tiếp theo"
+      },
+      {
+        "id": "C",
+        "content": "Số thứ tự của byte đầu tiên trong đoạn dữ liệu TCP hiện tại"
+      },
+      {
+        "id": "D",
+        "content": "Tổng số byte đã được truyền"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Sequence number trong TCP là số thứ tự của byte đầu tiên trong phần dữ liệu của segment (TCP đếm theo byte).",
+      "whyCorrect": "Sequence number trong TCP là số thứ tự của byte đầu tiên trong phần dữ liệu của segment (TCP đếm theo byte).",
+      "whyWrong": {
+        "A": "TCP không đánh số theo gói IP.",
+        "B": "Số byte tiếp theo mong đợi là ACK number.",
+        "D": "Seq không phải tổng số byte đã truyền."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-006",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "B gửi cho A một gói tin theo TCP có Sequence Number = 1000, ACK = 2000 và Window Size = 4000, phát biểu nào sau đây đúng nhất?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Bên A cần gửi tiếp đoạn byte từ 1000 đến 2000"
+      },
+      {
+        "id": "B",
+        "content": "Bên B đã nhận được đoạn byte từ 1000 đến 4000"
+      },
+      {
+        "id": "C",
+        "content": "Bên B đang báo lỗi checksum"
+      },
+      {
+        "id": "D",
+        "content": "Bên A có thể gửi tối đa 4000 byte tiếp theo, bắt đầu từ byte thứ 2000"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "ACK = 2000: B đã nhận đến byte 1999 và chờ byte 2000; Window = 4000: B còn nhận được 4000 byte → A được gửi tối đa 4000 byte bắt đầu từ byte 2000.",
+      "whyCorrect": "ACK = 2000: B đã nhận đến byte 1999 và chờ byte 2000; Window = 4000: B còn nhận được 4000 byte → A được gửi tối đa 4000 byte bắt đầu từ byte 2000.",
+      "whyWrong": {
+        "A": "ACK 2000 xác nhận mọi byte trước 2000, A không cần gửi lại 1000–2000.",
+        "B": "Seq 1000 là số thứ tự dữ liệu B gửi cho A, không phải phạm vi B đã nhận.",
+        "C": "Không có thông tin nào về lỗi checksum."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-007",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Gói tin UDP không chứa trường nào sau đây?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Destination Port"
+      },
+      {
+        "id": "B",
+        "content": "Source Port"
+      },
+      {
+        "id": "C",
+        "content": "Sequence Number"
+      },
+      {
+        "id": "D",
+        "content": "Length"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Header UDP chỉ có 4 trường: source port, destination port, length, checksum — không có sequence number.",
+      "whyCorrect": "Header UDP chỉ có 4 trường: source port, destination port, length, checksum — không có sequence number.",
+      "whyWrong": {
+        "A": "Destination port có trong header UDP.",
+        "B": "Source port có trong header UDP.",
+        "D": "Length có trong header UDP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-008",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Ghép nối các đặc tính và giao thức tương ứng:  \n(1) Không kết nối, không tin cậy  \n(2) Có kết nối, kiểm soát luồng và tắc nghẽn  \n(3) Dùng số thứ tự 0-1, stop-and-wait  \n(4) ACK tuần tự, gửi lại toàn bộ từ gói bị mất  \n(5) ACK độc lập từng gói, lưu đệm out-of-order  \n(a) TCP  \n(b) Selective Repeat  \n(c) RDT3.0  \n(d) RDT2.2  \n(e) UDP  \n(g) Go-back-N",
+    "options": [
+      {
+        "id": "A",
+        "content": "1e, 2b, 3d, 4b, 5a"
+      },
+      {
+        "id": "B",
+        "content": "1e, 2a, 3c, 4g, 5b"
+      },
+      {
+        "id": "C",
+        "content": "1a, 2c, 3d, 4e, 5g"
+      },
+      {
+        "id": "D",
+        "content": "Khác"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "(1) UDP, (2) TCP, (3) RDT3.0 (stop-and-wait, số thứ tự 0/1, có timer), (4) Go-Back-N (ACK tích lũy, gửi lại từ gói mất), (5) Selective Repeat (ACK từng gói, lưu đệm gói sai thứ tự).",
+      "whyCorrect": "(1) UDP, (2) TCP, (3) RDT3.0 (stop-and-wait, số thứ tự 0/1, có timer), (4) Go-Back-N (ACK tích lũy, gửi lại từ gói mất), (5) Selective Repeat (ACK từng gói, lưu đệm gói sai thứ tự).",
+      "whyWrong": {
+        "A": "Ghép (2) với Selective Repeat và (5) với TCP là sai.",
+        "C": "Ghép (1) với TCP là sai.",
+        "D": "Phương án B đã đúng."
+      }
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-009",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong cửa sổ TCP Go-back-N, A gửi đi 3 gói tin pkt0, pkt1, pkt2 (mỗi gói có length là 500 bytes) biết gói pkt0 có `seq` = 100. Biết rằng B nhận được cả 3 gói tin, và phản hồi lại ACK0, ACK1, và ACK2.  \nGiá trị ACK trong 3 gói ACK0, ACK1, ACK2 lần lượt là bao nhiêu?",
+    "options": [
+      {
+        "id": "A",
+        "content": "601, 1101, 1601"
+      },
+      {
+        "id": "B",
+        "content": "100, 600, 1100"
+      },
+      {
+        "id": "C",
+        "content": "600, 1100, 1600"
+      },
+      {
+        "id": "D",
+        "content": "Khác"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Seq của 3 gói: 100, 600, 1100 (mỗi gói 500 byte). ACK = số byte tiếp theo mong đợi: 600, 1100, 1600.",
+      "whyCorrect": "Seq của 3 gói: 100, 600, 1100 (mỗi gói 500 byte). ACK = số byte tiếp theo mong đợi: 600, 1100, 1600.",
+      "whyWrong": {
+        "A": "Cộng thừa 1 (TCP ACK = seq + độ dài, không +1).",
+        "B": "Đây là seq của các gói, không phải ACK.",
+        "D": "C đã đúng."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-010",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong cửa sổ TCP Go-back-N, A gửi đi 3 gói tin pkt0, pkt1, pkt2 (mỗi gói có length là 500 bytes) biết gói pkt0 có `seq` = 100. Giả sử gói ACK1 bị mất, A chỉ nhận được ACK0 và ACK2, A sẽ làm gì tiếp theo?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tiếp tục gửi gói pkt3 có `seq` = 1600"
+      },
+      {
+        "id": "B",
+        "content": "Đóng kết nối"
+      },
+      {
+        "id": "C",
+        "content": "Gửi lại gói pkt1"
+      },
+      {
+        "id": "D",
+        "content": "Gửi lại gói pkt1, pkt2"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "ACK là tích lũy: nhận ACK 1600 nghĩa là B đã nhận đủ đến byte 1599, kể cả pkt1. A tiếp tục gửi gói mới seq = 1600.",
+      "whyCorrect": "ACK là tích lũy: nhận ACK 1600 nghĩa là B đã nhận đủ đến byte 1599, kể cả pkt1. A tiếp tục gửi gói mới seq = 1600.",
+      "whyWrong": {
+        "B": "Không có lý do đóng kết nối.",
+        "C": "pkt1 đã được ACK tích lũy xác nhận.",
+        "D": "Cả pkt1 và pkt2 đã được xác nhận."
+      },
+      "tip": "Mất ACK không sao nếu đã nhận được ACK **lớn hơn**."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-011",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Quá trình bắt tay 3 bước (Three-Way-Handshake) được sử dụng để làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Đồng bộ hóa đồng hồ hệ thống giữa hai máy"
+      },
+      {
+        "id": "B",
+        "content": "Thiết lập và xác nhận kết nối TCP giữa hai chiều client và server"
+      },
+      {
+        "id": "C",
+        "content": "Đảm bảo dữ liệu được mã hóa trước khi truyền"
+      },
+      {
+        "id": "D",
+        "content": "Kiểm tra lỗi trong các gói tin UDP"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Bắt tay 3 bước thiết lập kết nối TCP hai chiều và thống nhất số thứ tự khởi đầu của mỗi bên.",
+      "whyCorrect": "Bắt tay 3 bước thiết lập kết nối TCP hai chiều và thống nhất số thứ tự khởi đầu của mỗi bên.",
+      "whyWrong": {
+        "A": "Không đồng bộ đồng hồ hệ thống.",
+        "C": "Không mã hóa dữ liệu (đó là TLS).",
+        "D": "UDP không có bắt tay."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-012",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Khi máy A gửi gói `FIN`, còn máy B chưa gửi lại `FIN`, thì điều gì sẽ xảy ra?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Máy A vẫn có thể nhận dữ liệu từ máy B"
+      },
+      {
+        "id": "B",
+        "content": "Kết nối hoàn toàn bị đóng"
+      },
+      {
+        "id": "C",
+        "content": "Cả hai bên ngừng nhận truyền dữ liệu"
+      },
+      {
+        "id": "D",
+        "content": "Máy A sẽ gửi RST để hủy"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "FIN chỉ đóng chiều gửi của A (half-close); B vẫn gửi dữ liệu cho A được cho đến khi B gửi FIN.",
+      "whyCorrect": "FIN chỉ đóng chiều gửi của A (half-close); B vẫn gửi dữ liệu cho A được cho đến khi B gửi FIN.",
+      "whyWrong": {
+        "B": "Kết nối chỉ đóng hoàn toàn khi cả hai bên gửi FIN và được ACK.",
+        "C": "Chiều B → A vẫn hoạt động.",
+        "D": "RST dùng để hủy đột ngột, không phải bước đóng bình thường."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-013",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong giao thức Go-back-N (GBN), khi một gói tin bị mất, bên nhận sẽ làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Gửi NAK cho từng gói mất"
+      },
+      {
+        "id": "B",
+        "content": "Bỏ qua gói đó và tiếp tục nhận các gói sau"
+      },
+      {
+        "id": "C",
+        "content": "Gửi ACK riêng cho từng gói"
+      },
+      {
+        "id": "D",
+        "content": "Bỏ qua tất cả gói đến sau gói bị mất và gửi ACK lặp lại cho gói cuối cùng nhận đúng"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Bên nhận Go-Back-N chỉ nhận gói đúng thứ tự: hủy các gói đến sau gói mất và gửi lại ACK của gói đúng thứ tự cuối cùng.",
+      "whyCorrect": "Bên nhận Go-Back-N chỉ nhận gói đúng thứ tự: hủy các gói đến sau gói mất và gửi lại ACK của gói đúng thứ tự cuối cùng.",
+      "whyWrong": {
+        "A": "GBN không dùng NAK.",
+        "B": "Bên nhận GBN không giữ gói sai thứ tự.",
+        "C": "ACK riêng từng gói là Selective Repeat."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-014",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trường Window Size trong header TCP dùng để làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cho biết số lượng byte mà bên nhận có thể nhận thêm (không tràn bộ đệm)"
+      },
+      {
+        "id": "B",
+        "content": "Thay đổi số thứ tự gói tin"
+      },
+      {
+        "id": "C",
+        "content": "Xác định độ dài dữ liệu mỗi gói tin"
+      },
+      {
+        "id": "D",
+        "content": "Giới hạn tổng số kết nối TCP đồng thời"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Receive window cho biết số byte bên nhận còn có thể nhận mà không tràn bộ đệm — dùng cho điều khiển luồng.",
+      "whyCorrect": "Receive window cho biết số byte bên nhận còn có thể nhận mà không tràn bộ đệm — dùng cho điều khiển luồng.",
+      "whyWrong": {
+        "B": "Window không thay đổi số thứ tự.",
+        "C": "Độ dài dữ liệu tối đa do MSS quy định.",
+        "D": "Window không giới hạn số kết nối."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-015",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "TCP là viết tắt của cụm từ gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Transmission Connection Protocol"
+      },
+      {
+        "id": "B",
+        "content": "Transmission Control Protocol"
+      },
+      {
+        "id": "C",
+        "content": "Transport Communication Protocol"
+      },
+      {
+        "id": "D",
+        "content": "Traffic Control Protocol"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "TCP = Transmission Control Protocol.",
+      "whyCorrect": "TCP = Transmission Control Protocol.",
+      "whyWrong": {
+        "A": "Sai chữ C (Control, không phải Connection).",
+        "C": "Sai cả hai chữ đầu.",
+        "D": "Sai hoàn toàn."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-016",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong RDT2.1, để tránh nhầm lẫn khi gói tin ACK hoặc NAK bị mất hoặc trùng, giao thức thêm cơ chế nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Mã hóa dữ liệu bằng checksum"
+      },
+      {
+        "id": "B",
+        "content": "Thêm số thứ tự (sequence number) cho từng gói tin"
+      },
+      {
+        "id": "C",
+        "content": "Dùng hai kênh riêng biệt"
+      },
+      {
+        "id": "D",
+        "content": "Gửi lại toàn bộ dữ liệu"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "rdt2.1 thêm số thứ tự (0/1) cho gói dữ liệu để bên nhận nhận ra gói trùng khi ACK/NAK bị lỗi khiến bên gửi gửi lại.",
+      "whyCorrect": "rdt2.1 thêm số thứ tự (0/1) cho gói dữ liệu để bên nhận nhận ra gói trùng khi ACK/NAK bị lỗi khiến bên gửi gửi lại.",
+      "whyWrong": {
+        "A": "Checksum đã có từ rdt2.0.",
+        "C": "Không dùng hai kênh riêng biệt.",
+        "D": "Không gửi lại toàn bộ dữ liệu."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề GK1 2025–2026 (BHT CNPM)"
+    },
+    "verification": "verified",
+    "tags": [
+      "bht2526"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-017",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong giao thức RDT, phiên bản nào thực hiện gửi lại gói tin nếu không nhận được gói ACK sau thời gian chờ của nó?",
+    "options": [
+      {
+        "id": "A",
+        "content": "RDT 3.0"
+      },
+      {
+        "id": "B",
+        "content": "RDT 2.2"
+      },
+      {
+        "id": "C",
+        "content": "RDT 2.1"
+      },
+      {
+        "id": "D",
+        "content": "RDT 1.0"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "rdt3.0 thêm bộ định thời: hết thời gian chờ mà không có ACK thì gửi lại gói.",
+      "whyCorrect": "rdt3.0 thêm bộ định thời: hết thời gian chờ mà không có ACK thì gửi lại gói.",
+      "whyWrong": {
+        "B": "rdt2.2 chưa có timer.",
+        "C": "rdt2.1 chưa có timer.",
+        "D": "rdt1.0 giả định kênh hoàn hảo, không gửi lại."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-018",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Tổng độ dài của header của gói tin UDP là bao nhiêu byte?",
+    "options": [
+      {
+        "id": "A",
+        "content": "16"
+      },
+      {
+        "id": "B",
+        "content": "64"
+      },
+      {
+        "id": "C",
+        "content": "32"
+      },
+      {
+        "id": "D",
+        "content": "8"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Header UDP gồm 4 trường × 16 bit = 8 byte.",
+      "whyCorrect": "Header UDP gồm 4 trường × 16 bit = 8 byte.",
+      "whyWrong": {
+        "A": "16 là số bit mỗi trường.",
+        "B": "64 là số bit của toàn header.",
+        "C": "32 không đúng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-019",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Các giao thức tại Tầng Vận Chuyển Không cung cấp dịch vụ nào sau đây",
+    "options": [
+      {
+        "id": "A",
+        "content": "Checksum"
+      },
+      {
+        "id": "B",
+        "content": "Đảm bảo độ trễ"
+      },
+      {
+        "id": "C",
+        "content": "DeMultiplexing tại bên nhận"
+      },
+      {
+        "id": "D",
+        "content": "Multiplexing tại bên gửi"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "TCP/UDP không đảm bảo độ trễ hay băng thông; chúng cung cấp mux/demux và checksum.",
+      "whyCorrect": "TCP/UDP không đảm bảo độ trễ hay băng thông; chúng cung cấp mux/demux và checksum.",
+      "whyWrong": {
+        "A": "Checksum được cả TCP và UDP cung cấp.",
+        "C": "Demultiplexing ở bên nhận là dịch vụ cơ bản của tầng vận chuyển.",
+        "D": "Multiplexing ở bên gửi là dịch vụ cơ bản."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-020",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Giao thức RDT nào cung cấp dịch vụ giao hàng tin cậy?",
+    "options": [
+      {
+        "id": "A",
+        "content": "RDT 1.0"
+      },
+      {
+        "id": "B",
+        "content": "RDT 2.1"
+      },
+      {
+        "id": "C",
+        "content": "RDT 2.2"
+      },
+      {
+        "id": "D",
+        "content": "RDT 3.0"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "rdt3.0 xử lý được cả lỗi bit và mất gói trên kênh không tin cậy nên cung cấp dịch vụ giao hàng tin cậy hoàn chỉnh.",
+      "whyCorrect": "rdt3.0 xử lý được cả lỗi bit và mất gói trên kênh không tin cậy nên cung cấp dịch vụ giao hàng tin cậy hoàn chỉnh.",
+      "whyWrong": {
+        "A": "rdt1.0 chỉ đúng khi kênh hoàn hảo.",
+        "B": "rdt2.1 không xử lý được mất gói.",
+        "C": "rdt2.2 không xử lý được mất gói."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-021",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Ứng dụng nào sau đây không sử dụng giao thức UDP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "DNS"
+      },
+      {
+        "id": "B",
+        "content": "Các ứng dụng đa phương tiện"
+      },
+      {
+        "id": "C",
+        "content": "SNMP"
+      },
+      {
+        "id": "D",
+        "content": "Các ứng dụng truyền nhận tin cậy"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Ứng dụng cần truyền nhận tin cậy dùng TCP; UDP không đảm bảo tin cậy.",
+      "whyCorrect": "Ứng dụng cần truyền nhận tin cậy dùng TCP; UDP không đảm bảo tin cậy.",
+      "whyWrong": {
+        "A": "DNS dùng UDP.",
+        "B": "Ứng dụng đa phương tiện thường dùng UDP.",
+        "C": "SNMP dùng UDP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-022",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Các ứng dụng dùng giao thức TCP:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Web, truyền file, Email"
+      },
+      {
+        "id": "B",
+        "content": "Web, DNS, điện thoại Internet"
+      },
+      {
+        "id": "C",
+        "content": "Hội thảo từ xa, điện thoại Internet, streaming media"
+      },
+      {
+        "id": "D",
+        "content": "Telnet, DNS, Email"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Web (HTTP), truyền file (FTP), email (SMTP) cần tin cậy nên dùng TCP.",
+      "whyCorrect": "Web (HTTP), truyền file (FTP), email (SMTP) cần tin cậy nên dùng TCP.",
+      "whyWrong": {
+        "B": "DNS và điện thoại Internet thường dùng UDP.",
+        "C": "Hội thảo từ xa, thoại, streaming thường dùng UDP.",
+        "D": "DNS chủ yếu dùng UDP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-023",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Các ứng dụng dùng giao thức UDP:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Web, truyền file, Email"
+      },
+      {
+        "id": "B",
+        "content": "Web, DNS, điện thoại Internet"
+      },
+      {
+        "id": "C",
+        "content": "Hội thảo từ xa, điện thoại Internet, streaming media"
+      },
+      {
+        "id": "D",
+        "content": "Telnet, DNS, Email"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Hội thảo từ xa, điện thoại Internet, streaming cần độ trễ thấp, chấp nhận mất một ít dữ liệu → thường dùng UDP.",
+      "whyCorrect": "Hội thảo từ xa, điện thoại Internet, streaming cần độ trễ thấp, chấp nhận mất một ít dữ liệu → thường dùng UDP.",
+      "whyWrong": {
+        "A": "Web, truyền file, email dùng TCP.",
+        "B": "Web dùng TCP.",
+        "D": "Telnet và Email dùng TCP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-024",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Những giao thức nào sau đây thuộc tầng vận chuyển (Transport Layer) trong mô hình TCP/IP:",
+    "options": [
+      {
+        "id": "A",
+        "content": "UDP"
+      },
+      {
+        "id": "B",
+        "content": "IP"
+      },
+      {
+        "id": "C",
+        "content": "TCP"
+      },
+      {
+        "id": "D",
+        "content": "Cả A và C đều đúng"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "UDP và TCP là hai giao thức của tầng vận chuyển.",
+      "whyCorrect": "UDP và TCP là hai giao thức của tầng vận chuyển.",
+      "whyWrong": {
+        "A": "Đúng nhưng chưa đủ.",
+        "B": "IP thuộc tầng mạng.",
+        "C": "Đúng nhưng chưa đủ."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-025",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Giao thức nào cung cấp tính năng vận chuyển gói tin có độ tin cậy cao:",
+    "options": [
+      {
+        "id": "A",
+        "content": "UDP"
+      },
+      {
+        "id": "B",
+        "content": "TCP"
+      },
+      {
+        "id": "C",
+        "content": "ARP"
+      },
+      {
+        "id": "D",
+        "content": "IP"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "TCP cung cấp truyền tin cậy, đúng thứ tự.",
+      "whyCorrect": "TCP cung cấp truyền tin cậy, đúng thứ tự.",
+      "whyWrong": {
+        "A": "UDP không tin cậy.",
+        "C": "ARP phân giải IP → MAC.",
+        "D": "IP là dịch vụ best-effort, không tin cậy."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-026",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Khẳng định nào sau đây là đúng khi nói về kỹ thuật sử dụng băng thông hiệu quả:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Điều khiển luồng cửa sổ tĩnh"
+      },
+      {
+        "id": "B",
+        "content": "Điều khiển luồng tốc độ đảm bảo"
+      },
+      {
+        "id": "C",
+        "content": "Điều khiển luồng cửa sổ động"
+      },
+      {
+        "id": "D",
+        "content": "Điều khiển luồng tốc độ động"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Điều khiển luồng bằng cửa sổ động (kích thước cửa sổ thay đổi theo khả năng bên nhận, như receive window của TCP) giúp tận dụng băng thông hiệu quả.",
+      "whyCorrect": "Điều khiển luồng bằng cửa sổ động (kích thước cửa sổ thay đổi theo khả năng bên nhận, như receive window của TCP) giúp tận dụng băng thông hiệu quả.",
+      "whyWrong": {
+        "A": "Cửa sổ tĩnh không thích nghi với tình trạng bên nhận.",
+        "B": "\"Tốc độ đảm bảo\" không phải kỹ thuật điều khiển luồng được dạy.",
+        "D": "\"Tốc độ động\" không phải cơ chế cửa sổ."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-027",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Giao thức TCP hoạt động cùng tầng với những giao thức nào:",
+    "options": [
+      {
+        "id": "A",
+        "content": "ARP, RARP"
+      },
+      {
+        "id": "B",
+        "content": "UDP"
+      },
+      {
+        "id": "C",
+        "content": "TELNET, FTP"
+      },
+      {
+        "id": "D",
+        "content": "IP, ARP"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "TCP và UDP cùng thuộc tầng vận chuyển.",
+      "whyCorrect": "TCP và UDP cùng thuộc tầng vận chuyển.",
+      "whyWrong": {
+        "A": "ARP/RARP thuộc tầng mạng–liên kết.",
+        "C": "Telnet, FTP thuộc tầng ứng dụng.",
+        "D": "IP thuộc tầng mạng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-028",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong gói dữ liệu UDP (UDP segment), vùng dữ liệu thực sự bắt đầu từ byte thứ:",
+    "options": [
+      {
+        "id": "A",
+        "content": "4"
+      },
+      {
+        "id": "B",
+        "content": "5"
+      },
+      {
+        "id": "C",
+        "content": "8"
+      },
+      {
+        "id": "D",
+        "content": "9"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Header UDP chiếm byte 1–8, nên dữ liệu bắt đầu từ byte thứ 9.",
+      "whyCorrect": "Header UDP chiếm byte 1–8, nên dữ liệu bắt đầu từ byte thứ 9.",
+      "whyWrong": {
+        "A": "Byte 4 vẫn nằm trong header.",
+        "B": "Byte 5 là trường length.",
+        "C": "Byte 8 là byte cuối của header (checksum)."
+      },
+      "tip": "Đếm từ byte 1: header = 1–8 → dữ liệu từ byte **9**."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-029",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Để phát hiện lỗi trong gói tin, người ta sử dụng kỹ thuật:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Số thứ tự (sequence number)"
+      },
+      {
+        "id": "B",
+        "content": "Số thứ tự ghi nhận (acknowledgement number)"
+      },
+      {
+        "id": "C",
+        "content": "Bộ định thời (timer)"
+      },
+      {
+        "id": "D",
+        "content": "Checksum"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Checksum dùng để phát hiện lỗi bit trong gói tin.",
+      "whyCorrect": "Checksum dùng để phát hiện lỗi bit trong gói tin.",
+      "whyWrong": {
+        "A": "Sequence number để nhận biết thứ tự/gói trùng.",
+        "B": "ACK number để xác nhận dữ liệu đã nhận.",
+        "C": "Timer để phát hiện mất gói."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-030",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Checksum trong gói dữ liệu UDP có độ dài:",
+    "options": [
+      {
+        "id": "A",
+        "content": "4 bit"
+      },
+      {
+        "id": "B",
+        "content": "8 bit"
+      },
+      {
+        "id": "C",
+        "content": "16 bit"
+      },
+      {
+        "id": "D",
+        "content": "32 bit"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Mỗi trường trong header UDP dài 16 bit, gồm cả checksum.",
+      "whyCorrect": "Mỗi trường trong header UDP dài 16 bit, gồm cả checksum.",
+      "whyWrong": {
+        "A": "4 bit quá ngắn.",
+        "B": "8 bit sai: trường checksum UDP dài 16 bit.",
+        "D": "32 bit là độ dài một hàng (2 trường)."
+      },
+      "related": "> **Lưu ý:** đáp án tham khảo trong tài liệu (Đề A NMMMT ghi B) chưa chính xác — đáp án đúng là **C**."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề A NMMMT"
+    },
+    "verification": "verified",
+    "tags": [
+      "deA",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-031",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "UDP được gọi là giao thức không hướng kết nối (connectionless) vì:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tất cả các đáp án đều sai"
+      },
+      {
+        "id": "B",
+        "content": "Tất cả gói tin UDP được đối xử một cách độc lập"
+      },
+      {
+        "id": "C",
+        "content": "Cả B và D"
+      },
+      {
+        "id": "D",
+        "content": "Nó gửi dữ liệu như là một luồng các gói tin liên quan đến nhau"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "UDP không bắt tay trước khi gửi; mỗi gói được xử lý độc lập với các gói khác.",
+      "whyCorrect": "UDP không bắt tay trước khi gửi; mỗi gói được xử lý độc lập với các gói khác.",
+      "whyWrong": {
+        "A": "B đúng nên A sai.",
+        "C": "D sai nên C sai.",
+        "D": "Luồng các gói liên quan nhau là đặc điểm hướng kết nối (TCP)."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-032",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Giao thức truyền tin cậy (rdt-reliable data transfer protocol) cần được sử dụng trên:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Các kênh truyền có độ tin cậy cao"
+      },
+      {
+        "id": "B",
+        "content": "Các kênh truyền không tin cậy"
+      },
+      {
+        "id": "C",
+        "content": "Cả hai trường hợp trên đều đúng"
+      },
+      {
+        "id": "D",
+        "content": "Cả hai trường hợp trên đều sai"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Truyền tin cậy (rdt) cần khi kênh bên dưới không tin cậy (lỗi bit, mất gói).",
+      "whyCorrect": "Truyền tin cậy (rdt) cần khi kênh bên dưới không tin cậy (lỗi bit, mất gói).",
+      "whyWrong": {
+        "A": "Kênh đã tin cậy thì không cần rdt.",
+        "C": "Chỉ cần với kênh không tin cậy.",
+        "D": "B đúng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-033",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "UDP socket được xác định bởi:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Địa chỉ IP nguồn, địa chỉ IP đích"
+      },
+      {
+        "id": "B",
+        "content": "Địa chỉ IP nguồn, số port nguồn"
+      },
+      {
+        "id": "C",
+        "content": "Địa chỉ IP đích, số port đích"
+      },
+      {
+        "id": "D",
+        "content": "Địa chỉ IP nguồn, địa chỉ IP đích, số port nguồn, số port đích"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "UDP socket được xác định bởi bộ 2 (IP đích, port đích); các segment có cùng IP/port đích vào cùng socket dù nguồn khác nhau.",
+      "whyCorrect": "UDP socket được xác định bởi bộ 2 (IP đích, port đích); các segment có cùng IP/port đích vào cùng socket dù nguồn khác nhau.",
+      "whyWrong": {
+        "A": "Thiếu số port.",
+        "B": "IP/port nguồn không dùng để demux trong UDP.",
+        "D": "Bộ 4 thông số là của TCP socket."
+      },
+      "related": "UDP demux: (IP đích, port đích). TCP demux: (IP nguồn, port nguồn, IP đích, port đích)."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-034",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Giả sử trường Length của một gói dữ liệu UDP có giá trị `150`. Dữ liệu thực sự sẽ có:",
+    "options": [
+      {
+        "id": "A",
+        "content": "67 byte"
+      },
+      {
+        "id": "B",
+        "content": "142 byte"
+      },
+      {
+        "id": "C",
+        "content": "150 byte"
+      },
+      {
+        "id": "D",
+        "content": "158 byte"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Length gồm cả 8 byte header: dữ liệu = 150 − 8 = 142 byte.",
+      "whyCorrect": "Length gồm cả 8 byte header: dữ liệu = 150 − 8 = 142 byte.",
+      "whyWrong": {
+        "A": "67 không ứng với phép tính đúng.",
+        "C": "150 là cả segment, chưa trừ header.",
+        "D": "158 là cộng thêm 8 thay vì trừ."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-035",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Các giao thức của tầng giao vận (Transport):",
+    "options": [
+      {
+        "id": "A",
+        "content": "Kiểm soát việc truyền tin giữa hai tiến trình trên mạng máy tính"
+      },
+      {
+        "id": "B",
+        "content": "Kiểm soát nội dung thông điệp trao đổi giữa hai tiến trình và hành vi của mỗi bên khi nhận được thông điệp"
+      },
+      {
+        "id": "C",
+        "content": "Kiểm soát việc truyền tin giữa hai máy tính trên mạng máy tính"
+      },
+      {
+        "id": "D",
+        "content": "Kiểm soát việc truyền dữ liệu giữa hai máy tính trên cùng một môi trường truyền"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Tầng vận chuyển cung cấp truyền thông logic giữa các tiến trình chạy trên các host khác nhau.",
+      "whyCorrect": "Tầng vận chuyển cung cấp truyền thông logic giữa các tiến trình chạy trên các host khác nhau.",
+      "whyWrong": {
+        "B": "Nội dung thông điệp và hành vi là việc của giao thức ứng dụng.",
+        "C": "Truyền giữa hai máy là tầng mạng.",
+        "D": "Truyền trên cùng môi trường là tầng liên kết."
+      },
+      "tip": "Tầng mạng: host ↔ host · Tầng vận chuyển: **tiến trình ↔ tiến trình**."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-036",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong gói dữ liệu UDP (UDP segment), địa chỉ dùng để xác định tiến trình nhận nằm ở:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Byte 1 và 2"
+      },
+      {
+        "id": "B",
+        "content": "Byte 3 và 4"
+      },
+      {
+        "id": "C",
+        "content": "Byte 5 và 6"
+      },
+      {
+        "id": "D",
+        "content": "Không xác định"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Header UDP: byte 1–2 là port nguồn, byte 3–4 là port đích (xác định tiến trình nhận).",
+      "whyCorrect": "Header UDP: byte 1–2 là port nguồn, byte 3–4 là port đích (xác định tiến trình nhận).",
+      "whyWrong": {
+        "A": "Byte 1–2 là port nguồn.",
+        "C": "Byte 5–6 là trường length.",
+        "D": "Vị trí port đích cố định trong header."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-037",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Mục đích của số port trong header của TCP và UDP là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Bắt đầu quá trình bắt tay 3 bước"
+      },
+      {
+        "id": "B",
+        "content": "Tập hợp các segment cho đúng thứ tự"
+      },
+      {
+        "id": "C",
+        "content": "Xác định số lượng segment có thể được gửi đi cùng lúc mà không cần ACK"
+      },
+      {
+        "id": "D",
+        "content": "Xác định tiến trình đang gửi/nhận dữ liệu"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Số port xác định tiến trình gửi/nhận trên host — cơ sở để mux/demux.",
+      "whyCorrect": "Số port xác định tiến trình gửi/nhận trên host — cơ sở để mux/demux.",
+      "whyWrong": {
+        "A": "Bắt tay 3 bước dùng cờ SYN/ACK.",
+        "B": "Sắp xếp thứ tự dùng sequence number.",
+        "C": "Số segment gửi được khi chưa có ACK do cửa sổ quy định."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-038",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong giao thức truyền dữ liệu tin cậy (rdt), giao thức nào sau đây xử lý được trường hợp mất gói tin ACK?",
+    "options": [
+      {
+        "id": "A",
+        "content": "rdt2.1"
+      },
+      {
+        "id": "B",
+        "content": "rdt2.2"
+      },
+      {
+        "id": "C",
+        "content": "rdt3.0"
+      },
+      {
+        "id": "D",
+        "content": "Không thể xử lý được việc mất gói tin ACK"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "rdt3.0 thêm timer: mất gói dữ liệu hay mất ACK thì bên gửi đều hết giờ và gửi lại; số thứ tự giúp bên nhận bỏ gói trùng.",
+      "whyCorrect": "rdt3.0 thêm timer: mất gói dữ liệu hay mất ACK thì bên gửi đều hết giờ và gửi lại; số thứ tự giúp bên nhận bỏ gói trùng.",
+      "whyWrong": {
+        "A": "rdt2.1 không có timer nên không xử lý được mất gói.",
+        "B": "rdt2.2 không có timer nên không xử lý được mất gói.",
+        "D": "rdt3.0 xử lý được."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-039",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Lượng dữ liệu lớn nhất mà một segment có thể chứa được giới hạn bởi thông số nào sau đây?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Băng thông tối đa"
+      },
+      {
+        "id": "B",
+        "content": "MTU (Maximum Transmission Unit)"
+      },
+      {
+        "id": "C",
+        "content": "MSS (Maximum Segment Size)"
+      },
+      {
+        "id": "D",
+        "content": "Băng thông tối đa và MTU"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Lượng dữ liệu tối đa trong một segment TCP là MSS (Maximum Segment Size).",
+      "whyCorrect": "Lượng dữ liệu tối đa trong một segment TCP là MSS (Maximum Segment Size).",
+      "whyWrong": {
+        "A": "Băng thông không giới hạn kích thước segment.",
+        "B": "MTU là giới hạn của frame tầng liên kết; MSS được suy ra từ MTU nhưng đại lượng giới hạn dữ liệu segment là MSS.",
+        "D": "Đại lượng trực tiếp là MSS."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-040",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Tính checksum của 2 chuỗi 16 bit sau:  \n`10101100 01010001`  \n`01001001 11001100`",
+    "options": [
+      {
+        "id": "A",
+        "content": "`00001001 11100010`"
+      },
+      {
+        "id": "B",
+        "content": "`01001001 11100010`"
+      },
+      {
+        "id": "C",
+        "content": "`00001001 11110010`"
+      },
+      {
+        "id": "D",
+        "content": "`00011001 11100010`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Tổng = `10101100 01010001` + `01001001 11001100` = `11110110 00011101` (có tràn, đã cộng vòng). Bù 1 → `00001001 11100010`.",
+      "whyCorrect": "Tổng = `10101100 01010001` + `01001001 11001100` = `11110110 00011101` (có tràn, đã cộng vòng). Bù 1 → `00001001 11100010`.",
+      "whyWrong": {
+        "B": "Sai ở byte cao.",
+        "C": "Sai ở byte thấp.",
+        "D": "Sai một bit ở byte cao."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề NMMMT 2024; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "de2024",
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-041",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong segment mà bên nhận gửi cho bên gửi, nếu số ACK là 200, có nghĩa là bên nhận đã nhận được byte thứ bao nhiêu:",
+    "options": [
+      {
+        "id": "A",
+        "content": "200"
+      },
+      {
+        "id": "B",
+        "content": "199"
+      },
+      {
+        "id": "C",
+        "content": "201"
+      },
+      {
+        "id": "D",
+        "content": "198"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "ACK = 200: bên nhận đã nhận đủ đến byte 199 và đang chờ byte 200.",
+      "whyCorrect": "ACK = 200: bên nhận đã nhận đủ đến byte 199 và đang chờ byte 200.",
+      "whyWrong": {
+        "A": "Byte 200 chưa được nhận.",
+        "C": "Byte 201 chưa được nhận.",
+        "D": "Byte 199 đã được nhận, không chỉ đến 198."
+      },
+      "tip": "ACK = **byte tiếp theo đang chờ**."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-042",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Điều nào sau đây là đúng về bắt tay 3 bước (3-way handshake) của TCP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Số Seq của gói SYN đầu tiên luôn luôn là 0"
+      },
+      {
+        "id": "B",
+        "content": "SYN bit của gói đầu tiên được gán bằng 1"
+      },
+      {
+        "id": "C",
+        "content": "Gói TCP SYN đầu tiên được gửi ra từ phía server"
+      },
+      {
+        "id": "D",
+        "content": "FIN bit của gói đầu tiên được gán bằng 1"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Gói đầu tiên của bắt tay 3 bước có cờ SYN = 1, do client gửi.",
+      "whyCorrect": "Gói đầu tiên của bắt tay 3 bước có cờ SYN = 1, do client gửi.",
+      "whyWrong": {
+        "A": "Seq khởi đầu là số ngẫu nhiên, không luôn là 0.",
+        "C": "Gói SYN đầu tiên do client gửi.",
+        "D": "FIN dùng để đóng kết nối."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-043",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Phát biểu nào sau đây là ĐÚNG về trường length trong UDP Header?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Xác định chiều dài của header"
+      },
+      {
+        "id": "B",
+        "content": "Xác định chiều dài của dữ liệu (payload)"
+      },
+      {
+        "id": "C",
+        "content": "Có giá trị tối thiểu là 8 bytes"
+      },
+      {
+        "id": "D",
+        "content": "Có chiều dài là 16 bytes"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Length tính cả header 8 byte nên giá trị nhỏ nhất là 8 (khi không có dữ liệu).",
+      "whyCorrect": "Length tính cả header 8 byte nên giá trị nhỏ nhất là 8 (khi không có dữ liệu).",
+      "whyWrong": {
+        "A": "Length là độ dài cả segment, không chỉ header.",
+        "B": "Length gồm cả header, không chỉ payload.",
+        "D": "Bản thân trường Length dài 16 bit (2 byte)."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-044",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong TCP Slow start, trước khi Congestion window (Cwin) đạt đến giá trị ngưỡng, nó sẽ tăng theo phương thức nào sau đây?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tăng tuyến tính"
+      },
+      {
+        "id": "B",
+        "content": "Tăng theo cấp số nhân"
+      },
+      {
+        "id": "C",
+        "content": "Tăng bình phương"
+      },
+      {
+        "id": "D",
+        "content": "Không tăng"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Slow start: cwnd nhân đôi mỗi RTT (tăng theo cấp số nhân) cho đến khi chạm ssthresh.",
+      "whyCorrect": "Slow start: cwnd nhân đôi mỗi RTT (tăng theo cấp số nhân) cho đến khi chạm ssthresh.",
+      "whyWrong": {
+        "A": "Tăng tuyến tính là congestion avoidance.",
+        "C": "Không tăng theo bình phương.",
+        "D": "cwnd luôn tăng khi nhận ACK trong slow start."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập; Đề thi mẫu Khoa MMT&TT"
+    },
+    "verification": "verified",
+    "tags": [
+      "demau",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-045",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong các định dạng header của segment UDP có 4 field:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Source port, destination port, length, checksum"
+      },
+      {
+        "id": "B",
+        "content": "Source port, destination port, head length, checksum"
+      },
+      {
+        "id": "C",
+        "content": "Source port, destination port, sequence number, acknowledgement number"
+      },
+      {
+        "id": "D",
+        "content": "Source port, destination port, sequence number, receive window"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Header UDP gồm: source port, destination port, length, checksum.",
+      "whyCorrect": "Header UDP gồm: source port, destination port, length, checksum.",
+      "whyWrong": {
+        "B": "Header length là trường của TCP.",
+        "C": "Seq/ACK number chỉ có trong TCP.",
+        "D": "Seq và receive window chỉ có trong TCP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-046",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "TCP và UDP hoạt động ở tầng nào các chồng giao thức?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tầng vận chuyển"
+      },
+      {
+        "id": "B",
+        "content": "Tầng mạng"
+      },
+      {
+        "id": "C",
+        "content": "Tầng liên kết"
+      },
+      {
+        "id": "D",
+        "content": "Tầng Ứng Dụng"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "TCP và UDP hoạt động ở tầng vận chuyển.",
+      "whyCorrect": "TCP và UDP hoạt động ở tầng vận chuyển.",
+      "whyWrong": {
+        "B": "Tầng mạng là IP.",
+        "C": "Tầng liên kết là Ethernet, Wi-Fi.",
+        "D": "Tầng ứng dụng là HTTP, SMTP, DNS…"
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-047",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong RDT, việc xác định thứ tự của các gói tin dựa trên cơ chế nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Sequence Number."
+      },
+      {
+        "id": "B",
+        "content": "Acknowledgment."
+      },
+      {
+        "id": "C",
+        "content": "Window Size."
+      },
+      {
+        "id": "D",
+        "content": "Timeout."
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Thứ tự gói tin được xác định bằng số thứ tự (sequence number).",
+      "whyCorrect": "Thứ tự gói tin được xác định bằng số thứ tự (sequence number).",
+      "whyWrong": {
+        "B": "ACK xác nhận đã nhận.",
+        "C": "Window giới hạn số gói chưa xác nhận.",
+        "D": "Timeout phát hiện mất gói."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-048",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong hoạt động Go-Back-N (Pipelined), phía gửi phát đồng thời 3 gói 0, 1, 2. Phía nhận thu chính xác 3 gói và trả về 3 ACK nhưng phía gửi chỉ nhận được ACK(0). Tiếp theo phía gửi sẽ phát?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phát gói 3, 4, 5"
+      },
+      {
+        "id": "B",
+        "content": "Chờ hết thời gian để phát lại gói 1 và gói 2"
+      },
+      {
+        "id": "C",
+        "content": "Phát gói 2, 3, 4"
+      },
+      {
+        "id": "D",
+        "content": "Phát gói 1, 2, 3"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Go-Back-N: chỉ nhận ACK(0) → gói 1 và 2 chưa được xác nhận; bên gửi chờ hết giờ rồi phát lại gói 1 và 2.",
+      "whyCorrect": "Go-Back-N: chỉ nhận ACK(0) → gói 1 và 2 chưa được xác nhận; bên gửi chờ hết giờ rồi phát lại gói 1 và 2.",
+      "whyWrong": {
+        "A": "Không thể gửi gói mới khi gói 1, 2 chưa được xác nhận và hết giờ.",
+        "C": "Phải gửi lại từ gói 1.",
+        "D": "Gói 3 không nằm trong danh sách cần gửi lại."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu; Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45",
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-049",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong hoạt động Selective Repeat, phía gửi phát đồng thời 4 gói 0, 1, 2, 3. Phía nhận thu chính xác 4 gói và trả về 4 ACK. Tiếp theo phía gửi sẽ phát?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phát gói 4, 5, 6"
+      },
+      {
+        "id": "B",
+        "content": "Chờ hết thời gian để phát lại gói 0, gói 1, gói 2 và gói 3"
+      },
+      {
+        "id": "C",
+        "content": "Phát gói 3, 4, 5"
+      },
+      {
+        "id": "D",
+        "content": "Phát gói 1, 2, 3, 4"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Cả 4 gói đều được ACK nên cửa sổ trượt sang; bên gửi tiếp tục phát các gói mới 4, 5, 6.",
+      "whyCorrect": "Cả 4 gói đều được ACK nên cửa sổ trượt sang; bên gửi tiếp tục phát các gói mới 4, 5, 6.",
+      "whyWrong": {
+        "B": "Không có gói nào cần gửi lại.",
+        "C": "Gói 3 đã được ACK.",
+        "D": "Gói 1, 2, 3 đã được ACK."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-050",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong hoạt động Go-Back-N (Pipelined), phía gửi phát đồng thời 5 gói 0, 1, 2, 3, 4. Phía nhận thu chỉ nhận được ACK(0) và ACK(1). Tiếp theo phía gửi sẽ phát?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phát gói 2, 3, 4"
+      },
+      {
+        "id": "B",
+        "content": "Chờ hết thời gian để phát lại gói 0 và gói 1"
+      },
+      {
+        "id": "C",
+        "content": "Phát gói 1, 2, 3, 4, 5"
+      },
+      {
+        "id": "D",
+        "content": "Phát gói 3, 4, 5"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "ACK(1) xác nhận đến gói 1; gói 2, 3, 4 chưa có ACK nên khi hết giờ, bên gửi Go-Back-N phát lại 2, 3, 4.",
+      "whyCorrect": "ACK(1) xác nhận đến gói 1; gói 2, 3, 4 chưa có ACK nên khi hết giờ, bên gửi Go-Back-N phát lại 2, 3, 4.",
+      "whyWrong": {
+        "B": "Gói 0 và 1 đã được xác nhận.",
+        "C": "Gói 1 đã được xác nhận; gói 5 chưa từng được gửi.",
+        "D": "Phải gửi lại từ gói 2."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ 45 câu"
+    },
+    "verification": "verified",
+    "tags": [
+      "de45"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-051",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "UDP phù hợp nhất với loại ứng dụng nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ứng dụng thời gian thực (streaming, game, thoại)"
+      },
+      {
+        "id": "B",
+        "content": "Email"
+      },
+      {
+        "id": "C",
+        "content": "Truyền file"
+      },
+      {
+        "id": "D",
+        "content": "Ngân hàng trực tuyến"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "UDP phù hợp với ứng dụng thời gian thực (streaming, game, thoại) cần độ trễ thấp, chấp nhận mất một ít dữ liệu.",
+      "whyCorrect": "UDP phù hợp với ứng dụng thời gian thực (streaming, game, thoại) cần độ trễ thấp, chấp nhận mất một ít dữ liệu.",
+      "whyWrong": {
+        "B": "Email cần tin cậy, dùng TCP.",
+        "C": "Truyền file cần tin cậy, dùng TCP.",
+        "D": "Ngân hàng trực tuyến cần tin cậy, dùng TCP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-052",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Giao thức nào dưới đây KHÔNG sử dụng UDP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "DNS"
+      },
+      {
+        "id": "B",
+        "content": "SMTP"
+      },
+      {
+        "id": "C",
+        "content": "SNMP"
+      },
+      {
+        "id": "D",
+        "content": "DHCP"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "SMTP chạy trên TCP; DNS, SNMP, DHCP dùng UDP.",
+      "whyCorrect": "SMTP chạy trên TCP; DNS, SNMP, DHCP dùng UDP.",
+      "whyWrong": {
+        "A": "DNS dùng UDP.",
+        "C": "SNMP dùng UDP.",
+        "D": "DHCP dùng UDP."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-053",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trường Length trong header UDP cho biết:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chỉ độ dài header"
+      },
+      {
+        "id": "B",
+        "content": "Độ dài toàn bộ segment, gồm cả header"
+      },
+      {
+        "id": "C",
+        "content": "Chỉ độ dài dữ liệu (payload)"
+      },
+      {
+        "id": "D",
+        "content": "Luôn bằng 16 byte"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Trường Length cho biết độ dài toàn bộ segment UDP, gồm cả header 8 byte.",
+      "whyCorrect": "Trường Length cho biết độ dài toàn bộ segment UDP, gồm cả header 8 byte.",
+      "whyWrong": {
+        "A": "Header luôn 8 byte, không cần trường riêng.",
+        "C": "Length gồm cả header.",
+        "D": "Giá trị Length thay đổi theo dữ liệu."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-054",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Điểm yếu của Internet checksum là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Không phát hiện được lỗi 1 bit"
+      },
+      {
+        "id": "B",
+        "content": "Làm chậm truyền gấp đôi"
+      },
+      {
+        "id": "C",
+        "content": "Không dùng được cho TCP"
+      },
+      {
+        "id": "D",
+        "content": "Hai bit cùng vị trí bị đảo ngược nhau thì checksum không đổi, không phát hiện được"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Nếu hai bit cùng vị trí ở hai từ bị đảo ngược nhau (0→1 và 1→0), tổng không đổi nên checksum không phát hiện được lỗi.",
+      "whyCorrect": "Nếu hai bit cùng vị trí ở hai từ bị đảo ngược nhau (0→1 và 1→0), tổng không đổi nên checksum không phát hiện được lỗi.",
+      "whyWrong": {
+        "A": "Checksum phát hiện được mọi lỗi 1 bit.",
+        "B": "Checksum không làm chậm gấp đôi.",
+        "C": "TCP cũng dùng Internet checksum."
+      }
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-055",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "rdt1.0 giả định kênh truyền như thế nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Có mất gói"
+      },
+      {
+        "id": "B",
+        "content": "Có lỗi bit"
+      },
+      {
+        "id": "C",
+        "content": "Hoàn toàn tin cậy, không lỗi, không mất gói"
+      },
+      {
+        "id": "D",
+        "content": "ACK có thể bị lỗi"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "rdt1.0 giả định kênh hoàn toàn tin cậy: không lỗi bit, không mất gói.",
+      "whyCorrect": "rdt1.0 giả định kênh hoàn toàn tin cậy: không lỗi bit, không mất gói.",
+      "whyWrong": {
+        "A": "Mất gói được xét từ rdt3.0.",
+        "B": "Lỗi bit được xét từ rdt2.0.",
+        "D": "ACK lỗi được xét từ rdt2.1."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-056",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "rdt2.0 bổ sung cơ chế gì để xử lý lỗi bit?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Timer"
+      },
+      {
+        "id": "B",
+        "content": "Số thứ tự 0/1"
+      },
+      {
+        "id": "C",
+        "content": "Checksum và phản hồi ACK/NAK"
+      },
+      {
+        "id": "D",
+        "content": "Cửa sổ trượt"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "rdt2.0 dùng checksum để phát hiện lỗi bit và phản hồi ACK/NAK để bên gửi biết khi nào cần gửi lại.",
+      "whyCorrect": "rdt2.0 dùng checksum để phát hiện lỗi bit và phản hồi ACK/NAK để bên gửi biết khi nào cần gửi lại.",
+      "whyWrong": {
+        "A": "Timer có từ rdt3.0.",
+        "B": "Số thứ tự 0/1 có từ rdt2.1.",
+        "D": "Cửa sổ trượt thuộc các giao thức pipelining."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-057",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "rdt2.1 giải quyết vấn đề gì của rdt2.0?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Mất gói dữ liệu"
+      },
+      {
+        "id": "B",
+        "content": "Hiệu suất thấp"
+      },
+      {
+        "id": "C",
+        "content": "Độ trễ lớn"
+      },
+      {
+        "id": "D",
+        "content": "ACK/NAK bị lỗi gây nhận trùng gói – giải quyết bằng số thứ tự 0/1"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "rdt2.1 giải quyết trường hợp ACK/NAK bị lỗi (bên gửi phải gửi lại, dễ gây trùng) bằng số thứ tự 0/1.",
+      "whyCorrect": "rdt2.1 giải quyết trường hợp ACK/NAK bị lỗi (bên gửi phải gửi lại, dễ gây trùng) bằng số thứ tự 0/1.",
+      "whyWrong": {
+        "A": "Mất gói được giải quyết ở rdt3.0.",
+        "B": "Hiệu suất thấp được cải thiện bằng pipelining.",
+        "C": "rdt2.1 không nhắm vào độ trễ."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-058",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "rdt2.2 khác rdt2.1 ở điểm nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thêm timer"
+      },
+      {
+        "id": "B",
+        "content": "Bỏ NAK, dùng ACK kèm số thứ tự (ACK trùng thay cho NAK)"
+      },
+      {
+        "id": "C",
+        "content": "Xử lý được mất gói"
+      },
+      {
+        "id": "D",
+        "content": "Gửi nhiều gói cùng lúc"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "rdt2.2 bỏ NAK: bên nhận chỉ gửi ACK kèm số thứ tự của gói đúng cuối cùng; ACK trùng có tác dụng như NAK.",
+      "whyCorrect": "rdt2.2 bỏ NAK: bên nhận chỉ gửi ACK kèm số thứ tự của gói đúng cuối cùng; ACK trùng có tác dụng như NAK.",
+      "whyWrong": {
+        "A": "Timer có từ rdt3.0.",
+        "C": "rdt2.2 chưa xử lý mất gói.",
+        "D": "rdt2.2 vẫn là stop-and-wait."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-059",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Hiệu suất bên gửi của stop-and-wait với L = 8000 bit, R = 1 Gbps, RTT = 30 ms xấp xỉ:",
+    "options": [
+      {
+        "id": "A",
+        "content": "0,027"
+      },
+      {
+        "id": "B",
+        "content": "0,00027"
+      },
+      {
+        "id": "C",
+        "content": "0,27"
+      },
+      {
+        "id": "D",
+        "content": "0,0027"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$L/R = 8000/10^9 = 0{,}008$ ms; $U = \\frac{L/R}{RTT + L/R} = \\frac{0{,}008}{30{,}008} \\approx 0{,}00027$.",
+      "whyCorrect": "$L/R = 8000/10^9 = 0{,}008$ ms; $U = \\frac{L/R}{RTT + L/R} = \\frac{0{,}008}{30{,}008} \\approx 0{,}00027$.",
+      "whyWrong": {
+        "A": "Sai gấp 100 lần do đổi đơn vị sai.",
+        "C": "Sai gấp 1000 lần.",
+        "D": "Sai gấp 10 lần."
+      },
+      "related": "Stop-and-wait rất kém hiệu quả trên đường truyền nhanh, RTT lớn → cần pipelining."
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-060",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Kỹ thuật pipelining cho phép:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Gửi nhiều gói liên tiếp mà không chờ ACK của từng gói"
+      },
+      {
+        "id": "B",
+        "content": "Chỉ gửi một gói rồi chờ ACK"
+      },
+      {
+        "id": "C",
+        "content": "Nén gói tin"
+      },
+      {
+        "id": "D",
+        "content": "Mã hóa gói tin"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Pipelining cho phép gửi nhiều gói liên tiếp mà không chờ ACK của từng gói, giúp tăng hiệu suất.",
+      "whyCorrect": "Pipelining cho phép gửi nhiều gói liên tiếp mà không chờ ACK của từng gói, giúp tăng hiệu suất.",
+      "whyWrong": {
+        "B": "Đó là stop-and-wait.",
+        "C": "Pipelining không nén gói.",
+        "D": "Pipelining không mã hóa gói."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-061",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Go-Back-N, cửa sổ N = 4: bên gửi gửi pkt0 – pkt5, pkt2 bị mất. Khi pkt2 hết giờ, bên gửi sẽ:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chỉ gửi lại pkt2"
+      },
+      {
+        "id": "B",
+        "content": "Gửi tiếp pkt6"
+      },
+      {
+        "id": "C",
+        "content": "Gửi lại tất cả từ pkt0"
+      },
+      {
+        "id": "D",
+        "content": "Gửi lại pkt2, pkt3, pkt4, pkt5"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Go-Back-N: gói hết giờ và mọi gói sau nó trong cửa sổ đều phải gửi lại → pkt2, pkt3, pkt4, pkt5.",
+      "whyCorrect": "Go-Back-N: gói hết giờ và mọi gói sau nó trong cửa sổ đều phải gửi lại → pkt2, pkt3, pkt4, pkt5.",
+      "whyWrong": {
+        "A": "Chỉ gửi lại gói mất là Selective Repeat.",
+        "B": "Cửa sổ chưa trượt qua pkt2 nên chưa thể gửi pkt6.",
+        "C": "pkt0, pkt1 đã được xác nhận."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-062",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Selective Repeat, cửa sổ N = 4: bên gửi gửi pkt0 – pkt5, pkt2 bị mất. Khi pkt2 hết giờ, bên gửi sẽ:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Không gửi lại"
+      },
+      {
+        "id": "B",
+        "content": "Gửi lại pkt2 – pkt5"
+      },
+      {
+        "id": "C",
+        "content": "Gửi lại tất cả từ pkt0"
+      },
+      {
+        "id": "D",
+        "content": "Chỉ gửi lại pkt2"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Selective Repeat có timer riêng từng gói và bên nhận đã lưu đệm pkt3–pkt5, nên chỉ gửi lại pkt2.",
+      "whyCorrect": "Selective Repeat có timer riêng từng gói và bên nhận đã lưu đệm pkt3–pkt5, nên chỉ gửi lại pkt2.",
+      "whyWrong": {
+        "A": "Gói mất phải được gửi lại.",
+        "B": "Gửi lại cả loạt là Go-Back-N.",
+        "C": "pkt0, pkt1 đã được xác nhận."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-063",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Go-Back-N: bên gửi phát 3 gói 0, 1, 2; bên nhận nhận đủ và gửi 3 ACK, nhưng bên gửi chỉ nhận được ACK(0) và ACK(2). Bên gửi sẽ:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Gửi lại pkt1"
+      },
+      {
+        "id": "B",
+        "content": "Tiếp tục gửi gói mới (pkt3…) vì ACK(2) đã xác nhận cả pkt1"
+      },
+      {
+        "id": "C",
+        "content": "Gửi lại pkt1 và pkt2"
+      },
+      {
+        "id": "D",
+        "content": "Chờ hết giờ để gửi lại pkt0"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "ACK trong Go-Back-N là tích lũy: ACK(2) xác nhận mọi gói đến 2, nên việc mất ACK(1) không ảnh hưởng; bên gửi tiếp tục gửi gói mới.",
+      "whyCorrect": "ACK trong Go-Back-N là tích lũy: ACK(2) xác nhận mọi gói đến 2, nên việc mất ACK(1) không ảnh hưởng; bên gửi tiếp tục gửi gói mới.",
+      "whyWrong": {
+        "A": "pkt1 đã được ACK(2) xác nhận.",
+        "C": "pkt1, pkt2 đã được xác nhận.",
+        "D": "pkt0 đã được ACK."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-064",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Đặc điểm nào là của Selective Repeat?",
+    "options": [
+      {
+        "id": "A",
+        "content": "ACK riêng từng gói, bên nhận lưu đệm gói đến sai thứ tự"
+      },
+      {
+        "id": "B",
+        "content": "Một timer duy nhất"
+      },
+      {
+        "id": "C",
+        "content": "ACK tích lũy"
+      },
+      {
+        "id": "D",
+        "content": "Bên nhận hủy gói sai thứ tự"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Selective Repeat: bên nhận ACK riêng từng gói và lưu đệm các gói đến sai thứ tự.",
+      "whyCorrect": "Selective Repeat: bên nhận ACK riêng từng gói và lưu đệm các gói đến sai thứ tự.",
+      "whyWrong": {
+        "B": "SR có timer riêng cho từng gói.",
+        "C": "ACK tích lũy là Go-Back-N.",
+        "D": "Hủy gói sai thứ tự là bên nhận Go-Back-N."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-065",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Selective Repeat dùng số thứ tự 3 bit (0 – 7). Kích thước cửa sổ lớn nhất để không bị nhầm gói cũ/mới là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "3"
+      },
+      {
+        "id": "B",
+        "content": "7"
+      },
+      {
+        "id": "C",
+        "content": "4"
+      },
+      {
+        "id": "D",
+        "content": "8"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Với Selective Repeat, kích thước cửa sổ phải ≤ một nửa không gian số thứ tự: 8 / 2 = 4.",
+      "whyCorrect": "Với Selective Repeat, kích thước cửa sổ phải ≤ một nửa không gian số thứ tự: 8 / 2 = 4.",
+      "whyWrong": {
+        "A": "3 an toàn nhưng chưa phải giá trị lớn nhất.",
+        "B": "7 là giới hạn của Go-Back-N, với SR sẽ nhầm gói cũ/mới.",
+        "D": "8 chắc chắn gây nhầm lẫn."
+      }
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-066",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Đặc điểm nào KHÔNG phải của TCP?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Hỗ trợ gửi một gói đến nhiều máy (multicast)"
+      },
+      {
+        "id": "B",
+        "content": "Truyền dữ liệu hai chiều (full duplex)"
+      },
+      {
+        "id": "C",
+        "content": "Điểm – điểm (một bên gửi, một bên nhận)"
+      },
+      {
+        "id": "D",
+        "content": "Có điều khiển luồng và tắc nghẽn"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "TCP là giao thức điểm–điểm (một gửi, một nhận), không hỗ trợ multicast.",
+      "whyCorrect": "TCP là giao thức điểm–điểm (một gửi, một nhận), không hỗ trợ multicast.",
+      "whyWrong": {
+        "B": "TCP truyền song công (full duplex).",
+        "C": "TCP là điểm–điểm.",
+        "D": "TCP có điều khiển luồng và tắc nghẽn."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-067",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Độ dài tối thiểu của header TCP là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "8 byte"
+      },
+      {
+        "id": "B",
+        "content": "16 byte"
+      },
+      {
+        "id": "C",
+        "content": "32 byte"
+      },
+      {
+        "id": "D",
+        "content": "20 byte"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Header TCP tối thiểu 20 byte (chưa tính options).",
+      "whyCorrect": "Header TCP tối thiểu 20 byte (chưa tính options).",
+      "whyWrong": {
+        "A": "8 byte là header UDP.",
+        "B": "16 byte không đúng.",
+        "C": "32 byte là khi có thêm options, không phải tối thiểu."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-068",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Host A gửi cho B segment có Seq = 42, chứa 30 byte dữ liệu. ACK mà B gửi lại là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "42"
+      },
+      {
+        "id": "B",
+        "content": "43"
+      },
+      {
+        "id": "C",
+        "content": "72"
+      },
+      {
+        "id": "D",
+        "content": "71"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "ACK = Seq + số byte dữ liệu = 42 + 30 = 72.",
+      "whyCorrect": "ACK = Seq + số byte dữ liệu = 42 + 30 = 72.",
+      "whyWrong": {
+        "A": "42 là Seq của segment vừa nhận.",
+        "B": "43 chỉ đúng khi segment chứa 1 byte.",
+        "D": "71 là byte cuối đã nhận, ACK là byte tiếp theo."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-069",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Thông điệp 9000 byte, mỗi segment chứa tối đa 2000 byte, byte đầu tiên đánh số 0. Segment cuối cùng có Seq bằng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "8000"
+      },
+      {
+        "id": "B",
+        "content": "8999"
+      },
+      {
+        "id": "C",
+        "content": "9000"
+      },
+      {
+        "id": "D",
+        "content": "7999"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "9000 byte chia thành các segment 2000 byte: Seq = 0, 2000, 4000, 6000, 8000; segment cuối chứa byte 8000–8999 nên Seq = 8000.",
+      "whyCorrect": "9000 byte chia thành các segment 2000 byte: Seq = 0, 2000, 4000, 6000, 8000; segment cuối chứa byte 8000–8999 nên Seq = 8000.",
+      "whyWrong": {
+        "B": "8999 là byte cuối cùng, không phải Seq của segment.",
+        "C": "9000 là tổng số byte, vượt quá dữ liệu.",
+        "D": "7999 là byte cuối của segment thứ tư."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-070",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Điều khiển luồng (flow control) trong TCP nhằm mục đích:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tránh làm tràn bộ đệm bên nhận"
+      },
+      {
+        "id": "B",
+        "content": "Tránh làm quá tải mạng"
+      },
+      {
+        "id": "C",
+        "content": "Mã hóa dữ liệu"
+      },
+      {
+        "id": "D",
+        "content": "Chọn đường đi"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Điều khiển luồng giúp bên gửi không gửi quá nhanh làm tràn bộ đệm bên nhận.",
+      "whyCorrect": "Điều khiển luồng giúp bên gửi không gửi quá nhanh làm tràn bộ đệm bên nhận.",
+      "whyWrong": {
+        "B": "Tránh quá tải mạng là điều khiển tắc nghẽn.",
+        "C": "Điều khiển luồng không mã hóa dữ liệu.",
+        "D": "Chọn đường đi là định tuyến."
+      },
+      "tip": "Luồng bảo vệ **bên nhận** · Tắc nghẽn bảo vệ **mạng**."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-071",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "EstimatedRTT = 100 ms, SampleRTT mới đo được = 120 ms, α = 0,125. EstimatedRTT mới là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "110 ms"
+      },
+      {
+        "id": "B",
+        "content": "120 ms"
+      },
+      {
+        "id": "C",
+        "content": "102,5 ms"
+      },
+      {
+        "id": "D",
+        "content": "117,5 ms"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "EstimatedRTT = (1 − α)·EstimatedRTT + α·SampleRTT = 0,875 × 100 + 0,125 × 120 = 102,5 ms.",
+      "whyCorrect": "EstimatedRTT = (1 − α)·EstimatedRTT + α·SampleRTT = 0,875 × 100 + 0,125 × 120 = 102,5 ms.",
+      "whyWrong": {
+        "A": "110 ms là trung bình cộng, không phải trung bình trượt có trọng số.",
+        "B": "120 ms là chỉ lấy mẫu mới.",
+        "D": "117,5 ms là đảo trọng số."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-072",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Công thức tính khoảng timeout của TCP là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "TimeoutInterval = EstimatedRTT / 4"
+      },
+      {
+        "id": "B",
+        "content": "TimeoutInterval = 2 × EstimatedRTT"
+      },
+      {
+        "id": "C",
+        "content": "TimeoutInterval = SampleRTT + DevRTT"
+      },
+      {
+        "id": "D",
+        "content": "TimeoutInterval = EstimatedRTT + 4 × DevRTT"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "TimeoutInterval = EstimatedRTT + 4 × DevRTT (4 × DevRTT là biên an toàn).",
+      "whyCorrect": "TimeoutInterval = EstimatedRTT + 4 × DevRTT (4 × DevRTT là biên an toàn).",
+      "whyWrong": {
+        "A": "Timeout phải lớn hơn RTT ước lượng.",
+        "B": "Không dùng hệ số 2 cố định.",
+        "C": "Không dùng SampleRTT trực tiếp."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-073",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "TCP thực hiện truyền lại nhanh (fast retransmit) khi:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nhận được 1 ACK trùng"
+      },
+      {
+        "id": "B",
+        "content": "Nhận được gói SYN"
+      },
+      {
+        "id": "C",
+        "content": "Hết thời gian timeout"
+      },
+      {
+        "id": "D",
+        "content": "Nhận được 3 ACK trùng"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Nhận 3 ACK trùng → TCP gửi lại ngay segment bị mất mà không chờ timeout (fast retransmit).",
+      "whyCorrect": "Nhận 3 ACK trùng → TCP gửi lại ngay segment bị mất mà không chờ timeout (fast retransmit).",
+      "whyWrong": {
+        "A": "Một ACK trùng có thể chỉ do gói đến sai thứ tự.",
+        "B": "SYN dùng để thiết lập kết nối.",
+        "C": "Hết timeout là truyền lại thông thường, không phải fast retransmit."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-074",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Gói TCP SYN dùng số thứ tự (Sequence Number) nào để khởi tạo kết nối?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Luôn bằng 0"
+      },
+      {
+        "id": "B",
+        "content": "Luôn bằng 1"
+      },
+      {
+        "id": "C",
+        "content": "Một số ngẫu nhiên"
+      },
+      {
+        "id": "D",
+        "content": "Luôn bằng –1"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Mỗi bên chọn ngẫu nhiên số thứ tự khởi đầu (ISN) khi bắt tay.",
+      "whyCorrect": "Mỗi bên chọn ngẫu nhiên số thứ tự khởi đầu (ISN) khi bắt tay.",
+      "whyWrong": {
+        "A": "Seq khởi đầu không luôn bằng 0 (Wireshark chỉ hiển thị số tương đối).",
+        "B": "Không luôn bằng 1.",
+        "D": "Số thứ tự không âm."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-075",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Client gửi SYN với Seq = x, server trả SYNACK với Seq = y. Gói thứ ba của client có:",
+    "options": [
+      {
+        "id": "A",
+        "content": "ACK = x + 1"
+      },
+      {
+        "id": "B",
+        "content": "ACK = y + 1"
+      },
+      {
+        "id": "C",
+        "content": "ACK = y"
+      },
+      {
+        "id": "D",
+        "content": "SYN = 1, Seq = y"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Gói thứ ba (ACK của client) xác nhận SYNACK của server nên có ACK = y + 1 (Seq = x + 1).",
+      "whyCorrect": "Gói thứ ba (ACK của client) xác nhận SYNACK của server nên có ACK = y + 1 (Seq = x + 1).",
+      "whyWrong": {
+        "A": "ACK = x + 1 là trong gói SYNACK của server.",
+        "C": "ACK phải là y + 1 vì SYN tiêu tốn 1 số thứ tự.",
+        "D": "Gói thứ ba không có SYN = 1."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-076",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "Trong giai đoạn congestion avoidance, cwnd tăng như thế nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nhân đôi mỗi RTT"
+      },
+      {
+        "id": "B",
+        "content": "Giữ nguyên"
+      },
+      {
+        "id": "C",
+        "content": "Giảm một nửa mỗi RTT"
+      },
+      {
+        "id": "D",
+        "content": "Tăng 1 MSS mỗi RTT"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Congestion avoidance: cwnd tăng tuyến tính 1 MSS mỗi RTT.",
+      "whyCorrect": "Congestion avoidance: cwnd tăng tuyến tính 1 MSS mỗi RTT.",
+      "whyWrong": {
+        "A": "Nhân đôi là slow start.",
+        "B": "cwnd vẫn tăng khi chưa có mất gói.",
+        "C": "Giảm một nửa là khi phát hiện mất gói."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-077",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "TCP đang có cwnd = 20 MSS thì xảy ra timeout. Giá trị mới là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "ssthresh = 10, cwnd = 1"
+      },
+      {
+        "id": "B",
+        "content": "ssthresh = 10, cwnd = 10"
+      },
+      {
+        "id": "C",
+        "content": "ssthresh = 20, cwnd = 1"
+      },
+      {
+        "id": "D",
+        "content": "ssthresh = 10, cwnd = 13"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Timeout: ssthresh = cwnd/2 = 10, cwnd = 1 MSS, quay lại slow start.",
+      "whyCorrect": "Timeout: ssthresh = cwnd/2 = 10, cwnd = 1 MSS, quay lại slow start.",
+      "whyWrong": {
+        "B": "cwnd = ssthresh là phản ứng với 3 ACK trùng, không phải timeout.",
+        "C": "ssthresh phải giảm còn một nửa.",
+        "D": "cwnd = 13 không theo quy tắc nào."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-078",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "TCP đang có cwnd = 12 MSS thì nhận 3 ACK trùng. Theo slide (fast recovery), giá trị mới là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "ssthresh = 6, cwnd = 1"
+      },
+      {
+        "id": "B",
+        "content": "ssthresh = 12, cwnd = 6"
+      },
+      {
+        "id": "C",
+        "content": "ssthresh = 6, cwnd = 9"
+      },
+      {
+        "id": "D",
+        "content": "ssthresh = 6, cwnd = 12"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "3 ACK trùng (fast recovery): ssthresh = 12/2 = 6, cwnd = ssthresh + 3 = 9 MSS.",
+      "whyCorrect": "3 ACK trùng (fast recovery): ssthresh = 12/2 = 6, cwnd = ssthresh + 3 = 9 MSS.",
+      "whyWrong": {
+        "A": "cwnd = 1 là phản ứng với timeout.",
+        "B": "ssthresh phải giảm còn 6.",
+        "D": "cwnd phải giảm, không giữ 12."
+      }
+    },
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-079",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "AIMD trong điều khiển tắc nghẽn TCP có nghĩa là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tăng nhân, giảm cộng"
+      },
+      {
+        "id": "B",
+        "content": "Tăng cộng, giảm nhân"
+      },
+      {
+        "id": "C",
+        "content": "Tăng cộng, giảm cộng"
+      },
+      {
+        "id": "D",
+        "content": "Tăng nhân, giảm nhân"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "AIMD: tăng cộng (+1 MSS mỗi RTT) và giảm nhân (giảm một nửa cwnd khi mất gói).",
+      "whyCorrect": "AIMD: tăng cộng (+1 MSS mỗi RTT) và giảm nhân (giảm một nửa cwnd khi mất gói).",
+      "whyWrong": {
+        "A": "Đảo ngược.",
+        "C": "Giảm phải theo cấp nhân.",
+        "D": "Tăng phải theo cấp cộng."
+      }
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  },
+  {
+    "id": "it005-mid-c3-080",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "ch3-transport",
+    "type": "mcq",
+    "content": "QUIC – nền tảng của HTTP/3 – chạy trên giao thức nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "TCP"
+      },
+      {
+        "id": "B",
+        "content": "SCTP"
+      },
+      {
+        "id": "C",
+        "content": "IP trực tiếp"
+      },
+      {
+        "id": "D",
+        "content": "UDP"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "QUIC chạy trên UDP và tự đảm nhận tin cậy, điều khiển tắc nghẽn, bảo mật ở tầng ứng dụng.",
+      "whyCorrect": "QUIC chạy trên UDP và tự đảm nhận tin cậy, điều khiển tắc nghẽn, bảo mật ở tầng ứng dụng.",
+      "whyWrong": {
+        "A": "QUIC được thiết kế để tránh hạn chế của TCP.",
+        "B": "QUIC không chạy trên SCTP.",
+        "C": "QUIC không chạy trực tiếp trên IP."
+      }
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Bộ đề trắc nghiệm ôn tập"
+    },
+    "verification": "verified",
+    "tags": [
+      "gc"
+    ]
+  }
+]

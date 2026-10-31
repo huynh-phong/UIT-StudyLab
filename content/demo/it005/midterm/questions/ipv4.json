@@ -1,0 +1,182 @@
+[
+  {
+    "id": "demo-ipv4-01",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-ipv4",
+    "type": "mcq",
+    "content": "Cho địa chỉ IP `192.168.10.77/26`. Địa chỉ mạng (network address) của host này là gì?",
+    "options": [
+      { "id": "A", "content": "`192.168.10.0`" },
+      { "id": "B", "content": "`192.168.10.64`" },
+      { "id": "C", "content": "`192.168.10.77`" },
+      { "id": "D", "content": "`192.168.10.127`" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Prefix /26 cho bước nhảy 64 ở octet cuối (0, 64, 128, 192). 77 nằm trong khoảng 64–127 nên địa chỉ mạng là 192.168.10.64.",
+      "whyCorrect": "Địa chỉ mạng = IP AND subnet mask. Mask /26 là 255.255.255.192; 77 AND 192 = 64, nên địa chỉ mạng là 192.168.10.64.",
+      "whyWrong": {
+        "A": "192.168.10.0 là địa chỉ mạng nếu dùng /24 hoặc là subnet đầu tiên (0–63) của /26, nhưng 77 không nằm trong subnet đó.",
+        "C": "192.168.10.77 là chính địa chỉ host, không phải địa chỉ mạng. Địa chỉ mạng luôn có toàn bộ bit host bằng 0.",
+        "D": "192.168.10.127 là địa chỉ broadcast của subnet 64–127 (toàn bộ bit host bằng 1), không phải địa chỉ mạng."
+      },
+      "related": "Với /26, phần host có 6 bit → mỗi subnet có $2^6 = 64$ địa chỉ. Xác định subnet bằng cách tìm bội số của 64 gần nhất nhỏ hơn hoặc bằng octet đang xét.",
+      "tip": "Bước nhảy = 256 − giá trị octet mask (256 − 192 = 64)."
+    },
+    "calc": { "kind": "ipv4", "ip": "192.168.10.77", "prefix": 26, "ask": "network" },
+    "difficulty": "medium",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified",
+    "tags": ["subnet"]
+  },
+  {
+    "id": "demo-ipv4-02",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-ipv4",
+    "type": "mcq",
+    "content": "Một subnet sử dụng prefix **/27**. Số địa chỉ host có thể gán (usable hosts) trong subnet này là bao nhiêu?",
+    "options": [
+      { "id": "A", "content": "32" },
+      { "id": "B", "content": "30" },
+      { "id": "C", "content": "31" },
+      { "id": "D", "content": "62" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "/27 còn 5 bit host nên có $2^5 = 32$ địa chỉ; trừ địa chỉ mạng và broadcast còn 30 host khả dụng.",
+      "whyCorrect": "Số host khả dụng = $2^h - 2$ với h là số bit host. h = 32 − 27 = 5 nên $2^5 - 2 = 30$.",
+      "whyWrong": {
+        "A": "32 là tổng số địa chỉ của subnet, chưa trừ địa chỉ mạng và địa chỉ broadcast.",
+        "C": "31 chỉ trừ một địa chỉ. Cả địa chỉ mạng và broadcast đều không gán được cho host.",
+        "D": "62 là số host khả dụng của /26 (6 bit host), không phải /27."
+      },
+      "related": "Tổng địa chỉ = $2^h$; host khả dụng = $2^h - 2$ (ngoại lệ /31 và /32 dùng cho mục đích đặc biệt).",
+      "tip": "Nhớ \"trừ 2\": một cho địa chỉ mạng, một cho broadcast."
+    },
+    "calc": { "kind": "ipv4", "ip": "10.0.0.0", "prefix": 27, "ask": "usableHosts" },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified",
+    "tags": ["subnet"]
+  },
+  {
+    "id": "demo-ipv4-03",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-ipv4",
+    "type": "mcq",
+    "content": "Subnet mask dạng thập phân tương ứng với prefix **/20** là:",
+    "options": [
+      { "id": "A", "content": "`255.255.255.240`" },
+      { "id": "B", "content": "`255.255.224.0`" },
+      { "id": "C", "content": "`255.255.240.0`" },
+      { "id": "D", "content": "`255.255.248.0`" }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "/20 gồm 16 bit của hai octet đầu và 4 bit đầu của octet thứ ba: 11110000 = 240, nên mask là 255.255.240.0.",
+      "whyCorrect": "20 = 8 + 8 + 4. Octet thứ ba có 4 bit 1 liên tiếp: 128 + 64 + 32 + 16 = 240.",
+      "whyWrong": {
+        "A": "255.255.255.240 là /28 (28 bit 1), nhầm vị trí octet chứa 4 bit 1.",
+        "B": "255.255.224.0 là /19 (octet thứ ba chỉ có 3 bit 1: 128 + 64 + 32 = 224).",
+        "D": "255.255.248.0 là /21 (octet thứ ba có 5 bit 1: 240 + 8 = 248)."
+      },
+      "related": "Các giá trị octet mask hợp lệ: 0, 128, 192, 224, 240, 248, 252, 254, 255 tương ứng 0–8 bit 1.",
+      "tip": "Đếm theo khối 8 bit: /16 = 255.255.0.0, cộng thêm mỗi bit theo dãy 128, 192, 224, 240…"
+    },
+    "calc": { "kind": "ipv4", "ip": "10.0.0.0", "prefix": 20, "ask": "mask" },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified",
+    "tags": ["subnet-mask"]
+  },
+  {
+    "id": "demo-ipv4-04",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-ipv4",
+    "type": "mcq",
+    "content": "Địa chỉ broadcast của subnet chứa host `172.16.5.130/25` là:",
+    "options": [
+      { "id": "A", "content": "`172.16.5.127`" },
+      { "id": "B", "content": "`172.16.5.255`" },
+      { "id": "C", "content": "`172.16.255.255`" },
+      { "id": "D", "content": "`172.16.5.128`" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "/25 chia octet cuối thành hai nửa 0–127 và 128–255. Host .130 thuộc nửa sau nên broadcast là 172.16.5.255.",
+      "whyCorrect": "Broadcast = địa chỉ mạng với toàn bộ bit host bằng 1. Mạng là 172.16.5.128/25, 7 bit host đặt thành 1 cho ra .255.",
+      "whyWrong": {
+        "A": "172.16.5.127 là broadcast của subnet 0–127, nhưng host .130 không thuộc subnet đó.",
+        "C": "172.16.255.255 là broadcast khi dùng /16 (mạng lớp B mặc định), không đúng với /25.",
+        "D": "172.16.5.128 là địa chỉ mạng của subnet chứa host, không phải broadcast."
+      },
+      "related": "Broadcast = địa chỉ mạng + bước nhảy − 1 = 128 + 128 − 1 = 255.",
+      "tip": "Mạng: toàn bit host = 0. Broadcast: toàn bit host = 1."
+    },
+    "calc": { "kind": "ipv4", "ip": "172.16.5.130", "prefix": 25, "ask": "broadcast" },
+    "difficulty": "medium",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified",
+    "tags": ["subnet", "broadcast"]
+  },
+  {
+    "id": "demo-ipv4-05",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-ipv4",
+    "type": "mcq",
+    "content": "Địa chỉ nào sau đây thuộc dải địa chỉ **private** theo RFC 1918?",
+    "options": [
+      { "id": "A", "content": "`172.32.1.1`" },
+      { "id": "B", "content": "`10.255.3.4`" },
+      { "id": "C", "content": "`192.169.1.1`" },
+      { "id": "D", "content": "`100.64.0.1`" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Dải 10.0.0.0/8 là private theo RFC 1918, nên 10.255.3.4 là địa chỉ private.",
+      "whyCorrect": "RFC 1918 quy định ba dải private: 10.0.0.0/8, 172.16.0.0/12 (172.16–172.31) và 192.168.0.0/16. 10.255.3.4 nằm trong 10.0.0.0/8.",
+      "whyWrong": {
+        "A": "Dải private 172.16.0.0/12 chỉ gồm 172.16.x.x đến 172.31.x.x; 172.32.1.1 nằm ngoài dải này.",
+        "C": "Dải private là 192.168.0.0/16; 192.169.1.1 khác octet thứ hai nên là địa chỉ public.",
+        "D": "100.64.0.0/10 là dải Shared Address Space cho CGNAT (RFC 6598), không thuộc RFC 1918."
+      },
+      "related": "| Dải | Prefix |\n|---|---|\n| 10.0.0.0 – 10.255.255.255 | /8 |\n| 172.16.0.0 – 172.31.255.255 | /12 |\n| 192.168.0.0 – 192.168.255.255 | /16 |",
+      "tip": "\"10 – 172.16 đến 31 – 192.168\"."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified",
+    "tags": ["private-ip"]
+  },
+  {
+    "id": "demo-ipv4-essay-01",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-ipv4",
+    "type": "essay",
+    "content": "Một công ty được cấp mạng `192.168.1.0/24` và cần chia thành **4 subnet có kích thước bằng nhau** cho 4 phòng ban.\n\n1. Xác định prefix và subnet mask mới.\n2. Liệt kê địa chỉ mạng và địa chỉ broadcast của từng subnet.\n3. Mỗi subnet có bao nhiêu host khả dụng?",
+    "essay": {
+      "modelAnswer": "Cần 4 subnet nên mượn 2 bit host ($2^2 = 4$): prefix mới là /26, subnet mask 255.255.255.192.\n\n| Subnet | Địa chỉ mạng | Broadcast |\n|---|---|---|\n| 1 | 192.168.1.0 | 192.168.1.63 |\n| 2 | 192.168.1.64 | 192.168.1.127 |\n| 3 | 192.168.1.128 | 192.168.1.191 |\n| 4 | 192.168.1.192 | 192.168.1.255 |\n\nMỗi subnet còn 6 bit host: $2^6 - 2 = 62$ host khả dụng.",
+      "rubric": [
+        { "id": "r1", "criterion": "Xác định đúng prefix /26 và subnet mask 255.255.255.192, có lập luận mượn 2 bit", "points": 2, "keyPoints": ["mượn 2 bit", "/26", "255.255.255.192"] },
+        { "id": "r2", "criterion": "Liệt kê đúng địa chỉ mạng và broadcast của cả 4 subnet", "points": 2, "keyPoints": [".0/.63", ".64/.127", ".128/.191", ".192/.255"] },
+        { "id": "r3", "criterion": "Tính đúng 62 host khả dụng mỗi subnet", "points": 1, "keyPoints": ["2^6 - 2 = 62"] }
+      ]
+    },
+    "difficulty": "medium",
+    "points": 5,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified",
+    "tags": ["subnetting"]
+  }
+]

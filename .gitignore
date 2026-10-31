@@ -1,0 +1,21 @@
+node_modules/
+.next/
+out/
+build/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+
+# môi trường — KHÔNG commit secret
+.env
+.env*.local
+!.env.example
+
+# dữ liệu sinh tự động
+src/generated/
+content/imports/
+
+npm-debug.log*
+.DS_Store
+Thumbs.db

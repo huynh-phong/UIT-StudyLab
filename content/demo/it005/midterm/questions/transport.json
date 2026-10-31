@@ -1,0 +1,150 @@
+[
+  {
+    "id": "demo-transport-01",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-transport",
+    "type": "mcq",
+    "content": "Thứ tự đúng của các gói tin trong quá trình **bắt tay ba bước** (three-way handshake) của TCP là:",
+    "options": [
+      { "id": "A", "content": "SYN → ACK → SYN-ACK" },
+      { "id": "B", "content": "SYN → SYN-ACK → ACK" },
+      { "id": "C", "content": "ACK → SYN → FIN" },
+      { "id": "D", "content": "SYN-ACK → SYN → ACK" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Client gửi SYN, server đáp SYN-ACK, client gửi ACK để hoàn tất thiết lập kết nối.",
+      "whyCorrect": "SYN đề xuất số thứ tự ban đầu của client; SYN-ACK vừa xác nhận SYN đó vừa gửi số thứ tự của server; ACK cuối xác nhận số thứ tự của server.",
+      "whyWrong": {
+        "A": "Server phải phản hồi SYN của client trước bằng SYN-ACK; ACK của client chỉ được gửi sau khi nhận SYN-ACK.",
+        "C": "FIN dùng để đóng kết nối, không thuộc quá trình thiết lập kết nối.",
+        "D": "Kết nối luôn bắt đầu bằng SYN từ phía chủ động mở (client), không phải SYN-ACK."
+      },
+      "related": "Đóng kết nối TCP thường dùng 4 bước: FIN → ACK → FIN → ACK.",
+      "tip": "Hỏi (SYN) — Đáp và hỏi lại (SYN-ACK) — Đáp (ACK)."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-transport-02",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-transport",
+    "type": "mcq",
+    "content": "Giao thức nào sau đây là giao thức tầng giao vận **không hướng kết nối** (connectionless)?",
+    "options": [
+      { "id": "A", "content": "TCP" },
+      { "id": "B", "content": "UDP" },
+      { "id": "C", "content": "HTTP" },
+      { "id": "D", "content": "ARP" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "UDP gửi datagram mà không thiết lập kết nối trước, không có cơ chế xác nhận hay truyền lại.",
+      "whyWrong": {
+        "A": "TCP là giao thức hướng kết nối: phải bắt tay ba bước trước khi truyền và đảm bảo tin cậy.",
+        "C": "HTTP là giao thức tầng Ứng dụng, không phải giao thức tầng giao vận.",
+        "D": "ARP dùng để phân giải địa chỉ IP sang địa chỉ MAC trong mạng cục bộ, không phải giao thức giao vận."
+      },
+      "related": "UDP phù hợp với ứng dụng cần độ trễ thấp và chấp nhận mất gói: DNS, VoIP, streaming, game trực tuyến."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-transport-03",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-transport",
+    "type": "mcq",
+    "content": "Cổng (port) mặc định của dịch vụ **HTTPS** là:",
+    "options": [
+      { "id": "A", "content": "80" },
+      { "id": "B", "content": "443" },
+      { "id": "C", "content": "21" },
+      { "id": "D", "content": "53" }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "HTTPS (HTTP qua TLS) mặc định dùng cổng TCP 443.",
+      "whyWrong": {
+        "A": "80 là cổng mặc định của HTTP không mã hóa.",
+        "C": "21 là cổng điều khiển của FTP.",
+        "D": "53 là cổng của DNS."
+      },
+      "related": "Một số cổng thông dụng: 22 SSH, 25 SMTP, 53 DNS, 80 HTTP, 443 HTTPS.",
+      "tip": "HTTPS = HTTP + S(ecure) → 443."
+    },
+    "difficulty": "easy",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-transport-04",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-transport",
+    "type": "mcq",
+    "content": "Trường nào trong TCP header giúp bên nhận **sắp xếp lại đúng thứ tự** các segment đến không theo thứ tự?",
+    "options": [
+      { "id": "A", "content": "Sequence Number" },
+      { "id": "B", "content": "Checksum" },
+      { "id": "C", "content": "Window Size" },
+      { "id": "D", "content": "Urgent Pointer" }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Sequence Number cho biết vị trí byte đầu tiên của segment trong luồng dữ liệu, nhờ đó bên nhận ghép lại đúng thứ tự.",
+      "whyWrong": {
+        "B": "Checksum dùng để phát hiện lỗi dữ liệu, không cho biết thứ tự segment.",
+        "C": "Window Size dùng cho kiểm soát luồng (flow control): báo bên gửi được gửi bao nhiêu byte.",
+        "D": "Urgent Pointer chỉ vị trí dữ liệu khẩn khi cờ URG bật, không dùng để sắp xếp thứ tự."
+      },
+      "related": "Acknowledgment Number cho biết byte tiếp theo bên nhận mong đợi — kết hợp với Sequence Number để đảm bảo tin cậy."
+    },
+    "difficulty": "medium",
+    "points": 1,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-transport-essay-01",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-transport",
+    "type": "essay",
+    "content": "So sánh hai giao thức **TCP** và **UDP** theo các tiêu chí: hướng kết nối, độ tin cậy, thứ tự dữ liệu và chi phí header. Cho mỗi giao thức một ví dụ ứng dụng phù hợp và giải thích ngắn.",
+    "essay": {
+      "modelAnswer": "| Tiêu chí | TCP | UDP |\n|---|---|---|\n| Kết nối | Hướng kết nối (bắt tay 3 bước) | Không hướng kết nối |\n| Tin cậy | Có ACK, truyền lại khi mất | Không đảm bảo, không truyền lại |\n| Thứ tự | Đảm bảo nhờ sequence number | Không đảm bảo |\n| Header | Tối thiểu 20 byte | 8 byte |\n\nVí dụ: TCP dùng cho web (HTTP/HTTPS), email, truyền file vì cần dữ liệu đầy đủ, đúng thứ tự. UDP dùng cho DNS, VoIP, game trực tuyến, streaming vì cần độ trễ thấp và chấp nhận mất một ít gói.",
+      "rubric": [
+        { "id": "r1", "criterion": "Phân biệt đúng hướng kết nối và không hướng kết nối", "points": 1 },
+        { "id": "r2", "criterion": "Phân biệt đúng về độ tin cậy và thứ tự dữ liệu", "points": 1 },
+        { "id": "r3", "criterion": "Nêu đúng chi phí header (TCP lớn hơn UDP; 20 byte so với 8 byte)", "points": 0.5 },
+        { "id": "r4", "criterion": "Ví dụ ứng dụng phù hợp cho mỗi giao thức kèm giải thích hợp lý", "points": 1.5 }
+      ]
+    },
+    "difficulty": "medium",
+    "points": 4,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa của hệ thống" },
+    "verification": "verified"
+  },
+  {
+    "id": "demo-transport-essay-02",
+    "courseId": "it005",
+    "examType": "midterm",
+    "chapterId": "demo-transport",
+    "type": "essay",
+    "content": "*(Câu minh họa trạng thái thiếu dữ liệu)* Giải thích cơ chế **cửa sổ trượt** (sliding window) trong TCP.",
+    "difficulty": "hard",
+    "points": 3,
+    "source": { "kind": "demo", "reference": "Dữ liệu minh họa — cố ý chưa có đáp án mẫu/rubric" },
+    "verification": "unverified"
+  }
+]

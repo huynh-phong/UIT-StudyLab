@@ -1,0 +1,23 @@
+{
+  "courseId": "it005",
+  "examType": "midterm",
+  "title": "IT005 — Dữ liệu minh họa",
+  "description": "Bộ câu hỏi MINH HỌA để kiểm tra chức năng. Không phải đề thi chính thức, không phản ánh cấu trúc đề thực tế.",
+  "chapters": [
+    { "id": "demo-ipv4", "order": 1, "title": "Minh họa · Địa chỉ IPv4 và chia mạng con", "description": "Ví dụ về địa chỉ mạng, broadcast, subnet mask." },
+    { "id": "demo-layers", "order": 2, "title": "Minh họa · Mô hình phân tầng", "description": "Ví dụ về OSI, TCP/IP và đóng gói dữ liệu." },
+    { "id": "demo-transport", "order": 3, "title": "Minh họa · Tầng giao vận", "description": "Ví dụ về TCP, UDP và cổng dịch vụ." }
+  ],
+  "blueprint": {
+    "status": "unverified",
+    "sourceNote": "Cấu trúc minh họa do hệ thống tạo để kiểm thử, KHÔNG phải cấu trúc đề chính thức.",
+    "title": "Đề thi thử minh họa",
+    "durationMinutes": 15,
+    "slots": [
+      { "chapterId": "demo-ipv4", "type": "mcq", "count": 3, "pointsEach": 1 },
+      { "chapterId": "demo-layers", "type": "mcq", "count": 2, "pointsEach": 1 },
+      { "chapterId": "demo-transport", "type": "mcq", "count": 2, "pointsEach": 1 },
+      { "chapterId": "demo-transport", "type": "essay", "count": 1, "pointsEach": 3 }
+    ]
+  }
+}

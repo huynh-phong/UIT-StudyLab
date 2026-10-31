@@ -1,0 +1,38 @@
+{
+  "courseId": "it005",
+  "examType": "midterm",
+  "title": "IT005 — Ôn tập giữa kỳ",
+  "description": "Ngân hàng câu hỏi tổng hợp từ các đề giữa kỳ đã thi và bộ đề ôn tập, đáp án đã được đối chiếu lại.",
+  "chapters": [
+    {
+      "id": "ch1-internet",
+      "order": 1,
+      "title": "Chương 1 – Giới thiệu về Internet",
+      "description": "Internet là gì, mạng biên và mạng lõi, chuyển mạch gói/kênh, độ trễ, thông lượng, mô hình phân tầng và đóng gói."
+    },
+    {
+      "id": "ch2-application",
+      "order": 2,
+      "title": "Chương 2 – Tầng ứng dụng",
+      "description": "Client-server và P2P, HTTP (bền vững/không bền vững, cookie, web cache), email (SMTP, POP3, IMAP), DNS, FTP, socket."
+    },
+    {
+      "id": "ch3-transport",
+      "order": 3,
+      "title": "Chương 3 – Tầng vận chuyển",
+      "description": "Multiplexing/demultiplexing, UDP và checksum, nguyên lý truyền tin cậy (rdt, Go-Back-N, Selective Repeat), TCP, điều khiển luồng và tắc nghẽn."
+    }
+  ],
+  "blueprint": {
+    "status": "verified",
+    "sourceNote": "Theo đề thi giữa kỳ I năm học 2025–2026 (do BHT CNPM sưu tầm sau khi thi): 30 câu trắc nghiệm, 65 phút; phân bố Chương 1: 3 câu, Chương 2: 11 câu, Chương 3: 16 câu. Các đề năm trước có 40–42 câu trong 40 phút với tỉ trọng tương tự (Chương 2 và 3 là trọng tâm).",
+    "title": "Đề thi thử giữa kỳ IT005",
+    "durationMinutes": 65,
+    "slots": [
+      { "chapterId": "ch1-internet", "type": "mcq", "count": 3, "pointsEach": 1 },
+      { "chapterId": "ch2-application", "type": "mcq", "count": 11, "pointsEach": 1 },
+      { "chapterId": "ch3-transport", "type": "mcq", "count": 16, "pointsEach": 1 }
+    ],
+    "notes": "Mỗi câu 1 điểm, điểm được quy về thang 10."
+  }
+}
