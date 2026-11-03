@@ -41,6 +41,11 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 - Đánh dấu câu cần xem lại, quay lại câu trước, ôn lại chương từ đầu, phím tắt bàn phím.
 - Hiển thị đầy đủ công thức toán (LaTeX), bảng, thông điệp HTTP, chuỗi bit, địa chỉ IP…
 
+### 🎓 Lý thuyết trọng tâm
+
+- IT006 có phần lý thuyết cô đọng, sắp xếp theo mức độ ra đề của 10 đề giữa kỳ, giải thích từ đầu và có ví dụ từng bước.
+- Các ví dụ tính toán và khuôn code MIPS được kiểm chứng bằng bộ mô phỏng trong bộ test.
+
 ### ✍️ Chấm tự luận bằng AI
 
 - Bài tự luận được AI (Google Gemini) chấm theo **đáp án mẫu và rubric**, chấp nhận cách diễn đạt tương đương.

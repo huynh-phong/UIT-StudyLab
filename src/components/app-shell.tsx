@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
-import { BarChart3, Bookmark, BookOpenCheck, LayoutDashboard, Timer } from "lucide-react";
+import { BarChart3, Bookmark, BookOpenCheck, GraduationCap, LayoutDashboard, Timer } from "lucide-react";
 import { Logo, LogoMark } from "./logo";
 import { ThemeSwitcher } from "./theme-switcher";
 import { cn } from "@/lib/utils";
 
 const NAV = [
   { href: "/", label: "Tổng quan", short: "Tổng quan", icon: LayoutDashboard },
+  { href: "/ly-thuyet", label: "Lý thuyết trọng tâm", short: "Lý thuyết", icon: GraduationCap },
   { href: "/on-tap", label: "Ôn tập", short: "Ôn tập", icon: BookOpenCheck },
   { href: "/thi-thu", label: "Thi thử", short: "Thi thử", icon: Timer },
   { href: "/da-luu", label: "Câu hỏi đã lưu", short: "Đã lưu", icon: Bookmark },
@@ -88,7 +89,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Thanh điều hướng dưới (mobile) */}
       <nav
         aria-label="Điều hướng chính"
-        className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-border bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-6 border-t border-border bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden"
       >
         {NAV.map((item) => {
           const active = isActive(pathname, item.href);
@@ -97,7 +98,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               key={item.href}
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className={cn("relative flex flex-col items-center gap-1 py-2.5 text-[11px] font-medium transition-colors", active ? "text-primary" : "text-muted")}
+              className={cn("relative flex flex-col items-center gap-1 py-2.5 text-[10px] font-medium transition-colors", active ? "text-primary" : "text-muted")}
             >
               {active && <motion.span layoutId="mnav-active" className="absolute top-0 h-0.5 w-8 rounded-full bg-primary" />}
               <item.icon className="size-5" />

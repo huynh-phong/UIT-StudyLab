@@ -27,6 +27,7 @@ import { verifyEssay, verifyMcq } from "../src/lib/mips/verify";
 const ROOT = path.resolve(__dirname, "..");
 const CONTENT = path.join(ROOT, "content");
 const OUT = path.join(ROOT, "src", "generated", "bank.json");
+const THEORY_OUT = path.join(ROOT, "src", "generated", "theory.json");
 const checkOnly = process.argv.includes("--check");
 
 const errors: string[] = [];
@@ -111,6 +112,29 @@ function loadExam(dir: string, isDemo: boolean, courseId: string, seenIds: Map<s
   return { ...exam, isDemo, key: `${isDemo ? "demo:" : ""}${exam.courseId}/${exam.examType}`, questions };
 }
 
+/** Đọc content/theory/<môn>.md: mỗi phần bắt đầu bằng "## tiêu đề" và dòng meta id, de, luyen. */
+function loadTheory() {
+  const dir = path.join(CONTENT, "theory");
+  const courses: Record<string, { id: string; title: string; weight?: string; practice?: string; md: string }[]> = {};
+  if (!fs.existsSync(dir)) return { courses };
+  for (const file of fs.readdirSync(dir).filter((f) => f.endsWith(".md"))) {
+    const text = fs.readFileSync(path.join(dir, file), "utf8").replace(/\r\n/g, "\n");
+    courses[file.replace(/\.md$/, "")] = text
+      .split(/^## /m)
+      .filter((part) => part.trim())
+      .map((part) => {
+        const m = part.match(/^(.*)\n<!-- meta: (.*?) -->\n([\s\S]*)$/);
+        if (!m) {
+          errors.push(`content/theory/${file}: phần "${part.slice(0, 40)}" thiếu dòng meta`);
+          return { id: "", title: "", md: "" };
+        }
+        const meta = Object.fromEntries(m[2].split(";").map((kv) => kv.split("=").map((x) => x.trim())));
+        return { id: meta.id, title: m[1].trim(), weight: meta.de, practice: meta.luyen, md: m[3].trim() };
+      });
+  }
+  return { courses };
+}
+
 function main() {
   const seenIds = new Map<string, string>();
   const courses: BuiltCourse[] = [];
@@ -136,6 +160,8 @@ function main() {
     courses.push({ ...parsed.data, exams });
   }
 
+  const theory = loadTheory();
+
   for (const w of warnings) console.warn(`⚠  ${w}`);
   if (errors.length) {
     for (const e of errors) console.error(`✖  ${e}`);
@@ -150,6 +176,7 @@ function main() {
   if (!checkOnly) {
     fs.mkdirSync(path.dirname(OUT), { recursive: true });
     fs.writeFileSync(OUT, JSON.stringify(bank));
+    fs.writeFileSync(THEORY_OUT, JSON.stringify(theory));
   }
   console.log(`✔  Ngân hàng câu hỏi hợp lệ${checkOnly ? "" : ` → ${rel(OUT)}`}\n   ${summary}`);
 }

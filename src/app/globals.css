@@ -176,6 +176,7 @@ body {
 .rich blockquote { border-left: 3px solid var(--color-primary); padding-left: 0.9em; color: var(--color-muted); }
 .rich .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.25em 0; }
 .rich h1, .rich h2, .rich h3 { font-weight: 600; }
+.theory h3 { font-size: 1.05em; font-weight: 700; margin-top: 1.4em; color: var(--color-primary); }
 
 .skeleton {
   background: linear-gradient(90deg, var(--color-skeleton) 0px, var(--color-skeleton-shine) 120px, var(--color-skeleton) 240px);
