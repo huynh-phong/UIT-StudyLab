@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Target } from "lucide-react";
 import { RichContent } from "@/components/rich-content";
+import { VISUALS } from "@/components/theory/visuals";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,12 +19,26 @@ export interface TheorySection {
   md: string;
 }
 
+/** Nội dung Markdown xen các hình minh họa, đánh dấu bằng dòng [[visual:ten]]. */
+function SectionBody({ md }: { md: string }) {
+  const parts = md.split(/^\[\[visual:([\w-]+)\]\]$/m);
+  return (
+    <div className="mt-4">
+      {parts.map((part, i) => {
+        if (i % 2 === 0) return part.trim() ? <RichContent key={i} className="theory text-[15px]">{part}</RichContent> : null;
+        const Visual = VISUALS[part];
+        return Visual ? <Visual key={i} /> : null;
+      })}
+    </div>
+  );
+}
+
 export function TheoryView({ sections }: { sections: TheorySection[] }) {
   return (
     <div>
       <PageHeader
         title="Lý thuyết trọng tâm IT006"
-        description="Kiến trúc máy tính giữa kỳ. Chỉ gồm những gì đề hay ra, giải thích từ đầu và có ví dụ lấy từ đề các năm."
+        description="Lộ trình ôn thi giữa kỳ Kiến trúc máy tính, kể cả khi chưa học gì. Chỉ gồm những gì đề hay ra, có hình và phần tự bấm để thử."
       />
 
       {sections.length === 0 ? (
@@ -55,7 +70,7 @@ export function TheoryView({ sections }: { sections: TheorySection[] }) {
                       <Target /> {s.weight}
                     </Badge>
                   )}
-                  <RichContent className="theory mt-4 text-[15px]">{s.md}</RichContent>
+                  <SectionBody md={s.md} />
                   {s.practice && (
                     <Button asChild variant="soft" className="mt-5">
                       <Link href={`/on-tap/it006/midterm/${s.practice}`}>

@@ -2,15 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import theory from "@/generated/theory.json";
-import { encode, run, toHex } from "@/lib/mips/mips";
+import { VISUALS } from "@/components/theory/visuals";
+import { encode, run, toHex, traceProgram } from "@/lib/mips/mips";
+import { TRACES, walkthroughCode, WALKTHROUGHS } from "@/lib/theory/walkthroughs";
 
-const raw = fs.readFileSync(path.resolve(__dirname, "../content/theory/it006.md"), "utf8");
+const raw = fs.readFileSync(path.resolve(__dirname, "../content/theory/it006.md"), "utf8").replace(/\r\n/g, "\n");
 const blocks = [...raw.matchAll(/```mips\n([\s\S]*?)```/g)].map((m) => m[1]);
-const block = (marker: string) => {
-  const found = blocks.find((b) => b.startsWith(`# ${marker}\n`));
-  if (!found) throw new Error(`Không thấy khối ${marker}`);
-  return found;
-};
+const block = walkthroughCode;
 const words = (base: number, values: number[]) => Object.fromEntries(values.map((v, i) => [base + i * 4, v]));
 
 describe("lý thuyết IT006: ví dụ tính đúng", () => {
@@ -61,11 +59,37 @@ describe("lý thuyết IT006: ví dụ tính đúng", () => {
   });
 
   it("bảng chạy tay vòng lặp", () => {
-    const code = blocks.find((b) => b.startsWith("start: slt"))!;
-    const r = run(code, { regs: { $t0: 3, $t1: 7 } });
-    expect(r.regs.$t1).toBe(11);
-    expect(r.regs.$t0).toBe(0);
-    expect(r.regs.$t2).toBe(0);
+    const ex = TRACES.find((t) => t.id === "vong-lap")!;
+    const t = traceProgram(ex.code.join("\n"), { regs: ex.regs });
+    expect(t.final.$t1).toBe(11);
+    expect(t.final.$t0).toBe(0);
+    expect(t.final.$t2).toBe(0);
+    expect(t.steps[0].line).toBe(0);
+    expect(t.steps[0].after.$t2).toBe(1);
+  });
+
+  it("hai nhánh if-else đi đúng dòng", () => {
+    const run1 = TRACES.find((t) => t.id === "if-dung")!;
+    const run2 = TRACES.find((t) => t.id === "if-sai")!;
+    expect(traceProgram(run1.code.join("\n"), { regs: run1.regs }).final.$s2).toBe(4);
+    const t2 = traceProgram(run2.code.join("\n"), { regs: run2.regs });
+    expect(t2.final.$s2).toBe(9);
+    expect(t2.steps.map((s) => s.line)).toEqual([0, 1, 5]);
+  });
+
+  it("mỗi bước của bài mẫu chỉ đúng đoạn C và đúng dòng lệnh", () => {
+    for (const w of WALKTHROUGHS) {
+      for (const s of w.steps) {
+        expect(w.c, `${w.id}: ${s.piece}`).toContain(s.piece);
+        for (const n of s.lines) expect(w.code[n], `${w.id} dòng ${n}`).toBeTruthy();
+      }
+    }
+  });
+
+  it("mọi hình được nhắc trong bài đều tồn tại", () => {
+    const used = [...raw.matchAll(/^\[\[visual:([\w-]+)\]\]$/gm)].map((m) => m[1]);
+    expect(used.length).toBeGreaterThanOrEqual(14);
+    for (const name of used) expect(VISUALS[name], name).toBeTruthy();
   });
 
   it("đoạn đọc thành câu while chạy đúng", () => {
@@ -74,9 +98,9 @@ describe("lý thuyết IT006: ví dụ tính đúng", () => {
   });
 
   it("stack cất và lấy lại đúng", () => {
-    const code = blocks.find((b) => b.startsWith("addi $sp, $sp, -4"))!;
-    const r = run(code, { regs: { $sp: 4096, $s0: 100, $a0: 1, $a1: 2 } });
-    expect(r.regs.$s0).toBe(100);
+    const code = "addi $sp, $sp, -4\nsw $s0, 0($sp)\naddi $s0, $zero, 9\nlw $s0, 0($sp)\naddi $sp, $sp, 4";
+    const r = run(code, { regs: { $sp: 4096, $s0: 5 } });
+    expect(r.regs.$s0).toBe(5);
     expect(r.regs.$sp).toBe(4096);
   });
 

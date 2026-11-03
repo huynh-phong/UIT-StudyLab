@@ -43,7 +43,7 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 
 ### 🎓 Lý thuyết trọng tâm
 
-- IT006 có phần lý thuyết cô đọng, sắp xếp theo mức độ ra đề của 10 đề giữa kỳ, giải thích từ đầu và có ví dụ từng bước.
+- IT006 có lộ trình lý thuyết cho cả người mất gốc: chỉ gồm những gì đề hay ra, ưu tiên phần dễ lấy điểm, kèm hình minh họa và phần tự bấm như máy đổi mã, chạy lệnh từng bước.
 - Các ví dụ tính toán và khuôn code MIPS được kiểm chứng bằng bộ mô phỏng trong bộ test.
 
 ### ✍️ Chấm tự luận bằng AI

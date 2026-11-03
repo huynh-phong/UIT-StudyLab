@@ -166,6 +166,8 @@ export interface RunOptions {
   littleEndian?: boolean;
   textBase?: number;
   maxSteps?: number;
+  /** Gọi trước mỗi lệnh với số dòng trong mã nguồn (tính từ 0) và giá trị thanh ghi hiện tại. */
+  onStep?: (line: number, regs: Record<string, number>) => void;
 }
 
 export interface RunResult {
@@ -181,6 +183,7 @@ export interface RunResult {
 interface Parsed {
   op: string;
   args: string[];
+  line: number;
 }
 
 /** Chạy đoạn Assembly (hỗ trợ nhãn, comment `#`, các lệnh giả li/move/blt/bgt/ble/bge) cho tới khi hết chương trình. */
@@ -189,7 +192,7 @@ export function run(source: string, opts: RunOptions = {}): RunResult {
   const program: Parsed[] = [];
   const labels: Record<string, number> = {};
 
-  for (const raw of source.split("\n")) {
+  for (const [lineIndex, raw] of source.split("\n").entries()) {
     let line = raw.replace(/#.*$/, "").replace(/\/\/.*$/, "").trim();
     for (;;) {
       const m = line.match(/^([A-Za-z_][\w.]*)\s*:\s*(.*)$/);
@@ -199,7 +202,7 @@ export function run(source: string, opts: RunOptions = {}): RunResult {
     }
     if (!line) continue;
     const sp = line.search(/\s/);
-    program.push({ op: (sp < 0 ? line : line.slice(0, sp)).toLowerCase(), args: sp < 0 ? [] : splitArgs(line.slice(sp + 1)) });
+    program.push({ op: (sp < 0 ? line : line.slice(0, sp)).toLowerCase(), args: sp < 0 ? [] : splitArgs(line.slice(sp + 1)), line: lineIndex });
   }
 
   const regs = new Int32Array(32);
@@ -221,6 +224,7 @@ export function run(source: string, opts: RunOptions = {}): RunResult {
   };
   for (const [a, v] of Object.entries(opts.words ?? {})) setWord(Number(a), v);
 
+  const snapshot = () => Object.fromEntries(REG_NAMES.map((n, i) => [n, regs[i]]));
   const R = (n: string) => regs[regIndex(n)];
   const W = (n: string, v: number) => {
     const i = regIndex(n);
@@ -238,7 +242,8 @@ export function run(source: string, opts: RunOptions = {}): RunResult {
   /** Trả về khi nhảy tới địa chỉ ngoài chương trình (ví dụ jr $ra về $ra ban đầu = 0). */
   while (pc >= 0 && pc < program.length) {
     if (++steps > maxSteps) throw new Error("Chương trình chạy quá nhiều bước (có thể lặp vô hạn)");
-    const { op, args: a } = program[pc];
+    const { op, args: a, line } = program[pc];
+    opts.onStep?.(line, snapshot());
     executed[op] = (executed[op] ?? 0) + 1;
     let next = pc + 1;
     switch (op) {
@@ -358,9 +363,26 @@ export function run(source: string, opts: RunOptions = {}): RunResult {
     pc = next;
   }
 
-  const outRegs: Record<string, number> = {};
-  REG_NAMES.forEach((n, i) => (outRegs[n] = regs[i]));
-  return { regs: outRegs, word: getWord, pc: textBase + pc * 4, steps, executed };
+  return { regs: snapshot(), word: getWord, pc: textBase + pc * 4, steps, executed };
+}
+
+export interface TraceStep {
+  line: number;
+  before: Record<string, number>;
+  after: Record<string, number>;
+  /** Lệnh kế tiếp không phải dòng ngay dưới. */
+  jumped: boolean;
+}
+
+/** Chạy chương trình và ghi lại từng lệnh, dùng để minh họa chạy tay. */
+export function traceProgram(source: string, opts: RunOptions = {}) {
+  const seen: { line: number; regs: Record<string, number> }[] = [];
+  const end = run(source, { ...opts, onStep: (line, regs) => seen.push({ line, regs }) });
+  const steps: TraceStep[] = seen.map((s, i) => {
+    const next = seen[i + 1];
+    return { line: s.line, before: s.regs, after: next ? next.regs : end.regs, jumped: next ? next.line <= s.line || next.line > s.line + 1 : false };
+  });
+  return { steps, initial: seen[0]?.regs ?? end.regs, final: end.regs };
 }
 
 // ───────────── Tiện ích số học ─────────────
