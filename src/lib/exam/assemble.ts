@@ -81,7 +81,7 @@ export async function assembleExam(o: AssembleOptions): Promise<AssembleResult> 
         const slot = bp.slots[i];
         const chapter = o.exam.chapters.find((c) => c.id === slot.chapterId)!;
         const sourceChapters = new Set([slot.chapterId, ...(slot.alsoFrom ?? [])]);
-        const bankPool = o.exam.questions.filter((q) => sourceChapters.has(q.chapterId) && q.type === slot.type && isExamEligible(q));
+        const bankPool = o.exam.questions.filter((q) => sourceChapters.has(q.chapterId) && q.type === slot.type && isExamEligible(q) && (!slot.tag || q.tags?.includes(slot.tag)));
         const out = picked[i].questions;
 
         if (o.mode === "ai") {

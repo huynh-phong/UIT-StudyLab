@@ -3,7 +3,6 @@ import bankData from "@/generated/bank.json";
 import { QuestionSchema, type BuiltBank, type BuiltExam, type McqQuestion, type Question } from "@/lib/bank/schema";
 import { assembleExam } from "@/lib/exam/assemble";
 import { generateFromTemplate, TEMPLATES } from "@/lib/exam/generators";
-import { encode, toHex } from "@/lib/mips/mips";
 import { verifyEssay, verifyMcq } from "@/lib/mips/verify";
 
 const bank = bankData as unknown as BuiltBank;
@@ -27,9 +26,10 @@ describe("ngân hàng IT006", () => {
     expect(exam.chapters.map((c) => c.id)).toEqual(["it006-c1a", "it006-c1b", "it006-c2a", "it006-c2b", "it006-c2c"]);
     for (const c of exam.chapters) {
       expect(mcqs.filter((q) => q.chapterId === c.id).length, c.id).toBeGreaterThanOrEqual(30);
-      expect(essays.filter((q) => q.chapterId === c.id).length, c.id).toBeGreaterThanOrEqual(3);
     }
-    expect(essays.length).toBeGreaterThanOrEqual(40);
+    for (const id of ["it006-c1a", "it006-c1b"]) expect(essays.filter((q) => q.chapterId === id)).toHaveLength(0);
+    for (const id of ["it006-c2a", "it006-c2b", "it006-c2c"]) expect(essays.filter((q) => q.chapterId === id).length, id).toBeGreaterThanOrEqual(3);
+    expect(essays.length).toBeGreaterThanOrEqual(50);
   });
 
   it("không có đề hoặc phương án bị trùng", () => {
@@ -56,40 +56,27 @@ describe("ngân hàng IT006", () => {
     }
   });
 
-  it("có nhiều dạng tự luận: viết code, chạy kiểm chứng, lý thuyết", () => {
-    const specs = essays.flatMap((q) => (q.type === "essay" && q.essay ? [q.essay] : []));
-    expect(specs.filter((s) => s.format === "code").length).toBeGreaterThanOrEqual(20);
-    expect(specs.filter((s) => s.format === "text").length).toBeGreaterThanOrEqual(15);
-    expect(specs.filter((s) => s.verify?.length).length).toBeGreaterThanOrEqual(25);
+  it("có câu từ đủ các đề giữa kỳ 2019–2026", () => {
+    const refs = qs.map((q) => q.source.reference ?? "").join("|");
+    for (const y of ["HK1 2019–2020", "HK1 2020–2021", "HK2 2020–2021", "HK2 2021–2022", "HK1 2022–2023", "HK1 2023–2024", "HK2 2023–2024", "HK1 2024–2025", "HK2 2024–2025", "HK1 2025–2026"])
+      expect(refs, y).toContain(y);
   });
 
-  it("mã hex trong đáp án mẫu của bài tự luận mã máy đều đúng", () => {
-    const cases: [string, string, { pc?: number; labels?: Record<string, number> }?][] = [
-      ["add $s0, $s1, $s2", "0x02328020"],
-      ["sub $t0, $s1, $t2", "0x022A4022"],
-      ["lw $t1, 12($s0)", "0x8E09000C"],
-      ["sw $t1, -4($sp)", "0xAFA9FFFC"],
-      ["srl $t2, $t1, 4", "0x00095102"],
-      ["andi $t0, $t1, 0xFF", "0x312800FF"],
-      ["addi $t0, $s3, 5", "0x22680005"],
-      ["sll $t0, $t0, 2", "0x00084080"],
-      ["add $t0, $t0, $s6", "0x01164020"],
-      ["lw $t1, 0($t0)", "0x8D090000"],
-      ["sll $t2, $s2, 2", "0x00125080"],
-      ["add $t2, $t2, $s7", "0x01575020"],
-      ["sw $t1, 0($t2)", "0xAD490000"],
-      ["lw $t0, 32($s3)", "0x8E680020"],
-      ["and $t6, $t7, $s3", "0x01F37024"],
-      ["addi $s1, $s7, -55", "0x22F1FFC9"],
-      ["bne $t0, $s5, Exit", "0x15150002", { pc: 80012, labels: { Exit: 80024 } }],
-      ["j Loop", "0x08004E20", { pc: 80020, labels: { Loop: 80000 } }],
-    ];
-    for (const [asm, hex, opts] of cases) expect(toHex(encode(asm, opts)).toUpperCase(), asm).toBe(hex.toUpperCase());
+  it("đề thi có đủ câu cho hai dạng tự luận", () => {
+    for (const tag of ["lap-trinh", "ma-may"]) expect(essays.filter((q) => q.tags?.includes(tag)).length, tag).toBeGreaterThanOrEqual(8);
+  });
+
+  it("có nhiều dạng tự luận: viết code, chạy kiểm chứng, chuyển đổi mã máy", () => {
+    const specs = essays.flatMap((q) => (q.type === "essay" && q.essay ? [q.essay] : []));
+    expect(specs.filter((s) => s.format === "code").length).toBeGreaterThanOrEqual(20);
+    expect(specs.filter((s) => s.format === "text").length).toBeGreaterThanOrEqual(10);
+    expect(specs.filter((s) => s.encodings?.length).length).toBeGreaterThanOrEqual(10);
+    expect(specs.filter((s) => s.verify?.length).length).toBeGreaterThanOrEqual(25);
   });
 });
 
 describe("đề thi thử IT006", () => {
-  it("cấu trúc đề: 80% trắc nghiệm, 20% tự luận, tổng 10 điểm", () => {
+  it("cấu trúc đề: 8 điểm trắc nghiệm, 2 điểm tự luận", () => {
     const slots = exam.blueprint!.slots;
     const points = (t: "mcq" | "essay") => slots.filter((s) => s.type === t).reduce((a, s) => a + s.count * s.pointsEach, 0);
     expect(points("mcq")).toBeCloseTo(8);
@@ -100,9 +87,12 @@ describe("đề thi thử IT006", () => {
     for (let i = 0; i < 40; i++) {
       const r = await make();
       const list = r.sealed.questions;
-      expect(list).toHaveLength(22);
+      expect(list).toHaveLength(18);
       expect(list.filter((x) => x.question.type === "essay")).toHaveLength(2);
-      expect(new Set(list.map((x) => x.question.id)).size).toBe(22);
+      expect(new Set(list.map((x) => x.question.id)).size).toBe(18);
+      const es = list.filter((x) => x.question.type === "essay").map((x) => x.question);
+      expect(es.flatMap((q) => q.tags ?? []).sort()).toEqual(["lap-trinh", "ma-may"]);
+      for (const q of es) expect(["it006-c1a", "it006-c1b"]).not.toContain(q.chapterId);
       for (const x of list) expect(x.question.courseId).toBe("it006");
       expect(list.reduce((a, x) => a + x.points, 0)).toBeCloseTo(10);
     }

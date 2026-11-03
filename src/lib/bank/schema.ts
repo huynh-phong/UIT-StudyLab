@@ -95,6 +95,10 @@ export const EssaySpecSchema = z.object({
   placeholder: z.string().optional(),
   /** Khối mips đầu tiên của đáp án mẫu phải chạy đúng các trường hợp này. */
   verify: z.array(RunCaseSchema).optional(),
+  /** Mã máy ghi trong đáp án mẫu: kiểm tra lại bằng bộ mã hóa khi build. */
+  encodings: z
+    .array(z.object({ asm: z.string(), hex: z.string(), pc: z.number().optional(), labels: z.record(z.string(), z.number()).optional() }))
+    .optional(),
 });
 export type EssaySpec = z.infer<typeof EssaySpecSchema>;
 
@@ -185,6 +189,8 @@ export const BlueprintSlotSchema = z.object({
   pointsEach: z.number().positive(),
   /** Có thể lấy câu từ các chương này ngoài chapterId. */
   alsoFrom: z.array(z.string()).optional(),
+  /** Chỉ lấy câu có nhãn này (dùng để định dạng câu tự luận trong đề). */
+  tag: z.string().optional(),
   difficulty: z
     .object({ easy: z.number().min(0), medium: z.number().min(0), hard: z.number().min(0) })
     .partial()

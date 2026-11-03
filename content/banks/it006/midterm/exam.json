@@ -2,7 +2,7 @@
   "courseId": "it006",
   "examType": "midterm",
   "title": "Giữa kỳ",
-  "description": "Bám sát Chương 1 và Chương 2: 80% trắc nghiệm, 20% tự luận.",
+  "description": "Chương 1 và Chương 2: 8 điểm trắc nghiệm, 2 điểm tự luận; tự luận tập trung ở Chương 2.",
   "chapters": [
     {
       "id": "it006-c1a",
@@ -37,57 +37,63 @@
   ],
   "blueprint": {
     "status": "unverified",
-    "sourceNote": "Tỉ lệ 80% trắc nghiệm, 20% tự luận theo đề cương môn học. Số câu, thời gian 60 phút và phân bố theo chương là cấu hình tham khảo từ đề 18 câu và slide, chưa được giảng viên xác nhận.",
+    "sourceNote": "Năm nay 8 điểm trắc nghiệm, 2 điểm tự luận. Các đề giữa kỳ 2019–2026 đều làm trong 65 phút, 0,5 điểm/câu và tự luận thuộc Chương 2, nên đề thi thử có 16 câu trắc nghiệm và 2 câu tự luận. Số câu và phân bố theo chương là suy luận từ đề các năm, chưa được giảng viên xác nhận.",
     "title": "Đề thi thử giữa kỳ IT006",
-    "durationMinutes": 60,
+    "durationMinutes": 65,
     "slots": [
       {
         "chapterId": "it006-c1a",
         "type": "mcq",
-        "count": 5,
-        "pointsEach": 0.4
+        "count": 4,
+        "pointsEach": 0.5
       },
       {
         "chapterId": "it006-c1b",
         "type": "mcq",
-        "count": 4,
-        "pointsEach": 0.4
+        "count": 3,
+        "pointsEach": 0.5
       },
       {
         "chapterId": "it006-c2a",
         "type": "mcq",
-        "count": 4,
-        "pointsEach": 0.4
-      },
-      {
-        "chapterId": "it006-c2b",
-        "type": "mcq",
-        "count": 5,
-        "pointsEach": 0.4
-      },
-      {
-        "chapterId": "it006-c2c",
-        "type": "mcq",
         "count": 2,
-        "pointsEach": 0.4
+        "pointsEach": 0.5
       },
       {
         "chapterId": "it006-c2b",
-        "type": "essay",
-        "count": 1,
-        "pointsEach": 1
+        "type": "mcq",
+        "count": 6,
+        "pointsEach": 0.5
       },
       {
         "chapterId": "it006-c2c",
+        "type": "mcq",
+        "count": 1,
+        "pointsEach": 0.5
+      },
+      {
+        "chapterId": "it006-c2b",
         "type": "essay",
         "count": 1,
         "pointsEach": 1,
         "alsoFrom": [
-          "it006-c1b",
-          "it006-c2a"
-        ]
+          "it006-c2a",
+          "it006-c2c"
+        ],
+        "tag": "lap-trinh"
+      },
+      {
+        "chapterId": "it006-c2b",
+        "type": "essay",
+        "count": 1,
+        "pointsEach": 1,
+        "alsoFrom": [
+          "it006-c2a",
+          "it006-c2c"
+        ],
+        "tag": "ma-may"
       }
     ],
-    "notes": "Được phép dùng máy tính; đề thật kèm bảng lệnh MIPS và sơ đồ datapath."
+    "notes": "Câu tự luận thứ nhất: viết chương trình từ C hoặc từ mô tả bằng lời. Câu thứ hai: chuyển đổi giữa yêu cầu, lệnh Assembly và mã máy."
   }
 }

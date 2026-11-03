@@ -13,6 +13,9 @@
       "reference": "Slide bài giảng"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nadd $t0, $s1, $s2      # t0 = g + h\nadd $t1, $s3, $s4      # t1 = i + j\nsub $s0, $t0, $t1      # f = t0 - t1\n```\n\nCần hai thanh ghi tạm vì mỗi lệnh `add`/`sub` chỉ có đúng 2 toán hạng nguồn.",
       "rubric": [
@@ -65,6 +68,9 @@
       "reference": "Slide bài giảng"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nlw  $t0, 32($s3)       # t0 = A[8], offset = 8 * 4\nadd $s1, $s2, $t0      # g = h + A[8]\n```\n\nĐộ dời của `lw` tính theo byte, nên phần tử thứ 8 có offset là 32.",
       "rubric": [
@@ -115,6 +121,9 @@
       "reference": "Slide bài giảng"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nlw  $t0, 32($s3)       # t0 = A[8]\nadd $t0, $s2, $t0      # t0 = h + A[8]\nsw  $t0, 48($s3)       # A[12] = t0\n```",
       "rubric": [
@@ -170,6 +179,9 @@
       "reference": "Training giữa kỳ BHT KTMT 2026–2027"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nlw   $t0, 52($s7)      # t0 = B[13], offset = 13 * 4\naddi $t0, $t0, -2      # t0 = B[13] - 2\nsll  $t0, $t0, 2       # đổi chỉ số sang độ dời byte\nadd  $t0, $t0, $s6     # t0 = địa chỉ của A[B[13] - 2]\nlw   $t1, 0($t0)       # t1 = A[B[13] - 2]\nsub  $s0, $s1, $t1     # f = g - t1\n```",
       "rubric": [
@@ -231,6 +243,9 @@
       "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nsll  $t0, $s1, 2       # t0 = g * 4\nadd  $t0, $t0, $s7     # t0 = địa chỉ B[g]\nlw   $t0, 0($t0)       # t0 = B[g]\naddi $t0, $t0, 1       # t0 = B[g] + 1\nsll  $t0, $t0, 2       # đổi sang độ dời byte\nadd  $t0, $t0, $s6     # t0 = địa chỉ A[B[g] + 1]\nlw   $s0, 0($t0)       # f = A[B[g] + 1]\n```",
       "rubric": [
@@ -290,6 +305,9 @@
       "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nsll $t0, $s0, 2        # t0 = i * 4\nadd $t1, $t0, $s7      # t1 = địa chỉ B[i]\nlw  $t2, 0($t1)        # t2 = B[i]\nadd $t2, $t2, $s1      # t2 = B[i] + k\nadd $t1, $t0, $s6      # t1 = địa chỉ A[i]\nsw  $t2, 0($t1)        # A[i] = t2\n```",
       "rubric": [
@@ -427,7 +445,7 @@
     "points": 10,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023"
     },
     "verification": "verified",
     "essay": {
@@ -459,43 +477,6 @@
     "courseId": "it006",
     "examType": "midterm",
     "chapterId": "it006-c2a",
-    "content": "Giải thích ngắn gọn:\n\na) Vì sao thanh ghi nhanh hơn bộ nhớ và trình biên dịch nên ưu tiên dùng thanh ghi?\n\nb) Vì sao muốn truy cập `A[8]` (mảng word) thì độ dời phải là 32?\n\nc) Thanh ghi `$zero` có công dụng gì?",
-    "difficulty": "easy",
-    "points": 10,
-    "source": {
-      "kind": "authored",
-      "reference": "Slide bài giảng"
-    },
-    "verification": "verified",
-    "essay": {
-      "modelAnswer": "a) MIPS có 32 thanh ghi nằm ngay trong bộ xử lý, số lượng ít nên truy xuất nhanh, còn bộ nhớ lớn hơn nhiều nên chậm hơn và cần lệnh `lw`/`sw`. Dùng thanh ghi giúp chương trình chạy nhanh và tốn ít lệnh hơn; biến ít dùng mới đưa ra bộ nhớ.\n\nb) MIPS định địa chỉ theo byte, mỗi word chiếm 4 byte nên phần tử thứ 8 cách nền $8 \\times 4 = 32$ byte.\n\nc) `$zero` luôn bằng 0, dùng cho các thao tác hay gặp như gán `add $t0, $s1, $zero` hoặc so sánh với 0.",
-      "rubric": [
-        {
-          "id": "r1",
-          "criterion": "Câu a: thanh ghi ít, nằm trong CPU nên nhanh; bộ nhớ lớn, chậm và cần lw/sw",
-          "points": 4
-        },
-        {
-          "id": "r2",
-          "criterion": "Câu b: định địa chỉ theo byte, 1 word = 4 byte",
-          "points": 4
-        },
-        {
-          "id": "r3",
-          "criterion": "Câu c: luôn bằng 0 và ví dụ công dụng",
-          "points": 2
-        }
-      ],
-      "format": "text",
-      "placeholder": "Trình bày bài làm..."
-    }
-  },
-  {
-    "id": "it006-mid-c2a-e11",
-    "type": "essay",
-    "courseId": "it006",
-    "examType": "midterm",
-    "chapterId": "it006-c2a",
     "content": "Một bạn dịch `A[3] = h + A[2];` (`h = $s2`, nền `A = $s3`) thành đoạn sau. Chỉ ra **tất cả** lỗi sai và viết lại đoạn đúng.\n\n```mips\nlw  $t0, 2($s3)\nadd $t0, $s2, $t0\nlw  $t0, 3($s3)\n```",
     "difficulty": "medium",
     "points": 10,
@@ -504,6 +485,9 @@
       "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nlw  $t0, 8($s3)        # A[2]: offset = 2 * 4\nadd $t0, $s2, $t0\nsw  $t0, 12($s3)       # A[3]: offset = 3 * 4\n```\n\nCác lỗi:\n1. Offset `2` phải là `8` vì địa chỉ tính theo byte.\n2. Offset `3` phải là `12`.\n3. Lệnh cuối phải là `sw` (ghi vào bộ nhớ), `lw` sẽ đọc đè lên kết quả và không thay đổi `A[3]`.",
       "rubric": [

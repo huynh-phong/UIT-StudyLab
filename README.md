@@ -52,7 +52,7 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 
 ### ⏱️ Thi thử sát cấu trúc đề thật
 
-- Đề thi được tạo theo cấu trúc riêng của từng môn: **IT005** gồm 30 câu trắc nghiệm trong 65 phút; **IT006** gồm 20 câu trắc nghiệm (8 điểm) và 2 câu tự luận (2 điểm) trong 60 phút.
+- Đề thi được tạo theo cấu trúc riêng của từng môn: **IT005** gồm 30 câu trắc nghiệm trong 65 phút; **IT006** gồm 16 câu trắc nghiệm (8 điểm) và 2 câu tự luận (2 điểm) trong 65 phút: một câu viết chương trình MIPS, một câu chuyển đổi mã máy.
 - **Thuật toán tạo đề**: kết hợp câu hỏi đã xác minh trong ngân hàng (ưu tiên câu chưa gặp) với các **bài tính toán mới** sinh tự động từ 21 dạng bài của IT005 và 23 dạng bài của IT006. Với IT005: độ trễ, thông lượng, số RTT của HTTP, checksum, Seq/ACK của TCP, cửa sổ trượt, điều khiển tắc nghẽn… Đáp án của bài sinh mới được **tính bằng code** nên luôn chính xác.
 - Phòng thi có đồng hồ đếm ngược, danh sách câu, đánh dấu xem lại, cảnh báo trước khi nộp và tự động nộp khi hết giờ.
 - **Đáp án được niêm phong (mã hóa AES-256-GCM)** cho tới khi nộp bài: trong lúc thi, trình duyệt không thể đọc được đáp án.
@@ -83,16 +83,16 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 
 | Phần | Nội dung | Trắc nghiệm | Tự luận |
 |---|---|:---:|:---:|
-| **Chương 1a** – Các khái niệm và công nghệ | Phân loại máy tính, các lớp phần mềm, thành phần máy tính, bộ nhớ, frame buffer | 50 | 3 |
-| **Chương 1b** – Hiệu suất | Thời gian CPU, CPI, xung nhịp, so sánh máy, thông lượng | 33 | 6 |
-| **Chương 2a** – Phép tính và toán hạng | Thanh ghi, `lw`/`sw`, hằng số, số bù hai, mở rộng dấu, endian | 45 | 11 |
-| **Chương 2b** – Biểu diễn lệnh và rẽ nhánh | Mã máy R/I/J, lệnh logic, `beq`/`bne`/`slt`, if-else, vòng lặp, biên dịch | 64 | 21 |
-| **Chương 2c** – Thủ tục và stack | `jal`/`jr`, quy ước thanh ghi, stack, thủ tục lồng nhau và đệ quy | 32 | 10 |
-| | **Tổng cộng** | **224** | **51** |
+| **Chương 1a** – Các khái niệm và công nghệ | Phân loại máy tính, các lớp phần mềm, thành phần máy tính, bộ nhớ, frame buffer | 82 | – |
+| **Chương 1b** – Hiệu suất | Thời gian CPU, CPI, xung nhịp, so sánh máy, thông lượng | 54 | – |
+| **Chương 2a** – Phép tính và toán hạng | Thanh ghi, `lw`/`sw`, hằng số, số bù hai, mở rộng dấu, endian | 68 | 10 |
+| **Chương 2b** – Biểu diễn lệnh và rẽ nhánh | Mã máy R/I/J, lệnh logic, `beq`/`bne`/`slt`, if-else, vòng lặp, xử lý chuỗi, biên dịch | 117 | 51 |
+| **Chương 2c** – Thủ tục và stack | `jal`/`jr`, quy ước thanh ghi, stack, thủ tục lồng nhau và đệ quy | 36 | 7 |
+| | **Tổng cộng** | **357** | **68** |
 
-- Gồm câu trong các đề và tài liệu training, cùng các câu **soạn thêm từ slide và sổ tay** để phủ toàn bộ Chương 1 và Chương 2; mỗi câu đều ghi rõ nguồn.
-- Tự luận có nhiều dạng: dịch C sang MIPS, chuyển đổi mã máy, truy vết, đọc hiểu đoạn lệnh, tìm và sửa lỗi, tính địa chỉ rẽ nhánh, viết thủ tục, đệ quy, bài toán hiệu suất và câu hỏi lý thuyết.
-- **Bộ mô phỏng MIPS** viết riêng kiểm chứng mã máy và kết quả chạy của đáp án mỗi lần build; đáp án mẫu dạng code được chạy thử với dữ liệu thật.
+- Tổng hợp từ **10 đề giữa kỳ giai đoạn 2019–2026** và tài liệu training, cùng các câu **soạn thêm từ slide và sổ tay** để phủ toàn bộ Chương 1 và Chương 2; mỗi câu đều ghi rõ nguồn.
+- Tự luận tập trung ở Chương 2 như đề thật: dịch C sang MIPS, viết chương trình từ mô tả bằng lời (mảng, chuỗi ký tự), yêu cầu → mã máy và mã máy → ý nghĩa, tính địa chỉ rẽ nhánh, tìm và sửa lỗi, viết thủ tục, đệ quy.
+- **Bộ mô phỏng MIPS** viết riêng kiểm chứng mã máy và kết quả chạy của đáp án mỗi lần build; đáp án mẫu dạng code được chạy thử với dữ liệu mẫu, mã hex trong lời giải được mã hóa lại để đối chiếu.
 - Bảng tham khảo MIPS có thể mở ngay khi ôn tập và khi làm bài thi.
 
 ## Giao diện

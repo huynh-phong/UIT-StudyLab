@@ -71,6 +71,15 @@ export function verifyMcq(q: McqQuestion): string | null {
 
 export function verifyEssay(q: EssayQuestion): string | null {
   const spec = q.essay;
+  for (const e of spec?.encodings ?? []) {
+    try {
+      const got = toHex(encode(e.asm, { pc: e.pc, labels: e.labels }));
+      if (got.toLowerCase() !== e.hex.toLowerCase()) return `mã của "${e.asm}" là ${got}, đáp án mẫu ghi ${e.hex}`;
+      if (!spec!.modelAnswer.toLowerCase().includes(e.hex.toLowerCase())) return `đáp án mẫu không chứa ${e.hex}`;
+    } catch (err) {
+      return `"${e.asm}": ${(err as Error).message}`;
+    }
+  }
   if (!spec?.verify) return null;
   const code = firstMipsBlock(spec.modelAnswer);
   if (!code) return "đáp án mẫu không có khối ```mips";

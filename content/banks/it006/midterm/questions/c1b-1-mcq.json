@@ -10,7 +10,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023"
     },
     "verification": "verified",
     "options": [
@@ -57,7 +57,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023, Đề giữa kỳ HK2 2021–2022"
     },
     "verification": "verified",
     "options": [
@@ -100,7 +100,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023, Đề giữa kỳ HK1 2023–2024, Đề giữa kỳ HK2 2023–2024"
     },
     "verification": "verified",
     "options": [
@@ -147,7 +147,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027, Đề giữa kỳ HK1 2020–2021"
     },
     "verification": "verified",
     "options": [
@@ -194,7 +194,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027, Đề giữa kỳ HK1 2024–2025, Đề giữa kỳ HK1 2020–2021"
     },
     "verification": "verified",
     "options": [
@@ -237,7 +237,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027, Đề giữa kỳ HK1 2020–2021"
     },
     "verification": "verified",
     "options": [
@@ -280,7 +280,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027, Đề giữa kỳ HK1 2020–2021"
     },
     "verification": "verified",
     "options": [
@@ -507,14 +507,14 @@
     "difficulty": "medium",
     "points": 1,
     "source": {
-      "kind": "authored",
-      "reference": "Slide bài giảng"
+      "kind": "original",
+      "reference": "Slide bài giảng, Đề giữa kỳ HK2 2020–2021"
     },
     "verification": "verified",
     "options": [
       {
         "id": "A",
-        "content": "Hai đoạn chạy bằng nhau"
+        "content": "Đoạn 1 có ít lệnh hơn và chạy nhanh hơn"
       },
       {
         "id": "B",
@@ -522,11 +522,11 @@
       },
       {
         "id": "C",
-        "content": "Đoạn 1 có ít lệnh hơn và chạy nhanh hơn"
+        "content": "Đoạn 2 có nhiều lệnh hơn nên chạy chậm hơn"
       },
       {
         "id": "D",
-        "content": "Đoạn 2 có nhiều lệnh hơn nên chạy chậm hơn"
+        "content": "Hai đoạn chạy bằng nhau"
       }
     ],
     "correctOptionId": "B",
@@ -534,9 +534,9 @@
       "correct": "Đoạn 1: 5 lệnh, 10 chu kỳ (CPI 2). Đoạn 2: 6 lệnh, 9 chu kỳ (CPI 1,5). Đoạn 2 nhiều lệnh hơn nhưng ít chu kỳ hơn nên nhanh hơn.",
       "whyCorrect": "Đoạn 1: 5 lệnh, 10 chu kỳ (CPI 2). Đoạn 2: 6 lệnh, 9 chu kỳ (CPI 1,5). Đoạn 2 nhiều lệnh hơn nhưng ít chu kỳ hơn nên nhanh hơn.",
       "whyWrong": {
-        "C": "Đoạn 1 ít lệnh hơn nhưng tốn 10 chu kỳ, nhiều hơn đoạn 2.",
-        "D": "Số lệnh nhiều hơn chưa chắc chậm hơn; phải xét tổng chu kỳ.",
-        "A": "Tổng chu kỳ khác nhau (10 và 9)."
+        "A": "Đoạn 1 ít lệnh hơn nhưng tốn 10 chu kỳ, nhiều hơn đoạn 2.",
+        "C": "Số lệnh nhiều hơn chưa chắc chậm hơn; phải xét tổng chu kỳ.",
+        "D": "Tổng chu kỳ khác nhau (10 và 9)."
       }
     }
   },
@@ -1462,6 +1462,951 @@
         "A": "Đây là thao tác đúng.",
         "B": "Đây là thao tác đúng."
       }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-034",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Một cải tiến phần cứng làm tăng tần số xung clock của CPU lên 25% nhưng làm tăng CPI trung bình lên 10%. Hiệu suất tổng thể thay đổi thế nào?",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Hiệu suất giảm khoảng 12%"
+      },
+      {
+        "id": "B",
+        "content": "Hiệu suất tăng 25%"
+      },
+      {
+        "id": "C",
+        "content": "Hiệu suất tăng khoảng 13.6%"
+      },
+      {
+        "id": "D",
+        "content": "Hiệu suất không thay đổi"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Với cùng số lệnh, hiệu suất tỉ lệ với $f / CPI$: $1{,}25 / 1{,}10 \\approx 1{,}136$, tăng khoảng 13,6%.",
+      "whyCorrect": "Với cùng số lệnh, hiệu suất tỉ lệ với $f / CPI$: $1{,}25 / 1{,}10 \\approx 1{,}136$, tăng khoảng 13,6%.",
+      "whyWrong": {
+        "A": "Tỉ số lớn hơn 1 nên hiệu suất tăng.",
+        "B": "Bỏ qua CPI tăng.",
+        "D": "Hai thay đổi không triệt tiêu nhau."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-035",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Bộ xử lý có clock rate = 3 GHz và CPI = 2. Thực thi chương trình có 2025 lệnh thì cần bao nhiêu thời gian?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "1350 (ns)"
+      },
+      {
+        "id": "B",
+        "content": "12150 (ns)"
+      },
+      {
+        "id": "C",
+        "content": "3037.5 (ns)"
+      },
+      {
+        "id": "D",
+        "content": "337.5 (ns)"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$2025 \\times 2 / 3 = 1350$ ns.",
+      "whyCorrect": "$2025 \\times 2 / 3 = 1350$ ns.",
+      "whyWrong": {
+        "B": "Nhân với tần số thay vì chia.",
+        "C": "Tính sai.",
+        "D": "Chia CPI thay vì nhân."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "2025*2/3"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-036",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Một máy tính cần 460 ns để thực thi xong chương trình gồm 250 lệnh (40 Arith, 60 Store, 80 Load, 70 Branch). Tần số bộ xử lý là bao nhiêu GHz, biết Arith cần 4 chu kỳ, Load 5 chu kỳ, Store 6 chu kỳ, Branch 3 chu kỳ?",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2"
+      },
+      {
+        "id": "B",
+        "content": "2.5"
+      },
+      {
+        "id": "C",
+        "content": "3"
+      },
+      {
+        "id": "D",
+        "content": "3.5"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Số chu kỳ $= 40 \\times 4 + 60 \\times 6 + 80 \\times 5 + 70 \\times 3 = 1130$. Tần số $= 1130 / 460 \\approx 2{,}46$ GHz, gần nhất là 2,5.",
+      "whyCorrect": "Số chu kỳ $= 40 \\times 4 + 60 \\times 6 + 80 \\times 5 + 70 \\times 3 = 1130$. Tần số $= 1130 / 460 \\approx 2{,}46$ GHz, gần nhất là 2,5.",
+      "whyWrong": {
+        "A": "Tính sai số chu kỳ.",
+        "C": "Tính sai số chu kỳ.",
+        "D": "Tính sai số chu kỳ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-037",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Bộ xử lý có clock rate = 2.5 GHz và CPI = 4. Trong 5 giây bộ xử lý thực thi được bao nhiêu lệnh?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$3.125 \\times 10^9$"
+      },
+      {
+        "id": "B",
+        "content": "$0.67 \\times 10^8$"
+      },
+      {
+        "id": "C",
+        "content": "$13.5 \\times 10^7$"
+      },
+      {
+        "id": "D",
+        "content": "$2.5 \\times 10^9$"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$2{,}5 \\times 10^9 / 4 \\times 5 = 3{,}125 \\times 10^9$ lệnh.",
+      "whyCorrect": "$2{,}5 \\times 10^9 / 4 \\times 5 = 3{,}125 \\times 10^9$ lệnh.",
+      "whyWrong": {
+        "B": "Tính sai.",
+        "C": "Tính sai.",
+        "D": "Đây là tần số xung, không phải số lệnh."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "2.5e9/4*5/1e9*1"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-038",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Tìm thời gian thực thi của chương trình 150 lệnh (50 Arith, 20 Store, 30 Load, 50 Branch) trên bộ xử lý 2 GHz, biết Arith cần 4 chu kỳ, Load 5, Store 5, Branch 3.",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "300 ns"
+      },
+      {
+        "id": "B",
+        "content": "350 ns"
+      },
+      {
+        "id": "C",
+        "content": "500 ns"
+      },
+      {
+        "id": "D",
+        "content": "700 ns"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Số chu kỳ $= 200 + 100 + 150 + 150 = 600$; $600 / 2 = 300$ ns.",
+      "whyCorrect": "Số chu kỳ $= 200 + 100 + 150 + 150 = 600$; $600 / 2 = 300$ ns.",
+      "whyWrong": {
+        "B": "Tính sai số chu kỳ.",
+        "C": "Tính sai số chu kỳ.",
+        "D": "Tính sai số chu kỳ."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "(50*4+20*5+30*5+50*3)/2"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-039",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Tìm thời gian thực thi của chương trình 300 lệnh (100 Arith, 40 Store, 60 Load, 100 Branch) trên bộ xử lý 2 GHz, biết Arith cần 4 chu kỳ, Load 5, Store 5, Branch 3.",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "600 ns"
+      },
+      {
+        "id": "B",
+        "content": "650 ns"
+      },
+      {
+        "id": "C",
+        "content": "500 ns"
+      },
+      {
+        "id": "D",
+        "content": "700 ns"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Số chu kỳ $= 400 + 200 + 300 + 300 = 1200$; $1200 / 2 = 600$ ns.",
+      "whyCorrect": "Số chu kỳ $= 400 + 200 + 300 + 300 = 1200$; $1200 / 2 = 600$ ns.",
+      "whyWrong": {
+        "B": "Tính sai số chu kỳ.",
+        "C": "Tính sai số chu kỳ.",
+        "D": "Tính sai số chu kỳ."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "(100*4+40*5+60*5+100*3)/2"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-040",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Chọn phát biểu đúng trong các phát biểu sau?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025, Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Hiệu suất máy tính chỉ phụ thuộc vào tần số"
+      },
+      {
+        "id": "B",
+        "content": "Số lượng lệnh càng lớn thì thời gian thực thi chương trình càng lâu"
+      },
+      {
+        "id": "C",
+        "content": "Kiến trúc tập lệnh ảnh hưởng đến CPI"
+      },
+      {
+        "id": "D",
+        "content": "Trình biên dịch không làm ảnh hưởng tới tốc độ thực thi chương trình"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Kiến trúc tập lệnh ảnh hưởng đến số lệnh, CPI và chu kỳ xung.",
+      "whyCorrect": "Kiến trúc tập lệnh ảnh hưởng đến số lệnh, CPI và chu kỳ xung.",
+      "whyWrong": {
+        "A": "Hiệu suất còn phụ thuộc số lệnh và CPI.",
+        "B": "Nhiều lệnh hơn nhưng CPI nhỏ hơn vẫn có thể nhanh hơn.",
+        "D": "Trình biên dịch ảnh hưởng đến số lệnh và CPI."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-041",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy tính có clock rate = 2.5 GHz và CPI = 2. Trong 5 giây thực thi được bao nhiêu lệnh?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$3.125 \\times 10^9$"
+      },
+      {
+        "id": "B",
+        "content": "$6.25 \\times 10^9$"
+      },
+      {
+        "id": "C",
+        "content": "$13.5 \\times 10^9$"
+      },
+      {
+        "id": "D",
+        "content": "$2.5 \\times 10^9$"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$2{,}5 \\times 10^9 / 2 \\times 5 = 6{,}25 \\times 10^9$ lệnh.",
+      "whyCorrect": "$2{,}5 \\times 10^9 / 2 \\times 5 = 6{,}25 \\times 10^9$ lệnh.",
+      "whyWrong": {
+        "A": "Đây là kết quả với CPI = 4.",
+        "C": "Tính sai.",
+        "D": "Đây là tần số xung."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-042",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Bộ xử lý có Clock cycle = 0.25 ns và CPI = 4. Tổng số lệnh thực thi trong một giây (IPS) là bao nhiêu?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$1.5 \\times 10^9$"
+      },
+      {
+        "id": "B",
+        "content": "$1 \\times 10^9$"
+      },
+      {
+        "id": "C",
+        "content": "$4 \\times 10^9$"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả đều sai"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Tần số $= 1 / 0{,}25$ ns $= 4$ GHz; IPS $= 4 \\times 10^9 / 4 = 10^9$.",
+      "whyCorrect": "Tần số $= 1 / 0{,}25$ ns $= 4$ GHz; IPS $= 4 \\times 10^9 / 4 = 10^9$.",
+      "whyWrong": {
+        "A": "Tính sai.",
+        "C": "Đây là tần số, chưa chia CPI.",
+        "D": "Phương án B đúng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-043",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy tính có tần số xung clock 4.0 GHz. Thực thi chương trình gồm 2023 lệnh, trung bình mỗi lệnh kéo dài 5 chu kỳ. Thời gian thực hiện là?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2.53 ns"
+      },
+      {
+        "id": "B",
+        "content": "2.53 µs"
+      },
+      {
+        "id": "C",
+        "content": "2.53 ms"
+      },
+      {
+        "id": "D",
+        "content": "2.53 s"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$2023 \\times 5 / (4 \\times 10^9) \\approx 2{,}53 \\times 10^{-6}$ s $= 2{,}53$ µs.",
+      "whyCorrect": "$2023 \\times 5 / (4 \\times 10^9) \\approx 2{,}53 \\times 10^{-6}$ s $= 2{,}53$ µs.",
+      "whyWrong": {
+        "A": "Sai đơn vị, nhỏ hơn 1000 lần.",
+        "C": "Sai đơn vị, lớn hơn 1000 lần.",
+        "D": "Sai đơn vị."
+      },
+      "related": "Đề gốc ghi các phương án ns, ms, s và “tất cả đều đúng”, không có phương án đúng; đã sửa thành có µs."
+    }
+  },
+  {
+    "id": "it006-mid-c1b-044",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Bộ xử lý P1 có Clock rate 1 GHz và CPI của 4 lớp lệnh A, B, C, D lần lượt là 4, 3, 2, 1. Chương trình 100 lệnh gồm 20% lớp A, 40% lớp B, 30% lớp C, 10% lớp D. Thời gian thực thi trên P1 là?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "210 ns"
+      },
+      {
+        "id": "B",
+        "content": "405 ns"
+      },
+      {
+        "id": "C",
+        "content": "180 ns"
+      },
+      {
+        "id": "D",
+        "content": "270 ns"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Số chu kỳ $= 20 \\times 4 + 40 \\times 3 + 30 \\times 2 + 10 \\times 1 = 270$; ở 1 GHz là 270 ns.",
+      "whyCorrect": "Số chu kỳ $= 20 \\times 4 + 40 \\times 3 + 30 \\times 2 + 10 \\times 1 = 270$; ở 1 GHz là 270 ns.",
+      "whyWrong": {
+        "A": "Tính sai số chu kỳ.",
+        "B": "Tính sai số chu kỳ.",
+        "C": "Dùng sai tần số."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "20*4+40*3+30*2+10*1"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-045",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Bộ xử lý có Clock rate = 2 GHz và CPI = 4. Tổng số lệnh thực thi trong một giây (IPS) là bao nhiêu?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$2 \\times 10^9$"
+      },
+      {
+        "id": "B",
+        "content": "$0.5 \\times 10^9$"
+      },
+      {
+        "id": "C",
+        "content": "$4 \\times 10^9$"
+      },
+      {
+        "id": "D",
+        "content": "$1 \\times 10^9$"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "IPS $= 2 \\times 10^9 / 4 = 0{,}5 \\times 10^9$.",
+      "whyCorrect": "IPS $= 2 \\times 10^9 / 4 = 0{,}5 \\times 10^9$.",
+      "whyWrong": {
+        "A": "Đây là tần số.",
+        "C": "Nhân thay vì chia, lại quên CPI.",
+        "D": "Tính sai."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-046",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy tính có tần số 4.0 GHz. Thực thi chương trình gồm 2024 lệnh, trung bình mỗi lệnh 2 chu kỳ. Thời gian thực hiện là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "1012 ns"
+      },
+      {
+        "id": "B",
+        "content": "1012 ms"
+      },
+      {
+        "id": "C",
+        "content": "1012 s"
+      },
+      {
+        "id": "D",
+        "content": "1012 us"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$2024 \\times 2 / 4 = 1012$ ns.",
+      "whyCorrect": "$2024 \\times 2 / 4 = 1012$ ns.",
+      "whyWrong": {
+        "B": "Sai đơn vị.",
+        "C": "Sai đơn vị.",
+        "D": "Sai đơn vị."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "2024*2/4"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-047",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Lệnh Arith cần 4 chu kỳ; Load và Store 5 chu kỳ; Branch 3 chu kỳ. Chương trình có 50 Arith, 20 Store, 30 Load, 50 Branch. Thời gian thực thi trên bộ xử lý 1 GHz là?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "350 ns"
+      },
+      {
+        "id": "B",
+        "content": "450 ns"
+      },
+      {
+        "id": "C",
+        "content": "600 ns"
+      },
+      {
+        "id": "D",
+        "content": "500 ns"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Số chu kỳ $= 200 + 100 + 150 + 150 = 600$; ở 1 GHz là 600 ns.",
+      "whyCorrect": "Số chu kỳ $= 200 + 100 + 150 + 150 = 600$; ở 1 GHz là 600 ns.",
+      "whyWrong": {
+        "A": "Tính sai số chu kỳ.",
+        "B": "Tính sai số chu kỳ.",
+        "D": "Tính sai số chu kỳ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-048",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Ba bộ xử lý cùng tập lệnh: P1 (2 GHz, CPI 1.5), P2 (1.5 GHz, CPI 1.0), P3 (3 GHz, CPI 2.5). Bộ xử lý nào có hiệu suất cao nhất theo số lệnh mỗi giây (IPS)?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "P3"
+      },
+      {
+        "id": "B",
+        "content": "P2"
+      },
+      {
+        "id": "C",
+        "content": "P1"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả bằng nhau"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "IPS: P1 $\\approx 1{,}33 \\times 10^9$; P2 $= 1{,}5 \\times 10^9$; P3 $= 1{,}2 \\times 10^9$.",
+      "whyCorrect": "IPS: P1 $\\approx 1{,}33 \\times 10^9$; P2 $= 1{,}5 \\times 10^9$; P3 $= 1{,}2 \\times 10^9$.",
+      "whyWrong": {
+        "A": "P3 có tần số cao nhất nhưng CPI cao.",
+        "C": "P1 chỉ đạt khoảng $1{,}33 \\times 10^9$.",
+        "D": "Ba giá trị khác nhau."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-049",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Chương trình chạy 14 giây trên máy A tần số 1.8 GHz. Cần xây dựng máy B chạy trong 9 giây, nhưng máy B cần số chu kỳ gấp 1.5 lần máy A. Tần số của B là?",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2.2 GHz"
+      },
+      {
+        "id": "B",
+        "content": "3.5 GHz"
+      },
+      {
+        "id": "C",
+        "content": "3 GHz"
+      },
+      {
+        "id": "D",
+        "content": "4.2 GHz"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Chu kỳ A $= 14 \\times 1{,}8 = 25{,}2$ G; chu kỳ B $= 37{,}8$ G; tần số B $= 37{,}8 / 9 = 4{,}2$ GHz.",
+      "whyCorrect": "Chu kỳ A $= 14 \\times 1{,}8 = 25{,}2$ G; chu kỳ B $= 37{,}8$ G; tần số B $= 37{,}8 / 9 = 4{,}2$ GHz.",
+      "whyWrong": {
+        "A": "Tính sai.",
+        "B": "Tính sai.",
+        "C": "Quên nhân 1,5 hoặc tính sai."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "14*1.8*1.5/9"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-050",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Chương trình có 4 lớp lệnh: A (CPI 1, 700 lệnh), B (CPI 5, 180 lệnh), C (CPI 5, 420 lệnh), D (CPI 2, 60 lệnh). Thời gian thực thi trên máy tần số 2.5 GHz là?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "544 ns"
+      },
+      {
+        "id": "B",
+        "content": "1528 ns"
+      },
+      {
+        "id": "C",
+        "content": "1504 ns"
+      },
+      {
+        "id": "D",
+        "content": "1910 ns"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Số chu kỳ $= 700 + 900 + 2100 + 120 = 3820$; $3820 / 2{,}5 = 1528$ ns.",
+      "whyCorrect": "Số chu kỳ $= 700 + 900 + 2100 + 120 = 3820$; $3820 / 2{,}5 = 1528$ ns.",
+      "whyWrong": {
+        "A": "Bỏ qua CPI.",
+        "C": "Tính sai số chu kỳ.",
+        "D": "Tính với tần số 2 GHz."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "(700+900+2100+120)/2.5"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-051",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy A có tần số 400 MHz, trung bình 3 chu kỳ/lệnh; máy B có tần số 600 MHz, trung bình 5 chu kỳ/lệnh. Khi thực thi cùng một đoạn lệnh, máy nào nhanh hơn?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Máy tính A"
+      },
+      {
+        "id": "B",
+        "content": "Máy tính B"
+      },
+      {
+        "id": "C",
+        "content": "Cả hai thực hiện như nhau"
+      },
+      {
+        "id": "D",
+        "content": "Không đủ dữ liệu để so sánh"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Số lệnh mỗi giây: A $= 400 / 3 \\approx 133$ triệu; B $= 600 / 5 = 120$ triệu.",
+      "whyCorrect": "Số lệnh mỗi giây: A $= 400 / 3 \\approx 133$ triệu; B $= 600 / 5 = 120$ triệu.",
+      "whyWrong": {
+        "B": "Tần số cao hơn nhưng CPI cao hơn nhiều.",
+        "C": "Hai giá trị khác nhau.",
+        "D": "Cùng đoạn lệnh nên so sánh được."
+      },
+      "related": "Đề gốc có 3 phương án; phương án D được thêm để đủ 4 lựa chọn."
+    }
+  },
+  {
+    "id": "it006-mid-c1b-052",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Vi xử lý có tần số 3 GHz và CPI là 1.5. Hiệu suất theo chỉ số MIPS là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$1.2 \\times 10^3$"
+      },
+      {
+        "id": "B",
+        "content": "$2 \\times 10^3$"
+      },
+      {
+        "id": "C",
+        "content": "500"
+      },
+      {
+        "id": "D",
+        "content": "$1.3 \\times 10^3$"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "MIPS $= 3000 / 1{,}5 = 2000$.",
+      "whyCorrect": "MIPS $= 3000 / 1{,}5 = 2000$.",
+      "whyWrong": {
+        "A": "Tính sai.",
+        "C": "Tính sai.",
+        "D": "Tính sai."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-053",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy tính có tần số 2.0 GHz. Thực thi chương trình 2019 lệnh, trung bình mỗi lệnh 5 chu kỳ. Thời gian thực hiện là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2024s"
+      },
+      {
+        "id": "B",
+        "content": "2014ns"
+      },
+      {
+        "id": "C",
+        "content": "5047.5s"
+      },
+      {
+        "id": "D",
+        "content": "5047.5ns"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "$2019 \\times 5 / 2 = 5047{,}5$ ns.",
+      "whyCorrect": "$2019 \\times 5 / 2 = 5047{,}5$ ns.",
+      "whyWrong": {
+        "A": "Sai giá trị và đơn vị.",
+        "B": "Sai giá trị.",
+        "C": "Sai đơn vị."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "2019*5/2"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-054",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Chương trình có 4 lớp lệnh: A (CPI 1, 650 lệnh), B (CPI 5, 120 lệnh), C (CPI 5, 500 lệnh), D (CPI 2, 50 lệnh). Thời gian thực thi trên máy 2 GHz là?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2340ns"
+      },
+      {
+        "id": "B",
+        "content": "660ns"
+      },
+      {
+        "id": "C",
+        "content": "1925ns"
+      },
+      {
+        "id": "D",
+        "content": "7700ns"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Số chu kỳ $= 650 + 600 + 2500 + 100 = 3850$; $3850 / 2 = 1925$ ns.",
+      "whyCorrect": "Số chu kỳ $= 650 + 600 + 2500 + 100 = 3850$; $3850 / 2 = 1925$ ns.",
+      "whyWrong": {
+        "A": "Tính sai số chu kỳ.",
+        "B": "Bỏ qua CPI.",
+        "D": "Nhân thay vì chia tần số."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "(650+600+2500+100)/2"
     }
   }
 ]

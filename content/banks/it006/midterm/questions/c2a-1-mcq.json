@@ -10,7 +10,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023"
     },
     "verification": "verified",
     "options": [
@@ -62,7 +62,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023"
     },
     "verification": "verified",
     "options": [
@@ -1963,6 +1963,1089 @@
       "regs": {
         "$s0": 32,
         "$t0": 5
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-046",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Giá trị bù hai của số -2025 biểu diễn dưới dạng 16 bit là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0xF4E7`"
+      },
+      {
+        "id": "B",
+        "content": "`0xF417`"
+      },
+      {
+        "id": "C",
+        "content": "`0xF817`"
+      },
+      {
+        "id": "D",
+        "content": "`0xF427`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "$2025$ = `0x07E9`; $\\texttt{0x10000} - \\texttt{0x07E9}$ = `0xF817`.",
+      "whyCorrect": "$2025$ = `0x07E9`; $\\texttt{0x10000} - \\texttt{0x07E9}$ = `0xF817`.",
+      "whyWrong": {
+        "A": "Tính sai.",
+        "B": "Tính sai.",
+        "D": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "0x10000-2025"
+    }
+  },
+  {
+    "id": "it006-mid-c2a-047",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Thanh ghi `$t1` chứa `0x1001001C`. Bảng bộ nhớ:\n\n| Address | `0x10010008` | `0x1001000C` | `0x10010010` | `0x10010014` | `0x10010018` |\n|---|---|---|---|---|---|\n| Data | `0x00000004` | `0x00000005` | `0x00000006` | `0x00000007` | `0x00000008` |\n\nSau lệnh `lw $t0, -12($t1)`, `$t0` bằng?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x00000005`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00000006`"
+      },
+      {
+        "id": "C",
+        "content": "`0x00000007`"
+      },
+      {
+        "id": "D",
+        "content": "`0x00000004`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Địa chỉ $=$ `0x1001001C` $- 12$ $=$ `0x10010010`, dữ liệu là 6.",
+      "whyCorrect": "Địa chỉ $=$ `0x1001001C` $- 12$ $=$ `0x10010010`, dữ liệu là 6.",
+      "whyWrong": {
+        "A": "Đọc nhầm ô `0x1001000C`.",
+        "C": "Đọc nhầm ô `0x10010014`.",
+        "D": "Đọc nhầm ô `0x10010008`."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t0",
+      "code": "lw $t0, -12($t1)",
+      "regs": {
+        "$t1": 268501020
+      },
+      "words": {
+        "268501008": 6
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-048",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Thanh ghi `$t1` chứa 20. Giá trị của `$s1` sau lệnh `addi $s1, $t1, 30` là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x00000050`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00000032`"
+      },
+      {
+        "id": "C",
+        "content": "`0x000000F3`"
+      },
+      {
+        "id": "D",
+        "content": "`0x00000044`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$20 + 30 = 50$ = `0x32`.",
+      "whyCorrect": "$20 + 30 = 50$ = `0x32`.",
+      "whyWrong": {
+        "A": "`0x50` = 80.",
+        "C": "Tính sai.",
+        "D": "`0x44` = 68."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s1",
+      "code": "addi $s1, $t1, 30",
+      "regs": {
+        "$t1": 20
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-049",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Giá trị bù hai của số -2024 biểu diễn dưới dạng 16 bit là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0xFFE8`"
+      },
+      {
+        "id": "B",
+        "content": "`0xF418`"
+      },
+      {
+        "id": "C",
+        "content": "`0xF818`"
+      },
+      {
+        "id": "D",
+        "content": "`0xF428`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "$2024$ = `0x07E8`; đảo bit được `0xF817`, cộng 1 được `0xF818`.",
+      "whyCorrect": "$2024$ = `0x07E8`; đảo bit được `0xF817`, cộng 1 được `0xF818`.",
+      "whyWrong": {
+        "A": "Tính sai.",
+        "B": "Tính sai.",
+        "D": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "0x10000-2024"
+    }
+  },
+  {
+    "id": "it006-mid-c2a-050",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Thanh ghi `$t0` chứa `0x10010008`. Bảng bộ nhớ:\n\n| Address | `0x10010008` | `0x1001000C` | `0x10010010` | `0x10010014` | `0x10010018` |\n|---|---|---|---|---|---|\n| Data | `0x00000004` | `0x00000005` | `0x00000006` | `0x00000007` | `0x00000008` |\n\nSau lệnh `lw $t1, 12($t0)`, `$t1` bằng?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x00000005`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00000006`"
+      },
+      {
+        "id": "C",
+        "content": "`0x00000007`"
+      },
+      {
+        "id": "D",
+        "content": "`0x00000004`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Địa chỉ $=$ `0x10010008` $+ 12$ $=$ `0x10010014`, dữ liệu là 7.",
+      "whyCorrect": "Địa chỉ $=$ `0x10010008` $+ 12$ $=$ `0x10010014`, dữ liệu là 7.",
+      "whyWrong": {
+        "A": "Offset 12 là 12 byte, không phải 4.",
+        "B": "Đọc nhầm ô `0x10010010`.",
+        "D": "Quên cộng offset."
+      },
+      "related": "Trong MIPS thật, `addi` chỉ nhận số 16 bit; đề giả định lệnh nạp địa chỉ 32 bit thực hiện được (MARS tự tách thành nhiều lệnh)."
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t1",
+      "code": "lw $t1, 12($t0)",
+      "regs": {
+        "$t0": 268501000
+      },
+      "words": {
+        "268501012": 7
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-051",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cho địa chỉ nền `0x10010000` (trong `$t0`) và dữ liệu theo offset:\n\n| Offset (hex) | +8 | +C | +10 | +14 | +18 |\n|---|---|---|---|---|---|\n| Data | `0x00000004` | `0x00000005` | `0x00000006` | `0x00000007` | `0x00000008` |\n\nSau lệnh `lw $t1, 12($t0)`, `$t1` bằng?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x00000006`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00000008`"
+      },
+      {
+        "id": "C",
+        "content": "`0x00000005`"
+      },
+      {
+        "id": "D",
+        "content": "`0x00000004`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "$12_{10}$ = `0xC`, dữ liệu tại offset +C là 5.",
+      "whyCorrect": "$12_{10}$ = `0xC`, dữ liệu tại offset +C là 5.",
+      "whyWrong": {
+        "A": "Nhầm 12 là offset `0x10`.",
+        "B": "Nhầm vị trí.",
+        "D": "Nhầm vị trí."
+      },
+      "tip": "Offset trong lệnh là hệ 10, bảng ghi hệ 16."
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t1",
+      "code": "lw $t1, 12($t0)",
+      "regs": {
+        "$t0": 268500992
+      },
+      "words": {
+        "268501004": 5
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-052",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "`$s0`, `$s1` lưu g, h; địa chỉ nền của A, B lưu trong `$s6`, `$s7`. Dòng lệnh C tương ứng với chuỗi lệnh sau là:\n\n```mips\nlw  $t0, 16($s7)\nsll $t0, $t0, 2\nadd $t0, $t0, $s6\nlw  $s0, 0($t0)\nadd $s0, $s1, $s0\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025, Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`g = B[A[4]]`"
+      },
+      {
+        "id": "B",
+        "content": "`A[0] = g + B[4]`"
+      },
+      {
+        "id": "C",
+        "content": "`g = h + A[B[4]]`"
+      },
+      {
+        "id": "D",
+        "content": "`A[B[4]] = g + h`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`lw 16($s7)` đọc `B[4]`; nhân 4 cộng nền A rồi đọc `A[B[4]]`; cuối cùng cộng h và ghi vào g.",
+      "whyCorrect": "`lw 16($s7)` đọc `B[4]`; nhân 4 cộng nền A rồi đọc `A[B[4]]`; cuối cùng cộng h và ghi vào g.",
+      "whyWrong": {
+        "A": "Thứ tự mảng bị đảo và thiếu h.",
+        "B": "Có `lw` cuối, không ghi vào A.",
+        "D": "Không có `sw` nên không ghi vào mảng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-053",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Giá trị của `$t1` sau khi thực thi đoạn mã là?\n\n```mips\naddi $t0, $zero, 10\naddi $t1, $zero, 5\nsub  $t2, $t1, $t0\n```",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "-5"
+      },
+      {
+        "id": "B",
+        "content": "5"
+      },
+      {
+        "id": "C",
+        "content": "10"
+      },
+      {
+        "id": "D",
+        "content": "15"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`sub` ghi vào `$t2`, nên `$t1` vẫn bằng 5.",
+      "whyCorrect": "`sub` ghi vào `$t2`, nên `$t1` vẫn bằng 5.",
+      "whyWrong": {
+        "A": "-5 là `$t2`.",
+        "C": "10 là `$t0`.",
+        "D": "Tính sai."
+      },
+      "tip": "Đọc kỹ đề hỏi thanh ghi nào."
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t1"
+    }
+  },
+  {
+    "id": "it006-mid-c2a-054",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Giá trị bù hai của số -1000 biểu diễn dưới dạng 16 bit là?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0xFFE8`"
+      },
+      {
+        "id": "B",
+        "content": "`0xF418`"
+      },
+      {
+        "id": "C",
+        "content": "`0xFC18`"
+      },
+      {
+        "id": "D",
+        "content": "`0xF428`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "$1000$ = `0x03E8`; $\\texttt{0x10000} - \\texttt{0x03E8}$ = `0xFC18`.",
+      "whyCorrect": "$1000$ = `0x03E8`; $\\texttt{0x10000} - \\texttt{0x03E8}$ = `0xFC18`.",
+      "whyWrong": {
+        "A": "Tính sai.",
+        "B": "Tính sai.",
+        "D": "Tính sai."
+      },
+      "related": "Đề gốc in phương án C là `0xFF18`, không có phương án đúng; đã sửa thành `0xFC18`."
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "0x10000-1000"
+    }
+  },
+  {
+    "id": "it006-mid-c2a-055",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "`$s1` chứa `0x20232024`, ô nhớ `0x10010008` chứa `0x00002023`. Giá trị của `$s1` sau đoạn lệnh là?\n\n```mips\nori $t0, $0, 0x10010008\nsw  $s1, 0($t0)\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x20232023`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00002023`"
+      },
+      {
+        "id": "C",
+        "content": "`0x20230000`"
+      },
+      {
+        "id": "D",
+        "content": "`0x20232024`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`sw` ghi từ thanh ghi vào bộ nhớ, `$s1` không đổi.",
+      "whyCorrect": "`sw` ghi từ thanh ghi vào bộ nhớ, `$s1` không đổi.",
+      "whyWrong": {
+        "A": "`sw` không thay đổi thanh ghi nguồn.",
+        "B": "Đây là giá trị cũ của ô nhớ.",
+        "C": "Tính sai."
+      },
+      "related": "Trong MIPS thật, `addi` chỉ nhận số 16 bit; đề giả định lệnh nạp địa chỉ 32 bit thực hiện được (MARS tự tách thành nhiều lệnh)."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-056",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Sau đoạn lệnh, giá trị của `$t1` được lưu tại địa chỉ nào?\n\n```mips\naddi $t0, $0, 0x1001000C\naddi $t1, $0, 0x10010008\nsw   $t1, 8($t0)\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x10010018`"
+      },
+      {
+        "id": "B",
+        "content": "`0x10010014`"
+      },
+      {
+        "id": "C",
+        "content": "`0x10010012`"
+      },
+      {
+        "id": "D",
+        "content": "`0x1001000C`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Địa chỉ $=$ `0x1001000C` $+ 8$ $=$ `0x10010014`.",
+      "whyCorrect": "Địa chỉ $=$ `0x1001000C` $+ 8$ $=$ `0x10010014`.",
+      "whyWrong": {
+        "A": "Tính sai phép cộng hex.",
+        "C": "Cộng sai (`0xC + 8 = 0x14`).",
+        "D": "Quên cộng offset."
+      },
+      "related": "Trong MIPS thật, `addi` chỉ nhận số 16 bit; đề giả định lệnh nạp địa chỉ 32 bit thực hiện được (MARS tự tách thành nhiều lệnh)."
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "0x1001000C+8"
+    }
+  },
+  {
+    "id": "it006-mid-c2a-057",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Sau đoạn lệnh, giá trị của `$t1` được lưu tại địa chỉ nào?\n\n```mips\naddi $t0, $0, 0x10010004\naddi $t1, $0, 0x10010008\nsw   $t1, 8($t0)\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x10010008`"
+      },
+      {
+        "id": "B",
+        "content": "`0x10010024`"
+      },
+      {
+        "id": "C",
+        "content": "`0x10010012`"
+      },
+      {
+        "id": "D",
+        "content": "`0x1001000C`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Địa chỉ $=$ `0x10010004` $+ 8$ $=$ `0x1001000C`.",
+      "whyCorrect": "Địa chỉ $=$ `0x10010004` $+ 8$ $=$ `0x1001000C`.",
+      "whyWrong": {
+        "A": "Đây là giá trị của `$t1`.",
+        "B": "Tính sai.",
+        "C": "Cộng theo hệ 10 ở phần cuối."
+      },
+      "related": "Trong MIPS thật, `addi` chỉ nhận số 16 bit; đề giả định lệnh nạp địa chỉ 32 bit thực hiện được (MARS tự tách thành nhiều lệnh)."
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "0x10010004+8"
+    }
+  },
+  {
+    "id": "it006-mid-c2a-058",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Biết địa chỉ nền của mảng A lưu trong `$s2`. Lệnh `lw $s3, 40($s2)` dùng để?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lưu dữ liệu từ ô nhớ A[40] vào thanh ghi `$s2`"
+      },
+      {
+        "id": "B",
+        "content": "Đọc dữ liệu từ ô nhớ A[160], lưu vào thanh ghi `$s3`"
+      },
+      {
+        "id": "C",
+        "content": "Đọc dữ liệu từ ô nhớ A[10], lưu vào thanh ghi `$s3`"
+      },
+      {
+        "id": "D",
+        "content": "Lưu dữ liệu từ `$s3` sau khi cộng 40 vào `$s2`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Offset 40 byte tương ứng chỉ số $40 / 4 = 10$.",
+      "whyCorrect": "Offset 40 byte tương ứng chỉ số $40 / 4 = 10$.",
+      "whyWrong": {
+        "A": "Offset tính theo byte, đích là `$s3`.",
+        "B": "Nhân 4 thay vì chia 4.",
+        "D": "`lw` không thực hiện phép này."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-059",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cho `$s1 = 0x00002004`, `$s2 = 0x10010004`; ô nhớ `0x10010008` chứa `0x00002008`. Sau lệnh `lw $s1, 4($s2)`, giá trị của `$s2` là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x00002008`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00002004`"
+      },
+      {
+        "id": "C",
+        "content": "`0x10010004`"
+      },
+      {
+        "id": "D",
+        "content": "`0x10010008`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`lw` chỉ ghi vào `$s1`; thanh ghi nền `$s2` không đổi.",
+      "whyCorrect": "`lw` chỉ ghi vào `$s1`; thanh ghi nền `$s2` không đổi.",
+      "whyWrong": {
+        "A": "Đây là giá trị mới của `$s1`.",
+        "B": "Đây là giá trị cũ của `$s1`.",
+        "D": "Đây là địa chỉ được tính ra."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s2",
+      "code": "lw $s1, 4($s2)",
+      "regs": {
+        "$s1": 8196,
+        "$s2": 268500996
+      },
+      "words": {
+        "268501000": 8200
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-060",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "`$s0`, `$s1` lưu g, h; địa chỉ nền của A, B lưu trong `$s6`, `$s7`. Dòng lệnh C tương ứng là:\n\n```mips\nlw  $t0, 16($s7)\nadd $t0, $t0, $s0\nsub $t0, $t0, $s1\nsw  $t0, 4($s6)\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`A[1] = g + B[4] - h`"
+      },
+      {
+        "id": "B",
+        "content": "`g = h - B[4] + A[1]`"
+      },
+      {
+        "id": "C",
+        "content": "`g = B[A[1] - h + 4]`"
+      },
+      {
+        "id": "D",
+        "content": "`B[4] = A[1] + g - h`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Đọc `B[4]`, cộng g, trừ h, rồi ghi vào `A[1]` (offset 4).",
+      "whyCorrect": "Đọc `B[4]`, cộng g, trừ h, rồi ghi vào `A[1]` (offset 4).",
+      "whyWrong": {
+        "B": "Kết quả ghi vào bộ nhớ, không phải g.",
+        "C": "Không có truy cập lồng.",
+        "D": "Nơi ghi là mảng A."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-061",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cho `$s1 = 0x00002004`, `$s2 = 0x10010004`; ô nhớ `0x10010008` chứa `0x10010004`. Sau lệnh `sw $s1, 4($s2)`, giá trị của `$s1` là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x10010004`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00002004`"
+      },
+      {
+        "id": "C",
+        "content": "`0x00002008`"
+      },
+      {
+        "id": "D",
+        "content": "`0x10010008`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`sw` chỉ ghi vào bộ nhớ, `$s1` không đổi.",
+      "whyCorrect": "`sw` chỉ ghi vào bộ nhớ, `$s1` không đổi.",
+      "whyWrong": {
+        "A": "`sw` không đọc từ bộ nhớ.",
+        "C": "Tính sai.",
+        "D": "Đây là địa chỉ ô nhớ."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s1",
+      "code": "sw $s1, 4($s2)",
+      "regs": {
+        "$s1": 8196,
+        "$s2": 268500996
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-062",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Lựa chọn nào dưới đây **không** phải là một dạng toán hạng trong MIPS?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Register Operands"
+      },
+      {
+        "id": "B",
+        "content": "Memory Operands"
+      },
+      {
+        "id": "C",
+        "content": "Constant/Immediate Operands"
+      },
+      {
+        "id": "D",
+        "content": "Logical Operands"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "MIPS có 3 loại toán hạng: thanh ghi, bộ nhớ và hằng số.",
+      "whyCorrect": "MIPS có 3 loại toán hạng: thanh ghi, bộ nhớ và hằng số.",
+      "whyWrong": {
+        "A": "Đây là toán hạng thanh ghi.",
+        "B": "Đây là toán hạng bộ nhớ.",
+        "C": "Đây là toán hạng hằng số."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-063",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Biến a, b lưu trong `$s3`, `$s4`. Lệnh Assembly đúng cho câu lệnh cấp cao `a = b - 7` là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, Đề giữa kỳ HK1 2019–2020, Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`subi $s3, $s4, 7`"
+      },
+      {
+        "id": "B",
+        "content": "`addj $s3, $s4, -7`"
+      },
+      {
+        "id": "C",
+        "content": "`addi $s4, $s3, -7`"
+      },
+      {
+        "id": "D",
+        "content": "`addi $s3, $s4, -7`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "MIPS không có `subi`; trừ hằng số dùng `addi` với số âm, đích đứng đầu.",
+      "whyCorrect": "MIPS không có `subi`; trừ hằng số dùng `addi` với số âm, đích đứng đầu.",
+      "whyWrong": {
+        "A": "MIPS chuẩn không có `subi`.",
+        "B": "Không có lệnh `addj`.",
+        "C": "Đảo đích và nguồn."
+      },
+      "related": "Các đề khác có cùng dạng với số khác: `a = b - 5`, `a = b - 27`."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-064",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cho `$s1 = 0x00002004`, `$s2 = 0x10010004`. Sau lệnh `sw $s1, 4($s2)`, giá trị của thanh ghi nào bị thay đổi?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`$s1`"
+      },
+      {
+        "id": "B",
+        "content": "`$s2`"
+      },
+      {
+        "id": "C",
+        "content": "Cả hai đều thay đổi"
+      },
+      {
+        "id": "D",
+        "content": "Cả hai đều không thay đổi"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`sw` chỉ thay đổi bộ nhớ.",
+      "whyCorrect": "`sw` chỉ thay đổi bộ nhớ.",
+      "whyWrong": {
+        "A": "`$s1` là dữ liệu nguồn.",
+        "B": "`$s2` là thanh ghi nền.",
+        "C": "Không thanh ghi nào đổi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-065",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Lệnh `lw $s1, 8($s2)` làm gì? Biết `$s2 = 0x10010004`.",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lưu giá trị trong `$s2` vào `$s1`"
+      },
+      {
+        "id": "B",
+        "content": "Đọc 1 byte tại ô nhớ `0x10010004` vào `$s1`"
+      },
+      {
+        "id": "C",
+        "content": "Đọc 1 byte tại ô nhớ `0x1001000C` vào `$s1`"
+      },
+      {
+        "id": "D",
+        "content": "Đọc 1 word tại ô nhớ `0x1001000C` vào `$s1`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`lw` đọc 1 word tại địa chỉ `$s2 + 8` = `0x1001000C`.",
+      "whyCorrect": "`lw` đọc 1 word tại địa chỉ `$s2 + 8` = `0x1001000C`.",
+      "whyWrong": {
+        "A": "Đây là phép gán thanh ghi.",
+        "B": "`lw` đọc 1 word và có cộng offset.",
+        "C": "`lw` đọc 1 word, không phải 1 byte."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-066",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Theo slide về kiến trúc tập lệnh, kiến trúc MIPS có bao nhiêu loại toán hạng?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2"
+      },
+      {
+        "id": "B",
+        "content": "3"
+      },
+      {
+        "id": "C",
+        "content": "4"
+      },
+      {
+        "id": "D",
+        "content": "5"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Gồm thanh ghi, bộ nhớ và hằng số.",
+      "whyCorrect": "Gồm thanh ghi, bộ nhớ và hằng số.",
+      "whyWrong": {
+        "A": "Thiếu một loại.",
+        "C": "Chỉ có 3 loại.",
+        "D": "Chỉ có 3 loại."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-067",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Thanh ghi nào sau đây có giá trị không thể thay đổi?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Stack Pointer"
+      },
+      {
+        "id": "B",
+        "content": "Zero"
+      },
+      {
+        "id": "C",
+        "content": "Frame Pointer"
+      },
+      {
+        "id": "D",
+        "content": "Return Address"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`$zero` luôn bằng 0.",
+      "whyCorrect": "`$zero` luôn bằng 0.",
+      "whyWrong": {
+        "A": "`$sp` thay đổi khi cấp phát stack.",
+        "C": "`$fp` thay đổi theo frame.",
+        "D": "`$ra` được `jal` ghi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-068",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cần ít nhất bao nhiêu lệnh hợp ngữ để biểu diễn câu lệnh `f = g - A[B[4]]`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "3"
+      },
+      {
+        "id": "B",
+        "content": "4"
+      },
+      {
+        "id": "C",
+        "content": "5"
+      },
+      {
+        "id": "D",
+        "content": "6"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`lw` đọc `B[4]`, `sll` nhân 4, `add` cộng nền A, `lw` đọc phần tử, `sub` tính kết quả: 5 lệnh.",
+      "whyCorrect": "`lw` đọc `B[4]`, `sll` nhân 4, `add` cộng nền A, `lw` đọc phần tử, `sub` tính kết quả: 5 lệnh.",
+      "whyWrong": {
+        "A": "Thiếu bước tính địa chỉ.",
+        "B": "Thiếu một bước.",
+        "D": "Có thể làm trong 5 lệnh."
       }
     }
   }

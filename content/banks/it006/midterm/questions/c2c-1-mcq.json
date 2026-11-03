@@ -53,7 +53,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ HK1 2016–2017"
+      "reference": "Đề giữa kỳ HK1 2016–2017, Đề giữa kỳ HK2 2021–2022"
     },
     "verification": "verified",
     "options": [
@@ -138,36 +138,36 @@
     "difficulty": "easy",
     "points": 1,
     "source": {
-      "kind": "authored",
-      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021"
     },
     "verification": "verified",
     "options": [
       {
         "id": "A",
-        "content": "`jr $ra`"
+        "content": "`jal $ra`"
       },
       {
         "id": "B",
-        "content": "`j $ra`"
+        "content": "`jr $ra`"
       },
       {
         "id": "C",
-        "content": "`beq $ra, $zero, 0`"
+        "content": "`j $ra`"
       },
       {
         "id": "D",
-        "content": "`jal $ra`"
+        "content": "`beq $ra, $zero, 0`"
       }
     ],
-    "correctOptionId": "A",
+    "correctOptionId": "B",
     "explanation": {
       "correct": "`jr $ra` đặt PC = `$ra`, quay về lệnh ngay sau lệnh gọi.",
       "whyCorrect": "`jr $ra` đặt PC = `$ra`, quay về lệnh ngay sau lệnh gọi.",
       "whyWrong": {
-        "D": "`jal` nhận nhãn và dùng để gọi thủ tục.",
-        "B": "`j` nhận nhãn, không nhận thanh ghi.",
-        "C": "`beq` rẽ nhánh theo điều kiện."
+        "A": "`jal` nhận nhãn và dùng để gọi thủ tục.",
+        "C": "`j` nhận nhãn, không nhận thanh ghi.",
+        "D": "`beq` rẽ nhánh theo điều kiện."
       }
     }
   },
@@ -396,36 +396,36 @@
     "difficulty": "easy",
     "points": 1,
     "source": {
-      "kind": "authored",
-      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
     },
     "verification": "verified",
     "options": [
       {
         "id": "A",
-        "content": "Theo thứ tự địa chỉ tăng dần"
-      },
-      {
-        "id": "B",
         "content": "FIFO – vào trước ra trước"
       },
       {
-        "id": "C",
+        "id": "B",
         "content": "LIFO – vào sau ra trước"
       },
       {
-        "id": "D",
+        "id": "C",
         "content": "Truy cập ngẫu nhiên có ưu tiên"
+      },
+      {
+        "id": "D",
+        "content": "Theo thứ tự địa chỉ tăng dần"
       }
     ],
-    "correctOptionId": "C",
+    "correctOptionId": "B",
     "explanation": {
       "correct": "Stack hoạt động theo LIFO: vào sau, ra trước.",
       "whyCorrect": "Stack hoạt động theo LIFO: vào sau, ra trước.",
       "whyWrong": {
-        "B": "FIFO là hàng đợi (queue).",
-        "D": "Stack không truy cập ngẫu nhiên theo nguyên tắc.",
-        "A": "Stack MIPS phát triển từ địa chỉ cao xuống thấp."
+        "A": "FIFO là hàng đợi (queue).",
+        "C": "Stack không truy cập ngẫu nhiên theo nguyên tắc.",
+        "D": "Stack MIPS phát triển từ địa chỉ cao xuống thấp."
       }
     }
   },
@@ -1383,6 +1383,178 @@
         "D": "Truyền tham số là `$a0`–`$a3`.",
         "B": "Giá trị trả về là `$v0`, `$v1`.",
         "C": "Thanh ghi tạm là nhóm `$t`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-033",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Bước cuối cùng trong quá trình thực thi một thủ tục là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chuyển quyền điều khiển cho thủ tục"
+      },
+      {
+        "id": "B",
+        "content": "Yêu cầu tài nguyên lưu trữ cần thiết cho thủ tục"
+      },
+      {
+        "id": "C",
+        "content": "Trả điều khiển về vị trí mà thủ tục được gọi"
+      },
+      {
+        "id": "D",
+        "content": "Lưu kết quả ở một nơi mà chương trình có thể truy xuất được"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Bước 6 là trả điều khiển về nơi gọi bằng `jr $ra`.",
+      "whyCorrect": "Bước 6 là trả điều khiển về nơi gọi bằng `jr $ra`.",
+      "whyWrong": {
+        "A": "Đây là bước 2.",
+        "B": "Đây là bước 3.",
+        "D": "Đây là bước 5."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-034",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Lệnh `jr $ra` đặt ở cuối thủ tục để làm gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Kết thúc thủ tục"
+      },
+      {
+        "id": "B",
+        "content": "Lấy giá trị trong `$ra` gán vào thanh ghi PC"
+      },
+      {
+        "id": "C",
+        "content": "Phục hồi giá trị lưu trữ trong `$ra`"
+      },
+      {
+        "id": "D",
+        "content": "Lưu dữ liệu trong `$ra` vào stack"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`jr $ra` gán PC = `$ra` để quay về lệnh sau lệnh gọi.",
+      "whyCorrect": "`jr $ra` gán PC = `$ra` để quay về lệnh sau lệnh gọi.",
+      "whyWrong": {
+        "A": "Chưa mô tả đúng cơ chế.",
+        "C": "Phục hồi `$ra` dùng `lw`.",
+        "D": "Lưu lên stack dùng `sw`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-035",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Trường hợp nào **không** cần sử dụng đến stack khi dùng thủ tục?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thủ tục cần nhiều hơn bốn thanh ghi để làm tham số"
+      },
+      {
+        "id": "B",
+        "content": "Thủ tục cần nhiều hơn hai thanh ghi làm giá trị trả về"
+      },
+      {
+        "id": "C",
+        "content": "Thủ tục có sử dụng một số thanh ghi loại `$s`"
+      },
+      {
+        "id": "D",
+        "content": "Thủ tục có sử dụng một số thanh ghi loại `$t`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Nhóm `$t` là thanh ghi tạm, không cần lưu lại.",
+      "whyCorrect": "Nhóm `$t` là thanh ghi tạm, không cần lưu lại.",
+      "whyWrong": {
+        "A": "Tham số dư truyền qua stack.",
+        "B": "Giá trị trả về dư lưu trên stack.",
+        "C": "Nhóm `$s` phải lưu lên stack."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-036",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Chức năng của thanh ghi `$ra` là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lưu tham số truyền cho hàm/thủ tục"
+      },
+      {
+        "id": "B",
+        "content": "Lưu giá trị trả về của hàm"
+      },
+      {
+        "id": "C",
+        "content": "Chứa địa chỉ của lệnh ngay sau lệnh gọi thủ tục"
+      },
+      {
+        "id": "D",
+        "content": "Lưu địa chỉ của stack"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`jal` lưu PC + 4 vào `$ra`.",
+      "whyCorrect": "`jal` lưu PC + 4 vào `$ra`.",
+      "whyWrong": {
+        "A": "Đây là `$a0`–`$a3`.",
+        "B": "Đây là `$v0`, `$v1`.",
+        "D": "Đây là `$sp`."
       }
     }
   }

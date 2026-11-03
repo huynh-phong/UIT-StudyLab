@@ -10,7 +10,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023"
     },
     "verification": "verified",
     "options": [
@@ -54,7 +54,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu), Training giữa kỳ BHT KTMT 2026–2027"
+      "reference": "Đề giữa kỳ HK1 2022–2023, Training giữa kỳ BHT KTMT 2026–2027, Đề giữa kỳ HK2 2024–2025, Đề giữa kỳ HK2 2020–2021"
     },
     "verification": "verified",
     "options": [
@@ -97,7 +97,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023"
     },
     "verification": "verified",
     "options": [
@@ -140,7 +140,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023"
     },
     "verification": "verified",
     "options": [
@@ -188,7 +188,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027, Đề giữa kỳ HK2 2020–2021"
     },
     "verification": "verified",
     "options": [
@@ -232,7 +232,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027, Đề giữa kỳ HK2 2020–2021"
     },
     "verification": "verified",
     "options": [
@@ -318,7 +318,7 @@
     "points": 1,
     "source": {
       "kind": "original",
-      "reference": "Đề giữa kỳ (bộ 18 câu)"
+      "reference": "Đề giữa kỳ HK1 2022–2023, Đề giữa kỳ HK2 2020–2021, Đề giữa kỳ HK1 2019–2020"
     },
     "verification": "verified",
     "options": [
@@ -1137,14 +1137,14 @@
     "difficulty": "easy",
     "points": 1,
     "source": {
-      "kind": "authored",
-      "reference": "Slide bài giảng"
+      "kind": "original",
+      "reference": "Slide bài giảng, Đề giữa kỳ HK1 2025–2026"
     },
     "verification": "verified",
     "options": [
       {
         "id": "A",
-        "content": "Input và Output"
+        "content": "Datapath và Control"
       },
       {
         "id": "B",
@@ -1152,20 +1152,20 @@
       },
       {
         "id": "C",
-        "content": "Datapath và Control"
+        "content": "Input và Output"
       },
       {
         "id": "D",
         "content": "ROM và RAM"
       }
     ],
-    "correctOptionId": "C",
+    "correctOptionId": "A",
     "explanation": {
       "correct": "CPU gồm đường dữ liệu (datapath) và khối điều khiển (control).",
       "whyCorrect": "CPU gồm đường dữ liệu (datapath) và khối điều khiển (control).",
       "whyWrong": {
         "B": "DRAM là bộ nhớ chính, nằm ngoài CPU.",
-        "A": "Input/Output là thiết bị ngoại vi.",
+        "C": "Input/Output là thiết bị ngoại vi.",
         "D": "ROM và RAM là bộ nhớ."
       }
     }
@@ -2167,6 +2167,1403 @@
     "verify": {
       "kind": "value",
       "expr": "640*480*24"
+    }
+  },
+  {
+    "id": "it006-mid-c1a-051",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một ảnh 4K có độ phân giải $3840 \\times 2160$ pixel, mỗi điểm ảnh biểu diễn theo hệ RGB (3 kênh màu, mỗi kênh 8 bit). Ảnh này có dung lượng không nén là bao nhiêu và cần dung lượng tối thiểu bao nhiêu để lưu trữ? (chọn đáp án gần đúng nhất)",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "23.7 MB và 23.7 MB"
+      },
+      {
+        "id": "B",
+        "content": "23.7 MB và 30.3 MB"
+      },
+      {
+        "id": "C",
+        "content": "24300 MB và 24300 MB"
+      },
+      {
+        "id": "D",
+        "content": "24300 MB và 30300 MB"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$3840 \\times 2160 \\times 3 = 24\\,883\\,200$ byte $\\approx 23{,}7$ MB ($1$ MB $= 2^{20}$ byte). Không nén thì dung lượng lưu trữ tối thiểu bằng đúng kích thước đó.",
+      "whyCorrect": "$3840 \\times 2160 \\times 3 = 24\\,883\\,200$ byte $\\approx 23{,}7$ MB ($1$ MB $= 2^{20}$ byte). Không nén thì dung lượng lưu trữ tối thiểu bằng đúng kích thước đó.",
+      "whyWrong": {
+        "B": "Lưu không nén không cần thêm 30,3 MB.",
+        "C": "24300 là kết quả tính sang KB ($24\\,883\\,200 / 1024$), không phải MB.",
+        "D": "Sai đơn vị và sai cả dung lượng lưu trữ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-052",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Bộ nhớ Cache là một bộ nhớ nhỏ, nhanh, hoạt động như bộ đệm cho bộ nhớ DRAM. Cache được xây dựng trên công nghệ nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Dynamic random access memory"
+      },
+      {
+        "id": "B",
+        "content": "Static random access memory"
+      },
+      {
+        "id": "C",
+        "content": "Flash"
+      },
+      {
+        "id": "D",
+        "content": "Read only memory"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Cache dùng SRAM vì nhanh hơn DRAM.",
+      "whyCorrect": "Cache dùng SRAM vì nhanh hơn DRAM.",
+      "whyWrong": {
+        "A": "DRAM dùng cho bộ nhớ chính.",
+        "C": "Flash là bộ nhớ thứ cấp, chậm hơn nhiều.",
+        "D": "ROM chỉ đọc, không phù hợp làm bộ đệm."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-053",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Dùng mạng Ethernet tốc độ 200 Mbps để truyền một file 500 MB (Mega Byte). Thời gian truyền là bao lâu? (chọn đáp án gần đúng nhất)",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "20 (s)"
+      },
+      {
+        "id": "B",
+        "content": "15 (s)"
+      },
+      {
+        "id": "C",
+        "content": "30 (s)"
+      },
+      {
+        "id": "D",
+        "content": "25 (s)"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$500 \\times 8 = 4000$ Mbit; $4000 / 200 = 20$ s.",
+      "whyCorrect": "$500 \\times 8 = 4000$ Mbit; $4000 / 200 = 20$ s.",
+      "whyWrong": {
+        "B": "Tính sai.",
+        "C": "Tính sai.",
+        "D": "Tính sai."
+      },
+      "tip": "Đổi MB sang Mbit bằng cách nhân 8 trước khi chia cho tốc độ."
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "500*8/200"
+    }
+  },
+  {
+    "id": "it006-mid-c1a-054",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Bộ nhớ Cache hoạt động là một bộ đệm giữa?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "CPU và mainboard"
+      },
+      {
+        "id": "B",
+        "content": "CPU và RAM"
+      },
+      {
+        "id": "C",
+        "content": "RAM và SSD"
+      },
+      {
+        "id": "D",
+        "content": "User và CPU"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Cache nằm giữa CPU và RAM, giảm thời gian CPU phải truy cập RAM.",
+      "whyCorrect": "Cache nằm giữa CPU và RAM, giảm thời gian CPU phải truy cập RAM.",
+      "whyWrong": {
+        "A": "Mainboard là bo mạch, không phải bộ nhớ.",
+        "C": "Cache không đệm giữa RAM và SSD.",
+        "D": "Người dùng không tương tác trực tiếp với cache."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-055",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Sắp xếp các loại bộ nhớ theo thứ tự **giảm dần** về dung lượng lưu trữ?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "RAM > HDD > Cache > Register"
+      },
+      {
+        "id": "B",
+        "content": "SSD > RAM > Register > Cache"
+      },
+      {
+        "id": "C",
+        "content": "SSD > RAM > Cache > Register"
+      },
+      {
+        "id": "D",
+        "content": "SSD > Cache > RAM > Register"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Càng gần CPU dung lượng càng nhỏ: SSD lớn nhất, Register nhỏ nhất.",
+      "whyCorrect": "Càng gần CPU dung lượng càng nhỏ: SSD lớn nhất, Register nhỏ nhất.",
+      "whyWrong": {
+        "A": "HDD lớn hơn RAM.",
+        "B": "Cache lớn hơn Register.",
+        "D": "RAM lớn hơn Cache."
+      },
+      "related": "Đề gốc viết các phương án bằng dấu `<` dù hỏi giảm dần; ở đây đã đổi thành dấu `>` cho đúng nghĩa."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-056",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một camera màu dùng 8 bit cho một kênh màu trong hệ 3 kênh RGB, ghi hình độ phân giải $1920 \\times 1080$ pixel với 60 fps. Để chứa đoạn video dài 30 giây thì bộ nhớ cần tối thiểu bao nhiêu GBytes?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "11"
+      },
+      {
+        "id": "B",
+        "content": "20"
+      },
+      {
+        "id": "C",
+        "content": "2.5"
+      },
+      {
+        "id": "D",
+        "content": "10"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$1920 \\times 1080 \\times 3 \\times 60 \\times 30 = 11\\,197\\,440\\,000$ byte, tức khoảng 10,43 GB ($2^{30}$) hay 11,2 GB ($10^9$). 10 GB là không đủ nên chọn 11.",
+      "whyCorrect": "$1920 \\times 1080 \\times 3 \\times 60 \\times 30 = 11\\,197\\,440\\,000$ byte, tức khoảng 10,43 GB ($2^{30}$) hay 11,2 GB ($10^9$). 10 GB là không đủ nên chọn 11.",
+      "whyWrong": {
+        "B": "Thừa gần gấp đôi.",
+        "C": "Quên nhân đủ số khung hình.",
+        "D": "10 GB nhỏ hơn dung lượng cần."
+      },
+      "tip": "Dung lượng video = rộng × cao × số byte mỗi pixel × fps × số giây."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-057",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Dùng mạng Ethernet tốc độ 100 Mbit/s. Nếu truyền hết một file trong 0.16 s thì file có kích thước bao nhiêu Mega Byte (MB)?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2.0 MB"
+      },
+      {
+        "id": "B",
+        "content": "1.5 MB"
+      },
+      {
+        "id": "C",
+        "content": "3 MB"
+      },
+      {
+        "id": "D",
+        "content": "1 MB"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$100 \\times 0{,}16 = 16$ Mbit $= 2$ MB.",
+      "whyCorrect": "$100 \\times 0{,}16 = 16$ Mbit $= 2$ MB.",
+      "whyWrong": {
+        "B": "Tính sai.",
+        "C": "Tính sai.",
+        "D": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "100*0.16/8"
+    }
+  },
+  {
+    "id": "it006-mid-c1a-058",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Sắp xếp các loại bộ nhớ theo thứ tự **giảm dần** về tốc độ truy xuất?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Register > RAM > HDD > Cache"
+      },
+      {
+        "id": "B",
+        "content": "RAM > Register > Cache > SSD"
+      },
+      {
+        "id": "C",
+        "content": "SSD > RAM > Cache > Register"
+      },
+      {
+        "id": "D",
+        "content": "Register > Cache > RAM > SSD"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Tốc độ giảm dần khi đi xa CPU: Register, Cache, RAM rồi đến SSD.",
+      "whyCorrect": "Tốc độ giảm dần khi đi xa CPU: Register, Cache, RAM rồi đến SSD.",
+      "whyWrong": {
+        "A": "Cache phải nhanh hơn RAM và HDD.",
+        "B": "Register nhanh nhất.",
+        "C": "Thứ tự này là tăng dần tốc độ."
+      },
+      "related": "Đề gốc viết các phương án bằng dấu `<`; ở đây đã đổi thành dấu `>` cho đúng nghĩa giảm dần."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-059",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một camera màu dùng 8 bit cho một kênh màu trong hệ 3 kênh RGB, ghi hình độ phân giải $1920 \\times 1080$ pixel với 30 fps. Để chứa đoạn video dài 30 giây thì bộ nhớ cần tối thiểu bao nhiêu GBytes?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "11"
+      },
+      {
+        "id": "B",
+        "content": "20"
+      },
+      {
+        "id": "C",
+        "content": "5.5"
+      },
+      {
+        "id": "D",
+        "content": "10"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "$1920 \\times 1080 \\times 3 \\times 30 \\times 30 = 5\\,598\\,720\\,000$ byte $\\approx 5{,}6$ GB ($10^9$) hay $5{,}2$ GB ($2^{30}$), gần nhất là 5.5.",
+      "whyCorrect": "$1920 \\times 1080 \\times 3 \\times 30 \\times 30 = 5\\,598\\,720\\,000$ byte $\\approx 5{,}6$ GB ($10^9$) hay $5{,}2$ GB ($2^{30}$), gần nhất là 5.5.",
+      "whyWrong": {
+        "A": "Đây là kết quả với 60 fps.",
+        "B": "Thừa quá nhiều.",
+        "D": "Gần gấp đôi dung lượng cần."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-060",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một Gigabyte bằng bao nhiêu Byte?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2024–2025, Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$2^{20}$"
+      },
+      {
+        "id": "B",
+        "content": "$2^{30}$"
+      },
+      {
+        "id": "C",
+        "content": "$2^{40}$"
+      },
+      {
+        "id": "D",
+        "content": "$2^{50}$"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "GB = $2^{30}$ byte.",
+      "whyCorrect": "GB = $2^{30}$ byte.",
+      "whyWrong": {
+        "A": "$2^{20}$ là MB.",
+        "C": "$2^{40}$ là TB.",
+        "D": "$2^{50}$ là PB."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-061",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Theo nội dung bài học, phân khúc máy chủ (server) được chia thành bao nhiêu loại nếu chỉ xét về giá thành và hiệu năng?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "3"
+      },
+      {
+        "id": "B",
+        "content": "4"
+      },
+      {
+        "id": "C",
+        "content": "5"
+      },
+      {
+        "id": "D",
+        "content": "6"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Slide chia thành 3 loại: Low-end servers, Supercomputers và Datacenter.",
+      "whyCorrect": "Slide chia thành 3 loại: Low-end servers, Supercomputers và Datacenter.",
+      "whyWrong": {
+        "B": "Slide chỉ nêu 3 loại.",
+        "C": "Slide chỉ nêu 3 loại.",
+        "D": "Slide chỉ nêu 3 loại."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-062",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Sắp xếp các loại bộ nhớ theo thứ tự tốc độ truy xuất **nhanh dần**?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "RAM < HDD < Cache < Register"
+      },
+      {
+        "id": "B",
+        "content": "SSD < RAM < Register < Cache"
+      },
+      {
+        "id": "C",
+        "content": "SSD < RAM < Cache < Register"
+      },
+      {
+        "id": "D",
+        "content": "SSD < Cache < RAM < Register"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Từ chậm đến nhanh: SSD, RAM, Cache, Register.",
+      "whyCorrect": "Từ chậm đến nhanh: SSD, RAM, Cache, Register.",
+      "whyWrong": {
+        "A": "HDD chậm hơn RAM.",
+        "B": "Register nhanh hơn Cache.",
+        "D": "Cache nhanh hơn RAM."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-063",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một camera màu dùng 8 bit cho một kênh màu trong hệ 3 kênh RGB, ghi hình độ phân giải $640 \\times 480$ pixel với 30 fps. Độ lớn nhỏ nhất của bộ đệm để chứa đoạn video dài 10 giây là bao nhiêu MBytes?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "150"
+      },
+      {
+        "id": "B",
+        "content": "200"
+      },
+      {
+        "id": "C",
+        "content": "250"
+      },
+      {
+        "id": "D",
+        "content": "300"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "$640 \\times 480 \\times 3 \\times 30 \\times 10 = 276\\,480\\,000$ byte $\\approx 264$ MB ($2^{20}$) hay $276$ MB ($10^6$). Trong các phương án, chỉ 300 đủ chứa.",
+      "whyCorrect": "$640 \\times 480 \\times 3 \\times 30 \\times 10 = 276\\,480\\,000$ byte $\\approx 264$ MB ($2^{20}$) hay $276$ MB ($10^6$). Trong các phương án, chỉ 300 đủ chứa.",
+      "whyWrong": {
+        "A": "Không đủ chứa.",
+        "B": "Không đủ chứa.",
+        "C": "Nhỏ hơn dung lượng cần."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-064",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Sắp xếp các bộ nhớ có tốc độ truy xuất chậm dần?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Register > RAM > Cache > SSD"
+      },
+      {
+        "id": "B",
+        "content": "Register > Cache > SSD > RAM"
+      },
+      {
+        "id": "C",
+        "content": "Cache > Register > RAM > SSD"
+      },
+      {
+        "id": "D",
+        "content": "Register > Cache > RAM > SSD"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Tốc độ giảm dần: Register, Cache, RAM, SSD.",
+      "whyCorrect": "Tốc độ giảm dần: Register, Cache, RAM, SSD.",
+      "whyWrong": {
+        "A": "Cache nhanh hơn RAM.",
+        "B": "RAM nhanh hơn SSD.",
+        "C": "Register nhanh hơn Cache."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-065",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Trong ngữ cảnh máy tính, “CPU” là viết tắt của từ gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Computer Processing Unit"
+      },
+      {
+        "id": "B",
+        "content": "Central Processor Unit"
+      },
+      {
+        "id": "C",
+        "content": "Central Processing Unit"
+      },
+      {
+        "id": "D",
+        "content": "Control Processing Unit"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "CPU = Central Processing Unit.",
+      "whyCorrect": "CPU = Central Processing Unit.",
+      "whyWrong": {
+        "A": "Sai chữ Central.",
+        "B": "Sai chữ Processing.",
+        "D": "Sai chữ Central."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-066",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Bộ nhớ SSD hoặc HDD thuộc loại nào trong phân cấp bộ nhớ?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cache memory"
+      },
+      {
+        "id": "B",
+        "content": "Secondary memory"
+      },
+      {
+        "id": "C",
+        "content": "Primary memory"
+      },
+      {
+        "id": "D",
+        "content": "Volatile Memory"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "SSD, HDD là bộ nhớ thứ cấp, không mất dữ liệu khi tắt nguồn.",
+      "whyCorrect": "SSD, HDD là bộ nhớ thứ cấp, không mất dữ liệu khi tắt nguồn.",
+      "whyWrong": {
+        "A": "Cache là SRAM trong/gần CPU.",
+        "C": "Primary memory là RAM.",
+        "D": "SSD, HDD là bất khả biến."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-067",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Thành phần nào dưới đây là thành phần cơ bản của bộ xử lý (Processor)?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Compiler"
+      },
+      {
+        "id": "B",
+        "content": "Input/Output"
+      },
+      {
+        "id": "C",
+        "content": "Datapath"
+      },
+      {
+        "id": "D",
+        "content": "Operating System"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Bộ xử lý gồm Datapath và Control.",
+      "whyCorrect": "Bộ xử lý gồm Datapath và Control.",
+      "whyWrong": {
+        "A": "Compiler là phần mềm.",
+        "B": "I/O nằm ngoài bộ xử lý.",
+        "D": "Hệ điều hành là phần mềm."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-068",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một bức ảnh 4K kích thước $3840 \\times 2160$ pixel. Mỗi pixel chứa ba màu cơ bản, mỗi màu 8 bit. Để lưu bức ảnh thì dung lượng tối thiểu của bộ nhớ là bao nhiêu Mbytes?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2023–2024"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "21"
+      },
+      {
+        "id": "B",
+        "content": "22"
+      },
+      {
+        "id": "C",
+        "content": "23"
+      },
+      {
+        "id": "D",
+        "content": "24"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "$3840 \\times 2160 \\times 3 = 24\\,883\\,200$ byte $\\approx 23{,}73$ MB ($2^{20}$). Bộ nhớ phải đủ chứa nên chọn 24.",
+      "whyCorrect": "$3840 \\times 2160 \\times 3 = 24\\,883\\,200$ byte $\\approx 23{,}73$ MB ($2^{20}$). Bộ nhớ phải đủ chứa nên chọn 24.",
+      "whyWrong": {
+        "A": "Không đủ chứa.",
+        "B": "Không đủ chứa.",
+        "C": "23 MB vẫn nhỏ hơn 23,73 MB."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-069",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Các thành phần phần cứng cơ bản của máy tính gồm?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ngõ nhập, ngõ xuất, hệ điều hành và bộ vi xử lý"
+      },
+      {
+        "id": "B",
+        "content": "Ngõ nhập, ngõ xuất, bộ nhớ và hệ điều hành"
+      },
+      {
+        "id": "C",
+        "content": "Ngõ nhập, ngõ xuất, bộ nhớ và bộ vi xử lý"
+      },
+      {
+        "id": "D",
+        "content": "Ngõ nhập, ngõ xuất, bộ nhớ, bộ vi xử lý và hệ điều hành"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Hệ điều hành là phần mềm, không phải phần cứng.",
+      "whyCorrect": "Hệ điều hành là phần mềm, không phải phần cứng.",
+      "whyWrong": {
+        "A": "Có hệ điều hành là sai và thiếu bộ nhớ.",
+        "B": "Có hệ điều hành là sai và thiếu bộ xử lý.",
+        "D": "Hệ điều hành không phải phần cứng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-070",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Các bài hát mp3 có dung lượng 5 MB. Máy nghe nhạc dung lượng 40 GB chứa được bao nhiêu bài?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "9000"
+      },
+      {
+        "id": "B",
+        "content": "7192"
+      },
+      {
+        "id": "C",
+        "content": "7000"
+      },
+      {
+        "id": "D",
+        "content": "8192"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "$40 \\times 1024 / 5 = 8192$ bài (1 GB = 1024 MB).",
+      "whyCorrect": "$40 \\times 1024 / 5 = 8192$ bài (1 GB = 1024 MB).",
+      "whyWrong": {
+        "A": "Tính sai.",
+        "B": "Tính sai.",
+        "C": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "40*1024/5"
+    }
+  },
+  {
+    "id": "it006-mid-c1a-071",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Công cụ dùng để biên dịch từ ngôn ngữ Assembly sang mã máy gọi là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Compiler"
+      },
+      {
+        "id": "B",
+        "content": "System Program"
+      },
+      {
+        "id": "C",
+        "content": "Assembler"
+      },
+      {
+        "id": "D",
+        "content": "Operating System"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Assembler dịch hợp ngữ sang mã máy.",
+      "whyCorrect": "Assembler dịch hợp ngữ sang mã máy.",
+      "whyWrong": {
+        "A": "Compiler dịch ngôn ngữ cấp cao sang hợp ngữ.",
+        "B": "Không phải tên công cụ này.",
+        "D": "Hệ điều hành quản lý tài nguyên."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-072",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Trong các loại bộ nhớ RAM, Cache, SSD, Hard disk, bộ nhớ nào có tốc độ truy xuất nhanh nhất?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "RAM"
+      },
+      {
+        "id": "B",
+        "content": "Cache"
+      },
+      {
+        "id": "C",
+        "content": "SSD"
+      },
+      {
+        "id": "D",
+        "content": "Hard disk"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Trong các phương án, Cache nhanh nhất (không có Register).",
+      "whyCorrect": "Trong các phương án, Cache nhanh nhất (không có Register).",
+      "whyWrong": {
+        "A": "RAM chậm hơn Cache.",
+        "C": "SSD chậm hơn RAM.",
+        "D": "Hard disk chậm nhất."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-073",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một bức ảnh 2K kích thước $2240 \\times 1920$ pixel. Mỗi pixel chứa ba màu cơ bản, mỗi màu 8 bit. Dung lượng tối thiểu của bộ nhớ để lưu ảnh là bao nhiêu Mbytes?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2021–2022"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "12.4"
+      },
+      {
+        "id": "B",
+        "content": "13.8"
+      },
+      {
+        "id": "C",
+        "content": "10.2"
+      },
+      {
+        "id": "D",
+        "content": "15"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$2240 \\times 1920 \\times 3 = 12\\,902\\,400$ byte $\\approx 12{,}3$ MB ($2^{20}$), gần nhất và đủ chứa là 12.4.",
+      "whyCorrect": "$2240 \\times 1920 \\times 3 = 12\\,902\\,400$ byte $\\approx 12{,}3$ MB ($2^{20}$), gần nhất và đủ chứa là 12.4.",
+      "whyWrong": {
+        "B": "Thừa so với mức tối thiểu.",
+        "C": "Không đủ chứa.",
+        "D": "Thừa so với mức tối thiểu."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-074",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Trong các loại bộ nhớ sau, bộ nhớ nào có tốc độ chậm nhất?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "RAM"
+      },
+      {
+        "id": "B",
+        "content": "Register"
+      },
+      {
+        "id": "C",
+        "content": "Cache"
+      },
+      {
+        "id": "D",
+        "content": "Hard disk"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Hard disk chậm nhất do là bộ nhớ thứ cấp.",
+      "whyCorrect": "Hard disk chậm nhất do là bộ nhớ thứ cấp.",
+      "whyWrong": {
+        "A": "RAM nhanh hơn đĩa.",
+        "B": "Register nhanh nhất.",
+        "C": "Cache nhanh hơn RAM."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-075",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Trong các loại bộ nhớ sau, bộ nhớ nào có tốc độ nhanh nhất?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "RAM"
+      },
+      {
+        "id": "B",
+        "content": "Register"
+      },
+      {
+        "id": "C",
+        "content": "Cache"
+      },
+      {
+        "id": "D",
+        "content": "Hard disk"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Register nằm ngay trong CPU nên nhanh nhất.",
+      "whyCorrect": "Register nằm ngay trong CPU nên nhanh nhất.",
+      "whyWrong": {
+        "A": "RAM chậm hơn Cache.",
+        "C": "Cache chậm hơn Register.",
+        "D": "Hard disk chậm nhất."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-076",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Ngôn ngữ lập trình thường được sử dụng để lập trình các ứng dụng trên máy tính là?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ngôn ngữ tự nhiên"
+      },
+      {
+        "id": "B",
+        "content": "Ngôn ngữ Assembly"
+      },
+      {
+        "id": "C",
+        "content": "Ngôn ngữ lập trình cấp cao"
+      },
+      {
+        "id": "D",
+        "content": "Ngôn ngữ máy (mã máy)"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Ứng dụng thường viết bằng ngôn ngữ cấp cao vì năng suất và dễ chuyển đổi.",
+      "whyCorrect": "Ứng dụng thường viết bằng ngôn ngữ cấp cao vì năng suất và dễ chuyển đổi.",
+      "whyWrong": {
+        "A": "Máy tính không dịch trực tiếp ngôn ngữ tự nhiên.",
+        "B": "Assembly dùng cho phần cần sát phần cứng.",
+        "D": "Mã máy quá khó viết trực tiếp."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-077",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Máy tính nhúng là máy gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Có kích thước lớn, nhiều vi xử lý, tốc độ xử lý nhanh, dùng trong trung tâm dữ liệu"
+      },
+      {
+        "id": "B",
+        "content": "Có thể xử lý nhiều công việc và thực hiện nhiều chức năng khác nhau"
+      },
+      {
+        "id": "C",
+        "content": "Kích thước nhỏ gọn, không yêu cầu tốc độ cao, tích hợp trong thiết bị, xử lý một vài chức năng cụ thể"
+      },
+      {
+        "id": "D",
+        "content": "Có hiệu năng cao nhất, dùng cho tính toán khoa học phức tạp"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Máy tính nhúng được tích hợp trong thiết bị và tối ưu cho một số chức năng.",
+      "whyCorrect": "Máy tính nhúng được tích hợp trong thiết bị và tối ưu cho một số chức năng.",
+      "whyWrong": {
+        "A": "Đây là datacenter.",
+        "B": "Đây là máy tính cá nhân.",
+        "D": "Đây là siêu máy tính."
+      },
+      "related": "Đề gốc có 3 phương án; phương án D được thêm để đủ 4 lựa chọn."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-078",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Thế hệ máy tính đang được sử dụng hiện nay thuộc thế hệ thứ mấy trong lịch sử phát triển máy tính?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thế hệ 2: Máy tính sử dụng transistor"
+      },
+      {
+        "id": "B",
+        "content": "Thế hệ 3: Máy tính sử dụng công nghệ mạch tích hợp"
+      },
+      {
+        "id": "C",
+        "content": "Thế hệ 4: Máy tính sử dụng công nghệ VLSI"
+      },
+      {
+        "id": "D",
+        "content": "Thế hệ 5: Máy tính lượng tử"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Theo slide, máy tính hiện nay thuộc thế hệ 4, dùng công nghệ VLSI.",
+      "whyCorrect": "Theo slide, máy tính hiện nay thuộc thế hệ 4, dùng công nghệ VLSI.",
+      "whyWrong": {
+        "A": "Transistor rời là thế hệ 2.",
+        "B": "Mạch tích hợp cỡ nhỏ là thế hệ 3.",
+        "D": "Máy tính lượng tử chưa phổ biến."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-079",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Trong các thành phần sau, thành phần nào **không** phải là một thiết bị ngoại vi?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Hard disk"
+      },
+      {
+        "id": "B",
+        "content": "Keyboard"
+      },
+      {
+        "id": "C",
+        "content": "Monitor"
+      },
+      {
+        "id": "D",
+        "content": "CPU"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "CPU là bộ xử lý trung tâm, không phải thiết bị ngoại vi.",
+      "whyCorrect": "CPU là bộ xử lý trung tâm, không phải thiết bị ngoại vi.",
+      "whyWrong": {
+        "A": "Đĩa cứng là thiết bị lưu trữ ngoại vi.",
+        "B": "Bàn phím là thiết bị nhập.",
+        "C": "Màn hình là thiết bị xuất."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-080",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Dùng gói cước 50 Mbps để tải một tập phim 600 MB, toàn bộ băng thông chỉ dùng cho việc tải. Cần ít nhất bao nhiêu thời gian?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "12s"
+      },
+      {
+        "id": "B",
+        "content": "96s"
+      },
+      {
+        "id": "C",
+        "content": "83s"
+      },
+      {
+        "id": "D",
+        "content": "15s"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$600 \\times 8 / 50 = 96$ s.",
+      "whyCorrect": "$600 \\times 8 / 50 = 96$ s.",
+      "whyWrong": {
+        "A": "Quên đổi MB sang Mbit.",
+        "C": "Tính sai.",
+        "D": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "600*8/50"
+    }
+  },
+  {
+    "id": "it006-mid-c1a-081",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một bức ảnh 2K kích thước $2560 \\times 1440$ pixel. Mỗi pixel chứa ba màu cơ bản, mỗi màu 8 bit. Dung lượng tối thiểu của bộ nhớ là bao nhiêu Mbytes?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "10"
+      },
+      {
+        "id": "B",
+        "content": "11"
+      },
+      {
+        "id": "C",
+        "content": "12"
+      },
+      {
+        "id": "D",
+        "content": "20"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$2560 \\times 1440 \\times 3 = 11\\,059\\,200$ byte $\\approx 10{,}55$ MB ($2^{20}$), cần tối thiểu 11.",
+      "whyCorrect": "$2560 \\times 1440 \\times 3 = 11\\,059\\,200$ byte $\\approx 10{,}55$ MB ($2^{20}$), cần tối thiểu 11.",
+      "whyWrong": {
+        "A": "Không đủ chứa.",
+        "C": "Thừa so với mức tối thiểu.",
+        "D": "Thừa quá nhiều."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-082",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Điện thoại thông minh (smart phone) thuộc nhóm máy tính nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Máy tính cá nhân"
+      },
+      {
+        "id": "B",
+        "content": "Máy tính nhúng"
+      },
+      {
+        "id": "C",
+        "content": "Máy tính chủ"
+      },
+      {
+        "id": "D",
+        "content": "Siêu máy tính"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Theo slide, máy tính nhúng được tích hợp trong các thiết bị như máy giặt, xe hơi, điện thoại.",
+      "whyCorrect": "Theo slide, máy tính nhúng được tích hợp trong các thiết bị như máy giặt, xe hơi, điện thoại.",
+      "whyWrong": {
+        "A": "Máy tính cá nhân là máy để bàn, laptop.",
+        "C": "Máy chủ phục vụ qua mạng.",
+        "D": "Siêu máy tính dùng cho tính toán khoa học."
+      }
     }
   }
 ]

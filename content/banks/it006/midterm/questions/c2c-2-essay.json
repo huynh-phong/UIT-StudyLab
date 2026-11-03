@@ -13,6 +13,9 @@
       "reference": "Slide bài giảng"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nadd  $a0, $s1, $zero\nadd  $a1, $s2, $zero\nadd  $a2, $s3, $zero\nadd  $a3, $s4, $zero\njal  proc_example\nadd  $s6, $v0, $zero\nj    EXIT\nproc_example:\naddi $sp, $sp, -4      # phần đầu: lưu $s0\nsw   $s0, 0($sp)\nadd  $t0, $a0, $a1     # phần thân\nadd  $t1, $a2, $a3\nsub  $s0, $t0, $t1\nadd  $v0, $s0, $zero   # phần cuối: trả về\nlw   $s0, 0($sp)\naddi $sp, $sp, 4\njr   $ra\nEXIT:\n```",
       "rubric": [
@@ -72,6 +75,9 @@
       "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nadd  $a0, $s1, $zero\nadd  $a1, $s2, $zero\njal  sum\nsll  $s0, $v0, 2       # f = sum(g, h) * 4\nj    EXIT\nsum:\nadd  $v0, $a0, $a1\njr   $ra\nEXIT:\n```\n\nThủ tục lá chỉ dùng `$a` và `$v`, không dùng thanh ghi `$s` nên không cần lưu gì lên stack.",
       "rubric": [
@@ -125,6 +131,9 @@
       "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\njal  proc\nj    EXIT\nproc:\naddi $sp, $sp, -4\nsw   $s0, 0($sp)\naddi $s0, $a0, 1\nadd  $v0, $s0, $zero\nlw   $s0, 0($sp)\naddi $sp, $sp, 4\njr   $ra\nEXIT:\n```\n\n(Hai dòng đầu chỉ dùng để gọi thử.)\n\nCác lỗi:\n1. Push sai thứ tự: phải `addi $sp` trước rồi mới `sw`, nếu không sẽ ghi đè phần tử đang ở đỉnh stack.\n2. Pop sai thứ tự: phải `lw` trước rồi mới `addi $sp`.\n3. `jr $v0` sai: phải là `jr $ra`, vì `$v0` chứa giá trị trả về chứ không phải địa chỉ quay về.",
       "rubric": [
@@ -236,6 +245,9 @@
       "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nadd  $a0, $s1, $zero\njal  f\nadd  $s0, $v0, $zero\nj    EXIT\nf:\naddi $sp, $sp, -4      # f gọi thủ tục khác nên phải lưu $ra\nsw   $ra, 0($sp)\njal  g\naddi $v0, $v0, 1\nlw   $ra, 0($sp)\naddi $sp, $sp, 4\njr   $ra\ng:\nsll  $v0, $a0, 1\njr   $ra\nEXIT:\n```",
       "rubric": [
@@ -293,6 +305,9 @@
       "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nadd  $a0, $s3, $zero\nadd  $a1, $s1, $zero\njal  sumArr\nadd  $s2, $v0, $zero\nj    EXIT\nsumArr:\nadd  $v0, $zero, $zero # s = 0\nadd  $t0, $zero, $zero # i = 0\nLoop: slt $t1, $t0, $a1\nbeq  $t1, $zero, Done\nsll  $t2, $t0, 2\nadd  $t2, $t2, $a0\nlw   $t3, 0($t2)\nadd  $v0, $v0, $t3\naddi $t0, $t0, 1\nj    Loop\nDone: jr $ra\nEXIT:\n```",
       "rubric": [
@@ -351,6 +366,9 @@
       "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
     },
     "verification": "verified",
+    "tags": [
+      "lap-trinh"
+    ],
     "essay": {
       "modelAnswer": "```mips\nadd  $a0, $s1, $zero\njal  tong\nadd  $s0, $v0, $zero\nj    EXIT\ntong:\naddi $sp, $sp, -8\nsw   $ra, 4($sp)\nsw   $a0, 0($sp)\nslti $t0, $a0, 1\nbeq  $t0, $zero, L1\nadd  $v0, $zero, $zero # n < 1: trả về 0\naddi $sp, $sp, 8\njr   $ra\nL1:\naddi $a0, $a0, -1\njal  tong\nlw   $a0, 0($sp)       # phục hồi n\nlw   $ra, 4($sp)\naddi $sp, $sp, 8\nadd  $v0, $a0, $v0     # n + tong(n - 1)\njr   $ra\nEXIT:\n```",
       "rubric": [
@@ -402,122 +420,6 @@
           }
         }
       ]
-    }
-  },
-  {
-    "id": "it006-mid-c2c-e08",
-    "type": "essay",
-    "courseId": "it006",
-    "examType": "midterm",
-    "chapterId": "it006-c2c",
-    "content": "Trình bày 6 bước khi thực thi một thủ tục, chỉ rõ bước nào do caller, bước nào do callee thực hiện. Lệnh `jal` và `jr $ra` thực hiện những gì?",
-    "difficulty": "easy",
-    "points": 10,
-    "source": {
-      "kind": "authored",
-      "reference": "Slide bài giảng"
-    },
-    "verification": "verified",
-    "essay": {
-      "modelAnswer": "1. **Caller** đặt tham số vào vị trí thủ tục truy cập được (`$a0`–`$a3`).\n2. **Caller** chuyển điều khiển cho thủ tục (`jal`).\n3. **Callee** lấy tài nguyên lưu trữ cần thiết (stack).\n4. **Callee** thực hiện công việc.\n5. **Callee** đặt kết quả vào vị trí nơi gọi truy cập được (`$v0`, `$v1`).\n6. **Callee** trả điều khiển về nơi gọi (`jr $ra`).\n\n`jal label`: lưu PC + 4 vào `$ra`, rồi nhảy tới `label`. `jr $ra`: gán PC = `$ra`.",
-      "rubric": [
-        {
-          "id": "r1",
-          "criterion": "Đủ và đúng thứ tự 6 bước",
-          "points": 5
-        },
-        {
-          "id": "r2",
-          "criterion": "Phân biệt caller/callee",
-          "points": 2
-        },
-        {
-          "id": "r3",
-          "criterion": "Giải thích đúng `jal` và `jr $ra`",
-          "points": 3
-        }
-      ],
-      "format": "text",
-      "placeholder": "Trình bày bài làm..."
-    }
-  },
-  {
-    "id": "it006-mid-c2c-e09",
-    "type": "essay",
-    "courseId": "it006",
-    "examType": "midterm",
-    "chapterId": "it006-c2c",
-    "content": "So sánh và nêu quy ước sử dụng: `$t0`–`$t9` với `$s0`–`$s7`; `$a0`–`$a3`; `$v0`–`$v1`; `$ra`; `$sp`; `$fp`. Điều gì xảy ra khi thủ tục có nhiều hơn 4 tham số?",
-    "difficulty": "medium",
-    "points": 10,
-    "source": {
-      "kind": "authored",
-      "reference": "Slide bài giảng"
-    },
-    "verification": "verified",
-    "essay": {
-      "modelAnswer": "- `$t`: thanh ghi tạm, thủ tục không cần lưu lại khi sử dụng.\n- `$s`: thanh ghi lưu giá trị bền vững, thủ tục dùng thì phải lưu trên stack và phục hồi trước khi thoát.\n- `$a0`–`$a3`: truyền tham số; `$v0`–`$v1`: giá trị trả về.\n- `$ra`: địa chỉ quay về, được `jal` ghi.\n- `$sp`: trỏ tới phần tử được cấp phát gần nhất trên stack; `$fp`: trỏ tới đầu frame của thủ tục, nằm ở địa chỉ cao hơn `$sp`.\n\nCó nhiều hơn 4 tham số thì phần dư được truyền qua stack.",
-      "rubric": [
-        {
-          "id": "r1",
-          "criterion": "Phân biệt đúng `$t` và `$s` về trách nhiệm lưu",
-          "points": 4
-        },
-        {
-          "id": "r2",
-          "criterion": "Đúng vai trò `$a`, `$v`, `$ra`",
-          "points": 3
-        },
-        {
-          "id": "r3",
-          "criterion": "Đúng vai trò `$sp`, `$fp`",
-          "points": 2
-        },
-        {
-          "id": "r4",
-          "criterion": "Tham số dư truyền qua stack",
-          "points": 1
-        }
-      ],
-      "format": "text",
-      "placeholder": "Trình bày bài làm..."
-    }
-  },
-  {
-    "id": "it006-mid-c2c-e10",
-    "type": "essay",
-    "courseId": "it006",
-    "examType": "midterm",
-    "chapterId": "it006-c2c",
-    "content": "Mô tả tổ chức bộ nhớ của chương trình MIPS gồm Text, Static data, Heap, Stack. Heap và Stack phát triển theo hướng nào, vì sao lại bố trí như vậy?",
-    "difficulty": "easy",
-    "points": 10,
-    "source": {
-      "kind": "authored",
-      "reference": "Slide bài giảng"
-    },
-    "verification": "verified",
-    "essay": {
-      "modelAnswer": "- **Text**: chứa mã lệnh chương trình.\n- **Static data**: biến toàn cục/biến tĩnh.\n- **Heap**: dữ liệu cấp phát động, phát triển từ địa chỉ thấp lên cao.\n- **Stack**: dữ liệu của thủ tục, phát triển từ địa chỉ cao xuống thấp.\n\nHeap và Stack phát triển ngược chiều nhau nên dùng chung được vùng trống ở giữa một cách linh hoạt.",
-      "rubric": [
-        {
-          "id": "r1",
-          "criterion": "Đúng nội dung từng vùng",
-          "points": 4
-        },
-        {
-          "id": "r2",
-          "criterion": "Đúng hướng của Heap và Stack",
-          "points": 3
-        },
-        {
-          "id": "r3",
-          "criterion": "Giải thích được lợi ích của việc phát triển ngược chiều",
-          "points": 3
-        }
-      ],
-      "format": "text",
-      "placeholder": "Trình bày bài làm..."
     }
   }
 ]

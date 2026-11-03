@@ -8,6 +8,11 @@ import { ExamLanding, type ExamOffer } from "./exam-landing";
 export const metadata: Metadata = { title: "Thi thử" };
 export const dynamic = "force-dynamic";
 
+const SLOT_TAG_LABEL: Record<string, string> = {
+  "lap-trinh": "Viết chương trình MIPS từ C hoặc mô tả bằng lời",
+  "ma-may": "Chuyển đổi giữa yêu cầu, Assembly và mã máy",
+};
+
 export default function ExamPage() {
   const offers: ExamOffer[] = visibleExams().map((e) => {
     const bp = e.blueprint;
@@ -33,8 +38,8 @@ export default function ExamPage() {
             totalPoints: bp.slots.reduce((a, s) => a + s.count * s.pointsEach, 0),
             slots: bp.slots.map((s) => {
               const chapters = [s.chapterId, ...(s.alsoFrom ?? [])];
-              const available = e.questions.filter((q) => chapters.includes(q.chapterId) && q.type === s.type && isExamEligible(q)).length;
-              return { chapterTitle: chapters.map(chapterTitle).join(" / "), type: s.type, count: s.count, pointsEach: s.pointsEach, bankAvailable: available };
+              const available = e.questions.filter((q) => chapters.includes(q.chapterId) && q.type === s.type && isExamEligible(q) && (!s.tag || q.tags?.includes(s.tag))).length;
+              return { chapterTitle: s.tag ? SLOT_TAG_LABEL[s.tag] ?? chapters.map(chapterTitle).join(" / ") : chapters.map(chapterTitle).join(" / "), type: s.type, count: s.count, pointsEach: s.pointsEach, bankAvailable: available };
             }),
           }
         : null,
