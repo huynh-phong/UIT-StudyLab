@@ -16,6 +16,7 @@ export interface PublicExamQuestion {
   origin: "ai_generated" | "authored" | "generated" | "original" | "demo";
   answerFormat?: "code" | "text";
   placeholder?: string;
+  keyboard?: "ra" | "er" | "sql" | "mixed";
 }
 
 export interface PublicExam {

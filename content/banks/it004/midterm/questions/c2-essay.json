@@ -1,0 +1,325 @@
+[
+  {
+    "id": "it004-mid-c2-e01",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c2",
+    "content": "Chuyển mô hình ER sau sang mô hình quan hệ:\n\n```text\nNHANVIEN(_MANV_, HOTEN, NGSINH, MUCLUONG)\nPHONGBAN(_MAPHG_, TENPHG)\nKYNANG(_MAKN_, TENKN)\n\nTHUOC: NHANVIEN (1,1) — (1,n) PHONGBAN\nNV-KN: NHANVIEN (0,n) — (0,n) KYNANG [MUCDOKYNANG, NGAYDK]\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2015–2016 (có đáp án trong tài liệu)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nNHANVIEN(_MANV_, HOTEN, NGSINH, MUCLUONG, MAPHG)\nPHONGBAN(_MAPHG_, TENPHG)\nKYNANG(_MAKN_, TENKN)\nNV-KN(_MANV_, _MAKN_, MUCDOKYNANG, NGAYDK)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "NHANVIEN có khóa ngoại MAPHG",
+          "points": 3,
+          "keyPoints": [
+            "mối kết hợp 1-n: thêm khóa bên nhiều vào quan hệ bên một"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "PHONGBAN và KYNANG đúng",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "NV-KN có khóa chính gồm MANV và MAKN, kèm thuộc tính riêng",
+          "points": 5
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c2-e02",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c2",
+    "content": "Cho lược đồ:\n\n```text\nNGLIEU(MaNL, TenNL, CaloriNL, ProteinNL)\nMONAN(MaMA, TenMA, MaLoai, Gia, CaloriMA, ProteinMA)\nLOAIMONAN(MaLoai, TenLoai)\nTPMONAN(MaMA, MaNL, TLuong)\n```\n\nMỗi nguyên liệu, món ăn, loại món ăn có một mã duy nhất. TPMONAN cho biết thành phần nguyên liệu của món ăn.\n\nTìm các khóa chính, khóa ngoại cho mỗi lược đồ quan hệ. Với khóa ngoại, chỉ rõ tham chiếu đến khóa chính của lược đồ nào.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2015–2016 (có đáp án trong tài liệu)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nKhóa chính:\nNGLIEU(_MaNL_), MONAN(_MaMA_), LOAIMONAN(_MaLoai_), TPMONAN(_MaMA_, _MaNL_)\n\nKhóa ngoại:\nMONAN.MaLoai → LOAIMONAN.MaLoai\nTPMONAN.MaMA → MONAN.MaMA\nTPMONAN.MaNL → NGLIEU.MaNL\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Khóa chính đúng cho 4 lược đồ",
+          "points": 5,
+          "keyPoints": [
+            "TPMONAN có khóa gồm 2 thuộc tính"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ 3 khóa ngoại",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Chỉ rõ quan hệ được tham chiếu",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c2-e03",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c2",
+    "content": "Cho lược đồ:\n\n```text\nNHANVIEN(MANV, HOTEN, NGSINH, CMND, CALV, MUCLUONG)\nSANH(MASANH, TENSANH, LOAIBAN, SUCCHUA)\nLOAITIEC(MALT, TENLT, YCMINBAN)\nTIEC(MATIEC, CHUTIEC, MALT, MASANH, SOBAN, GIA, TGBD, TGKT)\nPHUCVU(MANV, MATIEC, THOIGIAN)\n```\n\nMô tả các ràng buộc khóa ngoại của lược đồ trên (trên giấy là database diagram, ở đây viết dạng `A.x → B.y`).",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2018–2019"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nTIEC.MALT → LOAITIEC.MALT\nTIEC.MASANH → SANH.MASANH\nPHUCVU.MANV → NHANVIEN.MANV\nPHUCVU.MATIEC → TIEC.MATIEC\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ 2 khóa ngoại của TIEC",
+          "points": 5
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ 2 khóa ngoại của PHUCVU",
+          "points": 5
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c2-e04",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c2",
+    "content": "Chuyển mô hình ER sau sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại. Cho biết đã dùng quy tắc nào.\n\n```text\nNHANVIEN(_MANV_, TENNV, HONV, NGSINH, DCHI, PHAI, LUONG)\nPHONGBAN(_MAPHG_, TENPHG)\nDEAN(_MADA_, TENDA, DDIEM_DA)\nTHANNHAN(TENTN, PHAI, NGSINH, QUANHE)  -- thực thể yếu của NHANVIEN\n\nLam_viec: NHANVIEN (1,1) — (1,n) PHONGBAN\nLa_truong_phong: NHANVIEN (0,1) — (1,1) PHONGBAN [NG_NHANCHUC]\nPhu_trach: DEAN (1,1) — (1,n) PHONGBAN\nPhan_cong: NHANVIEN (1,n) — (1,n) DEAN [THOIGIAN]\nCo_than_nhan: THANNHAN (1,1) — (1,n) NHANVIEN\nQuan_ly: NHANVIEN (0,1) — (0,n) NHANVIEN  (đệ quy)\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide Chương 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nNHANVIEN(_MANV_, TENNV, HONV, NGSINH, DCHI, PHAI, LUONG, MAPHG, MA_NQL)\nPHONGBAN(_MAPHG_, TENPHG, TRPHG, NG_NHANCHUC)\nDEAN(_MADA_, TENDA, DDIEM_DA, PHONG)\nPHANCONG(_MANV_, _MADA_, THOIGIAN)\nTHANNHAN(_MANV_, _TENTN_, PHAI, NGSINH, QUANHE)\n\nQuy tắc: 1-n thêm khóa vào bên nhiều (MAPHG, PHONG, MA_NQL); 1-1 thêm khóa vào bên tham gia toàn phần (TRPHG trong PHONGBAN); n-n tạo quan hệ mới (PHANCONG); thực thể yếu có khóa gồm khóa của thực thể mạnh và khóa riêng phần.\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Các quan hệ thực thể và khóa ngoại 1-n",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Mối 1-1 La_truong_phong đặt TRPHG, NG_NHANCHUC vào PHONGBAN",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "PHANCONG khóa gồm 2 thuộc tính",
+          "points": 2
+        },
+        {
+          "id": "r4",
+          "criterion": "THANNHAN khóa gồm MANV và TENTN",
+          "points": 2
+        },
+        {
+          "id": "r5",
+          "criterion": "Khóa ngoại đệ quy MA_NQL",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c2-e05",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c2",
+    "content": "Một nhân viên có thể có nhiều số điện thoại. Lược đồ `NHANVIEN(_MANV_, HOTEN, SDT)` có thuộc tính đa trị SDT.\n\nChuyển thuộc tính đa trị này theo quy tắc của slide. Vì sao không thể giữ SDT trong quan hệ NHANVIEN?",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide Chương 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nNHANVIEN(_MANV_, HOTEN)\nNHANVIEN_SDT(_MANV_, _SDT_)\n\nGiá trị trong một bộ phải là giá trị nguyên tố, nên không thể lưu nhiều số điện thoại trong cùng một ô. Quan hệ mới có khóa chính gồm khóa của quan hệ liên quan và chính thuộc tính đa trị.\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Tạo quan hệ mới đúng",
+          "points": 5
+        },
+        {
+          "id": "r2",
+          "criterion": "Khóa chính gồm MANV và SDT",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Giải thích giá trị nguyên tố",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c2-e06",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c2",
+    "content": "Mối kết hợp 3 ngôi THI nối HOCVIEN(_MAHV_, HOTEN), MONHOC(_MAMH_, TENMH), LANTHI(_LAN_) và có thuộc tính DIEM.\n\nChuyển sang mô hình quan hệ và giải thích khóa chính của quan hệ mới.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide Chương 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nHOCVIEN(_MAHV_, HOTEN)\nMONHOC(_MAMH_, TENMH)\nLANTHI(_LAN_)\nTHI(_MAHV_, _MAMH_, _LAN_, DIEM)\n\nTheo quy tắc mối kết hợp 3 ngôi: tạo quan hệ mới mang tên mối kết hợp, khóa chính gồm 3 khóa chính của 3 thực thể tham gia, kèm thuộc tính riêng DIEM.\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Tạo quan hệ THI",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Khóa chính gồm đủ 3 thuộc tính",
+          "points": 5
+        },
+        {
+          "id": "r3",
+          "criterion": "Có thuộc tính DIEM",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c2-e07",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c2",
+    "content": "Ban tổ chức Olympic cần CSDL: Mỗi vận động viên phải đăng ký thi ít nhất một môn thể thao, có tên, tình trạng sức khỏe, giới tính. Một môn thể thao có thể loại, ngày thi, địa điểm và hình thức thi đấu. Thành tích của một vận động viên được ghi nhận cho mỗi môn đã thi, gồm kết quả thi và xếp hạng. Mỗi môn có ít nhất 1 trọng tài giám sát; 1 trọng tài có thể giám sát nhiều môn. Trọng tài có tên, lĩnh vực chuyên môn, số năm kinh nghiệm.\n\nHãy mô tả ERD và chuyển sang mô hình quan hệ (tự thêm mã nếu đề chưa có).",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Bài tập ôn thi giữa kỳ, bài 3"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nVANDONGVIEN(_MaVDV_, TenVDV, SucKhoe, GioiTinh)\nMONTHETHAO(_MaMon_, TheLoai, NgayThi, DiaDiem, HinhThuc)\nTRONGTAI(_MaTT_, TenTT, LinhVuc, SoNamKN)\n\nThiDau: VANDONGVIEN (1,n) — (0,n) MONTHETHAO [KetQua, XepHang]\nGiamSat: MONTHETHAO (1,n) — (0,n) TRONGTAI\n\nMô hình quan hệ:\nVANDONGVIEN(_MaVDV_, TenVDV, SucKhoe, GioiTinh)\nMONTHETHAO(_MaMon_, TheLoai, NgayThi, DiaDiem, HinhThuc)\nTRONGTAI(_MaTT_, TenTT, LinhVuc, SoNamKN)\nTHIDAU(_MaVDV_, _MaMon_, KetQua, XepHang)\nGIAMSAT(_MaMon_, _MaTT_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ 3 thực thể và tự thêm khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Hai mối n-n với bản số hợp lý, thành tích đặt trên mối kết hợp",
+          "points": 4
+        },
+        {
+          "id": "r3",
+          "criterion": "Mô hình quan hệ đúng",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c2-e08",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c2",
+    "content": "Công ty thực hiện đề án: Nhân viên có mã, họ tên, ngày sinh, mức lương. Phòng ban có mã, tên, một trưởng phòng. Mỗi nhân viên thuộc một phòng, một phòng có nhiều nhân viên. Nhân viên có thể chịu sự quản lý trực tiếp từ một nhân viên khác. Mỗi phòng có thể có nhiều địa điểm làm việc. Đề án có mã, tên, địa điểm và do một phòng chủ trì. Công ty ghi thời gian phân công cho nhân viên (giờ/tuần). Công ty lưu thân nhân của nhân viên (cha mẹ, chồng vợ, con cái).\n\nHãy mô tả ERD dạng văn bản.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Bài tập Mô hình ER – Quản lý đề án"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nNHANVIEN(_MaNV_, HoTen, NgaySinh, Luong)\nPHONGBAN(_MaPhong_, TenPhong, {DiaDiem})\nDEAN(_MaDA_, TenDA, DiaDiem)\nTHANNHAN(TenTN, QuanHe)  -- thực thể yếu\n\nLamViec: NHANVIEN (1,1) — (1,n) PHONGBAN\nTruongPhong: NHANVIEN (0,1) — (1,1) PHONGBAN\nQuanLy: NHANVIEN (0,1) — (0,n) NHANVIEN\nChuTri: DEAN (1,1) — (0,n) PHONGBAN\nPhanCong: NHANVIEN (0,n) — (1,n) DEAN [ThoiGian]\nCo: THANNHAN (1,1) — (0,n) NHANVIEN\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính, khóa",
+          "points": 3,
+          "keyPoints": [
+            "DiaDiem của phòng là đa trị"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Mối kết hợp với phòng ban và đề án",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Mối đệ quy quản lý",
+          "points": 2
+        },
+        {
+          "id": "r4",
+          "criterion": "Thân nhân là thực thể yếu",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  }
+]

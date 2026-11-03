@@ -1,0 +1,2598 @@
+[
+  {
+    "id": "it004-mid-sql-e001",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**Yêu cầu:** Tạo ràng buộc cho thuộc tính trạng thái của yêu cầu bảo hiểm chỉ nhận các giá trị: ‘Đang xét duyệt’, ‘Đã chi trả’, ‘Đã từ chối’, ‘Đã hủy’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE YEUCAUBAOHIEM ADD CONSTRAINT CK_TrangThai\nCHECK (TrangThai IN ('Đang xét duyệt', 'Đã chi trả', 'Đã từ chối', 'Đã hủy'));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e002",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**Yêu cầu:** Tạo ràng buộc: Khách hàng đại diện ký hợp đồng cũng là một khách hàng.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE HOPDONG ADD CONSTRAINT FK_HD_KH\nFOREIGN KEY (MaKHDaiDien) REFERENCES KHACHHANG(MaKH);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-fk"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e003",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**Yêu cầu:** Cập nhật giảm 10% số tiền bảo hiểm tối đa và số tiền đóng định kỳ đối với loại bảo hiểm có tên là ‘Bảo hiểm sức khỏe nha khoa’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE LOAIBAOHIEM\nSET STBaoHiem = STBaoHiem * 0.9, STDongDinhKy = STDongDinhKy * 0.9\nWHERE TenLBH = 'Bảo hiểm sức khỏe nha khoa';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e004",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**Yêu cầu:** Tạo ràng buộc: Ngày hợp đồng có hiệu lực phải lớn hơn ngày ký hợp đồng và nhỏ hơn ngày hết hạn của hợp đồng.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE HOPDONG ADD CONSTRAINT CK_NgHieuLuc\nCHECK (NgHieuLuc > NgKyHD AND NgHieuLuc < NgHetHan);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-sosanh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e005",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**Yêu cầu:** Tạo ràng buộc: Khách hàng thụ hưởng của một chi tiết hợp đồng cũng là một khách hàng.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE CHITIETHD ADD CONSTRAINT FK_CTHD_KH\nFOREIGN KEY (MaKHThuHuong) REFERENCES KHACHHANG(MaKH);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-fk"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e006",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**Yêu cầu:** Cập nhật tăng 15% số tiền bảo hiểm tối đa và số tiền đóng định kỳ đối với loại bảo hiểm có tên là ‘Bảo hiểm sức khỏe nội trú’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE LOAIBAOHIEM\nSET STBaoHiem = STBaoHiem * 1.15, STDongDinhKy = STDongDinhKy * 1.15\nWHERE TenLBH = 'Bảo hiểm sức khỏe nội trú';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e007",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**Yêu cầu:** Tạo ràng buộc miền giá trị cho thuộc tính bậc thợ của công nhân (các giá trị 1 đến 7).",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE CONGNHAN ADD CONSTRAINT CK_BacTho\nCHECK (BacTho IN (1, 2, 3, 4, 5, 6, 7));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e008",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**Yêu cầu:** Cập nhật tình trạng là “Chưa kiểm định” đối với các sản phẩm do phân xưởng có mã là “PX05” sản xuất vào ngày 20/10/2024.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE SANPHAM\nSET TinhTrangSP = 'Chưa kiểm định'\nWHERE MaPX = 'PX05' AND NgaySX = '2024-10-20';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-gan"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e009",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**Yêu cầu:** Tạo ràng buộc miền giá trị cho thuộc tính trạng thái của loại sản phẩm (“Đang sản xuất”, “Còn hàng”, “Ngừng sản xuất”).",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE LOAISP ADD CONSTRAINT CK_TrangThaiLSP\nCHECK (TrangThai IN ('Đang sản xuất', 'Còn hàng', 'Ngừng sản xuất'));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e010",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**Yêu cầu:** Cập nhật tăng kết quả mong đợi lên 15% đối với các tiêu chuẩn kiểm định của loại sản phẩm có mã là “LSP003” và có đơn vị đo lường là “mm”.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE TIEUCHUANKD\nSET KQMongDoi = KQMongDoi * 1.15\nWHERE MaLSP = 'LSP003' AND DVDL = 'mm';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e011",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Tạo ràng buộc miền giá trị cho thuộc tính DAGIAO ghi nhận trạng thái đơn hàng.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE GIAOHANG ADD CONSTRAINT CK_DAGIAO\nCHECK (DAGIAO IN (0, 1));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e012",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Cập nhật tổng tiền giảm 2% nếu đơn hàng được bán từ ngày 1/11/2023 về sau.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE DONHANG\nSET TONGTIEN = TONGTIEN * 0.98\nWHERE NGAYBAN >= '2023-11-01';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e013",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Tạo ràng buộc miền giá trị cho thuộc tính THELOAI của sản phẩm hoa (chậu hoa cắm sẵn, hoa bó sẵn, hoa chậu, hoa cắt cành, hoa nhập khẩu, lá trang trí).",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE SANPHAM ADD CONSTRAINT CK_THELOAI\nCHECK (THELOAI IN ('chậu hoa cắm sẵn', 'hoa bó sẵn', 'hoa chậu', 'hoa cắt cành', 'hoa nhập khẩu', 'lá trang trí'));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e014",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Cập nhật phí ship tăng 5% cho ngày giao hàng là 20/11/2023.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE GIAOHANG\nSET PHISHIP = PHISHIP * 1.05\nWHERE NGAYGIAO = '2023-11-20';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e015",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Bổ sung ràng buộc toàn vẹn: “Mức độ bảo quản của loại xăng chỉ có thể là (‘IA’, ‘IB’, ‘II’, ‘III’, ‘IV’, ‘V’).”",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE LOAIXANG ADD CONSTRAINT CK_MDBQ\nCHECK (MDBQ IN ('IA', 'IB', 'II', 'III', 'IV', 'V'));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e016",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Cập nhật tăng 10% giá cơ sở (GIACOSO) đối với loại xăng dầu có tên (TENXD) là ‘Xăng không chì R95’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE XANGDAU\nSET GIACOSO = GIACOSO * 1.1\nWHERE TENXD = 'Xăng không chì R95';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e017",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Xóa doanh nghiệp nhập khẩu xăng dầu có mã doanh nghiệp (MADN) là ‘DN001’ và có loại hình doanh nghiệp (LOAIDN) là ‘Tư nhân’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nDELETE FROM DNNK\nWHERE MADN = 'DN001' AND LOAIDN = 'Tư nhân';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-delete"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e018",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Bổ sung ràng buộc toàn vẹn: “Chiều cao mái che của cửa hàng không nhỏ hơn 4,75 mét.”",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE CUAHANG ADD CONSTRAINT CK_CAOMC\nCHECK (CAOMC >= 4.75);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-sosanh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e019",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Cập nhật giảm 10% giá cơ sở (GIACOSO) đối với loại xăng dầu có tên (TENXD) là ‘Xăng không chì E5’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE XANGDAU\nSET GIACOSO = GIACOSO * 0.9\nWHERE TENXD = 'Xăng không chì E5';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e020",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Xóa doanh nghiệp nhập khẩu xăng dầu có mã doanh nghiệp (MADN) là ‘DN002’ và có loại hình doanh nghiệp (LOAIDN) là ‘Nhà nước’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nDELETE FROM DNNK\nWHERE MADN = 'DN002' AND LOAIDN = 'Nhà nước';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-delete"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e021",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Bổ sung ràng buộc toàn vẹn: “Hạn sử dụng của loại vé chỉ nhận 1 trong các giá trị sau: 0, 1, 2”.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE LOAIVE ADD CONSTRAINT CK_HANSD\nCHECK (HANSD IN (0, 1, 2));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e022",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Cập nhật tăng 10% giá vé (GIAVE) đối với loại vé có tên là ‘Tham quan biển đảo – phố cổ’ và có hạn sử dụng là 2 ngày.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE LOAIVE\nSET GIAVE = GIAVE * 1.1\nWHERE TENLV = 'Tham quan biển đảo – phố cổ' AND HANSD = 2;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e023",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Xóa các hóa đơn đã bán các vé có mã loại vé (MALV) là ‘LV001’ và không có thông tin ngày bán.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nDELETE FROM BANVE\nWHERE MALV = 'LV001' AND NGAYBAN IS NULL;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-delete-null"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e024",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Bổ sung ràng buộc toàn vẹn: “Khu vực của địa điểm chỉ nhận 1 trong các giá trị sau: ‘nội thành’, ‘ngoại thành’, ‘hải đảo’.”",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE DIADIEMTQ ADD CONSTRAINT CK_KHUVUC\nCHECK (KHUVUC IN ('nội thành', 'ngoại thành', 'hải đảo'));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e025",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Cập nhật giảm 5% trị giá (TRIGIA) đối với các hóa đơn bán vé có ngày bán là ngày 01/4/2023 và ngày hết hạn của vé là ngày 03/4/2023.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE BANVE\nSET TRIGIA = TRIGIA * 0.95\nWHERE NGAYBAN = '2023-04-01' AND NGAYHH = '2023-04-03';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e026",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Xóa các địa điểm tham quan có khu vực là ‘ngoại thành’ và không có thông tin địa chỉ.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nDELETE FROM DIADIEMTQ\nWHERE KHUVUC = 'ngoại thành' AND DIACHI IS NULL;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-delete-null"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e027",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**Yêu cầu:** Thêm thuộc tính GIOITINH với kiểu dữ liệu bit vào quan hệ KHACHHANG.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE KHACHHANG ADD GIOITINH bit;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-add-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e028",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**Yêu cầu:** Cập nhật giá xe giảm 10% của các xe máy có mã loại xe là ‘ML01’ và sản xuất năm 2019.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE XEMAY\nSET GIA = GIA * 0.9\nWHERE MALX = 'ML01' AND NAMSX = 2019;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e029",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**Yêu cầu:** Xóa thuộc tính CMND trong quan hệ KHACHHANG.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE KHACHHANG DROP COLUMN CMND;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-drop-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e030",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**Yêu cầu:** Cập nhật lãi suất là 1.5%/tháng cho loại hình trả góp có tên loại hình là ‘Tín dụng’ và kỳ hạn 12 tháng.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE LOAIHINHTG\nSET LAISUAT = 1.5\nWHERE TENLH = 'Tín dụng' AND KYHAN = 12;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-gan"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e031",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**Yêu cầu:** Thêm thuộc tính SODT với kiểu dữ liệu varchar(20) vào quan hệ CONGTY.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE CONGTY ADD SODT varchar(20);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-add-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e032",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**Yêu cầu:** Thêm ràng buộc trạng thái của khoáng sản chỉ có thể là (‘rắn’, ‘lỏng’, ‘khí’).",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE KHOANGSAN ADD CONSTRAINT CK_TRANGTHAI\nCHECK (TRANGTHAI IN ('rắn', 'lỏng', 'khí'));\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-in"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e033",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**Yêu cầu:** Cập nhật ngày phát hiện ra mỏ khoáng sản là 14/11/2019 của mỏ khoáng sản có mã định danh là ‘MKS01’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE MOKS\nSET NGPHATHIEN = '2019-11-14'\nWHERE MAMKS = 'MKS01';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-gan"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e034",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**Yêu cầu:** Thêm thuộc tính MST với kiểu dữ liệu varchar(10) vào quan hệ CONGTY.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE CONGTY ADD MST varchar(10);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-add-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e035",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**Yêu cầu:** Thêm ràng buộc ngày hết hạn (NGHH) phải sau ngày cấp phép khai khoáng (NGCP).",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE KHAITHAC ADD CONSTRAINT CK_NGHH\nCHECK (NGHH > NGCP);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-sosanh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e036",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**Yêu cầu:** Cập nhật các công ty có địa chỉ là ‘Quận Thủ Đức’ thành ‘Thành phố Thủ Đức’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE CONGTY\nSET DIACHI = 'Thành phố Thủ Đức'\nWHERE DIACHI = 'Quận Thủ Đức';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-gan"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e037",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Bổ sung ràng buộc: “Ngày kết thúc của một khóa học luôn lớn hơn hoặc bằng ngày bắt đầu”.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE KHOAHOC ADD CONSTRAINT CK_NGAYKH\nCHECK (NGKTKH >= NGBDKH);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-sosanh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e038",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Thêm thuộc tính DIACHI với kiểu dữ liệu varchar(100) trong quan hệ HOCVIEN.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE HOCVIEN ADD DIACHI varchar(100);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-add-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e039",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Xóa những chi tiết đăng ký (CTDK) có số ngày hoàn thành bằng 0.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nDELETE FROM CTDK WHERE SONGAYHT = 0;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-delete"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e040",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Cập nhật tình trạng đã đóng học phí cho học viên có mã ‘HV1000’ đã đăng ký học phần vào ngày ‘30/10/2019’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE DANGKY\nSET TINHTRANG = 1\nWHERE MAHV = 'HV1000' AND NGDK = '2019-10-30';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-gan"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e041",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Bổ sung ràng buộc: “Ngày bắt đầu của một khóa học luôn nhỏ hơn hoặc bằng ngày kết thúc của khóa học đó”.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE KHOAHOC ADD CONSTRAINT CK_NGAYKH\nCHECK (NGBDKH <= NGKTKH);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-sosanh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e042",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Thêm thuộc tính GHICHU với kiểu dữ liệu varchar(100) trong quan hệ HOCPHAN.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE HOCPHAN ADD GHICHU varchar(100);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-add-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e043",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Xóa những chi tiết đăng ký (CTDK) có số ngày hoàn thành nhỏ hơn 3.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nDELETE FROM CTDK WHERE SONGAYHT < 3;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-delete"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e044",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Cập nhật tất cả các học phần là bắt buộc cho khóa học ‘AV100’ (MAKH) có tuần bằng 15.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE HOCPHAN\nSET BATBUOC = 1\nWHERE MAKH = 'AV100' AND TUAN = 15;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-gan"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e045",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý vé xe khách” (thuộc tính in đậm là khóa chính):\n\nXE (**maxe**, bienks, matuyen, sogheT1, sogheT2)  \nTUYEN (**matuyen**, bendau, bencuoi, giatuyen, thoigiandk)  \nKHACH (**mahk**, hoten, gioitinh, cmnd)  \nVEXE (**matuyen, mahk, ngaymua**, giave)\n\n**Yêu cầu:** Dùng câu lệnh DDL lần lượt: thêm thuộc tính diachi kiểu nvarchar(20) cho quan hệ KHACH; sửa kiểu dữ liệu của diachi thành nvarchar(50); xóa thuộc tính diachi.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE KHACH ADD diachi nvarchar(20);\nALTER TABLE KHACH ALTER COLUMN diachi nvarchar(50);\nALTER TABLE KHACH DROP COLUMN diachi;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-alter-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e046",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý vé xe khách” (thuộc tính in đậm là khóa chính):\n\nXE (**maxe**, bienks, matuyen, sogheT1, sogheT2)  \nTUYEN (**matuyen**, bendau, bencuoi, giatuyen, thoigiandk)  \nKHACH (**mahk**, hoten, gioitinh, cmnd)  \nVEXE (**matuyen, mahk, ngaymua**, giave)\n\n**Yêu cầu:** Giảm 10% giá vé được mua vào ngày ‘20/10/2017’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE VEXE\nSET giave = giave * 0.9\nWHERE ngaymua = '2017-10-20';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e047",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý vé xe khách” (thuộc tính in đậm là khóa chính):\n\nXE (**maxe**, bienks, matuyen, sogheT1, sogheT2)  \nTUYEN (**matuyen**, bendau, bencuoi, giatuyen, thoigiandk)  \nKHACH (**mahk**, hoten, gioitinh, cmnd)  \nVEXE (**matuyen, mahk, ngaymua**, giave)\n\n**Yêu cầu:** Dùng câu lệnh DDL lần lượt: thêm thuộc tính ghichu kiểu nvarchar(20) cho quan hệ XE; sửa kiểu dữ liệu của ghichu thành nvarchar(50); xóa thuộc tính ghichu.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE XE ADD ghichu nvarchar(20);\nALTER TABLE XE ALTER COLUMN ghichu nvarchar(50);\nALTER TABLE XE DROP COLUMN ghichu;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-alter-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e048",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý vé xe khách” (thuộc tính in đậm là khóa chính):\n\nXE (**maxe**, bienks, matuyen, sogheT1, sogheT2)  \nTUYEN (**matuyen**, bendau, bencuoi, giatuyen, thoigiandk)  \nKHACH (**mahk**, hoten, gioitinh, cmnd)  \nVEXE (**matuyen, mahk, ngaymua**, giave)\n\n**Yêu cầu:** Tăng 15% giá tuyến đối với những tuyến có bến đầu là ‘Tp HCM’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE TUYEN\nSET giatuyen = giatuyen * 1.15\nWHERE bendau = 'Tp HCM';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e049",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý chi nhánh điện lực” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**manv**, hoten, ngaysinh, ngayvaolam)  \nKHACHHANG (**makh**, tenkh, ngaysinh, gioitinh)  \nHOPDONG (**sohdong**, ngayky, makh, sodienke, kwdinhmuc, dongiakw)  \nHOADON (**sohdon**, thang, nam, sohdong, manv, sotien)\n\n**Yêu cầu:** Cập nhật kw định mức (kwdinhmuc) tăng 10% đối với khách hàng có mã khách hàng (makh) là “KH001”.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE HOPDONG\nSET kwdinhmuc = kwdinhmuc * 1.1\nWHERE makh = 'KH001';\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e050",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý chi nhánh điện lực” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**manv**, hoten, ngaysinh, ngayvaolam)  \nKHACHHANG (**makh**, tenkh, ngaysinh, gioitinh)  \nHOPDONG (**sohdong**, ngayky, makh, sodienke, kwdinhmuc, dongiakw)  \nHOADON (**sohdon**, thang, nam, sohdong, manv, sotien)\n\n**Yêu cầu:** Với mỗi HOADON có năm (nam) >= 2016, cập nhật số tiền (sotien) tăng 5%.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE HOADON\nSET sotien = sotien * 1.05\nWHERE nam >= 2016;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e051",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**Yêu cầu:** Tạo ràng buộc: Công nhân phải thuộc một phân xưởng đã có (MaPX của CONGNHAN tham chiếu đến PHANXUONG).",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE CONGNHAN ADD CONSTRAINT FK_CN_PX\nFOREIGN KEY (MaPX) REFERENCES PHANXUONG(MaPX);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-fk"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e052",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Tạo ràng buộc: Sản phẩm trong chi tiết đơn hàng phải là một sản phẩm đã có.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE CTDH ADD CONSTRAINT FK_CTDH_SP\nFOREIGN KEY (MASP) REFERENCES SANPHAM(MASP);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-fk"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e053",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Tạo khóa ngoại cho quan hệ BANVE: mã loại vé tham chiếu đến LOAIVE.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE BANVE ADD CONSTRAINT FK_BV_LV\nFOREIGN KEY (MALV) REFERENCES LOAIVE(MALV);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-fk"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e054",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Tạo ràng buộc: Giá bán của sản phẩm phải cao hơn giá nhập từ 10% đến 40%.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE SANPHAM ADD CONSTRAINT CK_GIABAN\nCHECK (GIABAN >= GIANHAP * 1.1 AND GIABAN <= GIANHAP * 1.4);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-sosanh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e055",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**Yêu cầu:** Tạo ràng buộc: Sai số cho phép không được vượt quá 10% kết quả mong đợi của tiêu chuẩn.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE TIEUCHUANKD ADD CONSTRAINT CK_SAISO\nCHECK (SaiSo <= KQMongDoi * 0.1);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-check-sosanh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e056",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**Yêu cầu:** Cập nhật giảm 5% giá của các xe máy thuộc loại xe có công nghệ ‘V-twin’.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nUPDATE XEMAY\nSET GIA = GIA * 0.95\nWHERE MALX IN (SELECT MALX FROM LOAIXE WHERE CONGNGHE = 'V-twin');\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-update-tinh"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e057",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Xóa các chi tiết đơn hàng của những đơn hàng được bán trước ngày 01/01/2023.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nDELETE FROM CTDH\nWHERE MADH IN (SELECT MADH FROM DONHANG WHERE NGAYBAN < '2023-01-01');\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-delete"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e058",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Xóa thuộc tính SDT trong quan hệ DNNK.",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE DNNK DROP COLUMN SDT;\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-drop-column"
+    ]
+  },
+  {
+    "id": "it004-mid-sql-e059",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-sql",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**Yêu cầu:** Sửa kiểu dữ liệu của thuộc tính TENKH trong quan hệ KHACHHANG thành nvarchar(100).",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```sql\nALTER TABLE KHACHHANG ALTER COLUMN TENKH nvarchar(100);\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng đúng loại câu lệnh",
+          "points": 4,
+          "keyPoints": [
+            "ALTER TABLE, UPDATE, DELETE"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng bảng và thuộc tính",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng giá trị và điều kiện WHERE",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "keyboard": "sql",
+      "placeholder": "Viết câu lệnh SQL..."
+    },
+    "tags": [
+      "dang-alter-column"
+    ]
+  }
+]

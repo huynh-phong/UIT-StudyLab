@@ -1,0 +1,1620 @@
+[
+  {
+    "id": "it004-mid-cau2-2526-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Tạo ràng buộc cho thuộc tính trạng thái của yêu cầu bảo hiểm chỉ nhận các giá trị: ‘Đang xét duyệt’, ‘Đã chi trả’, ‘Đã từ chối’, ‘Đã hủy’.\nb. Tạo ràng buộc: Khách hàng đại diện ký hợp đồng cũng là một khách hàng.\nc. Cập nhật giảm 10% số tiền bảo hiểm tối đa và số tiền đóng định kỳ đối với loại bảo hiểm có tên là ‘Bảo hiểm sức khỏe nha khoa’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê mã giao dịch, mã chi tiết hợp đồng của các lịch sử đóng tiền trong năm 2025 có phương thức đóng tiền là ‘Chuyển khoản’.\nb. Liệt kê số hợp đồng, mã chi tiết hợp đồng, họ tên khách hàng đại diện ký hợp đồng của các hợp đồng có hiệu lực sau ngày 01/01/2025 và đã mua loại bảo hiểm có mã là ‘LBH202’.\nc. Liệt kê mã và họ tên khách hàng thụ hưởng, cùng với các mã yêu cầu giải quyết bảo hiểm trong tháng 11/2025 có trạng thái ‘Đã chi trả’ của các chi tiết hợp đồng mà họ đã tham gia (nếu có).\nd. Liệt kê số hợp đồng, mã và họ tên khách hàng đại diện của các hợp đồng không có yêu cầu giải quyết bảo hiểm nào trong năm 2025 có trạng thái ‘Đã hủy’.\ne. Tìm số hợp đồng có lịch sử đóng tiền trong năm 2025 bằng phương thức ‘Chuyển khoản’ cho tất cả các loại bảo hiểm có kỳ thanh toán là ‘Hàng năm’.\nf. Tìm số hợp đồng có số lượng yêu cầu giải quyết bảo hiểm trong năm 2025 với trạng thái ‘Đã chi trả’ chiếm từ 80% trở lên trong tổng số yêu cầu trong năm 2025 của hợp đồng đó.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE YEUCAUBAOHIEM ADD CONSTRAINT CK_TrangThai\nCHECK (TrangThai IN ('Đang xét duyệt', 'Đã chi trả', 'Đã từ chối', 'Đã hủy'));\n```\n\n**1b.**\n\n```sql\nALTER TABLE HOPDONG ADD CONSTRAINT FK_HD_KH\nFOREIGN KEY (MaKHDaiDien) REFERENCES KHACHHANG(MaKH);\n```\n\n**1c.**\n\n```sql\nUPDATE LOAIBAOHIEM\nSET STBaoHiem = STBaoHiem * 0.9, STDongDinhKy = STDongDinhKy * 0.9\nWHERE TenLBH = 'Bảo hiểm sức khỏe nha khoa';\n```\n\n**2a.**\n\n```text\nπ MaGD, MaCTHD (σ Year(NgDongTien)=2025 ∧ PhuongThuc='Chuyển khoản' (LSDONGTIEN))\n```\n\n**2b.**\n\n```text\nR1 ← (σ NgHieuLuc>'01/01/2025' (HOPDONG)) ⋈ SoHD (σ MaLBH='LBH202' (CHITIETHD))\nπ SoHD, MaCTHD, HoTen (R1 ⋈ MaKHDaiDien=MaKH KHACHHANG)\n```\n\n**2c.**\n\n```text\nR1 ← σ Month(NgYeuCau)=11 ∧ Year(NgYeuCau)=2025 ∧ TrangThai='Đã chi trả' (YEUCAUBAOHIEM)\nR2 ← KHACHHANG ⋈ MaKH=MaKHThuHuong CHITIETHD\nπ MaKH, HoTen, MaYC (R2 ⟕ MaCTHD R1)\n```\n\n**2d.**\n\n```text\nR1 ← π SoHD (CHITIETHD ⋈ MaCTHD (σ Year(NgYeuCau)=2025 ∧ TrangThai='Đã hủy' (YEUCAUBAOHIEM)))\nR2 ← π SoHD (HOPDONG) − R1\nπ SoHD, MaKH, HoTen ((R2 ⋈ SoHD HOPDONG) ⋈ MaKHDaiDien=MaKH KHACHHANG)\n```\n\n**2e.**\n\n```text\nR1 ← σ Year(NgDongTien)=2025 ∧ PhuongThuc='Chuyển khoản' (LSDONGTIEN)\nR2 ← π SoHD, MaLBH (CHITIETHD ⋈ MaCTHD R1)\nR3 ← π MaLBH (σ KyThanhToan='Hàng năm' (LOAIBAOHIEM))\nR2 ÷ R3\n```\n\n**2f.**\n\n```text\nR1 ← CHITIETHD ⋈ MaCTHD (σ Year(NgYeuCau)=2025 (YEUCAUBAOHIEM))\nR2(SoHD, SLTong) ← SoHD ℑ count(MaYC) (R1)\nR3(SoHD, SLChiTra) ← SoHD ℑ count(MaYC) (σ TrangThai='Đã chi trả' (R1))\nπ SoHD (σ SLChiTra >= 0.8*SLTong (R2 ⋈ SoHD R3))\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Tạo ràng buộc cho thuộc tính trạng thái của yêu cầu bảo hiểm chỉ nhận ",
+          "points": 0.67
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Tạo ràng buộc: Khách hàng đại diện ký hợp đồng cũng là một khách hàng.",
+          "points": 0.67
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Cập nhật giảm 10% số tiền bảo hiểm tối đa và số tiền đóng định kỳ đối ",
+          "points": 0.66
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê mã giao dịch, mã chi tiết hợp đồng của các lịch sử đóng tiền t",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê số hợp đồng, mã chi tiết hợp đồng, họ tên khách hàng đại diện ",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Liệt kê mã và họ tên khách hàng thụ hưởng, cùng với các mã yêu cầu giả",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê số hợp đồng, mã và họ tên khách hàng đại diện của các hợp đồng",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Tìm số hợp đồng có lịch sử đóng tiền trong năm 2025 bằng phương thức ‘",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm số hợp đồng có số lượng yêu cầu giải quyết bảo hiểm trong năm 2025",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2526-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Tạo ràng buộc: Ngày hợp đồng có hiệu lực phải lớn hơn ngày ký hợp đồng và nhỏ hơn ngày hết hạn của hợp đồng.\nb. Tạo ràng buộc: Khách hàng thụ hưởng của một chi tiết hợp đồng cũng là một khách hàng.\nc. Cập nhật tăng 15% số tiền bảo hiểm tối đa và số tiền đóng định kỳ đối với loại bảo hiểm có tên là ‘Bảo hiểm sức khỏe nội trú’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê mã yêu cầu, mã chi tiết hợp đồng của các yêu cầu giải quyết bảo hiểm trong năm 2025 có trạng thái xử lý là ‘Đang xét duyệt’.\nb. Liệt kê số hợp đồng, mã chi tiết hợp đồng, họ tên khách hàng thụ hưởng có nghề nghiệp là ‘Giáo viên’ của các hợp đồng có ngày hết hạn trước ngày 31/12/2025.\nc. Liệt kê mã và họ tên khách hàng thụ hưởng, cùng với các mã giao dịch thanh toán trong tháng 11/2025 có phương thức thanh toán là ‘Tiền mặt’ của các chi tiết hợp đồng mà họ đã tham gia (nếu có).\nd. Liệt kê số hợp đồng, mã và họ tên khách hàng đại diện của các hợp đồng được ký trong năm 2025 đã mua cả hai loại bảo hiểm có tên là ‘Bệnh hiểm nghèo’ và ‘Tử vong’.\ne. Tìm số hợp đồng đã phát sinh các yêu cầu giải quyết bảo hiểm trong năm 2025 có trạng thái ‘Đã chi trả’ cho tất cả các loại bảo hiểm có kỳ thanh toán là ‘Hàng tháng’.\nf. Tìm số hợp đồng có số lần đóng tiền trong năm 2025 bằng hình thức ‘Chuyển khoản’ chiếm từ 80% trở lên trong tổng số lần đóng tiền trong năm 2025 của hợp đồng đó.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE HOPDONG ADD CONSTRAINT CK_NgHieuLuc\nCHECK (NgHieuLuc > NgKyHD AND NgHieuLuc < NgHetHan);\n```\n\n**1b.**\n\n```sql\nALTER TABLE CHITIETHD ADD CONSTRAINT FK_CTHD_KH\nFOREIGN KEY (MaKHThuHuong) REFERENCES KHACHHANG(MaKH);\n```\n\n**1c.**\n\n```sql\nUPDATE LOAIBAOHIEM\nSET STBaoHiem = STBaoHiem * 1.15, STDongDinhKy = STDongDinhKy * 1.15\nWHERE TenLBH = 'Bảo hiểm sức khỏe nội trú';\n```\n\n**2a.**\n\n```text\nπ MaYC, MaCTHD (σ Year(NgYeuCau)=2025 ∧ TrangThai='Đang xét duyệt' (YEUCAUBAOHIEM))\n```\n\n**2b.**\n\n```text\nR1 ← (σ NgHetHan<'31/12/2025' (HOPDONG)) ⋈ SoHD CHITIETHD\nπ SoHD, MaCTHD, HoTen (R1 ⋈ MaKHThuHuong=MaKH (σ NgheNghiep='Giáo viên' (KHACHHANG)))\n```\n\n**2c.**\n\n```text\nR1 ← σ Month(NgDongTien)=11 ∧ Year(NgDongTien)=2025 ∧ PhuongThuc='Tiền mặt' (LSDONGTIEN)\nR2 ← KHACHHANG ⋈ MaKH=MaKHThuHuong CHITIETHD\nπ MaKH, HoTen, MaGD (R2 ⟕ MaCTHD R1)\n```\n\n**2d.**\n\n```text\nR1 ← π SoHD (CHITIETHD ⋈ MaLBH (σ TenLBH='Bệnh hiểm nghèo' (LOAIBAOHIEM)))\nR2 ← π SoHD (CHITIETHD ⋈ MaLBH (σ TenLBH='Tử vong' (LOAIBAOHIEM)))\nR3 ← (R1 ∩ R2) ⋈ SoHD (σ Year(NgKyHD)=2025 (HOPDONG))\nπ SoHD, MaKH, HoTen (R3 ⋈ MaKHDaiDien=MaKH KHACHHANG)\n```\n\n**2e.**\n\n```text\nR1 ← σ Year(NgYeuCau)=2025 ∧ TrangThai='Đã chi trả' (YEUCAUBAOHIEM)\nR2 ← π SoHD, MaLBH (CHITIETHD ⋈ MaCTHD R1)\nR3 ← π MaLBH (σ KyThanhToan='Hàng tháng' (LOAIBAOHIEM))\nR2 ÷ R3\n```\n\n**2f.**\n\n```text\nR1 ← CHITIETHD ⋈ MaCTHD (σ Year(NgDongTien)=2025 (LSDONGTIEN))\nR2(SoHD, SLTong) ← SoHD ℑ count(MaGD) (R1)\nR3(SoHD, SLCK) ← SoHD ℑ count(MaGD) (σ PhuongThuc='Chuyển khoản' (R1))\nπ SoHD (σ SLCK >= 0.8*SLTong (R2 ⋈ SoHD R3))\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Tạo ràng buộc: Ngày hợp đồng có hiệu lực phải lớn hơn ngày ký hợp đồng",
+          "points": 0.67
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Tạo ràng buộc: Khách hàng thụ hưởng của một chi tiết hợp đồng cũng là ",
+          "points": 0.67
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Cập nhật tăng 15% số tiền bảo hiểm tối đa và số tiền đóng định kỳ đối ",
+          "points": 0.66
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê mã yêu cầu, mã chi tiết hợp đồng của các yêu cầu giải quyết bả",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê số hợp đồng, mã chi tiết hợp đồng, họ tên khách hàng thụ hưởng",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Liệt kê mã và họ tên khách hàng thụ hưởng, cùng với các mã giao dịch t",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê số hợp đồng, mã và họ tên khách hàng đại diện của các hợp đồng",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Tìm số hợp đồng đã phát sinh các yêu cầu giải quyết bảo hiểm trong năm",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm số hợp đồng có số lần đóng tiền trong năm 2025 bằng hình thức ‘Chu",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2425-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Tạo ràng buộc miền giá trị cho thuộc tính bậc thợ của công nhân (các giá trị 1 đến 7).\nb. Cập nhật tình trạng là “Chưa kiểm định” đối với các sản phẩm do phân xưởng có mã là “PX05” sản xuất vào ngày 20/10/2024.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê mã tiêu chuẩn (MaTC), tên tiêu chuẩn (TenTC) và mô tả (MoTa) của tiêu chuẩn kiểm định có mã loại sản phẩm là “LSP001” và kết quả mong đợi lớn hơn 1000.\nb. Liệt kê những sản phẩm (MaSP, TenSP) thuộc loại sản phẩm có tên là “Bóng Đèn LED 10W” được sản xuất tại phân xưởng có tên là “Phân xưởng Thiết bị”.\nc. Cho biết thông tin công nhân (MaCN, HoTen) và tên các sản phẩm (TenSP) được sản xuất vào ngày 22/10/2024 mà công nhân đó đã thực hiện kiểm định (nếu có).\nd. Liệt kê các kiểm định (MaKD) có kết quả kiểm định đạt và không có bất kỳ tiêu chuẩn nào có kết quả thực tế đo được (KQThucTe) nhỏ hơn kết quả mong đợi (KQMongDoi).\ne. Tìm các kiểm định (MaKD) có kết quả chi tiết với mức độ đánh giá là “Tốt” trên tất cả các tiêu chuẩn kiểm định của loại sản phẩm có tên là “Máy Rửa Chén PX2”.\nf. Với từng loại sản phẩm (MaLSP, TenLSP), cho biết số lượng sản phẩm có kết quả kiểm định đạt nhưng không phải là đạt ở lần kiểm định đầu tiên.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE CONGNHAN ADD CONSTRAINT CK_BacTho\nCHECK (BacTho IN (1, 2, 3, 4, 5, 6, 7));\n```\n\n**1b.**\n\n```sql\nUPDATE SANPHAM\nSET TinhTrangSP = 'Chưa kiểm định'\nWHERE MaPX = 'PX05' AND NgaySX = '2024-10-20';\n```\n\n**2a.**\n\n```text\nπ MaTC, TenTC, MoTa (σ MaLSP='LSP001' ∧ KQMongDoi>1000 (TIEUCHUANKD))\n```\n\n**2b.**\n\n```text\nR1 ← SANPHAM ⋈ MaLSP (σ TenLSP='Bóng Đèn LED 10W' (LOAISP))\nπ MaSP, TenSP (R1 ⋈ MaPX (σ TenPX='Phân xưởng Thiết bị' (PHANXUONG)))\n```\n\n**2c.**\n\n```text\nR1 ← KIEMDINHSP ⋈ MaSP (σ NgaySX='22/10/2024' (SANPHAM))\nπ MaCN, HoTen, TenSP (CONGNHAN ⟕ MaCN R1)\n```\n\n**2d.**\n\n```text\nR1 ← π MaKD (σ KQThucTe<KQMongDoi (KETQUACT ⋈ MaTC TIEUCHUANKD))\nπ MaKD (σ KQKiemDinh=1 (KIEMDINHSP)) − R1\n```\n\n**2e.**\n\n```text\nR1 ← π MaKD, MaTC (σ DanhGia='Tốt' (KETQUACT))\nR2 ← π MaTC (TIEUCHUANKD ⋈ MaLSP (σ TenLSP='Máy Rửa Chén PX2' (LOAISP)))\nR1 ÷ R2\n```\n\n**2f.**\n\n```text\nR1 ← π MaSP (σ KQKiemDinh=1 (KIEMDINHSP))\nR2 ← π MaSP (σ KQKiemDinh=0 (KIEMDINHSP))\nR3 ← (R1 ∩ R2) ⋈ MaSP SANPHAM\nMaLSP, TenLSP ℑ count(MaSP) (R3 ⋈ MaLSP LOAISP)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Tạo ràng buộc miền giá trị cho thuộc tính bậc thợ của công nhân (các g",
+          "points": 1.0
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật tình trạng là “Chưa kiểm định” đối với các sản phẩm do phân x",
+          "points": 1.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê mã tiêu chuẩn (MaTC), tên tiêu chuẩn (TenTC) và mô tả (MoTa) c",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê những sản phẩm (MaSP, TenSP) thuộc loại sản phẩm có tên là “Bó",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết thông tin công nhân (MaCN, HoTen) và tên các sản phẩm (TenSP)",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê các kiểm định (MaKD) có kết quả kiểm định đạt và không có bất ",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Tìm các kiểm định (MaKD) có kết quả chi tiết với mức độ đánh giá là “T",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Với từng loại sản phẩm (MaLSP, TenLSP), cho biết số lượng sản phẩm có ",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2425-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Tạo ràng buộc miền giá trị cho thuộc tính trạng thái của loại sản phẩm (“Đang sản xuất”, “Còn hàng”, “Ngừng sản xuất”).\nb. Cập nhật tăng kết quả mong đợi lên 15% đối với các tiêu chuẩn kiểm định của loại sản phẩm có mã là “LSP003” và có đơn vị đo lường là “mm”.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê mã sản phẩm (MaSP), thời điểm kiểm định (ThoiDiemKD) và nội dung kết quả (NoiDung) của các kiểm định do công nhân có mã là “CN001” thực hiện và kết quả kiểm định không đạt.\nb. Liệt kê họ tên công nhân thực hiện (HoTen) và nội dung kết quả kiểm định (NoiDung) của sản phẩm có tên là “Tủ Lạnh 100L-C399” và có kết quả kiểm định không đạt.\nc. Cho biết thông tin sản phẩm (MaSP, TenSP) và tên các tiêu chuẩn kiểm định (TenTC) có sai số lớn hơn 200 tương ứng với loại của sản phẩm đó (nếu có).\nd. Liệt kê các kiểm định (MaKD) có kết quả chi tiết với mức độ đánh giá là “Tốt” trên cả 2 tiêu chuẩn có tên là “Mức tiêu thụ điện” và “Độ sáng”.\ne. Tìm các kiểm định (MaKD) thực hiện trong năm 2024 đã kiểm định tất cả các tiêu chuẩn kiểm định của loại sản phẩm có mã là “LSP001”.\nf. Với từng phân xưởng (MaPX, TenPX), cho biết số lượng sản phẩm có kết quả kiểm định đạt nhưng không phải là đạt ở lần kiểm định đầu tiên.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE LOAISP ADD CONSTRAINT CK_TrangThaiLSP\nCHECK (TrangThai IN ('Đang sản xuất', 'Còn hàng', 'Ngừng sản xuất'));\n```\n\n**1b.**\n\n```sql\nUPDATE TIEUCHUANKD\nSET KQMongDoi = KQMongDoi * 1.15\nWHERE MaLSP = 'LSP003' AND DVDL = 'mm';\n```\n\n**2a.**\n\n```text\nπ MaSP, ThoiDiemKD, NoiDung (σ MaCN='CN001' ∧ KQKiemDinh=0 (KIEMDINHSP))\n```\n\n**2b.**\n\n```text\nR1 ← (σ KQKiemDinh=0 (KIEMDINHSP)) ⋈ MaSP (σ TenSP='Tủ Lạnh 100L-C399' (SANPHAM))\nπ HoTen, NoiDung (R1 ⋈ MaCN CONGNHAN)\n```\n\n**2c.**\n\n```text\nπ MaSP, TenSP, TenTC (SANPHAM ⟕ MaLSP (σ SaiSo>200 (TIEUCHUANKD)))\n```\n\n**2d.**\n\n```text\nR1 ← π MaKD ((σ DanhGia='Tốt' (KETQUACT)) ⋈ MaTC (σ TenTC='Mức tiêu thụ điện' (TIEUCHUANKD)))\nR2 ← π MaKD ((σ DanhGia='Tốt' (KETQUACT)) ⋈ MaTC (σ TenTC='Độ sáng' (TIEUCHUANKD)))\nR1 ∩ R2\n```\n\n**2e.**\n\n```text\nR1 ← π MaKD, MaTC (KETQUACT ⋈ MaKD (σ Year(ThoiDiemKD)=2024 (KIEMDINHSP)))\nR2 ← π MaTC (σ MaLSP='LSP001' (TIEUCHUANKD))\nR1 ÷ R2\n```\n\n**2f.**\n\n```text\nR1 ← π MaSP (σ KQKiemDinh=1 (KIEMDINHSP))\nR2 ← π MaSP (σ KQKiemDinh=0 (KIEMDINHSP))\nR3 ← (R1 ∩ R2) ⋈ MaSP SANPHAM\nMaPX, TenPX ℑ count(MaSP) (R3 ⋈ MaPX PHANXUONG)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Tạo ràng buộc miền giá trị cho thuộc tính trạng thái của loại sản phẩm",
+          "points": 1.0
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật tăng kết quả mong đợi lên 15% đối với các tiêu chuẩn kiểm địn",
+          "points": 1.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê mã sản phẩm (MaSP), thời điểm kiểm định (ThoiDiemKD) và nội du",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê họ tên công nhân thực hiện (HoTen) và nội dung kết quả kiểm đị",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết thông tin sản phẩm (MaSP, TenSP) và tên các tiêu chuẩn kiểm đ",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê các kiểm định (MaKD) có kết quả chi tiết với mức độ đánh giá l",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Tìm các kiểm định (MaKD) thực hiện trong năm 2024 đã kiểm định tất cả ",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Với từng phân xưởng (MaPX, TenPX), cho biết số lượng sản phẩm có kết q",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2324-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Tạo ràng buộc miền giá trị cho thuộc tính DAGIAO ghi nhận trạng thái đơn hàng.\nb. Cập nhật tổng tiền giảm 2% nếu đơn hàng được bán từ ngày 1/11/2023 về sau.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết sản phẩm (MASP, TENSP) thuộc thể loại ‘hoa chậu’ và giá bán cao hơn giá nhập 10%.\nb. Liệt kê người giao (NGGIAO), số điện thoại người giao (DT_NGGIAO) đã giao hàng thành công vào ngày 20/10/2023 của các đơn hàng đã bán trong ngày 19/10/2023.\nc. Cho biết những sản phẩm (MASP, TENSP) thuộc thể loại ‘Hoa nhập khẩu’ và nhà vườn (MANV) cung cấp sản phẩm đó (nếu có).\nd. Liệt kê đơn hàng (MADH) được lập trong năm 2023 đã mua cùng lúc 2 sản phẩm có tên là ‘Hoa Hồng’ và ‘Hoa Cúc’.\ne. Với mỗi ngày bán trong tháng 10 năm 2023, cho biết số đơn hàng đã giao thành công của sản phẩm ‘HOABO01’ (MASP). Thông tin hiển thị: Ngày bán, Số đơn hàng đã giao.\nf. Tìm thông tin người giao hàng (NGGIAO, DT_NGGIAO) đã giao thành công tất cả các sản phẩm có giá bán từ 1 triệu trở lên.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE GIAOHANG ADD CONSTRAINT CK_DAGIAO\nCHECK (DAGIAO IN (0, 1));\n```\n\n**1b.**\n\n```sql\nUPDATE DONHANG\nSET TONGTIEN = TONGTIEN * 0.98\nWHERE NGAYBAN >= '2023-11-01';\n```\n\n**2a.**\n\n```text\nπ MASP, TENSP (σ THELOAI='hoa chậu' ∧ GIABAN=GIANHAP*1.1 (SANPHAM))\n```\n\n**2b.**\n\n```text\nπ NGGIAO, DT_NGGIAO ((σ DAGIAO=1 ∧ NGAYGIAO='20/10/2023' (GIAOHANG)) ⋈ MADH (σ NGAYBAN='19/10/2023' (DONHANG)))\n```\n\n**2c.**\n\n```text\nπ MASP, TENSP, NHAVUON.MANV ((σ THELOAI='Hoa nhập khẩu' (SANPHAM)) ⟕ MANV NHAVUON)\n```\n\n**2d.**\n\n```text\nR1 ← π MADH (CTDH ⋈ MASP (σ TENSP='Hoa Hồng' (SANPHAM)))\nR2 ← π MADH (CTDH ⋈ MASP (σ TENSP='Hoa Cúc' (SANPHAM)))\nR3 ← π MADH (σ Year(NGAYBAN)=2023 (DONHANG))\nR1 ∩ R2 ∩ R3\n```\n\n**2e.**\n\n```text\nR1 ← (σ Month(NGAYBAN)=10 ∧ Year(NGAYBAN)=2023 (DONHANG)) ⋈ MADH (σ MASP='HOABO01' (CTDH))\nR2 ← R1 ⋈ MADH (σ DAGIAO=1 (GIAOHANG))\nNGAYBAN ℑ count(MADH) (R2)\n```\n\n**2f.**\n\n```text\nR1 ← π NGGIAO, DT_NGGIAO, MASP ((σ DAGIAO=1 (GIAOHANG)) ⋈ MADH CTDH)\nR2 ← π MASP (σ GIABAN>=1000000 (SANPHAM))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Tạo ràng buộc miền giá trị cho thuộc tính DAGIAO ghi nhận trạng thái đ",
+          "points": 1.0
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật tổng tiền giảm 2% nếu đơn hàng được bán từ ngày 1/11/2023 về ",
+          "points": 1.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết sản phẩm (MASP, TENSP) thuộc thể loại ‘hoa chậu’ và giá bán c",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê người giao (NGGIAO), số điện thoại người giao (DT_NGGIAO) đã g",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết những sản phẩm (MASP, TENSP) thuộc thể loại ‘Hoa nhập khẩu’ v",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê đơn hàng (MADH) được lập trong năm 2023 đã mua cùng lúc 2 sản ",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Với mỗi ngày bán trong tháng 10 năm 2023, cho biết số đơn hàng đã giao",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm thông tin người giao hàng (NGGIAO, DT_NGGIAO) đã giao thành công t",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2324-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Tạo ràng buộc miền giá trị cho thuộc tính THELOAI của sản phẩm hoa (chậu hoa cắm sẵn, hoa bó sẵn, hoa chậu, hoa cắt cành, hoa nhập khẩu, lá trang trí).\nb. Cập nhật phí ship tăng 5% cho ngày giao hàng là 20/11/2023.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết sản phẩm (MASP, TENSP) có đơn vị tính là ‘bó’ và giá bán cao hơn giá nhập 40%.\nb. Liệt kê người nhận (NGNHAN), số điện thoại người nhận (DT_NGNHAN) của các đơn hàng đã bán trong ngày 20/10/2023 và đã được giao hàng thành công vào ngày 21/10/2023.\nc. Cho biết đơn hàng (MADH, TONGTIEN) được bán trong ngày 20/10/2023 và mã giao hàng (MAGH) của đơn hàng đó (nếu có).\nd. Liệt kê đơn hàng (MADH) được lập trong năm 2023 đã mua sản phẩm có tên ‘Hoa Hồng’ nhưng không mua sản phẩm có tên ‘Hoa Cúc’.\ne. Với mỗi sản phẩm của nhà vườn ‘NV01’ (MANV), cho biết tổng số lượng sản phẩm đã bán trong tháng 10 năm 2023. Thông tin hiển thị: Mã sản phẩm, tổng số lượng bán.\nf. Tìm thông tin người giao hàng (NGGIAO, DT_NGGIAO) đã giao thành công tất cả các sản phẩm thuộc loại ‘hoa nhập khẩu’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE SANPHAM ADD CONSTRAINT CK_THELOAI\nCHECK (THELOAI IN ('chậu hoa cắm sẵn', 'hoa bó sẵn', 'hoa chậu', 'hoa cắt cành', 'hoa nhập khẩu', 'lá trang trí'));\n```\n\n**1b.**\n\n```sql\nUPDATE GIAOHANG\nSET PHISHIP = PHISHIP * 1.05\nWHERE NGAYGIAO = '2023-11-20';\n```\n\n**2a.**\n\n```text\nπ MASP, TENSP (σ DVT='bó' ∧ GIABAN=GIANHAP*1.4 (SANPHAM))\n```\n\n**2b.**\n\n```text\nπ NGNHAN, DT_NGNHAN ((σ DAGIAO=1 ∧ NGAYGIAO='21/10/2023' (GIAOHANG)) ⋈ MADH (σ NGAYBAN='20/10/2023' (DONHANG)))\n```\n\n**2c.**\n\n```text\nπ MADH, TONGTIEN, MAGH ((σ NGAYBAN='20/10/2023' (DONHANG)) ⟕ MADH GIAOHANG)\n```\n\n**2d.**\n\n```text\nR1 ← π MADH (CTDH ⋈ MASP (σ TENSP='Hoa Hồng' (SANPHAM)))\nR2 ← π MADH (CTDH ⋈ MASP (σ TENSP='Hoa Cúc' (SANPHAM)))\nR3 ← π MADH (σ Year(NGAYBAN)=2023 (DONHANG))\n(R1 ∩ R3) − R2\n```\n\n**2e.**\n\n```text\nR1 ← (σ Month(NGAYBAN)=10 ∧ Year(NGAYBAN)=2023 (DONHANG)) ⋈ MADH CTDH\nR2 ← R1 ⋈ MASP (σ MANV='NV01' (SANPHAM))\nMASP ℑ sum(SOLUONG) (R2)\n```\n\n**2f.**\n\n```text\nR1 ← π NGGIAO, DT_NGGIAO, MASP ((σ DAGIAO=1 (GIAOHANG)) ⋈ MADH CTDH)\nR2 ← π MASP (σ THELOAI='hoa nhập khẩu' (SANPHAM))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Tạo ràng buộc miền giá trị cho thuộc tính THELOAI của sản phẩm hoa (ch",
+          "points": 1.0
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật phí ship tăng 5% cho ngày giao hàng là 20/11/2023.",
+          "points": 1.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết sản phẩm (MASP, TENSP) có đơn vị tính là ‘bó’ và giá bán cao ",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê người nhận (NGNHAN), số điện thoại người nhận (DT_NGNHAN) của ",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết đơn hàng (MADH, TONGTIEN) được bán trong ngày 20/10/2023 và m",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê đơn hàng (MADH) được lập trong năm 2023 đã mua sản phẩm có tên",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Với mỗi sản phẩm của nhà vườn ‘NV01’ (MANV), cho biết tổng số lượng sả",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm thông tin người giao hàng (NGGIAO, DT_NGGIAO) đã giao thành công t",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2223a-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Bổ sung ràng buộc toàn vẹn: “Mức độ bảo quản của loại xăng chỉ có thể là (‘IA’, ‘IB’, ‘II’, ‘III’, ‘IV’, ‘V’).”\nb. Cập nhật tăng 10% giá cơ sở (GIACOSO) đối với loại xăng dầu có tên (TENXD) là ‘Xăng không chì R95’.\nc. Xóa doanh nghiệp nhập khẩu xăng dầu có mã doanh nghiệp (MADN) là ‘DN001’ và có loại hình doanh nghiệp (LOAIDN) là ‘Tư nhân’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết tên các cửa hàng có bậc chịu lửa là II, tường cao từ 1.5m đến 2m và đường đi rộng hơn 2m.\nb. Liệt kê mã cửa hàng (MACH), tên cửa hàng (TENCH) đã nhập xăng dầu có tên (TENXD) ‘Xăng không chì R95’ trong ngày 24/10/2022.\nc. Cho biết cửa hàng kinh doanh xăng dầu (MACH, TENCH) có bậc chịu lửa là II và mã xăng dầu (MAXD) mà cửa hàng đó nhập (nếu có).\nd. Cho biết cửa hàng (MACH, TENCH) đã nhập cả hai loại xăng dầu có tên là ‘Xăng không chì R92’ và ‘Xăng không chì R95’ trong ngày 08/10/2022.\ne. Với mỗi xăng dầu, cho biết số lần nhập về trong năm 2022. Thông tin hiển thị gồm: Mã xăng dầu, Tên xăng dầu, Số lần nhập năm 2022.\nf. Tìm cửa hàng (MACH) nhập tất cả các loại xăng có mức độ bảo quản ở mức III (MDBQ = 'III').",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE LOAIXANG ADD CONSTRAINT CK_MDBQ\nCHECK (MDBQ IN ('IA', 'IB', 'II', 'III', 'IV', 'V'));\n```\n\n**1b.**\n\n```sql\nUPDATE XANGDAU\nSET GIACOSO = GIACOSO * 1.1\nWHERE TENXD = 'Xăng không chì R95';\n```\n\n**1c.**\n\n```sql\nDELETE FROM DNNK\nWHERE MADN = 'DN001' AND LOAIDN = 'Tư nhân';\n```\n\n**2a.**\n\n```text\nπ TENCH (σ BACCL='II' ∧ CAOTB>=1.5 ∧ CAOTB<=2 ∧ RONGDD>2 (CUAHANG))\n```\n\n**2b.**\n\n```text\nR1 ← (σ NGAYNHAP='24/10/2022' (NHAP)) ⋈ MAXD (σ TENXD='Xăng không chì R95' (XANGDAU))\nπ MACH, TENCH (R1 ⋈ MACH CUAHANG)\n```\n\n**2c.**\n\n```text\nπ MACH, TENCH, MAXD ((σ BACCL='II' (CUAHANG)) ⟕ MACH NHAP)\n```\n\n**2d.**\n\n```text\nR0 ← σ NGAYNHAP='08/10/2022' (NHAP)\nR1 ← π MACH (R0 ⋈ MAXD (σ TENXD='Xăng không chì R92' (XANGDAU)))\nR2 ← π MACH (R0 ⋈ MAXD (σ TENXD='Xăng không chì R95' (XANGDAU)))\nπ MACH, TENCH ((R1 ∩ R2) ⋈ MACH CUAHANG)\n```\n\n**2e.**\n\n```text\nMAXD, TENXD ℑ count(NGAYNHAP) (XANGDAU ⟕ MAXD (σ Year(NGAYNHAP)=2022 (NHAP)))\n```\n\n**2f.**\n\n```text\nR1 ← π MACH, MALX (NHAP ⋈ MAXD XANGDAU)\nR2 ← π MALX (σ MDBQ='III' (LOAIXANG))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Bổ sung ràng buộc toàn vẹn: “Mức độ bảo quản của loại xăng chỉ có thể ",
+          "points": 0.67
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật tăng 10% giá cơ sở (GIACOSO) đối với loại xăng dầu có tên (TE",
+          "points": 0.67
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Xóa doanh nghiệp nhập khẩu xăng dầu có mã doanh nghiệp (MADN) là ‘DN00",
+          "points": 0.66
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết tên các cửa hàng có bậc chịu lửa là II, tường cao từ 1.5m đến",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê mã cửa hàng (MACH), tên cửa hàng (TENCH) đã nhập xăng dầu có t",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết cửa hàng kinh doanh xăng dầu (MACH, TENCH) có bậc chịu lửa là",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Cho biết cửa hàng (MACH, TENCH) đã nhập cả hai loại xăng dầu có tên là",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Với mỗi xăng dầu, cho biết số lần nhập về trong năm 2022. Thông tin hi",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm cửa hàng (MACH) nhập tất cả các loại xăng có mức độ bảo quản ở mức",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2223a-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Bổ sung ràng buộc toàn vẹn: “Chiều cao mái che của cửa hàng không nhỏ hơn 4,75 mét.”\nb. Cập nhật giảm 10% giá cơ sở (GIACOSO) đối với loại xăng dầu có tên (TENXD) là ‘Xăng không chì E5’.\nc. Xóa doanh nghiệp nhập khẩu xăng dầu có mã doanh nghiệp (MADN) là ‘DN002’ và có loại hình doanh nghiệp (LOAIDN) là ‘Nhà nước’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết các cửa hàng (MACH) và xăng dầu (MAXD) có nhập xăng dầu trong tháng 10 năm 2021 với số lượng nhập từ 1000 m3 trở lên.\nb. Liệt kê mã doanh nghiệp (MADN), tên doanh nghiệp (TENDN) đã cung cấp những xăng dầu có thuế phí (THUEPHI) > 1% của loại xăng có tên (TENLX) ‘Xăng không chì E5’.\nc. Cho biết loại xăng (MALX, TENLX) có mức độ bảo quản là V và tên xăng dầu (TENXD) thuộc loại này (nếu có).\nd. Cho biết cửa hàng (MACH, TENCH) không nhập xăng dầu có tên là ‘Xăng không chì R95’ trong ngày 09/10/2022.\ne. Với mỗi cửa hàng, cho biết số lần nhập xăng dầu về trong năm 2022. Thông tin hiển thị gồm: Mã cửa hàng, Tên cửa hàng, Số lần nhập 2022.\nf. Tìm doanh nghiệp (MADN, TENDN) thành lập năm 1990 có cung cấp tất cả các loại xăng dầu.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE CUAHANG ADD CONSTRAINT CK_CAOMC\nCHECK (CAOMC >= 4.75);\n```\n\n**1b.**\n\n```sql\nUPDATE XANGDAU\nSET GIACOSO = GIACOSO * 0.9\nWHERE TENXD = 'Xăng không chì E5';\n```\n\n**1c.**\n\n```sql\nDELETE FROM DNNK\nWHERE MADN = 'DN002' AND LOAIDN = 'Nhà nước';\n```\n\n**2a.**\n\n```text\nπ MACH, MAXD (σ Month(NGAYNHAP)=10 ∧ Year(NGAYNHAP)=2021 ∧ SOLUONG>=1000 (NHAP))\n```\n\n**2b.**\n\n```text\nR1 ← (σ THUEPHI>1 (XANGDAU)) ⋈ MALX (σ TENLX='Xăng không chì E5' (LOAIXANG))\nπ MADN, TENDN (R1 ⋈ MADN DNNK)\n```\n\n**2c.**\n\n```text\nπ MALX, TENLX, TENXD ((σ MDBQ='V' (LOAIXANG)) ⟕ MALX XANGDAU)\n```\n\n**2d.**\n\n```text\nR1 ← π MACH ((σ NGAYNHAP='09/10/2022' (NHAP)) ⋈ MAXD (σ TENXD='Xăng không chì R95' (XANGDAU)))\nπ MACH, TENCH ((π MACH (CUAHANG) − R1) ⋈ MACH CUAHANG)\n```\n\n**2e.**\n\n```text\nMACH, TENCH ℑ count(NGAYNHAP) (CUAHANG ⟕ MACH (σ Year(NGAYNHAP)=2022 (NHAP)))\n```\n\n**2f.**\n\n```text\nR1 ← π MADN, TENDN, MALX (XANGDAU ⋈ MADN (σ Year(NGAYTL)=1990 (DNNK)))\nR2 ← π MALX (LOAIXANG)\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Bổ sung ràng buộc toàn vẹn: “Chiều cao mái che của cửa hàng không nhỏ ",
+          "points": 0.67
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật giảm 10% giá cơ sở (GIACOSO) đối với loại xăng dầu có tên (TE",
+          "points": 0.67
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Xóa doanh nghiệp nhập khẩu xăng dầu có mã doanh nghiệp (MADN) là ‘DN00",
+          "points": 0.66
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết các cửa hàng (MACH) và xăng dầu (MAXD) có nhập xăng dầu trong",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê mã doanh nghiệp (MADN), tên doanh nghiệp (TENDN) đã cung cấp n",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết loại xăng (MALX, TENLX) có mức độ bảo quản là V và tên xăng d",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Cho biết cửa hàng (MACH, TENCH) không nhập xăng dầu có tên là ‘Xăng kh",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Với mỗi cửa hàng, cho biết số lần nhập xăng dầu về trong năm 2022. Thô",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm doanh nghiệp (MADN, TENDN) thành lập năm 1990 có cung cấp tất cả c",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2223b-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Bổ sung ràng buộc toàn vẹn: “Hạn sử dụng của loại vé chỉ nhận 1 trong các giá trị sau: 0, 1, 2”.\nb. Cập nhật tăng 10% giá vé (GIAVE) đối với loại vé có tên là ‘Tham quan biển đảo – phố cổ’ và có hạn sử dụng là 2 ngày.\nc. Xóa các hóa đơn đã bán các vé có mã loại vé (MALV) là ‘LV001’ và không có thông tin ngày bán.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết tên địa điểm (TENDD), thông tin giới thiệu (THONGTINGT) của các địa điểm tham quan được bắt đầu khai thác tham quan từ năm 2000 đến 2020.\nb. Liệt kê các mã địa điểm (MADD) đã được khách du lịch mua vé tham quan vào tháng 1 năm 2023.\nc. Cho biết các địa điểm tham quan (MADD, TENDD) thuộc khu vực ‘nội thành’ và những loại vé (MALV) có tham quan địa điểm đó (nếu có).\nd. Với mỗi loại vé, cho biết tổng số lượng vé của loại vé đó bán ra được trong năm 2023. Thông tin hiển thị: Mã loại vé, Tên loại vé, Tổng số lượng vé bán ra.\ne. Cho biết các loại vé (MALV, TENLV) có giá vé từ 100.000đ trở lên và có địa điểm tham quan thuộc cả hai loại địa điểm có tên là ‘Nhà cổ’ và ‘Bảo tàng’.\nf. Tìm loại địa điểm (MALDD, TENLDD) nằm trong lịch trình tham quan của tất cả các loại vé có giá vé trên 200.000đ.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE LOAIVE ADD CONSTRAINT CK_HANSD\nCHECK (HANSD IN (0, 1, 2));\n```\n\n**1b.**\n\n```sql\nUPDATE LOAIVE\nSET GIAVE = GIAVE * 1.1\nWHERE TENLV = 'Tham quan biển đảo – phố cổ' AND HANSD = 2;\n```\n\n**1c.**\n\n```sql\nDELETE FROM BANVE\nWHERE MALV = 'LV001' AND NGAYBAN IS NULL;\n```\n\n**2a.**\n\n```text\nπ TENDD, THONGTINGT (σ NAMKT>=2000 ∧ NAMKT<=2020 (DIADIEMTQ))\n```\n\n**2b.**\n\n```text\nπ MADD (CTLOAIVE ⋈ MALV (σ Month(NGAYBAN)=1 ∧ Year(NGAYBAN)=2023 (BANVE)))\n```\n\n**2c.**\n\n```text\nπ MADD, TENDD, MALV ((σ KHUVUC='nội thành' (DIADIEMTQ)) ⟕ MADD CTLOAIVE)\n```\n\n**2d.**\n\n```text\nMALV, TENLV ℑ sum(SOLUONG) (LOAIVE ⟕ MALV (σ Year(NGAYBAN)=2023 (BANVE)))\n```\n\n**2e.**\n\n```text\nR0 ← CTLOAIVE ⋈ MADD (DIADIEMTQ ⋈ MALDD LOAIDD)\nR1 ← π MALV (σ TENLDD='Nhà cổ' (R0))\nR2 ← π MALV (σ TENLDD='Bảo tàng' (R0))\nπ MALV, TENLV ((R1 ∩ R2) ⋈ MALV (σ GIAVE>=100000 (LOAIVE)))\n```\n\n**2f.**\n\n```text\nR1 ← π MALDD, TENLDD, MALV ((CTLOAIVE ⋈ MADD DIADIEMTQ) ⋈ MALDD LOAIDD)\nR2 ← π MALV (σ GIAVE>200000 (LOAIVE))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Bổ sung ràng buộc toàn vẹn: “Hạn sử dụng của loại vé chỉ nhận 1 trong ",
+          "points": 0.67
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật tăng 10% giá vé (GIAVE) đối với loại vé có tên là ‘Tham quan ",
+          "points": 0.67
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Xóa các hóa đơn đã bán các vé có mã loại vé (MALV) là ‘LV001’ và không",
+          "points": 0.66
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết tên địa điểm (TENDD), thông tin giới thiệu (THONGTINGT) của c",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê các mã địa điểm (MADD) đã được khách du lịch mua vé tham quan ",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết các địa điểm tham quan (MADD, TENDD) thuộc khu vực ‘nội thành",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Với mỗi loại vé, cho biết tổng số lượng vé của loại vé đó bán ra được ",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết các loại vé (MALV, TENLV) có giá vé từ 100.000đ trở lên và có",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm loại địa điểm (MALDD, TENLDD) nằm trong lịch trình tham quan của t",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2223b-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Bổ sung ràng buộc toàn vẹn: “Khu vực của địa điểm chỉ nhận 1 trong các giá trị sau: ‘nội thành’, ‘ngoại thành’, ‘hải đảo’.”\nb. Cập nhật giảm 5% trị giá (TRIGIA) đối với các hóa đơn bán vé có ngày bán là ngày 01/4/2023 và ngày hết hạn của vé là ngày 03/4/2023.\nc. Xóa các địa điểm tham quan có khu vực là ‘ngoại thành’ và không có thông tin địa chỉ.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết tên loại vé (TENLV), hạn sử dụng (HANSD) của các loại vé có giá bán từ 80.000đ đến 200.000đ.\nb. Liệt kê các tên địa điểm (TENDD) thuộc loại địa điểm có tên ‘Bảo tàng’ và có trong lịch trình tham quan của loại vé có mã là ‘LV001’.\nc. Cho biết các loại vé (MALV, TENLV) có giá vé trên 100.000đ và những địa điểm tham quan (MADD) của loại vé đó (nếu có).\nd. Với mỗi địa điểm có năm bắt đầu khai thác từ 2000 trở về sau, cho biết số lượng loại vé có lịch trình tham quan đến địa điểm đó. Thông tin hiển thị: Mã địa điểm, Tên địa điểm, Số lượng lịch trình tham quan.\ne. Cho biết các địa điểm (MADD, TENDD) thuộc loại địa điểm có tên là ‘KDL sinh thái’ không thuộc lịch trình tham quan của bất kỳ loại vé nào có giá vé lớn hơn 200.000đ.\nf. Tìm loại vé (MALV, TENLV) có giá vé trên 200.000đ và có lịch trình tham quan tất cả các loại địa điểm.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE DIADIEMTQ ADD CONSTRAINT CK_KHUVUC\nCHECK (KHUVUC IN ('nội thành', 'ngoại thành', 'hải đảo'));\n```\n\n**1b.**\n\n```sql\nUPDATE BANVE\nSET TRIGIA = TRIGIA * 0.95\nWHERE NGAYBAN = '2023-04-01' AND NGAYHH = '2023-04-03';\n```\n\n**1c.**\n\n```sql\nDELETE FROM DIADIEMTQ\nWHERE KHUVUC = 'ngoại thành' AND DIACHI IS NULL;\n```\n\n**2a.**\n\n```text\nπ TENLV, HANSD (σ GIAVE>=80000 ∧ GIAVE<=200000 (LOAIVE))\n```\n\n**2b.**\n\n```text\nR1 ← DIADIEMTQ ⋈ MALDD (σ TENLDD='Bảo tàng' (LOAIDD))\nπ TENDD (R1 ⋈ MADD (σ MALV='LV001' (CTLOAIVE)))\n```\n\n**2c.**\n\n```text\nπ MALV, TENLV, MADD ((σ GIAVE>100000 (LOAIVE)) ⟕ MALV CTLOAIVE)\n```\n\n**2d.**\n\n```text\nMADD, TENDD ℑ count(MALV) ((σ NAMKT>=2000 (DIADIEMTQ)) ⟕ MADD CTLOAIVE)\n```\n\n**2e.**\n\n```text\nR1 ← π MADD, TENDD (DIADIEMTQ ⋈ MALDD (σ TENLDD='KDL sinh thái' (LOAIDD)))\nR2 ← π MADD, TENDD ((DIADIEMTQ ⋈ MADD CTLOAIVE) ⋈ MALV (σ GIAVE>200000 (LOAIVE)))\nR1 − R2\n```\n\n**2f.**\n\n```text\nR1 ← π MALV, TENLV, MALDD ((σ GIAVE>200000 (LOAIVE)) ⋈ MALV (CTLOAIVE ⋈ MADD DIADIEMTQ))\nR2 ← π MALDD (LOAIDD)\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Bổ sung ràng buộc toàn vẹn: “Khu vực của địa điểm chỉ nhận 1 trong các",
+          "points": 0.67
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật giảm 5% trị giá (TRIGIA) đối với các hóa đơn bán vé có ngày b",
+          "points": 0.67
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Xóa các địa điểm tham quan có khu vực là ‘ngoại thành’ và không có thô",
+          "points": 0.66
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết tên loại vé (TENLV), hạn sử dụng (HANSD) của các loại vé có g",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê các tên địa điểm (TENDD) thuộc loại địa điểm có tên ‘Bảo tàng’",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết các loại vé (MALV, TENLV) có giá vé trên 100.000đ và những đị",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Với mỗi địa điểm có năm bắt đầu khai thác từ 2000 trở về sau, cho biết",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết các địa điểm (MADD, TENDD) thuộc loại địa điểm có tên là ‘KDL",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm loại vé (MALV, TENLV) có giá vé trên 200.000đ và có lịch trình tha",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2021a-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Thêm thuộc tính GIOITINH với kiểu dữ liệu bit vào quan hệ KHACHHANG.\nb. Cập nhật giá xe giảm 10% của các xe máy có mã loại xe là ‘ML01’ và sản xuất năm 2019.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê danh sách các loại hình trả góp (MALH, TENLH) có kỳ hạn 3 tháng và lãi suất trên 2%/tháng.\nb. Cho biết những xe máy (MAXM, TENXM) được sản xuất từ năm 2015 đến 2020 theo công nghệ động cơ ‘V-twin’.\nc. Cho biết thông tin loại hình trả góp (MALH, TENLH) có kỳ hạn trên 6 tháng và tên khách hàng (TENKH) mua trả góp bằng loại hình đó nếu có.\nd. Khách hàng nào (MAKH) mua tất cả xe máy sản xuất năm 2000 thuộc loại xe tên là ‘Honda Wave Alpha’.\ne. Cho biết mỗi loại hình trả góp có bao nhiêu khách hàng trả góp với kỳ hạn 12 tháng. Thông tin hiển thị: mã loại hình trả góp, số lượng khách hàng.\nf. Cho biết xe máy (MAXM, TENXM) chưa được khách hàng nào mua.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE KHACHHANG ADD GIOITINH bit;\n```\n\n**1b.**\n\n```sql\nUPDATE XEMAY\nSET GIA = GIA * 0.9\nWHERE MALX = 'ML01' AND NAMSX = 2019;\n```\n\n**2a.**\n\n```text\nπ MALH, TENLH (σ KYHAN=3 ∧ LAISUAT>2 (LOAIHINHTG))\n```\n\n**2b.**\n\n```text\nπ MAXM, TENXM ((σ NAMSX>=2015 ∧ NAMSX<=2020 (XEMAY)) ⋈ MALX (σ CONGNGHE='V-twin' (LOAIXE)))\n```\n\n**2c.**\n\n```text\nR1 ← TRAGOP ⋈ MAKH KHACHHANG\nπ MALH, TENLH, TENKH ((σ KYHAN>6 (LOAIHINHTG)) ⟕ MALH R1)\n```\n\n**2d.**\n\n```text\nR1 ← π MAKH, MAXM (TRAGOP)\nR2 ← π MAXM ((σ NAMSX=2000 (XEMAY)) ⋈ MALX (σ TENLX='Honda Wave Alpha' (LOAIXE)))\nR1 ÷ R2\n```\n\n**2e.**\n\n```text\nMALH ℑ count(MAKH) (TRAGOP ⋈ MALH (σ KYHAN=12 (LOAIHINHTG)))\n```\n\n**2f.**\n\n```text\nR1 ← π MAXM (XEMAY) − π MAXM (TRAGOP)\nπ MAXM, TENXM (R1 ⋈ MAXM XEMAY)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Thêm thuộc tính GIOITINH với kiểu dữ liệu bit vào quan hệ KHACHHANG.",
+          "points": 1.0
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật giá xe giảm 10% của các xe máy có mã loại xe là ‘ML01’ và sản",
+          "points": 1.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê danh sách các loại hình trả góp (MALH, TENLH) có kỳ hạn 3 thán",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Cho biết những xe máy (MAXM, TENXM) được sản xuất từ năm 2015 đến 2020",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết thông tin loại hình trả góp (MALH, TENLH) có kỳ hạn trên 6 th",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Khách hàng nào (MAKH) mua tất cả xe máy sản xuất năm 2000 thuộc loại x",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết mỗi loại hình trả góp có bao nhiêu khách hàng trả góp với kỳ ",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết xe máy (MAXM, TENXM) chưa được khách hàng nào mua.",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2021a-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Xóa thuộc tính CMND trong quan hệ KHACHHANG.\nb. Cập nhật lãi suất là 1.5%/tháng cho loại hình trả góp có tên loại hình là ‘Tín dụng’ và kỳ hạn 12 tháng.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê danh sách các xe máy (MAXM, TENXM) sản xuất trong năm 2020 có giá trên 40.000.000 đồng.\nb. Cho biết những xe máy (MAXM, TENXM) được mua trả góp trong tháng 8 năm 2020 có giá từ 50.000.000 đồng trở lên.\nc. Cho biết thông tin xe máy (MAXM, TENXM) có giá trên 50.000.000 đồng và tên khách hàng (TENKH) mua trả góp xe máy đó nếu có.\nd. Khách hàng nào (MAKH) đã mua tất cả xe máy sản xuất năm 2019 sử dụng công nghệ ‘V-twin’.\ne. Cho biết mỗi loại hình trả góp có bao nhiêu khách hàng với tỉ lệ trả trước 20% tổng giá trị xe. Thông tin hiển thị: mã loại hình trả góp, số lượng khách hàng.\nf. Cho biết loại hình trả góp (MALH, TENLH) chưa được khách hàng nào sử dụng.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE KHACHHANG DROP COLUMN CMND;\n```\n\n**1b.**\n\n```sql\nUPDATE LOAIHINHTG\nSET LAISUAT = 1.5\nWHERE TENLH = 'Tín dụng' AND KYHAN = 12;\n```\n\n**2a.**\n\n```text\nπ MAXM, TENXM (σ NAMSX=2020 ∧ GIA>40000000 (XEMAY))\n```\n\n**2b.**\n\n```text\nπ MAXM, TENXM ((σ GIA>=50000000 (XEMAY)) ⋈ MAXM (σ Month(NGAYMUA)=8 ∧ Year(NGAYMUA)=2020 (TRAGOP)))\n```\n\n**2c.**\n\n```text\nR1 ← TRAGOP ⋈ MAKH KHACHHANG\nπ MAXM, TENXM, TENKH ((σ GIA>50000000 (XEMAY)) ⟕ MAXM R1)\n```\n\n**2d.**\n\n```text\nR1 ← π MAKH, MAXM (TRAGOP)\nR2 ← π MAXM ((σ NAMSX=2019 (XEMAY)) ⋈ MALX (σ CONGNGHE='V-twin' (LOAIXE)))\nR1 ÷ R2\n```\n\n**2e.**\n\n```text\nMALH ℑ count(MAKH) (TRAGOP ⋈ MALH (σ PHANTRAMTT=20 (LOAIHINHTG)))\n```\n\n**2f.**\n\n```text\nR1 ← π MALH (LOAIHINHTG) − π MALH (TRAGOP)\nπ MALH, TENLH (R1 ⋈ MALH LOAIHINHTG)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Xóa thuộc tính CMND trong quan hệ KHACHHANG.",
+          "points": 1.0
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Cập nhật lãi suất là 1.5%/tháng cho loại hình trả góp có tên loại hình",
+          "points": 1.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê danh sách các xe máy (MAXM, TENXM) sản xuất trong năm 2020 có ",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Cho biết những xe máy (MAXM, TENXM) được mua trả góp trong tháng 8 năm",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết thông tin xe máy (MAXM, TENXM) có giá trên 50.000.000 đồng và",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Khách hàng nào (MAKH) đã mua tất cả xe máy sản xuất năm 2019 sử dụng c",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết mỗi loại hình trả góp có bao nhiêu khách hàng với tỉ lệ trả t",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết loại hình trả góp (MALH, TENLH) chưa được khách hàng nào sử d",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2021b-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Thêm thuộc tính SODT với kiểu dữ liệu varchar(20) vào quan hệ CONGTY.\nb. Thêm ràng buộc trạng thái của khoáng sản chỉ có thể là (‘rắn’, ‘lỏng’, ‘khí’).\nc. Cập nhật ngày phát hiện ra mỏ khoáng sản là 14/11/2019 của mỏ khoáng sản có mã định danh là ‘MKS01’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê danh sách các khoáng sản (MAKS, TENKS) có trạng thái rắn.\nb. Cho biết những khoáng sản (MAKS, TENKS) thuộc phân loại ‘Khoáng sản năng lượng’.\nc. Cho biết thông tin mỏ khoáng sản (MAMKS, TENMO) và tên công ty (TENCTY) khai thác mỏ khoáng sản đó nếu có.\nd. Công ty nào (MACTY) khai thác tất cả mỏ khoáng sản của tỉnh ‘Quảng Ninh’.\ne. Cho biết mỗi công ty khai thác bao nhiêu mỏ khoáng sản có ngày được cấp phép khai khoáng trong năm 2019. Thông tin hiển thị: mã công ty, số lượng mỏ khoáng sản.\nf. Cho biết công ty (MACTY, TENCTY) khai thác các mỏ khoáng sản của cả hai tỉnh ‘Quảng Ninh’ và ‘Bắc Cạn’ có ngày được cấp phép khai khoáng trong năm 2020.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE CONGTY ADD SODT varchar(20);\n```\n\n**1b.**\n\n```sql\nALTER TABLE KHOANGSAN ADD CONSTRAINT CK_TRANGTHAI\nCHECK (TRANGTHAI IN ('rắn', 'lỏng', 'khí'));\n```\n\n**1c.**\n\n```sql\nUPDATE MOKS\nSET NGPHATHIEN = '2019-11-14'\nWHERE MAMKS = 'MKS01';\n```\n\n**2a.**\n\n```text\nπ MAKS, TENKS (σ TRANGTHAI='rắn' (KHOANGSAN))\n```\n\n**2b.**\n\n```text\nπ MAKS, TENKS (KHOANGSAN ⋈ MALKS (σ PHANLOAI='Khoáng sản năng lượng' (LOAIKHSAN)))\n```\n\n**2c.**\n\n```text\nR1 ← KHAITHAC ⋈ MACTY CONGTY\nπ MAMKS, TENMO, TENCTY (MOKS ⟕ MAMKS R1)\n```\n\n**2d.**\n\n```text\nR1 ← π MACTY, MAMKS (KHAITHAC)\nR2 ← π MAMKS (σ TINH='Quảng Ninh' (MOKS))\nR1 ÷ R2\n```\n\n**2e.**\n\n```text\nMACTY ℑ count(MAMKS) (σ Year(NGCP)=2019 (KHAITHAC))\n```\n\n**2f.**\n\n```text\nR0 ← (σ Year(NGCP)=2020 (KHAITHAC)) ⋈ MAMKS MOKS\nR1 ← π MACTY (σ TINH='Quảng Ninh' (R0))\nR2 ← π MACTY (σ TINH='Bắc Cạn' (R0))\nπ MACTY, TENCTY ((R1 ∩ R2) ⋈ MACTY CONGTY)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Thêm thuộc tính SODT với kiểu dữ liệu varchar(20) vào quan hệ CONGTY.",
+          "points": 0.67
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Thêm ràng buộc trạng thái của khoáng sản chỉ có thể là (‘rắn’, ‘lỏng’,",
+          "points": 0.67
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Cập nhật ngày phát hiện ra mỏ khoáng sản là 14/11/2019 của mỏ khoáng s",
+          "points": 0.66
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê danh sách các khoáng sản (MAKS, TENKS) có trạng thái rắn.",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Cho biết những khoáng sản (MAKS, TENKS) thuộc phân loại ‘Khoáng sản nă",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết thông tin mỏ khoáng sản (MAMKS, TENMO) và tên công ty (TENCTY",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Công ty nào (MACTY) khai thác tất cả mỏ khoáng sản của tỉnh ‘Quảng Nin",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết mỗi công ty khai thác bao nhiêu mỏ khoáng sản có ngày được cấ",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết công ty (MACTY, TENCTY) khai thác các mỏ khoáng sản của cả ha",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-2021b-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Thêm thuộc tính MST với kiểu dữ liệu varchar(10) vào quan hệ CONGTY.\nb. Thêm ràng buộc ngày hết hạn (NGHH) phải sau ngày cấp phép khai khoáng (NGCP).\nc. Cập nhật các công ty có địa chỉ là ‘Quận Thủ Đức’ thành ‘Thành phố Thủ Đức’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê danh sách các khoáng sản (TENKS, MALKS) có trạng thái khí.\nb. Cho biết những khoáng sản (TENKS, TRANGTHAI) thuộc phân loại ‘Khoáng sản phi kim’.\nc. Cho biết tên mỏ khoáng sản (TENMO) và thông tin công ty (TENCTY, DIACHI) khai thác mỏ khoáng sản đó nếu có.\nd. Công ty nào (TENCTY) khai thác tất cả mỏ khoáng sản của tỉnh ‘Trà Vinh’.\ne. Cho biết mỗi công ty khai thác bao nhiêu mỏ khoáng sản có ngày hết hạn giấy phép trong năm 2021. Thông tin hiển thị: mã công ty, số lượng mỏ khoáng sản.\nf. Cho biết công ty (MACTY, TENCTY) khai thác các mỏ khoáng sản thuộc cả hai trạng thái ‘rắn’ và ‘khí’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE CONGTY ADD MST varchar(10);\n```\n\n**1b.**\n\n```sql\nALTER TABLE KHAITHAC ADD CONSTRAINT CK_NGHH\nCHECK (NGHH > NGCP);\n```\n\n**1c.**\n\n```sql\nUPDATE CONGTY\nSET DIACHI = 'Thành phố Thủ Đức'\nWHERE DIACHI = 'Quận Thủ Đức';\n```\n\n**2a.**\n\n```text\nπ TENKS, MALKS (σ TRANGTHAI='khí' (KHOANGSAN))\n```\n\n**2b.**\n\n```text\nπ TENKS, TRANGTHAI (KHOANGSAN ⋈ MALKS (σ PHANLOAI='Khoáng sản phi kim' (LOAIKHSAN)))\n```\n\n**2c.**\n\n```text\nR1 ← KHAITHAC ⋈ MACTY CONGTY\nπ TENMO, TENCTY, DIACHI (MOKS ⟕ MAMKS R1)\n```\n\n**2d.**\n\n```text\nR1 ← π MACTY, TENCTY, MAMKS (KHAITHAC ⋈ MACTY CONGTY)\nR2 ← π MAMKS (σ TINH='Trà Vinh' (MOKS))\nπ TENCTY (R1 ÷ R2)\n```\n\n**2e.**\n\n```text\nMACTY ℑ count(MAMKS) (σ Year(NGHH)=2021 (KHAITHAC))\n```\n\n**2f.**\n\n```text\nR0 ← (KHAITHAC ⋈ MAMKS MOKS) ⋈ MAKS KHOANGSAN\nR1 ← π MACTY (σ TRANGTHAI='rắn' (R0))\nR2 ← π MACTY (σ TRANGTHAI='khí' (R0))\nπ MACTY, TENCTY ((R1 ∩ R2) ⋈ MACTY CONGTY)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Thêm thuộc tính MST với kiểu dữ liệu varchar(10) vào quan hệ CONGTY.",
+          "points": 0.67
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Thêm ràng buộc ngày hết hạn (NGHH) phải sau ngày cấp phép khai khoáng ",
+          "points": 0.67
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Cập nhật các công ty có địa chỉ là ‘Quận Thủ Đức’ thành ‘Thành phố Thủ",
+          "points": 0.66
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê danh sách các khoáng sản (TENKS, MALKS) có trạng thái khí.",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Cho biết những khoáng sản (TENKS, TRANGTHAI) thuộc phân loại ‘Khoáng s",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết tên mỏ khoáng sản (TENMO) và thông tin công ty (TENCTY, DIACH",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Công ty nào (TENCTY) khai thác tất cả mỏ khoáng sản của tỉnh ‘Trà Vinh",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết mỗi công ty khai thác bao nhiêu mỏ khoáng sản có ngày hết hạn",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết công ty (MACTY, TENCTY) khai thác các mỏ khoáng sản thuộc cả ",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1920-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Bổ sung ràng buộc: “Ngày kết thúc của một khóa học luôn lớn hơn hoặc bằng ngày bắt đầu”.\nb. Thêm thuộc tính DIACHI với kiểu dữ liệu varchar(100) trong quan hệ HOCVIEN.\nc. Xóa những chi tiết đăng ký (CTDK) có số ngày hoàn thành bằng 0.\nd. Cập nhật tình trạng đã đóng học phí cho học viên có mã ‘HV1000’ đã đăng ký học phần vào ngày ‘30/10/2019’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết danh sách các học viên (MAHV, HOTEN) đã đăng ký học phần trong năm 2018 (NGDK).\nb. Cho biết quá trình học tập (MAHV, MADK, MAHP, SONGAYHT) của học viên có tên ‘Trần Thị B’ đã đăng ký học phần nhưng chưa thanh toán học phí.\nc. Cho biết mã khóa học, tên khóa học có ngày bắt đầu ‘5/9/2019’ và tên những học phần của khóa học đó nếu có.\nd. Cho biết danh sách các học phần (MAHP, TENHP) chưa có học viên nào đăng ký vào ngày ‘5/9/2019’ (NGDK).\ne. Cho biết các học viên (MAHV, HOTEN) đã đăng ký tất cả học phần.\nf. Cho biết mỗi học phần bắt buộc (BATBUOC) có bao nhiêu học viên đăng ký học. Thông tin hiển thị: mã học phần, số lượng đăng ký.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE KHOAHOC ADD CONSTRAINT CK_NGAYKH\nCHECK (NGKTKH >= NGBDKH);\n```\n\n**1b.**\n\n```sql\nALTER TABLE HOCVIEN ADD DIACHI varchar(100);\n```\n\n**1c.**\n\n```sql\nDELETE FROM CTDK WHERE SONGAYHT = 0;\n```\n\n**1d.**\n\n```sql\nUPDATE DANGKY\nSET TINHTRANG = 1\nWHERE MAHV = 'HV1000' AND NGDK = '2019-10-30';\n```\n\n**2a.**\n\n```text\nπ MAHV, HOTEN (HOCVIEN ⋈ MAHV (σ Year(NGDK)=2018 (DANGKY)))\n```\n\n**2b.**\n\n```text\nR1 ← (σ HOTEN='Trần Thị B' (HOCVIEN)) ⋈ MAHV (σ TINHTRANG=0 (DANGKY))\nπ MAHV, MADK, MAHP, SONGAYHT (R1 ⋈ MADK CTDK)\n```\n\n**2c.**\n\n```text\nπ MAKH, TENKH, TENHP ((σ NGBDKH='5/9/2019' (KHOAHOC)) ⟕ MAKH HOCPHAN)\n```\n\n**2d.**\n\n```text\nR1 ← π MAHP (CTDK ⋈ MADK (σ NGDK='5/9/2019' (DANGKY)))\nR2 ← π MAHP (HOCPHAN) − R1\nπ MAHP, TENHP (R2 ⋈ MAHP HOCPHAN)\n```\n\n**2e.**\n\n```text\nR1 ← π MAHV, MAHP (DANGKY ⋈ MADK CTDK)\nR2 ← π MAHP (HOCPHAN)\nπ MAHV, HOTEN ((R1 ÷ R2) ⋈ MAHV HOCVIEN)\n```\n\n**2f.**\n\n```text\nR1 ← (σ BATBUOC=1 (HOCPHAN)) ⟕ MAHP (CTDK ⋈ MADK DANGKY)\nMAHP ℑ count(MAHV) (R1)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Bổ sung ràng buộc: “Ngày kết thúc của một khóa học luôn lớn hơn hoặc b",
+          "points": 0.5
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Thêm thuộc tính DIACHI với kiểu dữ liệu varchar(100) trong quan hệ HOC",
+          "points": 0.5
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Xóa những chi tiết đăng ký (CTDK) có số ngày hoàn thành bằng 0.",
+          "points": 0.5
+        },
+        {
+          "id": "sqld",
+          "criterion": "1d. SQL: Cập nhật tình trạng đã đóng học phí cho học viên có mã ‘HV1000’ đã đăn",
+          "points": 0.5
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết danh sách các học viên (MAHV, HOTEN) đã đăng ký học phần tron",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Cho biết quá trình học tập (MAHV, MADK, MAHP, SONGAYHT) của học viên c",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết mã khóa học, tên khóa học có ngày bắt đầu ‘5/9/2019’ và tên n",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Cho biết danh sách các học phần (MAHP, TENHP) chưa có học viên nào đăn",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết các học viên (MAHV, HOTEN) đã đăng ký tất cả học phần.",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết mỗi học phần bắt buộc (BATBUOC) có bao nhiêu học viên đăng ký",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1920-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Bổ sung ràng buộc: “Ngày bắt đầu của một khóa học luôn nhỏ hơn hoặc bằng ngày kết thúc của khóa học đó”.\nb. Thêm thuộc tính GHICHU với kiểu dữ liệu varchar(100) trong quan hệ HOCPHAN.\nc. Xóa những chi tiết đăng ký (CTDK) có số ngày hoàn thành nhỏ hơn 3.\nd. Cập nhật tất cả các học phần là bắt buộc cho khóa học ‘AV100’ (MAKH) có tuần bằng 15.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết danh sách các học viên (MAHV, HOTEN) đã đăng ký học phần trong năm 2019 (NGDK) với tình trạng chưa thanh toán học phí.\nb. Cho biết quá trình học tập (MAHV, MADK, MAHP, SONGAYHT) của học viên có tên ‘Nguyễn Văn A’ đã đăng ký các học phần trong năm 2018.\nc. Cho biết mã học viên, họ tên học viên sinh năm 2000 và những mã đăng ký của học viên đó nếu có.\nd. Cho biết các học viên (MAHV, HOTEN) đăng ký cả hai học phần có mã học phần ‘HP01’ và ‘HP02’.\ne. Cho biết học phần (MAHP, TENHP) được tất cả học viên đăng ký.\nf. Cho biết mỗi học phần có bao nhiêu học viên đã đăng ký trước ngày ‘20/10/2019’. Thông tin hiển thị: mã học phần, số lượng đăng ký.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE KHOAHOC ADD CONSTRAINT CK_NGAYKH\nCHECK (NGBDKH <= NGKTKH);\n```\n\n**1b.**\n\n```sql\nALTER TABLE HOCPHAN ADD GHICHU varchar(100);\n```\n\n**1c.**\n\n```sql\nDELETE FROM CTDK WHERE SONGAYHT < 3;\n```\n\n**1d.**\n\n```sql\nUPDATE HOCPHAN\nSET BATBUOC = 1\nWHERE MAKH = 'AV100' AND TUAN = 15;\n```\n\n**2a.**\n\n```text\nπ MAHV, HOTEN (HOCVIEN ⋈ MAHV (σ Year(NGDK)=2019 ∧ TINHTRANG=0 (DANGKY)))\n```\n\n**2b.**\n\n```text\nR1 ← (σ HOTEN='Nguyễn Văn A' (HOCVIEN)) ⋈ MAHV (σ Year(NGDK)=2018 (DANGKY))\nπ MAHV, MADK, MAHP, SONGAYHT (R1 ⋈ MADK CTDK)\n```\n\n**2c.**\n\n```text\nπ MAHV, HOTEN, MADK ((σ Year(NGSINH)=2000 (HOCVIEN)) ⟕ MAHV DANGKY)\n```\n\n**2d.**\n\n```text\nR0 ← DANGKY ⋈ MADK CTDK\nR1 ← π MAHV (σ MAHP='HP01' (R0))\nR2 ← π MAHV (σ MAHP='HP02' (R0))\nπ MAHV, HOTEN ((R1 ∩ R2) ⋈ MAHV HOCVIEN)\n```\n\n**2e.**\n\n```text\nR1 ← π MAHP, MAHV (DANGKY ⋈ MADK CTDK)\nR2 ← π MAHV (HOCVIEN)\nπ MAHP, TENHP ((R1 ÷ R2) ⋈ MAHP HOCPHAN)\n```\n\n**2f.**\n\n```text\nMAHP ℑ count(MAHV) (CTDK ⋈ MADK (σ NGDK<'20/10/2019' (DANGKY)))\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Bổ sung ràng buộc: “Ngày bắt đầu của một khóa học luôn nhỏ hơn hoặc bằ",
+          "points": 0.5
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Thêm thuộc tính GHICHU với kiểu dữ liệu varchar(100) trong quan hệ HOC",
+          "points": 0.5
+        },
+        {
+          "id": "sqlc",
+          "criterion": "1c. SQL: Xóa những chi tiết đăng ký (CTDK) có số ngày hoàn thành nhỏ hơn 3.",
+          "points": 0.5
+        },
+        {
+          "id": "sqld",
+          "criterion": "1d. SQL: Cập nhật tất cả các học phần là bắt buộc cho khóa học ‘AV100’ (MAKH) c",
+          "points": 0.5
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết danh sách các học viên (MAHV, HOTEN) đã đăng ký học phần tron",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Cho biết quá trình học tập (MAHV, MADK, MAHP, SONGAYHT) của học viên c",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết mã học viên, họ tên học viên sinh năm 2000 và những mã đăng k",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Cho biết các học viên (MAHV, HOTEN) đăng ký cả hai học phần có mã học ",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết học phần (MAHP, TENHP) được tất cả học viên đăng ký.",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết mỗi học phần có bao nhiêu học viên đã đăng ký trước ngày ‘20/",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1819-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý nhân viên phục vụ nhà hàng” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**MANV**, HOTEN, NGSINH, CMND, CALV, MUCLUONG)  \nSANH (**MASANH**, TENSANH, LOAIBAN, SUCCHUA)  \nLOAITIEC (**MALT**, TENLT, YCMINBAN)  \nTIEC (**MATIEC**, CHUTIEC, MALT, MASANH, SOBAN, GIA, TGBD, TGKT)  \nPHUCVU (**MANV, MATIEC**, THOIGIAN)\n\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết MANV, HOTEN của nhân viên nhà hàng có sinh nhật trong tháng 10.\nb. Liệt kê tên chủ tiệc đã đặt tiệc tại sảnh tên ‘Crystal’ với sức chứa (SUCCHUA) từ 100 bàn trở lên.\nc. Cho biết các buổi tiệc (Mã tiệc, Tên chủ tiệc, Tên sảnh) có số bàn (SOBAN) từ 50 bàn trở lên thuộc loại tiệc ‘Đám cưới’ (TENLT).\nd. Liệt kê tất cả loại tiệc (TENLT) và chủ tiệc (CHUTIEC) cùng số lượng bàn (SOBAN) đã đặt cho buổi tiệc nếu có.\ne. Cho biết nhân viên nào (MANV, HOTEN) phục vụ tất cả các tiệc có thời gian bắt đầu tiệc là 17g30 (TGBD=’17g30’).\nf. Tính doanh thu từng loại tiệc, thông tin hiển thị gồm: TENLT, DOANHTHU.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2018–2019, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**2a.**\n\n```text\nπ MANV, HOTEN (σ Month(NGSINH)=10 (NHANVIEN))\n```\n\n**2b.**\n\n```text\nπ CHUTIEC (TIEC ⋈ MASANH (σ TENSANH='Crystal' ∧ SUCCHUA>=100 (SANH)))\n```\n\n**2c.**\n\n```text\nR1 ← (σ SOBAN>=50 (TIEC)) ⋈ MALT (σ TENLT='Đám cưới' (LOAITIEC))\nπ MATIEC, CHUTIEC, TENSANH (R1 ⋈ MASANH SANH)\n```\n\n**2d.**\n\n```text\nπ TENLT, CHUTIEC, SOBAN (LOAITIEC ⟕ MALT TIEC)\n```\n\n**2e.**\n\n```text\nR1 ← π MANV, MATIEC (PHUCVU)\nR2 ← π MATIEC (σ TGBD='17g30' (TIEC))\nπ MANV, HOTEN ((R1 ÷ R2) ⋈ MANV NHANVIEN)\n```\n\n**2f.**\n\n```text\nTENLT ℑ sum(GIA) (LOAITIEC ⟕ MALT TIEC)\n```",
+      "rubric": [
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết MANV, HOTEN của nhân viên nhà hàng có sinh nhật trong tháng 1",
+          "points": 1.67
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê tên chủ tiệc đã đặt tiệc tại sảnh tên ‘Crystal’ với sức chứa (",
+          "points": 1.67
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết các buổi tiệc (Mã tiệc, Tên chủ tiệc, Tên sảnh) có số bàn (SO",
+          "points": 1.67
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê tất cả loại tiệc (TENLT) và chủ tiệc (CHUTIEC) cùng số lượng b",
+          "points": 1.67
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết nhân viên nào (MANV, HOTEN) phục vụ tất cả các tiệc có thời g",
+          "points": 1.67
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tính doanh thu từng loại tiệc, thông tin hiển thị gồm: TENLT, DOANHTHU",
+          "points": 1.65
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1819-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý nhân viên phục vụ nhà hàng” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**MANV**, HOTEN, NGSINH, CMND, CALV, MUCLUONG)  \nSANH (**MASANH**, TENSANH, LOAIBAN, SUCCHUA)  \nLOAITIEC (**MALT**, TENLT, YCMINBAN)  \nTIEC (**MATIEC**, CHUTIEC, MALT, MASANH, SOBAN, GIA, TGBD, TGKT)  \nPHUCVU (**MANV, MATIEC**, THOIGIAN)\n\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết MANV, HOTEN của nhân viên nhà hàng có năm sinh lớn hơn 2000.\nb. Liệt kê mã nhân viên (MANV) phục vụ tiệc của ‘Cty Manulife’ (CHUTIEC) có thời gian bắt đầu tiệc là 17g30 (TGBD=’17g30’).\nc. Cho biết các buổi tiệc (Mã tiệc, Tên chủ tiệc, Tên loại tiệc) có số bàn (SOBAN) từ 200 bàn trở xuống tổ chức tại sảnh ‘Crystal’ (TENSANH).\nd. Cho biết thông tin các sảnh tiệc (TENSANH, SUCCHUA) chưa được đặt tiệc.\ne. Cho biết nhân viên nào (MANV, HOTEN) phục vụ tất cả các tiệc có số bàn lớn hơn 200.\nf. Tính doanh thu từng sảnh, thông tin hiển thị gồm: TENSANH, DOANHTHU.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2018–2019, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**2a.**\n\n```text\nπ MANV, HOTEN (σ Year(NGSINH)>2000 (NHANVIEN))\n```\n\n**2b.**\n\n```text\nπ MANV (PHUCVU ⋈ MATIEC (σ CHUTIEC='Cty Manulife' ∧ TGBD='17g30' (TIEC)))\n```\n\n**2c.**\n\n```text\nR1 ← (σ SOBAN<=200 (TIEC)) ⋈ MASANH (σ TENSANH='Crystal' (SANH))\nπ MATIEC, CHUTIEC, TENLT (R1 ⋈ MALT LOAITIEC)\n```\n\n**2d.**\n\n```text\nR1 ← π MASANH (SANH) − π MASANH (TIEC)\nπ TENSANH, SUCCHUA (R1 ⋈ MASANH SANH)\n```\n\n**2e.**\n\n```text\nR1 ← π MANV, MATIEC (PHUCVU)\nR2 ← π MATIEC (σ SOBAN>200 (TIEC))\nπ MANV, HOTEN ((R1 ÷ R2) ⋈ MANV NHANVIEN)\n```\n\n**2f.**\n\n```text\nTENSANH ℑ sum(GIA) (SANH ⟕ MASANH TIEC)\n```",
+      "rubric": [
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết MANV, HOTEN của nhân viên nhà hàng có năm sinh lớn hơn 2000.",
+          "points": 1.67
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Liệt kê mã nhân viên (MANV) phục vụ tiệc của ‘Cty Manulife’ (CHUTIEC) ",
+          "points": 1.67
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết các buổi tiệc (Mã tiệc, Tên chủ tiệc, Tên loại tiệc) có số bà",
+          "points": 1.67
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Cho biết thông tin các sảnh tiệc (TENSANH, SUCCHUA) chưa được đặt tiệc",
+          "points": 1.67
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết nhân viên nào (MANV, HOTEN) phục vụ tất cả các tiệc có số bàn",
+          "points": 1.67
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tính doanh thu từng sảnh, thông tin hiển thị gồm: TENSANH, DOANHTHU.",
+          "points": 1.65
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1718-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý vé xe khách” (thuộc tính in đậm là khóa chính):\n\nXE (**maxe**, bienks, matuyen, sogheT1, sogheT2)  \nTUYEN (**matuyen**, bendau, bencuoi, giatuyen, thoigiandk)  \nKHACH (**mahk**, hoten, gioitinh, cmnd)  \nVEXE (**matuyen, mahk, ngaymua**, giave)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Dùng câu lệnh DDL lần lượt: thêm thuộc tính diachi kiểu nvarchar(20) cho quan hệ KHACH; sửa kiểu dữ liệu của diachi thành nvarchar(50); xóa thuộc tính diachi.\nb. Giảm 10% giá vé được mua vào ngày ‘20/10/2017’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê matuyen, giatuyen của những tuyến xe xuất phát từ bến đầu là ‘Tp HCM’ và kết thúc ở bến cuối là ‘Phan Thiết’.\nb. Cho ra danh sách khách hàng (hoten) mua vé tuyến có bến đầu là ‘Tp HCM’ và bến cuối là ‘Cần Thơ’ vào ngày ‘02/01/2016’ (ngaymua).\nc. Tuyến nào (matuyen) được tất cả hành khách có giới tính là nữ mua vào ngày ‘04/11/2017’.\nd. Cho biết danh sách các hành khách (mahk, hoten) mua vé cả hai tuyến có mã tuyến là ‘HCM-DL’ và ‘DL-HCM’.\ne. Với mỗi mã tuyến, cho biết tổng số tiền vé bán ra vào năm 2016.\nf. Cho biết thông tin tất cả các tuyến xe xuất phát từ bến đầu là ‘Tp HCM’ đi đến bến cuối là ‘Đà Lạt’ và thông tin biển kiểm soát của các xe đã được phân công đi tuyến này nếu có.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE KHACH ADD diachi nvarchar(20);\nALTER TABLE KHACH ALTER COLUMN diachi nvarchar(50);\nALTER TABLE KHACH DROP COLUMN diachi;\n```\n\n**1b.**\n\n```sql\nUPDATE VEXE\nSET giave = giave * 0.9\nWHERE ngaymua = '2017-10-20';\n```\n\n**2a.**\n\n```text\nπ matuyen, giatuyen (σ bendau='Tp HCM' ∧ bencuoi='Phan Thiết' (TUYEN))\n```\n\n**2b.**\n\n```text\nR1 ← (σ ngaymua='02/01/2016' (VEXE)) ⋈ matuyen (σ bendau='Tp HCM' ∧ bencuoi='Cần Thơ' (TUYEN))\nπ hoten (R1 ⋈ mahk KHACH)\n```\n\n**2c.**\n\n```text\nR1 ← π matuyen, mahk (σ ngaymua='04/11/2017' (VEXE))\nR2 ← π mahk (σ gioitinh='Nữ' (KHACH))\nR1 ÷ R2\n```\n\n**2d.**\n\n```text\nR1 ← π mahk (σ matuyen='HCM-DL' (VEXE))\nR2 ← π mahk (σ matuyen='DL-HCM' (VEXE))\nπ mahk, hoten ((R1 ∩ R2) ⋈ mahk KHACH)\n```\n\n**2e.**\n\n```text\nmatuyen ℑ sum(giave) (σ Year(ngaymua)=2016 (VEXE))\n```\n\n**2f.**\n\n```text\nπ matuyen, bendau, bencuoi, giatuyen, thoigiandk, bienks ((σ bendau='Tp HCM' ∧ bencuoi='Đà Lạt' (TUYEN)) ⟕ matuyen XE)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Dùng câu lệnh DDL lần lượt: thêm thuộc tính diachi kiểu nvarchar(20) c",
+          "points": 1.0
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Giảm 10% giá vé được mua vào ngày ‘20/10/2017’.",
+          "points": 1.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê matuyen, giatuyen của những tuyến xe xuất phát từ bến đầu là ‘",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Cho ra danh sách khách hàng (hoten) mua vé tuyến có bến đầu là ‘Tp HCM",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Tuyến nào (matuyen) được tất cả hành khách có giới tính là nữ mua vào ",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Cho biết danh sách các hành khách (mahk, hoten) mua vé cả hai tuyến có",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Với mỗi mã tuyến, cho biết tổng số tiền vé bán ra vào năm 2016.",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết thông tin tất cả các tuyến xe xuất phát từ bến đầu là ‘Tp HCM",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1718-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý vé xe khách” (thuộc tính in đậm là khóa chính):\n\nXE (**maxe**, bienks, matuyen, sogheT1, sogheT2)  \nTUYEN (**matuyen**, bendau, bencuoi, giatuyen, thoigiandk)  \nKHACH (**mahk**, hoten, gioitinh, cmnd)  \nVEXE (**matuyen, mahk, ngaymua**, giave)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Dùng câu lệnh DDL lần lượt: thêm thuộc tính ghichu kiểu nvarchar(20) cho quan hệ XE; sửa kiểu dữ liệu của ghichu thành nvarchar(50); xóa thuộc tính ghichu.\nb. Tăng 15% giá tuyến đối với những tuyến có bến đầu là ‘Tp HCM’.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Liệt kê matuyen, bencuoi của những tuyến có bendau là ‘Đà Nẵng’ với giá tuyến lớn hơn 300.000.\nb. Cho ra danh sách các tuyến (bendau, bencuoi) được khách hàng họ tên ‘NGUYEN VAN ANH’, có số cmnd ‘012811556’ đã mua vé vào ngày ‘02/01/2016’ (ngaymua).\nc. Khách hàng nào (mahk) đã mua tất cả các tuyến có bến đầu là ‘BX Miền Đông’ với giá tuyến lớn hơn 100.000.\nd. Cho biết danh sách các tuyến xe (matuyen, bendau, bencuoi) chưa được phân xe.\ne. Với mỗi mã tuyến, cho biết tổng số lượng hành khách đã mua vé vào năm 2016.\nf. Cho biết thông tin tất cả các tuyến xe xuất phát từ bến đầu là ‘Tp HCM’ đi đến bến cuối là ‘Đà Lạt’ và thông tin biển kiểm soát của các xe đã được phân công đi tuyến này nếu có.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nALTER TABLE XE ADD ghichu nvarchar(20);\nALTER TABLE XE ALTER COLUMN ghichu nvarchar(50);\nALTER TABLE XE DROP COLUMN ghichu;\n```\n\n**1b.**\n\n```sql\nUPDATE TUYEN\nSET giatuyen = giatuyen * 1.15\nWHERE bendau = 'Tp HCM';\n```\n\n**2a.**\n\n```text\nπ matuyen, bencuoi (σ bendau='Đà Nẵng' ∧ giatuyen>300000 (TUYEN))\n```\n\n**2b.**\n\n```text\nR1 ← (σ hoten='NGUYEN VAN ANH' ∧ cmnd='012811556' (KHACH)) ⋈ mahk (σ ngaymua='02/01/2016' (VEXE))\nπ bendau, bencuoi (R1 ⋈ matuyen TUYEN)\n```\n\n**2c.**\n\n```text\nR1 ← π mahk, matuyen (VEXE)\nR2 ← π matuyen (σ bendau='BX Miền Đông' ∧ giatuyen>100000 (TUYEN))\nR1 ÷ R2\n```\n\n**2d.**\n\n```text\nR1 ← π matuyen (TUYEN) − π matuyen (XE)\nπ matuyen, bendau, bencuoi (R1 ⋈ matuyen TUYEN)\n```\n\n**2e.**\n\n```text\nmatuyen ℑ count(mahk) (σ Year(ngaymua)=2016 (VEXE))\n```\n\n**2f.**\n\n```text\nπ matuyen, bendau, bencuoi, giatuyen, thoigiandk, bienks ((σ bendau='Tp HCM' ∧ bencuoi='Đà Lạt' (TUYEN)) ⟕ matuyen XE)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Dùng câu lệnh DDL lần lượt: thêm thuộc tính ghichu kiểu nvarchar(20) c",
+          "points": 1.0
+        },
+        {
+          "id": "sqlb",
+          "criterion": "1b. SQL: Tăng 15% giá tuyến đối với những tuyến có bến đầu là ‘Tp HCM’.",
+          "points": 1.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Liệt kê matuyen, bencuoi của những tuyến có bendau là ‘Đà Nẵng’ với gi",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Cho ra danh sách các tuyến (bendau, bencuoi) được khách hàng họ tên ‘N",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Khách hàng nào (mahk) đã mua tất cả các tuyến có bến đầu là ‘BX Miền Đ",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Cho biết danh sách các tuyến xe (matuyen, bendau, bencuoi) chưa được p",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Với mỗi mã tuyến, cho biết tổng số lượng hành khách đã mua vé vào năm ",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết thông tin tất cả các tuyến xe xuất phát từ bến đầu là ‘Tp HCM",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1617-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý chi nhánh điện lực” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**manv**, hoten, ngaysinh, ngayvaolam)  \nKHACHHANG (**makh**, tenkh, ngaysinh, gioitinh)  \nHOPDONG (**sohdong**, ngayky, makh, sodienke, kwdinhmuc, dongiakw)  \nHOADON (**sohdon**, thang, nam, sohdong, manv, sotien)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Cập nhật kw định mức (kwdinhmuc) tăng 10% đối với khách hàng có mã khách hàng (makh) là “KH001”.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết thông tin nhân viên (manv, hoten) vào làm từ năm 2015 trở về sau.\nb. Tìm các hợp đồng (sohdong, ngayky, tenkh) có số kw định mức (kwdinhmuc) từ 200 trở lên.\nc. Cho biết những khách hàng (makh) chưa có hóa đơn tiền điện nào dưới 1.000.000.\nd. Liệt kê thông tin nhân viên (manv, hoten) thu được số lượng hóa đơn nhiều hơn 500 trong năm 2014.\ne. Tìm thông tin nhân viên (manv, hoten) đã thu tiền tất cả các số hợp đồng (sohdong).\nf. Cho biết danh sách tất cả nhân viên sinh trước năm 1980 của chi nhánh và những hóa đơn họ lập (nếu có).",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nUPDATE HOPDONG\nSET kwdinhmuc = kwdinhmuc * 1.1\nWHERE makh = 'KH001';\n```\n\n**2a.**\n\n```text\nπ manv, hoten (σ Year(ngayvaolam)>=2015 (NHANVIEN))\n```\n\n**2b.**\n\n```text\nπ sohdong, ngayky, tenkh ((σ kwdinhmuc>=200 (HOPDONG)) ⋈ makh KHACHHANG)\n```\n\n**2c.**\n\n```text\nR1 ← π makh (HOPDONG ⋈ sohdong (σ sotien<1000000 (HOADON)))\nπ makh (KHACHHANG) − R1\n```\n\n**2d.**\n\n```text\nR1(manv, SL) ← manv ℑ count(sohdon) (σ nam=2014 (HOADON))\nπ manv, hoten ((σ SL>500 (R1)) ⋈ manv NHANVIEN)\n```\n\n**2e.**\n\n```text\nR1 ← π manv, sohdong (HOADON)\nR2 ← π sohdong (HOPDONG)\nπ manv, hoten ((R1 ÷ R2) ⋈ manv NHANVIEN)\n```\n\n**2f.**\n\n```text\nπ manv, hoten, sohdon ((σ Year(ngaysinh)<1980 (NHANVIEN)) ⟕ manv HOADON)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Cập nhật kw định mức (kwdinhmuc) tăng 10% đối với khách hàng có mã khá",
+          "points": 2.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết thông tin nhân viên (manv, hoten) vào làm từ năm 2015 trở về ",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Tìm các hợp đồng (sohdong, ngayky, tenkh) có số kw định mức (kwdinhmuc",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết những khách hàng (makh) chưa có hóa đơn tiền điện nào dưới 1.",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê thông tin nhân viên (manv, hoten) thu được số lượng hóa đơn nh",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Tìm thông tin nhân viên (manv, hoten) đã thu tiền tất cả các số hợp đồ",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết danh sách tất cả nhân viên sinh trước năm 1980 của chi nhánh ",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1617-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý chi nhánh điện lực” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**manv**, hoten, ngaysinh, ngayvaolam)  \nKHACHHANG (**makh**, tenkh, ngaysinh, gioitinh)  \nHOPDONG (**sohdong**, ngayky, makh, sodienke, kwdinhmuc, dongiakw)  \nHOADON (**sohdon**, thang, nam, sohdong, manv, sotien)\n\n**1. Viết câu lệnh SQL (1,5 điểm):**\n\na. Với mỗi HOADON có năm (nam) >= 2016, cập nhật số tiền (sotien) tăng 5%.\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Cho biết những khách hàng (makh) có định mức điện sử dụng lớn hơn 100 kw.\nb. Tìm các hóa đơn (sohdon, sohdong, hoten nhân viên) có số tiền thu (sotien) từ 10 triệu trở lên.\nc. Cho biết những khách hàng (makh) vừa có hóa đơn tiền điện dưới 500.000 vừa có hóa đơn trên 1.000.000.\nd. Liệt kê thông tin nhân viên (manv, hoten) thu được tổng tiền nhỏ hơn 5.000.000 trong năm 2015.\ne. Tìm số hợp đồng (sohdong, makh) đã được tất cả các nhân viên đến thu tiền.\nf. Cho biết danh sách tất cả nhân viên vào làm sau năm 2015 và những hóa đơn họ lập (nếu có).",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1a.**\n\n```sql\nUPDATE HOADON\nSET sotien = sotien * 1.05\nWHERE nam >= 2016;\n```\n\n**2a.**\n\n```text\nπ makh (σ kwdinhmuc>100 (HOPDONG))\n```\n\n**2b.**\n\n```text\nπ sohdon, sohdong, hoten ((σ sotien>=10000000 (HOADON)) ⋈ manv NHANVIEN)\n```\n\n**2c.**\n\n```text\nR1 ← π makh (HOPDONG ⋈ sohdong (σ sotien<500000 (HOADON)))\nR2 ← π makh (HOPDONG ⋈ sohdong (σ sotien>1000000 (HOADON)))\nR1 ∩ R2\n```\n\n**2d.**\n\n```text\nR1(manv, TongTien) ← manv ℑ sum(sotien) (σ nam=2015 (HOADON))\nπ manv, hoten ((σ TongTien<5000000 (R1)) ⋈ manv NHANVIEN)\n```\n\n**2e.**\n\n```text\nR1 ← π sohdong, manv (HOADON)\nR2 ← π manv (NHANVIEN)\nπ sohdong, makh ((R1 ÷ R2) ⋈ sohdong HOPDONG)\n```\n\n**2f.**\n\n```text\nπ manv, hoten, sohdon ((σ Year(ngayvaolam)>2015 (NHANVIEN)) ⟕ manv HOADON)\n```",
+      "rubric": [
+        {
+          "id": "sqla",
+          "criterion": "1a. SQL: Với mỗi HOADON có năm (nam) >= 2016, cập nhật số tiền (sotien) tăng 5%",
+          "points": 2.0
+        },
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Cho biết những khách hàng (makh) có định mức điện sử dụng lớn hơn 100 ",
+          "points": 1.33
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Tìm các hóa đơn (sohdon, sohdong, hoten nhân viên) có số tiền thu (sot",
+          "points": 1.33
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Cho biết những khách hàng (makh) vừa có hóa đơn tiền điện dưới 500.000",
+          "points": 1.33
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Liệt kê thông tin nhân viên (manv, hoten) thu được tổng tiền nhỏ hơn 5",
+          "points": 1.33
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Tìm số hợp đồng (sohdong, makh) đã được tất cả các nhân viên đến thu t",
+          "points": 1.33
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Cho biết danh sách tất cả nhân viên vào làm sau năm 2015 và những hóa ",
+          "points": 1.35
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1516-1",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý món ăn” (thuộc tính in đậm là khóa chính):\n\nNGLIEU (**MaNL**, TenNL, CaloriNL, ProteinNL)  \nMONAN (**MaMA**, TenMA, MaLoai, Gia, CaloriMA, ProteinMA)  \nLOAIMONAN (**MaLoai**, TenLoai)  \nTPMONAN (**MaMA, MaNL**, TLuong)\n\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Hãy cho biết những món ăn (MaMA, TenMA) có lượng calori (CaloriMA) lớn hơn 500.\nb. Hãy cho biết những nguyên liệu (MaNL, TenNL) được sử dụng để chế biến món ăn có mã món ăn là ‘CA05’ với trọng lượng lớn hơn 100.\nc. Liệt kê các món ăn và thành phần nguyên liệu để chế biến món ăn đó (nếu có). Thông tin hiển thị: MaMA, TenMA, MaNL.\nd. Với mỗi loại món ăn (MaLoai), cho biết lượng calori (CaloriMA) trung bình của các món ăn thuộc loại món ăn đó.\ne. Cho biết những nguyên liệu (MaNL, TenNL) chưa được dùng để chế biến món ăn nào.\nf. Tìm các món ăn (MaMA) mà thành phần gồm tất cả các nguyên liệu có lượng protein (ProteinNL) từ 5 trở lên.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2015–2016, đề 1 (có đáp án trong tài liệu)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**2a.**\n\n```text\nπ MaMA, TenMA (σ CaloriMA>500 (MONAN))\n```\n\n**2b.**\n\n```text\nπ MaNL, TenNL (NGLIEU ⋈ MaNL (σ MaMA='CA05' ∧ TLuong>100 (TPMONAN)))\n```\n\n**2c.**\n\n```text\nπ MaMA, TenMA, MaNL (MONAN ⟕ MaMA TPMONAN)\n```\n\n**2d.**\n\n```text\nMaLoai ℑ avg(CaloriMA) (MONAN)\n```\n\n**2e.**\n\n```text\nR1 ← π MaNL (NGLIEU)\nR2 ← π MaNL (TPMONAN)\nπ MaNL, TenNL ((R1 − R2) ⋈ MaNL NGLIEU)\n```\n\n**2f.**\n\n```text\nπ MaMA, MaNL (TPMONAN) ÷ π MaNL (σ ProteinNL>=5 (NGLIEU))\n```",
+      "rubric": [
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Hãy cho biết những món ăn (MaMA, TenMA) có lượng calori (CaloriMA) lớn",
+          "points": 1.67
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Hãy cho biết những nguyên liệu (MaNL, TenNL) được sử dụng để chế biến ",
+          "points": 1.67
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Liệt kê các món ăn và thành phần nguyên liệu để chế biến món ăn đó (nế",
+          "points": 1.67
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Với mỗi loại món ăn (MaLoai), cho biết lượng calori (CaloriMA) trung b",
+          "points": 1.67
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết những nguyên liệu (MaNL, TenNL) chưa được dùng để chế biến mó",
+          "points": 1.67
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm các món ăn (MaMA) mà thành phần gồm tất cả các nguyên liệu có lượn",
+          "points": 1.65
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  },
+  {
+    "id": "it004-mid-cau2-1516-2",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-cau2",
+    "content": "Cho lược đồ CSDL “Quản lý món ăn” (thuộc tính in đậm là khóa chính):\n\nNGLIEU (**MaNL**, TenNL, CaloriNL, ProteinNL)  \nMONAN (**MaMA**, TenMA, MaLoai, Gia, CaloriMA, ProteinMA)  \nLOAIMONAN (**MaLoai**, TenLoai)  \nTPMONAN (**MaMA, MaNL**, TLuong)\n\n\n**2. Viết biểu thức đại số quan hệ (6 điểm):**\n\na. Hãy cho biết những nguyên liệu (MaNL, TenNL) có lượng protein (ProteinNL) nhỏ hơn 20.\nb. Hãy cho biết những món ăn (MaMA, TenMA) thuộc loại món ăn có tên là ‘Món canh’ và có giá lớn hơn 20000.\nc. Liệt kê các nguyên liệu và món ăn dùng nguyên liệu đó để chế biến (nếu có). Thông tin hiển thị: MaNL, TenNL, MaMA.\nd. Với mỗi loại món ăn (MaLoai), cho biết lượng protein (ProteinMA) cao nhất của các món ăn thuộc loại món ăn đó.\ne. Cho biết những món ăn (MaMA, TenMA) có thành phần nguyên liệu để chế biến từ thịt bò (MaNL=”TB”) và thịt gà (MaNL=”TG”).\nf. Tìm các món ăn (MaMA) mà thành phần gồm tất cả các nguyên liệu có lượng calori (CaloriNL) từ 50 trở lên.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2015–2016, đề 2 (có đáp án trong tài liệu)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**2a.**\n\n```text\nπ MaNL, TenNL (σ ProteinNL<20 (NGLIEU))\n```\n\n**2b.**\n\n```text\nπ MaMA, TenMA ((σ Gia>20000 (MONAN)) ⋈ MaLoai (σ TenLoai='Món canh' (LOAIMONAN)))\n```\n\n**2c.**\n\n```text\nπ MaNL, TenNL, MaMA (NGLIEU ⟕ MaNL TPMONAN)\n```\n\n**2d.**\n\n```text\nMaLoai ℑ max(ProteinMA) (MONAN)\n```\n\n**2e.**\n\n```text\nR1 ← π MaMA (σ MaNL='TB' (TPMONAN))\nR2 ← π MaMA (σ MaNL='TG' (TPMONAN))\nπ MaMA, TenMA ((R1 ∩ R2) ⋈ MaMA MONAN)\n```\n\n**2f.**\n\n```text\nπ MaMA, MaNL (TPMONAN) ÷ π MaNL (σ CaloriNL>=50 (NGLIEU))\n```",
+      "rubric": [
+        {
+          "id": "raa",
+          "criterion": "2a. ĐSQH: Hãy cho biết những nguyên liệu (MaNL, TenNL) có lượng protein (Protein",
+          "points": 1.67
+        },
+        {
+          "id": "rab",
+          "criterion": "2b. ĐSQH: Hãy cho biết những món ăn (MaMA, TenMA) thuộc loại món ăn có tên là ‘M",
+          "points": 1.67
+        },
+        {
+          "id": "rac",
+          "criterion": "2c. ĐSQH: Liệt kê các nguyên liệu và món ăn dùng nguyên liệu đó để chế biến (nếu",
+          "points": 1.67
+        },
+        {
+          "id": "rad",
+          "criterion": "2d. ĐSQH: Với mỗi loại món ăn (MaLoai), cho biết lượng protein (ProteinMA) cao n",
+          "points": 1.67
+        },
+        {
+          "id": "rae",
+          "criterion": "2e. ĐSQH: Cho biết những món ăn (MaMA, TenMA) có thành phần nguyên liệu để chế b",
+          "points": 1.67
+        },
+        {
+          "id": "raf",
+          "criterion": "2f. ĐSQH: Tìm các món ăn (MaMA) mà thành phần gồm tất cả các nguyên liệu có lượn",
+          "points": 1.65
+        }
+      ],
+      "format": "code",
+      "keyboard": "mixed",
+      "placeholder": "Ghi rõ từng ý: 1a, 1b..., 2a, 2b...\nDùng các nút ký hiệu phía trên cho phần đại số quan hệ."
+    },
+    "tags": [
+      "cau-2"
+    ],
+    "examOnly": true
+  }
+]

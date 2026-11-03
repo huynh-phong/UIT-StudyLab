@@ -233,6 +233,12 @@ function OfferCard({ offer, features }: { offer: ExamOffer; features: FeatureFla
         )}
       </AnimatePresence>
 
+      {bp.mcqCount === 0 ? (
+        <p className="mt-5 flex items-start gap-2 text-sm text-muted">
+          <Shuffle className="mt-0.5 size-4 shrink-0" />
+          Đề gồm các câu tự luận của những năm trước, ghép ngẫu nhiên theo cấu trúc đề thật và ưu tiên câu chưa gặp.
+        </p>
+      ) : (
       <fieldset className="mt-5" disabled={loading}>
         <legend className="mb-2 text-sm font-semibold">Cách tạo đề</legend>
         <div className="grid gap-2.5 sm:grid-cols-2">
@@ -262,6 +268,7 @@ function OfferCard({ offer, features }: { offer: ExamOffer; features: FeatureFla
           )}
         </div>
       </fieldset>
+      )}
 
       <AnimatePresence>
         {loading && (

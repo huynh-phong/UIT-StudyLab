@@ -1,0 +1,1290 @@
+[
+  {
+    "id": "it004-mid-c1-e01",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Để phục vụ công tác tiếp nhận và xử lý tố giác hành vi bắt cóc trên không gian mạng, cơ quan chức năng cần xây dựng CSDL quản lý các vụ việc:\n\n- Mỗi người tố giác có mã số phân biệt, họ tên, số điện thoại, email liên hệ, và có thể tố giác nhiều vụ việc khác nhau.\n- Mỗi vụ việc được gán một mã số duy nhất, có thông tin tóm tắt, thời gian phát hiện, nền tảng trực tuyến liên quan, và tình trạng xử lý. Mỗi vụ việc chỉ do một người tố giác.\n- Mỗi nạn nhân có mã định danh, họ tên, độ tuổi, nơi cư trú, và tình trạng hiện tại. Một nạn nhân có thể liên quan đến nhiều vụ việc, nhưng mỗi vụ việc chỉ ghi nhận một nạn nhân chính.\n- Mỗi điều tra viên có mã số, họ tên, đơn vị công tác, chuyên môn, và trạng thái phân công.\n- Mỗi vụ việc có thể được nhiều điều tra viên tham gia xử lý, mỗi điều tra viên có thể được giao nhiều vụ việc. Mỗi lượt xử lý ghi nhận ngày phân công, ngày xử lý, vai trò, và kết quả sơ bộ.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nNGUOITOGIAC(_MaNTG_, HoTen, SDT, Email)\nVUVIEC(_MaVV_, TomTat, ThoiGianPH, NenTang, TinhTrang)\nNANNHAN(_MaNN_, HoTen, DoTuoi, NoiCuTru, TinhTrangHT)\nDIEUTRAVIEN(_MaDTV_, HoTen, DonVi, ChuyenMon, TrangThaiPC)\n\nToGiac: VUVIEC (1,1) — (1,n) NGUOITOGIAC\nLienQuan: VUVIEC (1,1) — (1,n) NANNHAN\nXuLy: VUVIEC (1,n) — (1,n) DIEUTRAVIEN [NgayPhanCong, NgayXuLy, VaiTro, KetQuaSoBo]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nNGUOITOGIAC(_MaNTG_, HoTen, SDT, Email)\nNANNHAN(_MaNN_, HoTen, DoTuoi, NoiCuTru, TinhTrangHT)\nDIEUTRAVIEN(_MaDTV_, HoTen, DonVi, ChuyenMon, TrangThaiPC)\nVUVIEC(_MaVV_, TomTat, ThoiGianPH, NenTang, TinhTrang, MaNTG, MaNN)\nXULY(_MaVV_, _MaDTV_, NgayPhanCong, NgayXuLy, VaiTro, KetQuaSoBo)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e02",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Nhằm tăng hiệu quả quản lý và kiểm định sản phẩm nghi ngờ là hàng giả, cơ quan chức năng cần xây dựng CSDL:\n\n- Mỗi đơn vị kiểm định có mã đơn vị, tên đơn vị, địa chỉ, và lĩnh vực kiểm định.\n- Mỗi sản phẩm có mã sản phẩm phân biệt, tên sản phẩm, loại sản phẩm, xuất xứ, và nhãn hiệu.\n- Mỗi sản phẩm được cung cấp từ một nhà cung cấp. Mỗi nhà cung cấp có mã số, tên, địa chỉ, và loại hình kinh doanh. Một nhà cung cấp có thể cung cấp nhiều sản phẩm.\n- Mỗi mẫu kiểm định có mã mẫu, mô tả, ngày lấy, và người lấy mẫu. Một mẫu chỉ liên quan đến tối đa một sản phẩm; một sản phẩm có thể liên quan đến nhiều mẫu.\n- Các mẫu có thể được gửi đến nhiều đơn vị kiểm định. Mỗi đơn vị có thể kiểm định nhiều mẫu. Mỗi lần kiểm định ghi nhận ngày kiểm định, kết quả, và chi phí.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nDONVIKD(_MaDV_, TenDV, DiaChi, LinhVuc)\nSANPHAM(_MaSP_, TenSP, LoaiSP, XuatXu, NhanHieu)\nNHACUNGCAP(_MaNCC_, TenNCC, DiaChi, LoaiHinhKD)\nMAUKD(_MaMau_, MoTa, NgayLay, NguoiLay)\n\nCungCap: SANPHAM (1,1) — (1,n) NHACUNGCAP\nThuocVe: MAUKD (0,1) — (0,n) SANPHAM\nKiemDinh: MAUKD (0,n) — (0,n) DONVIKD [NgayKD, KetQua, ChiPhi]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nNHACUNGCAP(_MaNCC_, TenNCC, DiaChi, LoaiHinhKD)\nSANPHAM(_MaSP_, TenSP, LoaiSP, XuatXu, NhanHieu, MaNCC)\nMAUKD(_MaMau_, MoTa, NgayLay, NguoiLay, MaSP)\nDONVIKD(_MaDV_, TenDV, DiaChi, LinhVuc)\nKIEMDINH(_MaMau_, _MaDV_, _NgayKD_, KetQua, ChiPhi)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e03",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Trung tâm Khí tượng Thủy văn cần thiết kế CSDL lưu trữ thông tin dự báo các cơn bão trên Biển Đông.\n\n- Cơn bão có mã số phân biệt, tên, ngày hình thành, ngày kết thúc, tọa độ hình thành.\n- Mỗi cơn bão được phân vào một loại cơn bão. Loại cơn bão có mã loại duy nhất, cấp độ, và mức độ ảnh hưởng.\n- Mỗi cơn bão có nhiều dự báo đường đi. Mỗi dự báo có mã dự báo duy nhất, thời điểm đưa ra dự báo, tọa độ vị trí tâm bão, giật cấp, hướng di chuyển, và tốc độ di chuyển.\n- Mỗi dự báo đường đi ảnh hưởng đến nhiều khu vực với mức độ, sức gió và lượng mưa khác nhau. Mỗi khu vực có mã khu vực duy nhất, tên khu vực, và đặc điểm.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nLOAIBAO(_MaLoai_, CapDo, MucDoAH)\nCONBAO(_MaBao_, TenBao, NgayHT, NgayKT, ToaDoHT)\nDUBAO(_MaDB_, ThoiDiem, ToaDoTam, GiatCap, Huong, TocDo)\nKHUVUC(_MaKV_, TenKV, DacDiem)\n\nThuoc: CONBAO (1,1) — (0,n) LOAIBAO\nCo: DUBAO (1,1) — (1,n) CONBAO\nAnhHuong: DUBAO (1,n) — (0,n) KHUVUC [MucDo, SucGio, LuongMua]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nLOAIBAO(_MaLoai_, CapDo, MucDoAH)\nCONBAO(_MaBao_, TenBao, NgayHT, NgayKT, ToaDoHT, MaLoai)\nDUBAO(_MaDB_, ThoiDiem, ToaDoTam, GiatCap, Huong, TocDo, MaBao)\nKHUVUC(_MaKV_, TenKV, DacDiem)\nANHHUONG(_MaDB_, _MaKV_, MucDo, SucGio, LuongMua)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e04",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Cơ quan quản lý nhà nước cần CSDL lưu trữ thông tin quyên góp ủng hộ đồng bào bị thiệt hại do thiên tai:\n\n- Mỗi phong trào có mã số phân biệt, tên, thời gian bắt đầu, thời gian kết thúc, mục tiêu.\n- Mỗi phong trào liên quan đến một thiên tai đã xảy ra. Thiên tai có mã duy nhất, tên, loại, tổng thiệt hại về tài sản, số người thương vong, số người mất tích.\n- Một tổ chức có thể phát động nhiều phong trào. Tổ chức có mã duy nhất, tên, và địa chỉ.\n- Người ủng hộ quyên góp cho các phong trào. Mỗi lần quyên góp lưu số tiền, nội dung, và thời gian. Người ủng hộ có mã duy nhất, số tài khoản, tên ngân hàng.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nTHIENTAI(_MaTT_, TenTT, LoaiTT, ThietHai, SoThuongVong, SoMatTich)\nTOCHUC(_MaTC_, TenTC, DiaChi)\nPHONGTRAO(_MaPT_, TenPT, TGBatDau, TGKetThuc, MucTieu)\nNGUOIUNGHO(_MaNUH_, SoTK, TenNH)\n\nLienQuan: PHONGTRAO (1,1) — (0,n) THIENTAI\nPhatDong: PHONGTRAO (1,1) — (1,n) TOCHUC\nQuyenGop: NGUOIUNGHO (1,n) — (0,n) PHONGTRAO [SoTien, NoiDung, ThoiGian]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nTHIENTAI(_MaTT_, TenTT, LoaiTT, ThietHai, SoThuongVong, SoMatTich)\nTOCHUC(_MaTC_, TenTC, DiaChi)\nPHONGTRAO(_MaPT_, TenPT, TGBatDau, TGKetThuc, MucTieu, MaTT, MaTC)\nNGUOIUNGHO(_MaNUH_, SoTK, TenNH)\nQUYENGOP(_MaNUH_, _MaPT_, _ThoiGian_, SoTien, NoiDung)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e05",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Ban quản lý khu chung cư cần CSDL quản lý thiết bị và vật dụng chữa cháy:\n\n- Khu chung cư có nhiều tòa nhà, mỗi tòa nhà có mã số phân biệt, tên, số tầng. Mỗi tòa nhà có nhiều tầng, một tầng chỉ thuộc một tòa nhà. Mỗi tầng có tên tầng, số lượng căn hộ và một mã số duy nhất.\n- Loại dụng cụ có mã duy nhất, tên, mô tả. Mỗi loại dụng cụ do một nhà sản xuất cung cấp, mỗi nhà sản xuất có thể cung cấp nhiều loại. Nhà sản xuất có mã, tên và địa chỉ.\n- Mỗi loại dụng cụ có thể được bố trí tại nhiều tầng với số lượng khác nhau. Một tầng có thể bố trí nhiều loại dụng cụ.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nTOANHA(_MaTN_, TenTN, SoTang)\nTANG(_MaTang_, TenTang, SLCanHo)\nLOAIDC(_MaLDC_, TenLDC, MoTa)\nNHASX(_MaNSX_, TenNSX, DiaChi)\n\nCo: TANG (1,1) — (1,n) TOANHA\nCungCap: LOAIDC (1,1) — (1,n) NHASX\nBoTri: LOAIDC (0,n) — (0,n) TANG [SoLuong]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nTOANHA(_MaTN_, TenTN, SoTang)\nTANG(_MaTang_, TenTang, SLCanHo, MaTN)\nNHASX(_MaNSX_, TenNSX, DiaChi)\nLOAIDC(_MaLDC_, TenLDC, MoTa, MaNSX)\nBOTRI(_MaLDC_, _MaTang_, SoLuong)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e06",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Ban quản lý khu chung cư cần CSDL quản lý việc kiểm tra thiết bị báo cháy:\n\n- Khu chung cư có nhiều tòa nhà, mỗi tòa nhà có mã số phân biệt, tên, số tầng. Mỗi tòa nhà có nhiều tầng, một tầng chỉ thuộc một tòa nhà. Mỗi tầng có tên tầng, số lượng căn hộ và một mã số duy nhất.\n- Thiết bị có mã duy nhất, mô tả, loại thiết bị. Mỗi thiết bị lắp cố định tại một tầng, một tầng có thể lắp nhiều thiết bị.\n- Mỗi đợt kiểm tra ghi bằng một phiếu gồm mã phiếu, ngày kiểm tra, loại kiểm tra (định kỳ/đột xuất). Mỗi đợt có thể kiểm tra nhiều thiết bị và ghi nhận tình trạng của từng thiết bị. Mỗi thiết bị có thể được kiểm tra trong nhiều đợt.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nTOANHA(_MaTN_, TenTN, SoTang)\nTANG(_MaTang_, TenTang, SLCanHo)\nTHIETBI(_MaTB_, MoTa, LoaiTB)\nPHIEUKT(_MaPKT_, NgayKT, LoaiKT)\n\nCo: TANG (1,1) — (1,n) TOANHA\nLapDat: THIETBI (1,1) — (0,n) TANG\nKiemTra: PHIEUKT (1,n) — (0,n) THIETBI [TinhTrang]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nTOANHA(_MaTN_, TenTN, SoTang)\nTANG(_MaTang_, TenTang, SLCanHo, MaTN)\nTHIETBI(_MaTB_, MoTa, LoaiTB, MaTang)\nPHIEUKT(_MaPKT_, NgayKT, LoaiKT)\nKIEMTRA(_MaPKT_, _MaTB_, TinhTrang)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e07",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Khoa cần CSDL quản lý các minh chứng kiểm định chương trình đào tạo theo chuẩn ASIIN:\n\n- Mỗi tiêu chuẩn có mã số phân biệt, tên và thông tin mô tả.\n- Mỗi tiêu chuẩn gồm nhiều tiêu chí, mỗi tiêu chí chỉ thuộc một tiêu chuẩn. Tiêu chí có mã, nội dung và thông tin gợi ý.\n- Mỗi minh chứng có mã số phân biệt, tên, tóm tắt nội dung, loại minh chứng và tập tin chứa minh chứng.\n- Mỗi minh chứng có thể minh họa cho nhiều tiêu chí và mỗi tiêu chí có nhiều minh chứng minh họa.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nTIEUCHUAN(_MaTCh_, TenTCh, MoTa)\nTIEUCHI(_MaTC_, NoiDung, GoiY)\nMINHCHUNG(_MaMC_, TenMC, TomTat, LoaiMC, TapTin)\n\nGom: TIEUCHI (1,1) — (1,n) TIEUCHUAN\nMinhHoa: MINHCHUNG (1,n) — (1,n) TIEUCHI\n```\n\n**2. Mô hình quan hệ**\n\n```text\nTIEUCHUAN(_MaTCh_, TenTCh, MoTa)\nTIEUCHI(_MaTC_, NoiDung, GoiY, MaTCh)\nMINHCHUNG(_MaMC_, TenMC, TomTat, LoaiMC, TapTin)\nMINHHOA(_MaMC_, _MaTC_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e08",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Ban tổ chức Hội thao cần CSDL quản lý đăng ký tham gia:\n\n- Mỗi môn thể thao có mã môn duy nhất, tên môn, loại môn (đồng đội, cá nhân).\n- Mỗi môn có một hoặc nhiều nội dung thi đấu, mỗi nội dung chỉ thuộc một môn. Nội dung có mã duy nhất, tên và lệ phí tham gia.\n- Mỗi vận động viên có mã duy nhất, họ tên, giới tính, ngày sinh và thông tin liên hệ.\n- Một vận động viên có thể tham gia nhiều nội dung và một nội dung có thể có nhiều vận động viên.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nMONTT(_MaMon_, TenMon, LoaiMon)\nNOIDUNG(_MaND_, TenND, LePhi)\nVDV(_MaVDV_, HoTen, GioiTinh, NgaySinh, LienHe)\n\nCo: NOIDUNG (1,1) — (1,n) MONTT\nDangKy: VDV (1,n) — (0,n) NOIDUNG\n```\n\n**2. Mô hình quan hệ**\n\n```text\nMONTT(_MaMon_, TenMon, LoaiMon)\nNOIDUNG(_MaND_, TenND, LePhi, MaMon)\nVDV(_MaVDV_, HoTen, GioiTinh, NgaySinh, LienHe)\nDANGKY(_MaVDV_, _MaND_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e09",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Ứng dụng quản lý lịch sử di chuyển qua các trạm thu phí đường bộ cần CSDL:\n\n- Mỗi trạm thu phí có mã trạm phân biệt, tên trạm, địa chỉ, đơn vị vận hành.\n- Mỗi tài khoản EPASS có mã EPASS, họ tên chủ sở hữu, số CCCD, số điện thoại đăng ký, địa chỉ đăng ký, ngày đăng ký.\n- Mỗi tài khoản có thể đăng ký cho nhiều phương tiện, mỗi phương tiện chỉ đăng ký với một tài khoản. Phương tiện có biển số xe, loại xe, số chỗ.\n- Mỗi lần phương tiện qua trạm, ứng dụng ghi nhận thời điểm qua trạm, cổng thu phí và mức phí áp dụng. Một phương tiện có thể qua nhiều trạm, hoặc qua một trạm nhiều lần vào các thời điểm khác nhau.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nTRAM(_MaTram_, TenTram, DiaChi, DonViVH)\nEPASS(_MaEPASS_, HoTenCSH, CCCD, SDT, DiaChi, NgayDK)\nPHUONGTIEN(_BienSo_, LoaiXe, SoCho)\n\nDangKy: PHUONGTIEN (1,1) — (1,n) EPASS\nQuaTram: PHUONGTIEN (0,n) — (0,n) TRAM [ThoiDiem, Cong, MucPhi]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nTRAM(_MaTram_, TenTram, DiaChi, DonViVH)\nEPASS(_MaEPASS_, HoTenCSH, CCCD, SDT, DiaChi, NgayDK)\nPHUONGTIEN(_BienSo_, LoaiXe, SoCho, MaEPASS)\nQUATRAM(_BienSo_, _MaTram_, _ThoiDiem_, Cong, MucPhi)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e10",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Ministop có chuỗi cửa hàng trải khắp thành phố Hồ Chí Minh cần CSDL quản lý:\n\n- Mỗi cửa hàng có mã số duy nhất, tên cửa hàng, địa chỉ. Mỗi cửa hàng có 1 nhân viên quản lý.\n- Ministop có nhiều nhân viên làm việc trên nhiều cửa hàng. Nhân viên có mã số duy nhất, họ và tên, email, số điện thoại, địa chỉ, ngày vào làm, lương và làm tại cửa hàng nào.\n- Mỗi sản phẩm có mã số duy nhất, tên, đơn vị tính, đơn giá, xuất xứ, thương hiệu. Mỗi sản phẩm được phân vào một loại sản phẩm. Mỗi loại có mã số duy nhất, tên và mô tả cụ thể.\n- Mỗi cửa hàng quản lý những sản phẩm nào còn hàng với số lượng cụ thể.\n- Khách hàng có mã số duy nhất, họ và tên, email, số điện thoại, địa chỉ và tích điểm thưởng khi mua hàng.\n- Khi mua hàng, hệ thống xuất hóa đơn lưu thông tin về những sản phẩm đã mua, thông tin tính tiền chi tiết của từng sản phẩm, tổng tiền, ngày mua hàng. Nhân viên bán hàng được thưởng 1% hoa hồng cho mỗi hóa đơn.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Đề giữa kỳ HK1 2021–2022 (dựng lại từ phần đọc được của đề dạng ảnh)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nCUAHANG(_MaCH_, TenCH, DiaChi)\nNHANVIEN(_MaNV_, HoTen, Email, SDT, DiaChi, NgayVaoLam, Luong)\nLOAISP(_MaLoai_, TenLoai, MoTa)\nSANPHAM(_MaSP_, TenSP, DVT, DonGia, XuatXu, ThuongHieu)\nKHACHHANG(_MaKH_, HoTen, Email, SDT, DiaChi, DiemThuong)\nHOADON(_SoHD_, NgayMua, TongTien, HoaHong)\n\nLamViec: NHANVIEN (1,1) — (1,n) CUAHANG\nQuanLy: CUAHANG (1,1) — (0,1) NHANVIEN\nThuoc: SANPHAM (1,1) — (1,n) LOAISP\nTonKho: CUAHANG (0,n) — (0,n) SANPHAM [SoLuong]\nMua: HOADON (1,1) — (0,n) KHACHHANG\nBan: HOADON (1,1) — (0,n) NHANVIEN\nCTHD: HOADON (1,n) — (0,n) SANPHAM [SoLuong, ThanhTien]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nCUAHANG(_MaCH_, TenCH, DiaChi, MaNVQL)\nNHANVIEN(_MaNV_, HoTen, Email, SDT, DiaChi, NgayVaoLam, Luong, MaCH)\nLOAISP(_MaLoai_, TenLoai, MoTa)\nSANPHAM(_MaSP_, TenSP, DVT, DonGia, XuatXu, ThuongHieu, MaLoai)\nTONKHO(_MaCH_, _MaSP_, SoLuong)\nKHACHHANG(_MaKH_, HoTen, Email, SDT, DiaChi, DiemThuong)\nHOADON(_SoHD_, NgayMua, TongTien, HoaHong, MaKH, MaNV)\nCTHD(_SoHD_, _MaSP_, SoLuong, ThanhTien)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e11",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một cuộc thi tài năng có mô tả:\n\n- Loại hình tài năng có mã, tên loại hình và số thí sinh đăng ký tham gia.\n- Huấn luyện viên có mã, họ tên, giới tính, số điện thoại.\n- Mỗi thí sinh có mã số dự thi, họ tên, giới tính, ngày sinh, địa chỉ. Thí sinh phải đăng ký ít nhất một loại hình và có thể đăng ký nhiều loại hình.\n- Mỗi thí sinh được bố trí duy nhất một huấn luyện viên. Một huấn luyện viên có thể huấn luyện nhiều thí sinh.\n- Mỗi thí sinh chỉ được bầu chọn một thí sinh mình yêu thích nhất.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nLOAIHINH(_MaLH_, TenLH, SoTS)\nHLV(_MaHLV_, HoTen, GioiTinh, SDT)\nTHISINH(_MaTS_, HoTen, GioiTinh, NgaySinh, DiaChi)\n\nDangKy: THISINH (1,n) — (0,n) LOAIHINH\nHuanLuyen: THISINH (1,1) — (0,n) HLV\nBauChon: THISINH (1,1) — (0,n) THISINH   (mối kết hợp đệ quy: người bầu, người được bầu)\n```\n\n**2. Mô hình quan hệ**\n\n```text\nLOAIHINH(_MaLH_, TenLH, SoTS)\nHLV(_MaHLV_, HoTen, GioiTinh, SDT)\nTHISINH(_MaTS_, HoTen, GioiTinh, NgaySinh, DiaChi, MaHLV, MaTSBauChon)\nDANGKY(_MaTS_, _MaLH_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e12",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Bộ Y tế muốn quản lý thông tin bệnh nhân trong dịch Covid-19:\n\n- Mỗi bệnh viện có mã, tên, số giường bệnh. Bệnh nhân có thể được điều trị tại nhiều bệnh viện; một bệnh viện điều trị cho nhiều bệnh nhân.\n- Mỗi quốc gia có mã, tên, số ca nhiễm và số người đã chết vì Covid-19.\n- Bệnh nhân có mã, tên, giới tính, ngày sinh, địa chỉ. Mỗi bệnh nhân thuộc một quốc gia. Mỗi bệnh nhân bị lây nhiễm bởi một bệnh nhân khác và có thể lây nhiễm cho nhiều bệnh nhân khác.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nBENHVIEN(_MaBV_, TenBV, SoGiuong)\nQUOCGIA(_MaQG_, TenQG, SoCaNhiem, SoCaChet)\nBENHNHAN(_MaBN_, TenBN, GioiTinh, NgaySinh, DiaChi)\n\nDieuTri: BENHNHAN (1,n) — (0,n) BENHVIEN\nThuoc: BENHNHAN (1,1) — (0,n) QUOCGIA\nLayNhiem: BENHNHAN (0,1) — (0,n) BENHNHAN   (mối kết hợp đệ quy: người bị lây, người lây)\n```\n\n**2. Mô hình quan hệ**\n\n```text\nBENHVIEN(_MaBV_, TenBV, SoGiuong)\nQUOCGIA(_MaQG_, TenQG, SoCaNhiem, SoCaChet)\nBENHNHAN(_MaBN_, TenBN, GioiTinh, NgaySinh, DiaChi, MaQG, MaBNLay)\nDIEUTRI(_MaBN_, _MaBV_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e13",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một cơ quan muốn quản lý thông tin các bộ phim, đạo diễn và diễn viên:\n\n- Mỗi bộ phim có mã số duy nhất, tên, năm phát hành, thể loại, số tập, số điểm IMDb.\n- Đạo diễn có mã số, họ tên, tuổi, năm tốt nghiệp, xếp hạng.\n- Diễn viên có mã số, họ tên, giới tính, tuổi, số vai chính, số vai phụ đã từng đóng.\n- Một bộ phim có nhiều diễn viên tham gia và được chỉ đạo bởi một đạo diễn duy nhất. Một đạo diễn có thể phụ trách nhiều bộ phim, các diễn viên có thể đóng nhiều bộ phim.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nBOPHIM(_MaPhim_, TenPhim, NamPH, TheLoai, SoTap, DiemIMDb)\nDAODIEN(_MaDD_, HoTen, Tuoi, NamTN, XepHang)\nDIENVIEN(_MaDV_, HoTen, GioiTinh, Tuoi, SoVaiChinh, SoVaiPhu)\n\nChiDao: BOPHIM (1,1) — (1,n) DAODIEN\nDong: BOPHIM (1,n) — (1,n) DIENVIEN\n```\n\n**2. Mô hình quan hệ**\n\n```text\nDAODIEN(_MaDD_, HoTen, Tuoi, NamTN, XepHang)\nBOPHIM(_MaPhim_, TenPhim, NamPH, TheLoai, SoTap, DiemIMDb, MaDD)\nDIENVIEN(_MaDV_, HoTen, GioiTinh, Tuoi, SoVaiChinh, SoVaiPhu)\nDONG(_MaPhim_, _MaDV_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e14",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một cửa hàng cho thuê đồ dự tiệc:\n\n- Mỗi trang phục có mã duy nhất, tên, kích cỡ, màu sắc và giá cho thuê.\n- Mỗi khách hàng có mã duy nhất, họ tên, địa chỉ và số điện thoại.\n- Khi thuê đồ, một hợp đồng được lập gồm mã hợp đồng duy nhất, ngày bắt đầu, ngày kết thúc và trị giá. Khách hàng có thể có nhiều hợp đồng, một hợp đồng chỉ thuộc một khách hàng. Mỗi hợp đồng có thể thuê nhiều trang phục, một trang phục có thể được thuê bởi nhiều hợp đồng.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nTRANGPHUC(_MaTP_, TenTP, KichCo, MauSac, GiaThue)\nKHACHHANG(_MaKH_, HoTen, DiaChi, SDT)\nHOPDONG(_MaHD_, NgayBD, NgayKT, TriGia)\n\nLap: HOPDONG (1,1) — (1,n) KHACHHANG\nThue: HOPDONG (1,n) — (0,n) TRANGPHUC\n```\n\n**2. Mô hình quan hệ**\n\n```text\nTRANGPHUC(_MaTP_, TenTP, KichCo, MauSac, GiaThue)\nKHACHHANG(_MaKH_, HoTen, DiaChi, SDT)\nHOPDONG(_MaHD_, NgayBD, NgayKT, TriGia, MaKH)\nCTHD(_MaHD_, _MaTP_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e15",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một nhà văn hóa cần CSDL quản lý:\n\n- Mỗi chuyên đề có mã số duy nhất, tên chuyên đề, học phí niêm yết.\n- Mỗi học viên có mã số duy nhất, họ tên, địa chỉ và số điện thoại.\n- Khi đăng ký học phải điền phiếu đăng ký gồm mã phiếu duy nhất, ngày lập, tổng học phí. Mỗi học viên có thể có nhiều phiếu, một phiếu chỉ thuộc một học viên. Mỗi phiếu có thể đăng ký nhiều chuyên đề và một chuyên đề có thể có trong nhiều phiếu.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nCHUYENDE(_MaCD_, TenCD, HocPhi)\nHOCVIEN(_MaHV_, HoTen, DiaChi, SDT)\nPHIEUDK(_MaPDK_, NgayLap, TongHocPhi)\n\nLap: PHIEUDK (1,1) — (1,n) HOCVIEN\nDangKy: PHIEUDK (1,n) — (0,n) CHUYENDE\n```\n\n**2. Mô hình quan hệ**\n\n```text\nCHUYENDE(_MaCD_, TenCD, HocPhi)\nHOCVIEN(_MaHV_, HoTen, DiaChi, SDT)\nPHIEUDK(_MaPDK_, NgayLap, TongHocPhi, MaHV)\nCTPHIEU(_MaPDK_, _MaCD_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e16",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Khoa HTTT muốn quản lý đồ án do sinh viên thực hiện:\n\n- Mỗi môn học có mã số, tên, số tín chỉ lý thuyết, số tín chỉ thực hành.\n- Mỗi đồ án có mã số, tên, ngày nộp. Mỗi đồ án thuộc một môn học.\n- Mỗi sinh viên có mã số duy nhất, họ tên, địa chỉ, số điện thoại. Mỗi sinh viên thực hiện nhiều đồ án, mỗi đồ án do nhiều sinh viên cùng thực hiện.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2018–2019, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nMONHOC(_MaMH_, TenMH, TCLT, TCTH)\nDOAN(_MaDA_, TenDA, NgayNop)\nSINHVIEN(_MaSV_, HoTen, DiaChi, SDT)\n\nThuoc: DOAN (1,1) — (0,n) MONHOC\nThucHien: SINHVIEN (1,n) — (1,n) DOAN\n```\n\n**2. Mô hình quan hệ**\n\n```text\nMONHOC(_MaMH_, TenMH, TCLT, TCTH)\nDOAN(_MaDA_, TenDA, NgayNop, MaMH)\nSINHVIEN(_MaSV_, HoTen, DiaChi, SDT)\nTHUCHIEN(_MaSV_, _MaDA_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e17",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Ban giáo trình muốn quản lý tình hình viết giáo trình:\n\n- Mỗi loại giáo trình có mã số duy nhất, tên loại, chủ đề.\n- Mỗi giáo trình có mã số duy nhất, tên, số trang, năm xuất bản. Mỗi giáo trình thuộc một loại.\n- Mỗi tác giả có mã số duy nhất, họ tên, ngày sinh, quê quán, chuyên ngành. Mỗi tác giả có thể viết nhiều giáo trình, mỗi giáo trình có thể do nhiều tác giả cùng viết.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2018–2019, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nLOAIGT(_MaLoai_, TenLoai, ChuDe)\nGIAOTRINH(_MaGT_, TenGT, SoTrang, NamXB)\nTACGIA(_MaTG_, HoTen, NgaySinh, QueQuan, ChuyenNganh)\n\nThuoc: GIAOTRINH (1,1) — (0,n) LOAIGT\nViet: TACGIA (1,n) — (1,n) GIAOTRINH\n```\n\n**2. Mô hình quan hệ**\n\n```text\nLOAIGT(_MaLoai_, TenLoai, ChuDe)\nGIAOTRINH(_MaGT_, TenGT, SoTrang, NamXB, MaLoai)\nTACGIA(_MaTG_, HoTen, NgaySinh, QueQuan, ChuyenNganh)\nVIET(_MaTG_, _MaGT_)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e18",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một trung tâm tin học quản lý các phòng máy thực hành:\n\n- Mỗi phòng máy có mã phòng duy nhất, tên phòng và tên người quản lý phòng.\n- Mỗi máy tính có mã máy duy nhất, tốc độ CPU, dung lượng RAM, dung lượng ổ cứng. Các máy tính được bố trí trong các phòng máy.\n- Mỗi môn học có mã duy nhất, tên và thời lượng.\n- Mỗi môn học có thể thực hành ở các phòng máy khác nhau, một phòng máy có thể được đăng ký cho nhiều môn học; khi đăng ký phải biết ngày đăng ký.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nPHONGMAY(_MaPhong_, TenPhong, NguoiQL)\nMAYTINH(_MaMay_, CPU, RAM, OCung)\nMONHOC(_MaMH_, TenMH, ThoiLuong)\n\nBoTri: MAYTINH (1,1) — (1,n) PHONGMAY\nDangKy: MONHOC (1,n) — (0,n) PHONGMAY [NgayDK]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nPHONGMAY(_MaPhong_, TenPhong, NguoiQL)\nMAYTINH(_MaMay_, CPU, RAM, OCung, MaPhong)\nMONHOC(_MaMH_, TenMH, ThoiLuong)\nDANGKY(_MaMH_, _MaPhong_, NgayDK)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e19",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Quản lý thông tin một diễn đàn:\n\n- Thành viên có mã duy nhất, họ tên, giới tính, ngày sinh, mật khẩu.\n- Mỗi bài viết có mã duy nhất, tiêu đề, ngày đăng, và nội dung.\n- Mỗi bài viết được bình luận bởi nhiều thành viên, mỗi thành viên có thể bình luận nhiều bài viết. Hệ thống ghi nhận thời gian và nội dung bình luận.\n- Mỗi bài viết thuộc một chủ đề, mỗi chủ đề có mã duy nhất và tên.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nTHANHVIEN(_MaTV_, HoTen, GioiTinh, NgaySinh, MatKhau)\nBAIVIET(_MaBV_, TieuDe, NgayDang, NoiDung)\nCHUDE(_MaCD_, TenCD)\n\nBinhLuan: THANHVIEN (0,n) — (0,n) BAIVIET [ThoiGian, NoiDung]\nThuoc: BAIVIET (1,1) — (0,n) CHUDE\n```\n\n**2. Mô hình quan hệ**\n\n```text\nTHANHVIEN(_MaTV_, HoTen, GioiTinh, NgaySinh, MatKhau)\nCHUDE(_MaCD_, TenCD)\nBAIVIET(_MaBV_, TieuDe, NgayDang, NoiDung, MaCD)\nBINHLUAN(_MaTV_, _MaBV_, _ThoiGian_, NoiDung)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e20",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một trung tâm đào tạo sư phạm mở các lớp ngắn hạn và cấp chứng chỉ:\n\n- Mỗi chứng chỉ có mã duy nhất, tên, tổng số tín chỉ và một mức học phí.\n- Mỗi môn học có mã duy nhất, tên, số tín chỉ. Mỗi chứng chỉ gồm nhiều môn học và một môn học có thể được dạy trong một số chứng chỉ khác nhau.\n- Mỗi lớp học có mã duy nhất, tên lớp, ngày bắt đầu, ngày kết thúc, số học viên tối đa dự kiến và được nhận một chứng chỉ sau khi hoàn thành.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nCHUNGCHI(_MaCC_, TenCC, TongTC, HocPhi)\nMONHOC(_MaMH_, TenMH, SoTC)\nLOPHOC(_MaLop_, TenLop, NgayBD, NgayKT, SoHVToiDa)\n\nGom: CHUNGCHI (1,n) — (1,n) MONHOC\nNhanCC: LOPHOC (1,1) — (0,n) CHUNGCHI\n```\n\n**2. Mô hình quan hệ**\n\n```text\nCHUNGCHI(_MaCC_, TenCC, TongTC, HocPhi)\nMONHOC(_MaMH_, TenMH, SoTC)\nCC_MH(_MaCC_, _MaMH_)\nLOPHOC(_MaLop_, TenLop, NgayBD, NgayKT, SoHVToiDa, MaCC)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e21",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một công ty phát hành báo chí quản lý việc đặt mua báo:\n\n- Mỗi báo có mã duy nhất, tên báo, đơn giá.\n- Mỗi khách hàng có mã duy nhất, tên, địa chỉ. Mỗi khách hàng có thể đặt mua nhiều báo.\n- Khi đặt mua, mỗi khách hàng nhận một hóa đơn gồm số hóa đơn duy nhất, ngày đặt mua, trị giá. Công ty lưu chi tiết hóa đơn gồm những báo nào với số lượng đặt mua là bao nhiêu.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nBAO(_MaBao_, TenBao, DonGia)\nKHACHHANG(_MaKH_, TenKH, DiaChi)\nHOADON(_SoHD_, NgayDat, TriGia)\n\nNhan: HOADON (1,1) — (1,n) KHACHHANG\nCTHD: HOADON (1,n) — (0,n) BAO [SoLuong]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nBAO(_MaBao_, TenBao, DonGia)\nKHACHHANG(_MaKH_, TenKH, DiaChi)\nHOADON(_SoHD_, NgayDat, TriGia, MaKH)\nCTHD(_SoHD_, _MaBao_, SoLuong)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    },
+    "tags": [
+      "cau-1"
+    ]
+  },
+  {
+    "id": "it004-mid-c1-e22",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một trung tâm tiếng Anh quản lý học viên:\n\n- Mỗi học viên có mã duy nhất, họ tên, ngày sinh và có thể có nhiều số điện thoại liên lạc.\n- Mỗi lớp có mã duy nhất, tên lớp, ngày khai giảng. Một học viên có thể học nhiều lớp, một lớp có nhiều học viên; mỗi lượt học ghi nhận điểm cuối khóa.\n- Mỗi lớp do một giáo viên phụ trách. Giáo viên có mã duy nhất, họ tên, trình độ; một giáo viên có thể phụ trách nhiều lớp.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nHOCVIEN(_MaHV_, HoTen, NgaySinh, {SDT})   (SDT là thuộc tính đa trị)\nLOP(_MaLop_, TenLop, NgayKG)\nGIAOVIEN(_MaGV_, HoTen, TrinhDo)\n\nHoc: HOCVIEN (0,n) — (0,n) LOP [DiemCK]\nPhuTrach: LOP (1,1) — (0,n) GIAOVIEN\n```\n\n**2. Mô hình quan hệ**\n\n```text\nHOCVIEN(_MaHV_, HoTen, NgaySinh)\nHOCVIEN_SDT(_MaHV_, _SDT_)\nGIAOVIEN(_MaGV_, HoTen, TrinhDo)\nLOP(_MaLop_, TenLop, NgayKG, MaGV)\nHOC(_MaHV_, _MaLop_, DiemCK)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c1-e23",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một công ty quản lý nhân viên và người phụ thuộc để giảm trừ thuế:\n\n- Mỗi nhân viên có mã duy nhất, họ tên, ngày sinh, lương.\n- Mỗi nhân viên có thể khai nhiều người phụ thuộc. Người phụ thuộc không có mã riêng, được phân biệt với những người phụ thuộc khác của cùng nhân viên bằng họ tên; ngoài ra có ngày sinh và quan hệ với nhân viên.\n- Mỗi phòng ban có mã duy nhất, tên phòng. Mỗi nhân viên thuộc một phòng. Mỗi phòng có đúng một trưởng phòng là nhân viên, ghi nhận ngày nhận chức.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nNHANVIEN(_MaNV_, HoTen, NgaySinh, Luong)\nNGUOIPT(HoTenPT, NgaySinh, QuanHe)   (thực thể yếu của NHANVIEN)\nPHONGBAN(_MaPB_, TenPB)\n\nCo: NGUOIPT (1,1) — (0,n) NHANVIEN\nThuoc: NHANVIEN (1,1) — (1,n) PHONGBAN\nTruongPhong: NHANVIEN (0,1) — (1,1) PHONGBAN [NgayNhanChuc]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nNHANVIEN(_MaNV_, HoTen, NgaySinh, Luong, MaPB)\nNGUOIPT(_MaNV_, _HoTenPT_, NgaySinh, QuanHe)\nPHONGBAN(_MaPB_, TenPB, MaTruongPhong, NgayNhanChuc)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c1-e24",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một trường quản lý kết quả thi:\n\n- Mỗi học viên có mã duy nhất, họ tên, giới tính.\n- Mỗi môn học có mã duy nhất, tên môn, số tín chỉ.\n- Mỗi đợt thi có mã đợt duy nhất, ngày thi, học kỳ.\n- Một học viên thi một môn trong một đợt thi được ghi nhận điểm và phòng thi. Một học viên có thể thi nhiều môn trong nhiều đợt.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nHOCVIEN(_MaHV_, HoTen, GioiTinh)\nMONHOC(_MaMH_, TenMH, SoTC)\nDOTTHI(_MaDot_, NgayThi, HocKy)\n\nThi (mối kết hợp 3 ngôi): HOCVIEN (0,n), MONHOC (0,n), DOTTHI (1,n) [Diem, PhongThi]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nHOCVIEN(_MaHV_, HoTen, GioiTinh)\nMONHOC(_MaMH_, TenMH, SoTC)\nDOTTHI(_MaDot_, NgayThi, HocKy)\nTHI(_MaHV_, _MaMH_, _MaDot_, Diem, PhongThi)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  },
+  {
+    "id": "it004-mid-c1-e25",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-c1",
+    "content": "Một bệnh viện quản lý bác sĩ và khoa:\n\n- Mỗi bác sĩ có mã duy nhất, họ tên, chuyên môn. Mỗi bác sĩ có thể chịu sự giám sát của một bác sĩ khác; một bác sĩ có thể giám sát nhiều bác sĩ.\n- Mỗi khoa có mã duy nhất, tên khoa. Mỗi bác sĩ làm việc ở một khoa. Mỗi khoa có đúng một trưởng khoa là bác sĩ; một bác sĩ chỉ làm trưởng tối đa một khoa.\n- Mỗi bệnh nhân có mã duy nhất, họ tên, ngày sinh. Mỗi lần khám ghi nhận bác sĩ, bệnh nhân, thời điểm khám và chẩn đoán; một bệnh nhân có thể được một bác sĩ khám nhiều lần.\n\n**Yêu cầu:**\n\n1. Xây dựng mô hình thực thể mối kết hợp (viết dạng văn bản, ghi rõ bản số).\n2. Chuyển sang mô hình quan hệ, chỉ rõ khóa chính và khóa ngoại.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn thêm theo dạng đề giữa kỳ"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "**1. Mô hình ER**\n\n```text\nBACSI(_MaBS_, HoTen, ChuyenMon)\nKHOA(_MaKhoa_, TenKhoa)\nBENHNHAN(_MaBN_, HoTen, NgaySinh)\n\nGiamSat: BACSI (0,1) — (0,n) BACSI   (mối kết hợp đệ quy)\nLamViec: BACSI (1,1) — (1,n) KHOA\nTruongKhoa: BACSI (0,1) — (1,1) KHOA\nKham: BACSI (0,n) — (0,n) BENHNHAN [ThoiDiem, ChanDoan]\n```\n\n**2. Mô hình quan hệ**\n\n```text\nKHOA(_MaKhoa_, TenKhoa, MaTruongKhoa)\nBACSI(_MaBS_, HoTen, ChuyenMon, MaKhoa, MaBSGiamSat)\nBENHNHAN(_MaBN_, HoTen, NgaySinh)\nKHAM(_MaBS_, _MaBN_, _ThoiDiem_, ChanDoan)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ thực thể, thuộc tính và khóa",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đủ mối kết hợp và bản số hợp lý",
+          "points": 3,
+          "keyPoints": [
+            "chấp nhận cách đặt tên khác"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Thuộc tính riêng đặt đúng trên mối kết hợp",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Mô hình quan hệ đúng khóa chính và khóa ngoại",
+          "points": 3,
+          "keyPoints": [
+            "n-n tạo quan hệ mới; 1-n thêm khóa vào bên nhiều"
+          ]
+        }
+      ],
+      "format": "code",
+      "keyboard": "er",
+      "placeholder": "Viết dạng văn bản, _X_ là khóa chính (gạch chân):\nSINHVIEN(_MaSV_, HoTen)\nLOP(_MaLop_, TenLop)\nThuoc: SINHVIEN (1,1) — (1,n) LOP\n\nMô hình quan hệ:\nSINHVIEN(_MaSV_, HoTen, MaLop)"
+    }
+  }
+]

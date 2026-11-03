@@ -22,7 +22,7 @@ Làm trực tiếp câu hỏi trong các bộ đề · Hiểu vì sao đúng, v�
 
 **UIT StudyLab** giúp sinh viên UIT ôn tập giữa kỳ, cuối kỳ và luyện thi thử một cách có hệ thống. Thay vì đọc lại lý thuyết dài, sinh viên làm trực tiếp từng câu hỏi trong các bộ đề, nhận phản hồi ngay sau mỗi câu và hiểu rõ lỗi sai của mình.
 
-Hiện có hai học phần ôn tập giữa kỳ: **IT005 – Nhập môn mạng máy tính** và **IT006 – Kiến trúc máy tính**. Kiến trúc được thiết kế để mở rộng theo cấu trúc:
+Hiện có ba học phần ôn tập giữa kỳ: **IT004 – Cơ sở dữ liệu**, **IT005 – Nhập môn mạng máy tính** và **IT006 – Kiến trúc máy tính**. Kiến trúc được thiết kế để mở rộng theo cấu trúc:
 
 ```
 Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
@@ -46,13 +46,15 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 - Bài tự luận được AI (Google Gemini) chấm theo **đáp án mẫu và rubric**, chấp nhận cách diễn đạt tương đương.
 - Kết quả gồm điểm tham khảo, các ý đúng, ý còn thiếu, ý sai, nhận xét và gợi ý cải thiện.
 - Với bài code MIPS, AI chấm theo **ý nghĩa của đoạn lệnh** (dùng thanh ghi khác đáp án mẫu vẫn được tính đúng) và **trích đúng lệnh sai** kèm cách sửa.
+- Với đại số quan hệ, AI chấm theo kết quả của biểu thức nên chấp nhận các cách viết tương đương.
+- **Nút chèn ký hiệu** (σ, π, ⋈, ⟕, ÷, ℑ, bản số…) ngay trên ô tự luận, dùng được cả khi ôn tập và khi thi.
 - Sinh viên có thể sửa bài ngay trên kết quả rồi gửi chấm lại.
 - Câu hỏi chưa có đáp án mẫu hoặc rubric tin cậy **không bị chấm điểm giả tạo**.
 - AI không bao giờ được gọi trực tiếp từ trình duyệt; mọi lượt gọi đều qua máy chủ với giới hạn tần suất, timeout và model dự phòng.
 
 ### ⏱️ Thi thử sát cấu trúc đề thật
 
-- Đề thi được tạo theo cấu trúc riêng của từng môn: **IT005** gồm 30 câu trắc nghiệm trong 65 phút; **IT006** gồm 16 câu trắc nghiệm (8 điểm) và 2 câu tự luận (2 điểm) trong 65 phút: một câu viết chương trình MIPS, một câu chuyển đổi mã máy.
+- Đề thi được tạo theo cấu trúc riêng của từng môn: **IT005** gồm 30 câu trắc nghiệm trong 65 phút; **IT006** gồm 16 câu trắc nghiệm (8 điểm) và 2 câu tự luận (2 điểm) trong 65 phút: một câu viết chương trình MIPS, một câu chuyển đổi mã máy; **IT004** toàn tự luận như đề thật, gồm Câu 1 ERD và chuyển đổi (2,5 điểm), Câu 2 SQL và đại số quan hệ (7,5 điểm) trong 75 phút.
 - **Thuật toán tạo đề**: kết hợp câu hỏi đã xác minh trong ngân hàng (ưu tiên câu chưa gặp) với các **bài tính toán mới** sinh tự động từ 21 dạng bài của IT005 và 23 dạng bài của IT006. Với IT005: độ trễ, thông lượng, số RTT của HTTP, checksum, Seq/ACK của TCP, cửa sổ trượt, điều khiển tắc nghẽn… Đáp án của bài sinh mới được **tính bằng code** nên luôn chính xác.
 - Phòng thi có đồng hồ đếm ngược, danh sách câu, đánh dấu xem lại, cảnh báo trước khi nộp và tự động nộp khi hết giờ.
 - **Đáp án được niêm phong (mã hóa AES-256-GCM)** cho tới khi nộp bài: trong lúc thi, trình duyệt không thể đọc được đáp án.
@@ -94,6 +96,21 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 - Tự luận tập trung ở Chương 2 như đề thật: dịch C sang MIPS, viết chương trình từ mô tả bằng lời (mảng, chuỗi ký tự), yêu cầu → mã máy và mã máy → ý nghĩa, tính địa chỉ rẽ nhánh, tìm và sửa lỗi, viết thủ tục, đệ quy.
 - **Bộ mô phỏng MIPS** viết riêng kiểm chứng mã máy và kết quả chạy của đáp án mỗi lần build; đáp án mẫu dạng code được chạy thử với dữ liệu mẫu, mã hex trong lời giải được mã hóa lại để đối chiếu.
 - Bảng tham khảo MIPS có thể mở ngay khi ôn tập và khi làm bài thi.
+
+## Ngân hàng câu hỏi IT004
+
+Chỉ ôn các dạng có thể ra thi, chủ yếu lấy từ đề giữa kỳ giai đoạn 2015–2026 và chia theo đúng dạng trong đề:
+
+| Phần | Dạng bài |
+|---|---|
+| **Chương 1** | Câu 1: thiết kế ERD từ mô tả nghiệp vụ và chuyển sang mô hình quan hệ |
+| **Chương 2** | Chuyển ERD đã cho, xác định khóa chính và khóa ngoại |
+| **SQL** | Ràng buộc, khóa ngoại, thêm và sửa cột, cập nhật, xóa |
+| **Chương 3** | Chọn, chiếu, kết · “Nếu có”: kết ngoài · “Không, chưa, chỉ”: phép trừ · “Cả hai”: phép giao · “Tất cả”: phép chia · “Với mỗi”: gom nhóm, lọc sau gom nhóm, lớn nhất, tỉ lệ phần trăm |
+
+- Dạng đã ra nhưng còn ít câu được soạn thêm và ghi rõ nguồn.
+- Đề thi thử ghép một Câu 1 và một Câu 2 trọn vẹn của các năm.
+- Khi dựng ngân hàng, mọi tên quan hệ và thuộc tính trong lời giải được đối chiếu tự động với lược đồ của đề.
 
 ## Giao diện
 
@@ -148,6 +165,7 @@ tests/                 Kiểm thử chấm điểm, tạo đề, niêm phong đ�
 
 - [x] IT005 – Ôn tập giữa kỳ
 - [x] IT006 – Ôn tập giữa kỳ, có tự luận chấm bằng AI
+- [x] IT004 – Ôn tập giữa kỳ Chương 1, 2, 3
 - [ ] IT005 – Ôn tập cuối kỳ
 - [ ] IT006 – Ôn tập cuối kỳ
 - [ ] Mở rộng sang các học phần khác tại UIT

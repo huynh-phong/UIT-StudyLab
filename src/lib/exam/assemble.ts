@@ -212,6 +212,7 @@ export function toPublicExam(
     origin: q.source.kind,
     answerFormat: q.type === "essay" ? q.essay?.format : undefined,
     placeholder: q.type === "essay" ? q.essay?.placeholder : undefined,
+    keyboard: q.type === "essay" ? q.essay?.keyboard : undefined,
   }));
   return {
     attemptId: s.attemptId,

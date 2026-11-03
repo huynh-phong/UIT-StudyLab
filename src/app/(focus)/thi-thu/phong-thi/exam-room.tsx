@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Callout, EmptyState, Skeleton, Textarea } from "@/components/ui/misc";
+import { SymbolKeyboard } from "@/components/symbol-keyboard";
 import { Progress } from "@/components/ui/progress";
 import { cn, formatDuration, formatScore } from "@/lib/utils";
 
@@ -67,6 +68,7 @@ function Room({ active }: { active: ActiveExam }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const submittedRef = useRef(false);
+  const answerRef = useRef<HTMLTextAreaElement>(null);
 
   const q = exam.questions[active.current];
   const timeLeft = exam.deadline ? Math.max(0, Math.floor((exam.deadline - now) / 1000)) : null;
@@ -210,7 +212,18 @@ function Room({ active }: { active: ActiveExam }) {
                   </div>
                 ) : (
                   <div>
+                    {q.keyboard && (
+                      <SymbolKeyboard
+                        kind={q.keyboard}
+                        textareaRef={answerRef}
+                        value={active.responses[q.id]?.text ?? ""}
+                        disabled={expired || submitting}
+                        className="mb-2"
+                        onChange={(next) => answer(q.id, { text: next })}
+                      />
+                    )}
                     <Textarea
+                      ref={answerRef}
                       value={active.responses[q.id]?.text ?? ""}
                       onChange={(e) => answer(q.id, { text: e.target.value })}
                       maxLength={8000}

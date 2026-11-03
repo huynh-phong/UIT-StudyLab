@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, BookOpenCheck, CheckCircle2, Cpu, FlaskConical, ListChecks, Network, PlayCircle, Target, Timer, Trophy } from "lucide-react";
+import { ArrowRight, BookOpenCheck, CheckCircle2, Cpu, FlaskConical, ListChecks, Network, PlayCircle, Target, Timer, Trophy, Database } from "lucide-react";
 import type { ExamSummary } from "@/lib/bank/repo";
 import { EXAM_TYPE_LABEL } from "@/lib/bank/schema";
 import type { FeatureFlags } from "@/lib/server/env";
@@ -19,7 +19,7 @@ import { AnimatedNumber, StatCard } from "@/components/stat";
 import { LogoMark } from "@/components/logo";
 import { formatDateTime, formatScore, pct } from "@/lib/utils";
 
-const COURSE_ICON: Record<string, React.ReactNode> = { it005: <Network />, it006: <Cpu /> };
+const COURSE_ICON: Record<string, React.ReactNode> = { it004: <Database />, it005: <Network />, it006: <Cpu /> };
 
 export function DashboardView({ exams, features }: { exams: ExamSummary[]; features: FeatureFlags }) {
   const hydrated = useHydrated();

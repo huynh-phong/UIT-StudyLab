@@ -1,0 +1,1374 @@
+[
+  {
+    "id": "it004-mid-ra5-e001",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**Yêu cầu:** Tìm số hợp đồng có lịch sử đóng tiền trong năm 2025 bằng phương thức ‘Chuyển khoản’ cho tất cả các loại bảo hiểm có kỳ thanh toán là ‘Hàng năm’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← σ Year(NgDongTien)=2025 ∧ PhuongThuc='Chuyển khoản' (LSDONGTIEN)\nR2 ← π SoHD, MaLBH (CHITIETHD ⋈ MaCTHD R1)\nR3 ← π MaLBH (σ KyThanhToan='Hàng năm' (LOAIBAOHIEM))\nR2 ÷ R3\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e002",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý hợp đồng bảo hiểm nhân thọ” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MaKH**, HoTen, NgSinh, CCCD, NgheNghiep)  \nLOAIBAOHIEM (**MaLBH**, TenLBH, STBaoHiem, STDongDinhKy, KyThanhToan)  \nHOPDONG (**SoHD**, MaKHDaiDien, NgKyHD, NgHieuLuc, NgHetHan, TriGia)  \nCHITIETHD (**MaCTHD**, SoHD, MaKHThuHuong, MaLBH)  \nLSDONGTIEN (**MaGD**, MaCTHD, NgDongTien, STDong, PhuongThuc)  \nYEUCAUBAOHIEM (**MaYC**, MaCTHD, STYeuCau, STDuyetChi, NgYeuCau, TrangThai)\n\n**Yêu cầu:** Tìm số hợp đồng đã phát sinh các yêu cầu giải quyết bảo hiểm trong năm 2025 có trạng thái ‘Đã chi trả’ cho tất cả các loại bảo hiểm có kỳ thanh toán là ‘Hàng tháng’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2025–2026, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← σ Year(NgYeuCau)=2025 ∧ TrangThai='Đã chi trả' (YEUCAUBAOHIEM)\nR2 ← π SoHD, MaLBH (CHITIETHD ⋈ MaCTHD R1)\nR3 ← π MaLBH (σ KyThanhToan='Hàng tháng' (LOAIBAOHIEM))\nR2 ÷ R3\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e003",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**Yêu cầu:** Tìm các kiểm định (MaKD) có kết quả chi tiết với mức độ đánh giá là “Tốt” trên tất cả các tiêu chuẩn kiểm định của loại sản phẩm có tên là “Máy Rửa Chén PX2”.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MaKD, MaTC (σ DanhGia='Tốt' (KETQUACT))\nR2 ← π MaTC (TIEUCHUANKD ⋈ MaLSP (σ TenLSP='Máy Rửa Chén PX2' (LOAISP)))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e004",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý kiểm định sản phẩm” (thuộc tính in đậm là khóa chính):\n\nPHANXUONG (**MaPX**, TenPX, DiaChi, QuanDoc, SLCN, NgayTL)  \nCONGNHAN (**MaCN**, HoTen, NgaySinh, BacTho, MaPX)  \nLOAISP (**MaLSP**, TenLSP, TinhNangNoiBat, TrangThai)  \nTIEUCHUANKD (**MaTC**, TenTC, MaLSP, MoTa, DVDL, KQMongDoi, SaiSo)  \nSANPHAM (**MaSP**, TenSP, NgaySX, MaLSP, MaPX, TinhTrangSP)  \nKIEMDINHSP (**MaKD**, MaSP, MaCN, ThoiDiemKD, KQKiemDinh, NoiDung)  \nKETQUACT (**MaKD, MaTC**, KQThucTe, DanhGia)\n\nKQKiemDinh = 1 là đạt, 0 là không đạt. Một sản phẩm có thể kiểm định nhiều lần nếu lần trước không đạt.\n\n**Yêu cầu:** Tìm các kiểm định (MaKD) thực hiện trong năm 2024 đã kiểm định tất cả các tiêu chuẩn kiểm định của loại sản phẩm có mã là “LSP001”.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2024–2025, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MaKD, MaTC (KETQUACT ⋈ MaKD (σ Year(ThoiDiemKD)=2024 (KIEMDINHSP)))\nR2 ← π MaTC (σ MaLSP='LSP001' (TIEUCHUANKD))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e005",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Tìm thông tin người giao hàng (NGGIAO, DT_NGGIAO) đã giao thành công tất cả các sản phẩm có giá bán từ 1 triệu trở lên.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π NGGIAO, DT_NGGIAO, MASP ((σ DAGIAO=1 (GIAOHANG)) ⋈ MADH CTDH)\nR2 ← π MASP (σ GIABAN>=1000000 (SANPHAM))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e006",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý bán hàng của cửa hàng hoa” (thuộc tính in đậm là khóa chính):\n\nNHAVUON (**MANV**, NGDAIDIEN, SDT, DIACHI)  \nSANPHAM (**MASP**, TENSP, DVT, THELOAI, GIANHAP, GIABAN, MANV)  \nDONHANG (**MADH**, NGAYBAN, TONGTIEN, DATHANHTOAN)  \nCTDH (**MADH, MASP**, SOLUONG)  \nGIAOHANG (**MAGH**, MADH, NGAYGIAO, NGGIAO, DT_NGGIAO, NGNHAN, DT_NGNHAN, DCHI_NGNHAN, PHISHIP, SOTIEN, DAGIAO)\n\nDAGIAO = 1 là đã giao thành công, 0 là chưa giao.\n\n**Yêu cầu:** Tìm thông tin người giao hàng (NGGIAO, DT_NGGIAO) đã giao thành công tất cả các sản phẩm thuộc loại ‘hoa nhập khẩu’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2023–2024, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π NGGIAO, DT_NGGIAO, MASP ((σ DAGIAO=1 (GIAOHANG)) ⋈ MADH CTDH)\nR2 ← π MASP (σ THELOAI='hoa nhập khẩu' (SANPHAM))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e007",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Tìm cửa hàng (MACH) nhập tất cả các loại xăng có mức độ bảo quản ở mức III (MDBQ = 'III').",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MACH, MALX (NHAP ⋈ MAXD XANGDAU)\nR2 ← π MALX (σ MDBQ='III' (LOAIXANG))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e008",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý nhập khẩu xăng dầu” (thuộc tính in đậm là khóa chính):\n\nDNNK (**MADN**, TENDN, NGAYTL, DIACHI, SDT, LOAIDN)  \nLOAIXANG (**MALX**, TENLX, MDBQ)  \nXANGDAU (**MAXD**, TENXD, MADN, MALX, GIACOSO, THUEPHI)  \nCUAHANG (**MACH**, TENCH, BACCL, RONGDD, CAOTB, CAOMC)  \nNHAP (**MACH, MAXD, NGAYNHAP**, SOLUONG, GIANHAP)\n\n**Yêu cầu:** Tìm doanh nghiệp (MADN, TENDN) thành lập năm 1990 có cung cấp tất cả các loại xăng dầu.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MADN, TENDN, MALX (XANGDAU ⋈ MADN (σ Year(NGAYTL)=1990 (DNNK)))\nR2 ← π MALX (LOAIXANG)\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e009",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Tìm loại địa điểm (MALDD, TENLDD) nằm trong lịch trình tham quan của tất cả các loại vé có giá vé trên 200.000đ.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MALDD, TENLDD, MALV ((CTLOAIVE ⋈ MADD DIADIEMTQ) ⋈ MALDD LOAIDD)\nR2 ← π MALV (σ GIAVE>200000 (LOAIVE))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e010",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý bán vé tham quan Phố cổ” (thuộc tính in đậm là khóa chính):\n\nDIADIEMTQ (**MADD**, TENDD, KHUVUC, DIACHI, THONGTINGT, NAMKT, MALDD)  \nLOAIDD (**MALDD**, TENLDD)  \nLOAIVE (**MALV**, TENLV, GIAVE, HANSD)  \nCTLOAIVE (**MALV, MADD**)  \nBANVE (**MABV**, MALV, SOLUONG, TRIGIA, NGAYBAN, NGAYHH)\n\n**Yêu cầu:** Tìm loại vé (MALV, TENLV) có giá vé trên 200.000đ và có lịch trình tham quan tất cả các loại địa điểm.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2022–2023, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MALV, TENLV, MALDD ((σ GIAVE>200000 (LOAIVE)) ⋈ MALV (CTLOAIVE ⋈ MADD DIADIEMTQ))\nR2 ← π MALDD (LOAIDD)\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e011",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**Yêu cầu:** Khách hàng nào (MAKH) mua tất cả xe máy sản xuất năm 2000 thuộc loại xe tên là ‘Honda Wave Alpha’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MAKH, MAXM (TRAGOP)\nR2 ← π MAXM ((σ NAMSX=2000 (XEMAY)) ⋈ MALX (σ TENLX='Honda Wave Alpha' (LOAIXE)))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e012",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý bán xe máy trả góp” (thuộc tính in đậm là khóa chính):\n\nKHACHHANG (**MAKH**, TENKH, NGAYSINH, DIACHI, CMND)  \nLOAIXE (**MALX**, TENLX, CONGNGHE)  \nXEMAY (**MAXM**, TENXM, MALX, NAMSX, TRONGLUONG, GIA)  \nLOAIHINHTG (**MALH**, TENLH, PHANTRAMTT, KYHAN, LAISUAT, PHITHUHO)  \nTRAGOP (**MATG**, MAXM, MAKH, NGAYMUA, SOTIENTT, MALH)\n\n**Yêu cầu:** Khách hàng nào (MAKH) đã mua tất cả xe máy sản xuất năm 2019 sử dụng công nghệ ‘V-twin’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MAKH, MAXM (TRAGOP)\nR2 ← π MAXM ((σ NAMSX=2019 (XEMAY)) ⋈ MALX (σ CONGNGHE='V-twin' (LOAIXE)))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e013",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**Yêu cầu:** Công ty nào (MACTY) khai thác tất cả mỏ khoáng sản của tỉnh ‘Quảng Ninh’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MACTY, MAMKS (KHAITHAC)\nR2 ← π MAMKS (σ TINH='Quảng Ninh' (MOKS))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e014",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý khai thác khoáng sản” (thuộc tính in đậm là khóa chính):\n\nLOAIKHSAN (**MALKS**, TENLKS, PHANLOAI)  \nKHOANGSAN (**MAKS**, TENKS, MALKS, TRANGTHAI)  \nCONGTY (**MACTY**, TENCTY, DIACHI, NGTL)  \nMOKS (**MAMKS**, TENMO, MAKS, NGPHATHIEN, TINH)  \nKHAITHAC (**MAMKS, MACTY**, NGCP, NGHH)\n\n**Yêu cầu:** Công ty nào (TENCTY) khai thác tất cả mỏ khoáng sản của tỉnh ‘Trà Vinh’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK2 2020–2021, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MACTY, TENCTY, MAMKS (KHAITHAC ⋈ MACTY CONGTY)\nR2 ← π MAMKS (σ TINH='Trà Vinh' (MOKS))\nπ TENCTY (R1 ÷ R2)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e015",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Cho biết các học viên (MAHV, HOTEN) đã đăng ký tất cả học phần.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MAHV, MAHP (DANGKY ⋈ MADK CTDK)\nR2 ← π MAHP (HOCPHAN)\nπ MAHV, HOTEN ((R1 ÷ R2) ⋈ MAHV HOCVIEN)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e016",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý website đăng ký học phần online” (thuộc tính in đậm là khóa chính):\n\nHOCVIEN (**MAHV**, HOTEN, NGSINH, SODT, LOAIHV)  \nKHOAHOC (**MAKH**, TENKH, MUCDO, THOILG, NGBDKH, NGKTKH)  \nHOCPHAN (**MAHP**, TENHP, MAKH, TUAN, BATBUOC)  \nDANGKY (**MADK**, MAHV, NGDK, TINHTRANG)  \nCTDK (**MADK, MAHP**, SONGAYHT, NGAYHP)\n\nBATBUOC = 1 là bắt buộc. TINHTRANG = 1 là đã thanh toán học phí, 0 là chưa thanh toán.\n\n**Yêu cầu:** Cho biết học phần (MAHP, TENHP) được tất cả học viên đăng ký.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2019–2020, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MAHP, MAHV (DANGKY ⋈ MADK CTDK)\nR2 ← π MAHV (HOCVIEN)\nπ MAHP, TENHP ((R1 ÷ R2) ⋈ MAHP HOCPHAN)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e017",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý nhân viên phục vụ nhà hàng” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**MANV**, HOTEN, NGSINH, CMND, CALV, MUCLUONG)  \nSANH (**MASANH**, TENSANH, LOAIBAN, SUCCHUA)  \nLOAITIEC (**MALT**, TENLT, YCMINBAN)  \nTIEC (**MATIEC**, CHUTIEC, MALT, MASANH, SOBAN, GIA, TGBD, TGKT)  \nPHUCVU (**MANV, MATIEC**, THOIGIAN)\n\n**Yêu cầu:** Cho biết nhân viên nào (MANV, HOTEN) phục vụ tất cả các tiệc có thời gian bắt đầu tiệc là 17g30 (TGBD=’17g30’).",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2018–2019, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MANV, MATIEC (PHUCVU)\nR2 ← π MATIEC (σ TGBD='17g30' (TIEC))\nπ MANV, HOTEN ((R1 ÷ R2) ⋈ MANV NHANVIEN)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e018",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý nhân viên phục vụ nhà hàng” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**MANV**, HOTEN, NGSINH, CMND, CALV, MUCLUONG)  \nSANH (**MASANH**, TENSANH, LOAIBAN, SUCCHUA)  \nLOAITIEC (**MALT**, TENLT, YCMINBAN)  \nTIEC (**MATIEC**, CHUTIEC, MALT, MASANH, SOBAN, GIA, TGBD, TGKT)  \nPHUCVU (**MANV, MATIEC**, THOIGIAN)\n\n**Yêu cầu:** Cho biết nhân viên nào (MANV, HOTEN) phục vụ tất cả các tiệc có số bàn lớn hơn 200.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2018–2019, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MANV, MATIEC (PHUCVU)\nR2 ← π MATIEC (σ SOBAN>200 (TIEC))\nπ MANV, HOTEN ((R1 ÷ R2) ⋈ MANV NHANVIEN)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e019",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý vé xe khách” (thuộc tính in đậm là khóa chính):\n\nXE (**maxe**, bienks, matuyen, sogheT1, sogheT2)  \nTUYEN (**matuyen**, bendau, bencuoi, giatuyen, thoigiandk)  \nKHACH (**mahk**, hoten, gioitinh, cmnd)  \nVEXE (**matuyen, mahk, ngaymua**, giave)\n\n**Yêu cầu:** Tuyến nào (matuyen) được tất cả hành khách có giới tính là nữ mua vào ngày ‘04/11/2017’.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π matuyen, mahk (σ ngaymua='04/11/2017' (VEXE))\nR2 ← π mahk (σ gioitinh='Nữ' (KHACH))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e020",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý vé xe khách” (thuộc tính in đậm là khóa chính):\n\nXE (**maxe**, bienks, matuyen, sogheT1, sogheT2)  \nTUYEN (**matuyen**, bendau, bencuoi, giatuyen, thoigiandk)  \nKHACH (**mahk**, hoten, gioitinh, cmnd)  \nVEXE (**matuyen, mahk, ngaymua**, giave)\n\n**Yêu cầu:** Khách hàng nào (mahk) đã mua tất cả các tuyến có bến đầu là ‘BX Miền Đông’ với giá tuyến lớn hơn 100.000.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2017–2018, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π mahk, matuyen (VEXE)\nR2 ← π matuyen (σ bendau='BX Miền Đông' ∧ giatuyen>100000 (TUYEN))\nR1 ÷ R2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e021",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý chi nhánh điện lực” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**manv**, hoten, ngaysinh, ngayvaolam)  \nKHACHHANG (**makh**, tenkh, ngaysinh, gioitinh)  \nHOPDONG (**sohdong**, ngayky, makh, sodienke, kwdinhmuc, dongiakw)  \nHOADON (**sohdon**, thang, nam, sohdong, manv, sotien)\n\n**Yêu cầu:** Tìm thông tin nhân viên (manv, hoten) đã thu tiền tất cả các số hợp đồng (sohdong).",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017, đề 1"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π manv, sohdong (HOADON)\nR2 ← π sohdong (HOPDONG)\nπ manv, hoten ((R1 ÷ R2) ⋈ manv NHANVIEN)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e022",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý chi nhánh điện lực” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**manv**, hoten, ngaysinh, ngayvaolam)  \nKHACHHANG (**makh**, tenkh, ngaysinh, gioitinh)  \nHOPDONG (**sohdong**, ngayky, makh, sodienke, kwdinhmuc, dongiakw)  \nHOADON (**sohdon**, thang, nam, sohdong, manv, sotien)\n\n**Yêu cầu:** Tìm số hợp đồng (sohdong, makh) đã được tất cả các nhân viên đến thu tiền.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017, đề 2"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π sohdong, manv (HOADON)\nR2 ← π manv (NHANVIEN)\nπ sohdong, makh ((R1 ÷ R2) ⋈ sohdong HOPDONG)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e023",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý món ăn” (thuộc tính in đậm là khóa chính):\n\nNGLIEU (**MaNL**, TenNL, CaloriNL, ProteinNL)  \nMONAN (**MaMA**, TenMA, MaLoai, Gia, CaloriMA, ProteinMA)  \nLOAIMONAN (**MaLoai**, TenLoai)  \nTPMONAN (**MaMA, MaNL**, TLuong)\n\n**Yêu cầu:** Tìm các món ăn (MaMA) mà thành phần gồm tất cả các nguyên liệu có lượng protein (ProteinNL) từ 5 trở lên.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2015–2016, đề 1 (có đáp án trong tài liệu)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nπ MaMA, MaNL (TPMONAN) ÷ π MaNL (σ ProteinNL>=5 (NGLIEU))\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e024",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý món ăn” (thuộc tính in đậm là khóa chính):\n\nNGLIEU (**MaNL**, TenNL, CaloriNL, ProteinNL)  \nMONAN (**MaMA**, TenMA, MaLoai, Gia, CaloriMA, ProteinMA)  \nLOAIMONAN (**MaLoai**, TenLoai)  \nTPMONAN (**MaMA, MaNL**, TLuong)\n\n**Yêu cầu:** Tìm các món ăn (MaMA) mà thành phần gồm tất cả các nguyên liệu có lượng calori (CaloriNL) từ 50 trở lên.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2015–2016, đề 2 (có đáp án trong tài liệu)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nπ MaMA, MaNL (TPMONAN) ÷ π MaNL (σ CaloriNL>=50 (NGLIEU))\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e025",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý đề án” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**MaNV**, HoNV, TenNV, NgaySinh, DiaChi, Phai, Luong, MaNQL, Phong)  \nPHONGBAN (**MaPhong**, TenPhong, TruongPhong, NgayNhanChuc)  \nDIADIEMPHONG (**MaPhong, DiaDiem**)  \nDEAN (**MaDA**, TenDA, DdiemDA, Phong)  \nPHANCONG (**MaNV, MaDA**, ThoiGian)  \nTHANNHAN (**MaTN**, HoTN, TenTN, Phai, NgaySinh)  \nNVIEN_TNHAN (**MaNV, MaTN**, QuanHe)\n\n**Yêu cầu:** Cho biết mã nhân viên, họ tên của những nhân viên tham gia mọi đề án của công ty.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Bài tập Đại số quan hệ – Quản lý đề án"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MaNV, MaDA (PHANCONG) ÷ π MaDA (DEAN)\nπ MaNV, HoNV, TenNV (R1 ⋈ MaNV NHANVIEN)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e026",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý đề án” (thuộc tính in đậm là khóa chính):\n\nNHANVIEN (**MaNV**, HoNV, TenNV, NgaySinh, DiaChi, Phai, Luong, MaNQL, Phong)  \nPHONGBAN (**MaPhong**, TenPhong, TruongPhong, NgayNhanChuc)  \nDIADIEMPHONG (**MaPhong, DiaDiem**)  \nDEAN (**MaDA**, TenDA, DdiemDA, Phong)  \nPHANCONG (**MaNV, MaDA**, ThoiGian)  \nTHANNHAN (**MaTN**, HoTN, TenTN, Phai, NgaySinh)  \nNVIEN_TNHAN (**MaNV, MaTN**, QuanHe)\n\n**Yêu cầu:** Cho biết mã nhân viên, họ tên của những nhân viên được phân công tất cả đề án do phòng số 4 chủ trì.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Bài tập Đại số quan hệ – Quản lý đề án"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nR1 ← π MaNV, MaDA (PHANCONG) ÷ π MaDA (σ Phong=4 (DEAN))\nπ MaNV, HoNV, TenNV (R1 ⋈ MaNV NHANVIEN)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e027",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Nhà cung cấp và mặt hàng (slide Chương 3)” (thuộc tính in đậm là khóa chính):\n\nS (**S#**, SNAME, STATUS, CITY)  \nP (**P#**, PNAME, COLOR, WEIGHT)  \nSP (**S#, P#**, QTY)\n\n**Yêu cầu:** Liệt kê S# của các nhà cung cấp cung ứng tất cả các mặt hàng.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Bài tập tổng kết Chương 3 – Nhà cung cấp"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nπ S#, P# (SP) ÷ π P# (P)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  },
+  {
+    "id": "it004-mid-ra5-e028",
+    "type": "essay",
+    "courseId": "it004",
+    "examType": "midterm",
+    "chapterId": "it004-ra5",
+    "content": "Cho lược đồ CSDL “Quản lý bán báo” (thuộc tính in đậm là khóa chính):\n\nBAO (**MaB**, TenB, DonGiaTK)  \nKHACHHANG (**MaKH**, TenKH, LoaiKH, DienThoai)  \nPHIEUDATBAO (**MaB, MaKH, NgayDat**, SoTo, DonGia, ThanhTien)\n\n**Yêu cầu:** Trong năm 2015, cho biết khách hàng nào đã mua tất cả báo.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Bài tập Đại số quan hệ – Quản lý bán báo"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```text\nπ MaKH, MaB (σ Year(NgayDat)=2015 (PHIEUDATBAO)) ÷ π MaB (BAO)\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng quan hệ và các phép kết cần thiết",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện chọn đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Phép chia đúng: số bị chia và số chia được chiếu đúng thuộc tính",
+          "points": 3,
+          "keyPoints": [
+            "câu “tất cả”"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả chiếu đúng thuộc tính đề yêu cầu",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "keyboard": "ra",
+      "placeholder": "Dùng các nút ký hiệu phía trên, ví dụ:\nπ MaNV, HoTen (σ Luong>1000 (NHANVIEN))\nCũng được viết kiểu (NHANVIEN: Luong>1000)[MaNV, HoTen]"
+    },
+    "tags": [
+      "dang-chia"
+    ]
+  }
+]

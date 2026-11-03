@@ -1,0 +1,91 @@
+{
+  "courseId": "it004",
+  "examType": "midterm",
+  "title": "Giữa kỳ",
+  "description": "Chỉ ôn các dạng ra thi: ERD và chuyển đổi, SQL, đại số quan hệ.",
+  "chapters": [
+    {
+      "id": "it004-c1",
+      "order": 1,
+      "title": "Chương 1 – Câu 1: Thiết kế ERD và chuyển sang mô hình quan hệ",
+      "description": "Tình huống Câu 1 trong đề các năm, thêm các cấu trúc đa trị, thực thể yếu, 3 ngôi, đệ quy."
+    },
+    {
+      "id": "it004-c2",
+      "order": 2,
+      "title": "Chương 2 – Chuyển đổi và xác định khóa",
+      "description": "Chuyển ERD đã cho, xác định khóa chính, khóa ngoại."
+    },
+    {
+      "id": "it004-sql",
+      "order": 3,
+      "title": "SQL – Ràng buộc, thêm cột, cập nhật, xóa",
+      "description": "Phần SQL của Câu 2 trong đề các năm."
+    },
+    {
+      "id": "it004-ra1",
+      "order": 4,
+      "title": "Chương 3 – Chọn, chiếu và kết",
+      "description": "Ý a, b của Câu 2: lọc điều kiện, kết nhiều bảng."
+    },
+    {
+      "id": "it004-ra2",
+      "order": 5,
+      "title": "Chương 3 – “Nếu có”: kết ngoài",
+      "description": "Liệt kê tất cả và thông tin liên quan nếu có."
+    },
+    {
+      "id": "it004-ra3",
+      "order": 6,
+      "title": "Chương 3 – “Không, chưa, chỉ”: phép trừ",
+      "description": "Tìm đối tượng không có, chưa có hoặc chỉ có."
+    },
+    {
+      "id": "it004-ra4",
+      "order": 7,
+      "title": "Chương 3 – “Cả hai”: phép giao",
+      "description": "Thỏa đồng thời hai điều kiện trên cùng một cột."
+    },
+    {
+      "id": "it004-ra5",
+      "order": 8,
+      "title": "Chương 3 – “Tất cả”: phép chia",
+      "description": "Ý khó thường gặp của Câu 2."
+    },
+    {
+      "id": "it004-ra6",
+      "order": 9,
+      "title": "Chương 3 – “Với mỗi”: gom nhóm và tỉ lệ",
+      "description": "Đếm, tính tổng, lọc sau gom nhóm, lớn nhất, tỉ lệ phần trăm."
+    },
+    {
+      "id": "it004-cau2",
+      "order": 10,
+      "title": "Câu 2 – SQL và đại số quan hệ",
+      "description": "Câu 2 trọn vẹn, dùng trong đề thi thử."
+    }
+  ],
+  "blueprint": {
+    "status": "verified",
+    "sourceNote": "Theo các đề giữa kỳ từ HK1 2022–2023 đến HK1 2025–2026: 75 phút, toàn tự luận. Câu 1 (2,5 điểm) ERD và chuyển sang mô hình quan hệ; Câu 2 (7,5 điểm) SQL 1,5 điểm và đại số quan hệ 6 điểm.",
+    "title": "Đề thi thử giữa kỳ IT004",
+    "durationMinutes": 75,
+    "slots": [
+      {
+        "chapterId": "it004-c1",
+        "type": "essay",
+        "count": 1,
+        "pointsEach": 2.5,
+        "tag": "cau-1"
+      },
+      {
+        "chapterId": "it004-cau2",
+        "type": "essay",
+        "count": 1,
+        "pointsEach": 7.5,
+        "tag": "cau-2"
+      }
+    ],
+    "notes": "Mỗi đề lấy nguyên một Câu 1 và một Câu 2 của các năm."
+  }
+}

@@ -93,6 +93,8 @@ export const EssaySpecSchema = z.object({
   format: z.enum(["code", "text"]).optional(),
   /** Gợi ý cách trình bày, hiển thị trong ô nhập. */
   placeholder: z.string().optional(),
+  /** Hàng nút chèn ký hiệu phía trên ô nhập (đại số quan hệ, ERD…). */
+  keyboard: z.enum(["ra", "er", "sql", "mixed"]).optional(),
   /** Khối mips đầu tiên của đáp án mẫu phải chạy đúng các trường hợp này. */
   verify: z.array(RunCaseSchema).optional(),
   /** Mã máy ghi trong đáp án mẫu: kiểm tra lại bằng bộ mã hóa khi build. */
@@ -146,6 +148,8 @@ const QuestionBase = z.object({
   source: SourceSchema,
   verification: VerificationSchema,
   tags: z.array(z.string()).optional(),
+  /** Câu tổng hợp chỉ dùng để ghép đề, không hiện trong ôn tập. */
+  examOnly: z.boolean().optional(),
 });
 
 export const McqQuestionSchema = QuestionBase.extend({
@@ -255,5 +259,5 @@ export function isExamEligible(q: Question): boolean {
 
 /** Câu hỏi có thể hiển thị trong chế độ ôn tập (cần có đáp án). */
 export function isStudyEligible(q: Question): boolean {
-  return q.verification !== "draft";
+  return q.verification !== "draft" && !q.examOnly;
 }

@@ -145,7 +145,7 @@ function Result({ attempt }: { attempt: ExamAttempt }) {
                 <Mini icon={<Clock className="text-primary" />} label="Thời gian" value={formatDuration(r.durationSec)} />
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
-                <ScoreLine label="Trắc nghiệm" score={r.mcqScore} max={r.mcqMax} />
+                {r.mcqMax > 0 && <ScoreLine label="Trắc nghiệm" score={r.mcqScore} max={r.mcqMax} />}
                 {r.essayMax > 0 && <ScoreLine label="Tự luận" score={r.essayScore} max={r.essayMax} pending={r.counts.pendingEssay > 0} />}
               </div>
               {r.autoSubmitted && <p className="text-xs text-muted">Bài được tự động nộp khi hết giờ.</p>}

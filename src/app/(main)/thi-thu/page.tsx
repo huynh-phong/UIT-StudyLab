@@ -11,6 +11,8 @@ export const dynamic = "force-dynamic";
 const SLOT_TAG_LABEL: Record<string, string> = {
   "lap-trinh": "Viết chương trình MIPS từ C hoặc mô tả bằng lời",
   "ma-may": "Chuyển đổi giữa yêu cầu, Assembly và mã máy",
+  "cau-1": "Câu 1: ERD và chuyển sang mô hình quan hệ",
+  "cau-2": "Câu 2: SQL và đại số quan hệ",
 };
 
 export default function ExamPage() {

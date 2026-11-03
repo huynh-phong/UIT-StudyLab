@@ -7,6 +7,7 @@ import type { EssayGradeResult } from "@/lib/grading/types";
 import { useStudyStore, type EssayAnswer } from "@/lib/store/study";
 import { ApiClientError, postJson } from "@/lib/api-client";
 import { AIGradingLoader, EssayResultView } from "@/components/question/essay-result";
+import { SymbolKeyboard } from "@/components/symbol-keyboard";
 import { Button } from "@/components/ui/button";
 import { Callout, Textarea } from "@/components/ui/misc";
 
@@ -28,6 +29,7 @@ export function EssayPanel({
   const { setEssayText, setEssayGrading, setEssayResult, setEssayError, reopenEssay } = useStudyStore.getState();
   const [text, setText] = useState(answer?.text ?? "");
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const inFlight = useRef(false);
   const status = answer?.status ?? "draft";
   const locked = status === "grading" || status === "done";
@@ -93,7 +95,21 @@ export function EssayPanel({
         <label htmlFor={`essay-${question.id}`} className="mb-1.5 block text-sm font-medium">
           Câu trả lời của bạn
         </label>
+        {question.essay?.keyboard && (
+          <SymbolKeyboard
+            kind={question.essay.keyboard}
+            textareaRef={textareaRef}
+            value={text}
+            disabled={locked}
+            className="mb-2"
+            onChange={(next) => {
+              setText(next);
+              scheduleSave(next);
+            }}
+          />
+        )}
         <Textarea
+          ref={textareaRef}
           id={`essay-${question.id}`}
           value={text}
           disabled={locked}

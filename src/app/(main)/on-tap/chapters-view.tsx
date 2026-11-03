@@ -131,7 +131,7 @@ function ChapterCard({ c, index, hydrated, onReset }: { c: ChapterProgress; inde
 function Metric({ label, value, icon }: { label: string; value: React.ReactNode; icon?: React.ReactNode }) {
   return (
     <div className="rounded-xl bg-subtle px-2 py-2">
-      <p className="text-base font-semibold tabular-nums">{value ?? <Skeleton className="mx-auto h-5 w-8" />}</p>
+      <div className="text-base font-semibold tabular-nums">{value ?? <Skeleton className="mx-auto h-5 w-8" />}</div>
       <p className="flex items-center justify-center gap-1 text-[11px] text-muted">
         {icon}
         {label}

@@ -99,6 +99,8 @@ export function examSummaries(): ExamSummary[] {
       title: c.title,
       description: c.description,
       questionIds: studyQuestions(e, c.id).map((q) => q.id),
-    })),
+    }))
+      // Phần chỉ có câu dùng để ghép đề thì không hiện trong danh sách ôn tập
+      .filter((c) => c.questionIds.length > 0),
   }));
 }
