@@ -13,18 +13,22 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { EmptyState, PageHeader, Skeleton } from "@/components/ui/misc";
+import { CourseTabs, uniqueCourses, useSelectedCourse } from "@/components/course-tabs";
 import { pct } from "@/lib/utils";
 
 export function ChaptersView({ exams }: { exams: ExamSummary[] }) {
   const hydrated = useHydrated();
   const sessions = useStudyStore((s) => s.sessions);
   const resetSession = useStudyStore((s) => s.resetSession);
+  const courses = uniqueCourses(exams, (e) => ({ id: e.courseId, code: e.courseCode, name: e.courseName }));
+  const selected = useSelectedCourse(courses);
 
   return (
     <div>
       <PageHeader title="Ôn tập theo chương" description="Chọn một chương để làm câu hỏi. Tiến độ của từng chương được lưu riêng trên trình duyệt này." />
+      <CourseTabs courses={courses} selected={selected} />
       <div className="space-y-10">
-        {exams.map((exam) => {
+        {exams.filter((e) => e.courseId === selected).map((exam) => {
           const chapters = computeChapterProgress([exam], sessions);
           return (
             <section key={exam.key} aria-labelledby={`exam-${exam.key}`}>

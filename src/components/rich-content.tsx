@@ -5,6 +5,7 @@ import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import { protectRegisters } from "@/lib/mips/markdown";
 import { cn } from "@/lib/utils";
 
 /**
@@ -42,7 +43,7 @@ export const RichContent = memo(function RichContent({ children, className, inli
   return (
     <div className={cn("rich", className)}>
       <ReactMarkdown remarkPlugins={remarkPlugins} rehypePlugins={rehypePlugins} components={inline ? inlineComponents : blockComponents}>
-        {children}
+        {protectRegisters(children)}
       </ReactMarkdown>
     </div>
   );

@@ -1,0 +1,118 @@
+[
+  {
+    "id": "it006-mid-c1a-e01",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Tính bộ nhớ khung (frame buffer) tối thiểu cần cho màn hình:\n\na) 1280 × 1024 pixel, 24 bit màu.\n\nb) 1920 × 1080 pixel, 32 bit màu.\n\nTrình bày công thức, kết quả ghi bằng byte.",
+    "difficulty": "easy",
+    "points": 10.0,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "Kích thước = số pixel × số byte mỗi pixel.\n\na) $1280 \\times 1024 \\times 3 = 3\\,932\\,160$ byte (= 3,75 MiB).\n\nb) $1920 \\times 1080 \\times 4 = 8\\,294\\,400$ byte (≈ 7,91 MiB).",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Công thức đúng, đổi bit sang byte",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Kết quả câu a đúng",
+          "points": 3.5
+        },
+        {
+          "id": "r3",
+          "criterion": "Kết quả câu b đúng",
+          "points": 3.5
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-e02",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Nêu 5 thành phần cổ điển của máy tính và chức năng của từng thành phần. Hai thành phần nào tạo thành bộ xử lý (CPU)?",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "1. **Datapath** (đường dữ liệu): thực hiện các phép tính.\n2. **Control** (khối điều khiển): điều khiển datapath, bộ nhớ và I/O theo lệnh của chương trình.\n3. **Memory** (bộ nhớ): chứa chương trình và dữ liệu.\n4. **Input** (nhập): đưa dữ liệu vào máy tính.\n5. **Output** (xuất): đưa kết quả ra ngoài.\n\nCPU gồm **datapath** và **control**.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đủ 5 thành phần",
+          "points": 4
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng chức năng từng thành phần",
+          "points": 4
+        },
+        {
+          "id": "r3",
+          "criterion": "CPU gồm datapath và control",
+          "points": 2
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-e03",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "So sánh SRAM và DRAM (tốc độ, giá, ứng dụng). Bộ nhớ khả biến và bất khả biến khác nhau thế nào? Sắp xếp thanh ghi, cache, bộ nhớ chính, ổ đĩa theo tốc độ giảm dần và cho biết vì sao máy tính cần bộ nhớ phân cấp.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "- **SRAM**: nhanh hơn, đắt hơn, dung lượng nhỏ, dùng làm cache. **DRAM**: chậm hơn, rẻ hơn, dung lượng lớn, dùng làm bộ nhớ chính.\n- **Khả biến** mất dữ liệu khi mất điện (SRAM, DRAM); **bất khả biến** vẫn giữ dữ liệu (flash, ổ đĩa từ).\n- Tốc độ giảm dần: thanh ghi → cache → bộ nhớ chính → ổ đĩa.\n- Bộ nhớ càng nhanh càng đắt; phân cấp cho phép đạt tốc độ gần với mức nhanh và dung lượng, giá thành của mức rẻ.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "So sánh đúng SRAM và DRAM",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Phân biệt khả biến và bất khả biến",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "Thứ tự phân cấp đúng",
+          "points": 2
+        },
+        {
+          "id": "r4",
+          "criterion": "Giải thích lý do phân cấp",
+          "points": 3
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  }
+]

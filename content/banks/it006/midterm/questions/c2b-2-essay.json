@@ -1,0 +1,1149 @@
+[
+  {
+    "id": "it006-mid-c2b-e01",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Dịch sang MIPS. `f, g, h, i, j` lần lượt nằm trong `$s0`–`$s4`:\n\n```c\nif (i == j) f = g + h;\nelse f = g - h;\n```",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nbne $s3, $s4, Else     # i != j thì sang Else\nadd $s0, $s1, $s2      # f = g + h\nj   Exit               # bỏ qua khối else\nElse: sub $s0, $s1, $s2\nExit:\n```\n\nĐiều kiện rẽ nhánh là **phủ định** của điều kiện trong C. Cũng có thể dùng `beq` nhảy tới khối then và đặt khối else trước.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Rẽ nhánh đúng điều kiện",
+          "points": 3,
+          "keyPoints": [
+            "bne tới Else, hoặc beq tới then với khối else đặt trước"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Khối then và else tính đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Có `j Exit` để không rơi xuống khối còn lại",
+          "points": 4
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 9,
+            "$s2": 4,
+            "$s3": 1,
+            "$s4": 1
+          },
+          "expectRegs": {
+            "$s0": 13
+          }
+        },
+        {
+          "regs": {
+            "$s1": 9,
+            "$s2": 4,
+            "$s3": 1,
+            "$s4": 2
+          },
+          "expectRegs": {
+            "$s0": 5
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e02",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Dịch sang MIPS, `f, g, h, i, j` lần lượt nằm trong `$s0`–`$s4`. Không dùng lệnh giả:\n\n```c\nif (i > j) f = g + h;\nelse f = g - h;\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nslt $t0, $s4, $s3      # t0 = 1 nếu j < i, tức i > j\nbeq $t0, $zero, Else   # điều kiện sai thì sang Else\nadd $s0, $s1, $s2\nj   Exit\nElse: sub $s0, $s1, $s2\nExit:\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng `slt` đúng thứ tự: `j < i`",
+          "points": 4,
+          "keyPoints": [
+            "slt $t0,$s4,$s3"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Rẽ nhánh đúng theo giá trị `$t0`",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "Hai khối tính đúng và có `j Exit`",
+          "points": 4
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 9,
+            "$s2": 4,
+            "$s3": 5,
+            "$s4": 2
+          },
+          "expectRegs": {
+            "$s0": 13
+          }
+        },
+        {
+          "regs": {
+            "$s1": 9,
+            "$s2": 4,
+            "$s3": 2,
+            "$s4": 2
+          },
+          "expectRegs": {
+            "$s0": 5
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e03",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Dịch sang MIPS, biến `a` nằm trong `$s0`. Yêu cầu dùng phép dịch thay cho phép nhân:\n\n```c\nif (a < 0) a = -a;\nelse a = a * 8;\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nslt  $t0, $s0, $zero   # t0 = 1 nếu a < 0\nbeq  $t0, $zero, Else\nsub  $s0, $zero, $s0   # a = 0 - a\nj    Exit\nElse: sll $s0, $s0, 3  # a = a * 8\nExit:\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "So sánh `a < 0` bằng `slt` với `$zero`",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đổi dấu bằng `sub $s0,$zero,$s0`",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Nhân 8 bằng `sll` 3 bit",
+          "points": 2
+        },
+        {
+          "id": "r4",
+          "criterion": "Có lệnh nhảy qua khối còn lại",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s0": -5
+          },
+          "expectRegs": {
+            "$s0": 5
+          }
+        },
+        {
+          "regs": {
+            "$s0": 2
+          },
+          "expectRegs": {
+            "$s0": 16
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e04",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Dịch sang MIPS. `i = $s3`, `k = $s5`, địa chỉ nền của mảng word `save` nằm trong `$s6`:\n\n```c\nwhile (save[i] == k) i += 1;\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nLoop: sll $t1, $s3, 2  # t1 = i * 4\nadd  $t1, $t1, $s6     # t1 = địa chỉ save[i]\nlw   $t0, 0($t1)       # t0 = save[i]\nbne  $t0, $s5, Exit    # khác k thì thoát\naddi $s3, $s3, 1       # i += 1\nj    Loop\nExit:\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Tính địa chỉ `save[i]` bằng cách nhân 4 và cộng nền",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đọc phần tử bằng `lw` **trong** vòng lặp",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "Thoát bằng `bne` khi khác `k`",
+          "points": 3
+        },
+        {
+          "id": "r4",
+          "criterion": "Tăng `i` và `j Loop`",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s3": 0,
+            "$s5": 7,
+            "$s6": 4096
+          },
+          "words": {
+            "4096": 7,
+            "4100": 7,
+            "4104": 7,
+            "4108": 1
+          },
+          "expectRegs": {
+            "$s3": 3
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e05",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Dịch sang MIPS. `i = $s0`, `n = $s1`, `sum = $s2`, địa chỉ nền của `A` nằm trong `$s3`:\n\n```c\nsum = 0;\nfor (i = 0; i < n; i++)\n    sum += A[i];\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nadd  $s2, $zero, $zero # sum = 0\nadd  $s0, $zero, $zero # i = 0\nLoop: slt $t0, $s0, $s1\nbeq  $t0, $zero, Exit  # i >= n thì thoát\nsll  $t1, $s0, 2\nadd  $t1, $t1, $s3\nlw   $t2, 0($t1)       # t2 = A[i]\nadd  $s2, $s2, $t2     # sum += A[i]\naddi $s0, $s0, 1       # i++\nj    Loop\nExit:\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Khởi tạo `sum` và `i` bằng 0",
+          "points": 2
+        },
+        {
+          "id": "r2",
+          "criterion": "Kiểm tra `i < n` bằng `slt` + `beq`, thoát đúng lúc",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Tính đúng địa chỉ `A[i]` và đọc giá trị",
+          "points": 3
+        },
+        {
+          "id": "r4",
+          "criterion": "Cộng dồn, tăng `i`, quay lại đầu vòng",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 3,
+            "$s3": 4096
+          },
+          "words": {
+            "4096": 1,
+            "4100": 2,
+            "4104": 4
+          },
+          "expectRegs": {
+            "$s2": 7,
+            "$s0": 3
+          }
+        },
+        {
+          "regs": {
+            "$s1": 0,
+            "$s3": 4096
+          },
+          "expectRegs": {
+            "$s2": 0,
+            "$s0": 0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e06",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Dịch sang MIPS. `i = $s0`, `n = $s1`, địa chỉ nền của `A`, `B` lần lượt nằm trong `$s6`, `$s7`:\n\n```c\nfor (i = 0; i < n; i++)\n    A[i] = B[i];\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nadd  $s0, $zero, $zero\nLoop: slt $t0, $s0, $s1\nbeq  $t0, $zero, Exit\nsll  $t1, $s0, 2       # t1 = i * 4\nadd  $t2, $t1, $s7\nlw   $t3, 0($t2)       # t3 = B[i]\nadd  $t2, $t1, $s6\nsw   $t3, 0($t2)       # A[i] = t3\naddi $s0, $s0, 1\nj    Loop\nExit:\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Khởi tạo và kiểm tra điều kiện lặp",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đọc `B[i]` đúng địa chỉ",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Ghi `A[i]` đúng địa chỉ bằng `sw`",
+          "points": 3
+        },
+        {
+          "id": "r4",
+          "criterion": "Tăng `i` và lặp",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 2,
+            "$s6": 4096,
+            "$s7": 8192
+          },
+          "words": {
+            "8192": 11,
+            "8196": 22
+          },
+          "expectRegs": {
+            "$s0": 2
+          },
+          "expectWords": {
+            "4096": 11,
+            "4100": 22
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e07",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Dịch sang MIPS. `i = $s0`, địa chỉ nền của `A` nằm trong `$s6`:\n\n```c\nfor (i = 0; i < 10; i++)\n    A[2] = 3 + A[i * 4];\n```",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nadd  $s0, $zero, $zero\naddi $t3, $zero, 10    # t3 = 10\nLoop: slt $t0, $s0, $t3\nbeq  $t0, $zero, Exit\nsll  $t1, $s0, 4       # độ dời = (i * 4) * 4 = i * 16\nadd  $t1, $t1, $s6\nlw   $t2, 0($t1)       # t2 = A[i * 4]\naddi $t2, $t2, 3\nsw   $t2, 8($s6)       # A[2] = t2\naddi $s0, $s0, 1\nj    Loop\nExit:\n```\n\nChỉ số `i * 4` còn phải nhân 4 để đổi sang byte nên tổng cộng dịch trái 4 bit.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Vòng lặp đúng 10 lần, nạp hằng 10 vào thanh ghi",
+          "points": 3,
+          "keyPoints": [
+            "slt cần thanh ghi hoặc dùng slti"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Độ dời của `A[i*4]` là `i * 16`",
+          "points": 3,
+          "keyPoints": [
+            "sll 4"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Đọc, cộng 3",
+          "points": 2
+        },
+        {
+          "id": "r4",
+          "criterion": "Ghi vào `A[2]` với offset 8",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s6": 4096
+          },
+          "words": {
+            "4240": 6
+          },
+          "expectRegs": {
+            "$s0": 10
+          },
+          "expectWords": {
+            "4104": 9
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e08",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Viết đoạn MIPS đếm số phần tử bằng `k` trong mảng. `count = $s2`, `i = $s0`, `n = $s1`, `k = $s4`, nền của `A` nằm trong `$s3`:\n\n```c\ncount = 0;\nfor (i = 0; i < n; i++)\n    if (A[i] == k) count++;\n```",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nadd  $s2, $zero, $zero\nadd  $s0, $zero, $zero\nLoop: slt $t0, $s0, $s1\nbeq  $t0, $zero, Exit\nsll  $t1, $s0, 2\nadd  $t1, $t1, $s3\nlw   $t2, 0($t1)\nbne  $t2, $s4, Next    # khác k thì bỏ qua\naddi $s2, $s2, 1       # count++\nNext: addi $s0, $s0, 1\nj    Loop\nExit:\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Khởi tạo và điều kiện lặp đúng",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đọc đúng `A[i]`",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "`if` lồng trong vòng lặp bằng `bne`, bỏ qua `count++` khi khác",
+          "points": 3
+        },
+        {
+          "id": "r4",
+          "criterion": "Mọi trường hợp đều tăng `i` rồi lặp",
+          "points": 2,
+          "keyPoints": [
+            "nhãn Next đặt trước lệnh tăng i"
+          ]
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 3,
+            "$s3": 4096,
+            "$s4": 5
+          },
+          "words": {
+            "4096": 1,
+            "4100": 5,
+            "4104": 5
+          },
+          "expectRegs": {
+            "$s2": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e09",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Viết đoạn MIPS tìm giá trị lớn nhất của mảng có ít nhất 1 phần tử. `i = $s0`, `n = $s1`, `max = $s2`, nền của `A` nằm trong `$s3`:\n\n```c\nmax = A[0];\nfor (i = 1; i < n; i++)\n    if (A[i] > max) max = A[i];\n```",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nlw   $s2, 0($s3)       # max = A[0]\naddi $s0, $zero, 1     # i = 1\nLoop: slt $t0, $s0, $s1\nbeq  $t0, $zero, Exit\nsll  $t1, $s0, 2\nadd  $t1, $t1, $s3\nlw   $t2, 0($t1)       # t2 = A[i]\nslt  $t0, $s2, $t2     # t0 = 1 nếu max < A[i]\nbeq  $t0, $zero, Next\nadd  $s2, $t2, $zero   # max = A[i]\nNext: addi $s0, $s0, 1\nj    Loop\nExit:\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Khởi tạo `max` từ `A[0]` và `i = 1`",
+          "points": 2
+        },
+        {
+          "id": "r2",
+          "criterion": "Điều kiện lặp và đọc `A[i]` đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "So sánh `max < A[i]` bằng `slt` đúng thứ tự",
+          "points": 3
+        },
+        {
+          "id": "r4",
+          "criterion": "Cập nhật `max`, tăng `i`, lặp",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 3,
+            "$s3": 4096
+          },
+          "words": {
+            "4096": 3,
+            "4100": 9,
+            "4104": 4
+          },
+          "expectRegs": {
+            "$s2": 9
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e10",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Chuyển các lệnh sau sang mã máy. Với mỗi lệnh, ghi định dạng, giá trị từng trường và mã hex.\n\n```mips\nadd  $s0, $s1, $s2\nsub  $t0, $s1, $t2\nlw   $t1, 12($s0)\nsw   $t1, -4($sp)\nsrl  $t2, $t1, 4\nandi $t0, $t1, 0xFF\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "| Lệnh | Dạng | op | rs | rt | rd | shamt | funct / imm | Hex |\n|---|---|---|---|---|---|---|---|---|\n| `add $s0,$s1,$s2` | R | 0 | 17 | 18 | 16 | 0 | `0x20` | `0x02328020` |\n| `sub $t0,$s1,$t2` | R | 0 | 17 | 10 | 8 | 0 | `0x22` | `0x022A4022` |\n| `lw $t1,12($s0)` | I | `0x23` | 16 | 9 | | | 12 | `0x8E09000C` |\n| `sw $t1,-4($sp)` | I | `0x2B` | 29 | 9 | | | `0xFFFC` | `0xAFA9FFFC` |\n| `srl $t2,$t1,4` | R | 0 | 0 | 9 | 10 | 4 | `0x02` | `0x00095102` |\n| `andi $t0,$t1,0xFF` | I | `0x0C` | 9 | 8 | | | `0x00FF` | `0x312800FF` |",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Nhận đúng định dạng và op/funct của các lệnh",
+          "points": 2
+        },
+        {
+          "id": "r2",
+          "criterion": "Các trường thanh ghi đúng thứ tự rs, rt, rd",
+          "points": 3,
+          "keyPoints": [
+            "với lw/sw: rs là nền, rt là dữ liệu"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Lệnh dịch: rs = 0, nguồn ở rt, shamt đúng",
+          "points": 2
+        },
+        {
+          "id": "r4",
+          "criterion": "Số âm dùng bù hai và mã hex cuối đúng",
+          "points": 3,
+          "keyPoints": [
+            "-4 = 0xFFFC"
+          ]
+        }
+      ],
+      "format": "text",
+      "placeholder": "Với mỗi lệnh ghi các trường rồi đổi sang hex."
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e11",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Với `f, g` nằm trong `$s2, $s3`; địa chỉ nền của `A, B` nằm trong `$s6, $s7`. Hãy dịch câu lệnh sau sang MIPS, rồi chuyển từng lệnh sang mã máy (hex):\n\n```c\nB[f] = A[g + 5];\n```",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\naddi $t0, $s3, 5       # t0 = g + 5\nsll  $t0, $t0, 2       # t0 = (g + 5) * 4\nadd  $t0, $t0, $s6     # t0 = địa chỉ A[g + 5]\nlw   $t1, 0($t0)       # t1 = A[g + 5]\nsll  $t2, $s2, 2       # t2 = f * 4\nadd  $t2, $t2, $s7     # t2 = địa chỉ B[f]\nsw   $t1, 0($t2)       # B[f] = t1\n```\n\n| Lệnh | Hex |\n|---|---|\n| `addi $t0,$s3,5` | `0x22680005` |\n| `sll $t0,$t0,2` | `0x00084080` |\n| `add $t0,$t0,$s6` | `0x01164020` |\n| `lw $t1,0($t0)` | `0x8D090000` |\n| `sll $t2,$s2,2` | `0x00125080` |\n| `add $t2,$t2,$s7` | `0x01575020` |\n| `sw $t1,0($t2)` | `0xAD490000` |\n\nĐoạn dùng thanh ghi tạm khác vẫn đúng nếu mã máy khớp với đoạn đó.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đoạn MIPS tính đúng địa chỉ `A[g+5]` và đọc",
+          "points": 3,
+          "keyPoints": [
+            "cộng 5 trước khi nhân 4"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đoạn MIPS tính đúng địa chỉ `B[f]` và ghi bằng `sw`",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Mã máy khớp với đúng các lệnh bài làm viết ra",
+          "points": 4,
+          "keyPoints": [
+            "chấm theo thanh ghi học sinh chọn"
+          ]
+        }
+      ],
+      "format": "text",
+      "placeholder": "Viết đoạn lệnh, sau đó lập bảng mã máy cho từng lệnh.",
+      "verify": [
+        {
+          "regs": {
+            "$s2": 1,
+            "$s3": 2,
+            "$s6": 4096,
+            "$s7": 8192
+          },
+          "words": {
+            "4124": 77
+          },
+          "expectWords": {
+            "8196": 77
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e12",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Chuyển các mã máy sau về lệnh Assembly MIPS, trình bày các trường:\n\n`0x8E680020`, `0x01F37024`, `0x22F1FFC9`, `0x00084080`, `0xAD490000`",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "| Mã | Các trường | Lệnh |\n|---|---|---|\n| `0x8E680020` | op `0x23`, rs 19, rt 8, imm 32 | `lw $t0, 32($s3)` |\n| `0x01F37024` | R: rs 15, rt 19, rd 14, funct `0x24` | `and $t6, $t7, $s3` |\n| `0x22F1FFC9` | op 8, rs 23, rt 17, imm `0xFFC9` = -55 | `addi $s1, $s7, -55` |\n| `0x00084080` | R: rs 0, rt 8, rd 8, shamt 2, funct 0 | `sll $t0, $t0, 2` |\n| `0xAD490000` | op `0x2B`, rs 10, rt 9, imm 0 | `sw $t1, 0($t2)` |",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Tách đúng các trường từ nhị phân",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Nhận đúng lệnh từ op/funct",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Thứ tự thanh ghi trong Assembly đúng",
+          "points": 2,
+          "keyPoints": [
+            "R: rd, rs, rt; lw/sw: rt, imm(rs)"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Đổi `0xFFC9` thành -55",
+          "points": 2
+        }
+      ],
+      "format": "text",
+      "placeholder": "Với mỗi mã: nhị phân → các trường → lệnh Assembly."
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e13",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Truy vết đoạn lệnh sau, lập bảng giá trị `$s0`, `$t0` sau mỗi vòng lặp và cho biết giá trị cuối của `$s0`, `$t0`, `$t1`.\n\n```mips\naddi $s0, $zero, 1\naddi $t0, $zero, 0\nLoop: slti $t1, $t0, 4\nbeq  $t1, $zero, End\nadd  $s0, $s0, $s0\naddi $t0, $t0, 1\nj Loop\nEnd:\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\naddi $s0, $zero, 1\naddi $t0, $zero, 0\nLoop: slti $t1, $t0, 4\nbeq  $t1, $zero, End\nadd  $s0, $s0, $s0\naddi $t0, $t0, 1\nj Loop\nEnd:\n```\n\n| Sau vòng | `$s0` | `$t0` |\n|---|---|---|\n| 1 | 2 | 1 |\n| 2 | 4 | 2 |\n| 3 | 8 | 3 |\n| 4 | 16 | 4 |\n\nKhi `$t0 = 4`, `slti` cho `$t1 = 0` nên thoát. Kết quả: `$s0 = 16`, `$t0 = 4`, `$t1 = 0`. Đoạn lệnh tính $2^4$.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Bảng giá trị từng vòng đúng",
+          "points": 5
+        },
+        {
+          "id": "r2",
+          "criterion": "Xác định đúng thời điểm thoát",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "Giá trị cuối của 3 thanh ghi đúng",
+          "points": 3
+        }
+      ],
+      "format": "text",
+      "placeholder": "Lập bảng giá trị theo từng vòng lặp.",
+      "verify": [
+        {
+          "expectRegs": {
+            "$s0": 16,
+            "$t0": 4,
+            "$t1": 0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e14",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "`$s1` là `n`, `$s3` là địa chỉ nền của `A`. Đoạn lệnh sau làm gì? Viết đoạn C tương đương, cho biết `$s0`, `$s2` đóng vai trò gì.\n\n```mips\nadd  $s2, $zero, $zero\nadd  $s0, $zero, $zero\nLoop: slt $t0, $s0, $s1\nbeq  $t0, $zero, Exit\nsll  $t1, $s0, 2\nadd  $t1, $t1, $s3\nlw   $t2, 0($t1)\nslt  $t3, $zero, $t2\nbeq  $t3, $zero, Skip\naddi $s2, $s2, 1\nSkip: addi $s0, $s0, 1\nj Loop\nExit:\n```",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nadd  $s2, $zero, $zero\nadd  $s0, $zero, $zero\nLoop: slt $t0, $s0, $s1\nbeq  $t0, $zero, Exit\nsll  $t1, $s0, 2\nadd  $t1, $t1, $s3\nlw   $t2, 0($t1)\nslt  $t3, $zero, $t2\nbeq  $t3, $zero, Skip\naddi $s2, $s2, 1\nSkip: addi $s0, $s0, 1\nj Loop\nExit:\n```\n\nĐoạn lệnh đếm số phần tử **dương** trong mảng:\n\n```c\ncount = 0;\nfor (i = 0; i < n; i++)\n    if (A[i] > 0) count++;\n```\n\n`$s0` là biến chạy `i`, `$s2` là biến đếm `count`.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Nhận ra vòng lặp `i` từ 0 đến `n - 1`",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Nhận ra điều kiện `A[i] > 0` từ `slt $t3,$zero,$t2`",
+          "points": 3,
+          "keyPoints": [
+            "0 < A[i], không phải A[i] < 0"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Viết đúng đoạn C và nêu mục đích đếm phần tử dương",
+          "points": 4
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 4,
+            "$s3": 4096
+          },
+          "words": {
+            "4096": 3,
+            "4100": -1,
+            "4104": 0,
+            "4108": 8
+          },
+          "expectRegs": {
+            "$s2": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e15",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Một bạn dịch `while (save[i] == k) i += 1;` (`i = $s3`, `k = $s5`, nền `save = $s6`) như sau. Chỉ ra các lỗi và viết lại đoạn đúng.\n\n```mips\nLoop: add $t1, $s3, $s6\nlw   $t0, 0($t1)\nbeq  $t0, $s5, Exit\naddi $s3, $s3, 1\nj Loop\nExit:\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nLoop: sll $t1, $s3, 2\nadd  $t1, $t1, $s6\nlw   $t0, 0($t1)\nbne  $t0, $s5, Exit\naddi $s3, $s3, 1\nj Loop\nExit:\n```\n\nCác lỗi:\n1. Thiếu nhân chỉ số với 4: phải có `sll $t1, $s3, 2` trước khi cộng nền.\n2. Điều kiện thoát bị ngược: vòng lặp chạy khi bằng `k`, nên thoát phải dùng `bne`.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Phát hiện thiếu nhân 4",
+          "points": 4
+        },
+        {
+          "id": "r2",
+          "criterion": "Phát hiện `beq` phải đổi thành `bne`",
+          "points": 4
+        },
+        {
+          "id": "r3",
+          "criterion": "Đoạn viết lại đúng",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s3": 0,
+            "$s5": 7,
+            "$s6": 4096
+          },
+          "words": {
+            "4096": 7,
+            "4100": 1
+          },
+          "expectRegs": {
+            "$s3": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e16",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Đoạn sau được dịch từ `if (i == j) f = g + h; else f = g - h;` (`f…j` = `$s0…$s4`). Khi `i == j`, kết quả sai. Hãy giải thích lý do và sửa lại.\n\n```mips\nbne $s3, $s4, Else\nadd $s0, $s1, $s2\nElse: sub $s0, $s1, $s2\n```",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nbne $s3, $s4, Else\nadd $s0, $s1, $s2\nj   Exit\nElse: sub $s0, $s1, $s2\nExit:\n```\n\nThiếu `j Exit`: sau khi cộng, chương trình chạy tiếp xuống lệnh `sub`, nên `f` luôn bằng `g - h`.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Giải thích đúng: rơi xuống thực hiện lệnh `sub`",
+          "points": 5
+        },
+        {
+          "id": "r2",
+          "criterion": "Thêm `j Exit` và nhãn `Exit` đúng vị trí",
+          "points": 5
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 9,
+            "$s2": 4,
+            "$s3": 1,
+            "$s4": 1
+          },
+          "expectRegs": {
+            "$s0": 13
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e17",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Vòng lặp sau được nạp từ địa chỉ 80000 (hệ 10):\n\n```\n80000 Loop: sll  $t1, $s3, 2\n80004       add  $t1, $t1, $s6\n80008       lw   $t0, 0($t1)\n80012       bne  $t0, $s5, Exit\n80016       addi $s3, $s3, 1\n80020       j    Loop\n80024 Exit:\n```\n\nTính giá trị trường địa chỉ của `bne` và `j`, rồi viết mã máy (hex) của hai lệnh đó.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "- `bne`: immediate = (80024 − (80012 + 4)) / 4 = **2**. Mã máy: op 5, rs 8, rt 21 → `0x15150002`.\n- `j`: address = 80000 / 4 = **20000** (`0x4E20`). Mã máy: op 2 → `0x08004E20`.\n\nKhi thực thi, `bne` lấy PC + 4 + 2 × 4 = 80024; `j` ghép 4 bit cao của PC với `address × 4` = 80000.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "`bne`: tính từ PC + 4 và chia 4, được 2",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "`j`: lấy địa chỉ chia 4, được 20000",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Mã máy của `bne` đúng",
+          "points": 2
+        },
+        {
+          "id": "r4",
+          "criterion": "Mã máy của `j` đúng",
+          "points": 2
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày công thức rồi đến kết quả và mã hex."
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e18",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Không dùng `mul`, chỉ dùng lệnh dịch và cộng, viết đoạn lệnh thực hiện `$s2 = $s1 * 10`. Giải thích vì sao đoạn lệnh đúng. Viết tiếp đoạn cho `$s3 = $s1 * 36`.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nsll $t0, $s1, 3        # t0 = s1 * 8\nsll $t1, $s1, 1        # t1 = s1 * 2\nadd $s2, $t0, $t1      # s2 = s1 * 10\nsll $t0, $s1, 2        # t0 = s1 * 4\nsll $t1, $s1, 5        # t1 = s1 * 32\nadd $s3, $t0, $t1      # s3 = s1 * 36\n```\n\nDịch trái k bit là nhân $2^k$, với 10 = 8 + 2 và 36 = 32 + 4.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Phân tích đúng thành tổng lũy thừa của 2",
+          "points": 3,
+          "keyPoints": [
+            "10 = 8 + 2; 36 = 32 + 4"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đoạn `* 10` đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đoạn `* 36` đúng",
+          "points": 3
+        },
+        {
+          "id": "r4",
+          "criterion": "Không làm mất giá trị `$s1`",
+          "points": 1
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 7
+          },
+          "expectRegs": {
+            "$s2": 70,
+            "$s3": 252,
+            "$s1": 7
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e19",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cho `$t0` chứa một word. Dùng lệnh dịch và logic để:\n\na) Lấy 8 bit từ bit 15 đến bit 8 của `$t0` đưa vào 8 bit thấp của `$t1`, các bit còn lại bằng 0.\n\nb) Đưa vào `$t2` giá trị của `$t0` với bit 0 được đặt bằng 1.\n\nc) Đưa vào `$t3` phần đảo tất cả các bit của `$t0`.\n\n`$t0` không được thay đổi.",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nsrl  $t1, $t0, 8       # đưa bit 15..8 xuống bit 7..0\nandi $t1, $t1, 0xFF    # giữ 8 bit thấp\nori  $t2, $t0, 0x1     # đặt bit 0\nnor  $t3, $t0, $zero   # đảo tất cả các bit\n```\n\nVí dụ `$t0 = 0x12345678` → `$t1 = 0x56`, `$t2 = 0x12345679`, `$t3 = 0xEDCBA987`.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Câu a: dịch phải 8 bit và AND với `0xFF`",
+          "points": 4
+        },
+        {
+          "id": "r2",
+          "criterion": "Câu b: `ori` với 1",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Câu c: `nor` với `$zero`",
+          "points": 3,
+          "keyPoints": [
+            "MIPS không có lệnh not thật"
+          ]
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$t0": 305419896
+          },
+          "expectRegs": {
+            "$t1": 86,
+            "$t2": 305419897,
+            "$t3": -305419897,
+            "$t0": 305419896
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e20",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Không dùng lệnh giả, hãy viết lại 4 lệnh sau bằng `slt` kết hợp `beq`/`bne`:\n\n```mips\nblt $s0, $s1, L\nbgt $s0, $s1, L\nble $s0, $s1, L\nbge $s0, $s1, L\n```",
+    "difficulty": "medium",
+    "points": 10.0,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "| Lệnh giả | Lệnh thật | Giải thích |\n|---|---|---|\n| `blt $s0,$s1,L` | `slt $t0,$s0,$s1` ; `bne $t0,$zero,L` | `$s0 < $s1` |\n| `bgt $s0,$s1,L` | `slt $t0,$s1,$s0` ; `bne $t0,$zero,L` | `$s1 < $s0` |\n| `ble $s0,$s1,L` | `slt $t0,$s1,$s0` ; `beq $t0,$zero,L` | không phải `$s1 < $s0` |\n| `bge $s0,$s1,L` | `slt $t0,$s0,$s1` ; `beq $t0,$zero,L` | không phải `$s0 < $s1` |",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "`blt` đúng",
+          "points": 2.5
+        },
+        {
+          "id": "r2",
+          "criterion": "`bgt` đúng (đảo thứ tự trong `slt`)",
+          "points": 2.5
+        },
+        {
+          "id": "r3",
+          "criterion": "`ble` đúng",
+          "points": 2.5
+        },
+        {
+          "id": "r4",
+          "criterion": "`bge` đúng",
+          "points": 2.5
+        }
+      ],
+      "format": "code",
+      "placeholder": "Mỗi lệnh giả viết thành 2 lệnh thật."
+    }
+  },
+  {
+    "id": "it006-mid-c2b-e21",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Trình bày các bước để một chương trình C trở thành chương trình đang chạy trên máy tính. Nêu nhiệm vụ và đầu ra của từng công cụ. Khái niệm chương trình được lưu trữ (stored-program) có ý nghĩa gì?",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Sổ tay"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "1. **Compiler**: dịch C sang hợp ngữ.\n2. **Assembler**: dịch hợp ngữ sang mã máy, tạo object file.\n3. **Linker**: ghép các object file và thư viện, tạo chương trình thực thi.\n4. **Loader**: nạp chương trình thực thi vào bộ nhớ để chạy.\n\nStored-program: lệnh được biểu diễn như các con số, được lưu trong bộ nhớ và đọc/ghi giống dữ liệu; muốn chạy chương trình chỉ cần nạp lệnh và dữ liệu vào bộ nhớ.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đúng thứ tự 4 công cụ",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng nhiệm vụ và đầu ra của mỗi công cụ",
+          "points": 4
+        },
+        {
+          "id": "r3",
+          "criterion": "Giải thích được stored-program",
+          "points": 3
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  }
+]

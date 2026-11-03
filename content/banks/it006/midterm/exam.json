@@ -1,0 +1,93 @@
+{
+  "courseId": "it006",
+  "examType": "midterm",
+  "title": "Giữa kỳ",
+  "description": "Bám sát Chương 1 và Chương 2: 80% trắc nghiệm, 20% tự luận.",
+  "chapters": [
+    {
+      "id": "it006-c1a",
+      "order": 1,
+      "title": "Chương 1a – Máy tính: Các khái niệm và công nghệ",
+      "description": "Lịch sử, phân loại, các lớp phần mềm, thành phần máy tính, bộ nhớ, frame buffer."
+    },
+    {
+      "id": "it006-c1b",
+      "order": 2,
+      "title": "Chương 1b – Hiệu suất máy tính",
+      "description": "Thời gian CPU, CPI, xung nhịp, so sánh hiệu suất."
+    },
+    {
+      "id": "it006-c2a",
+      "order": 3,
+      "title": "Chương 2a – Kiến trúc bộ lệnh: Phép tính, toán hạng, số có dấu",
+      "description": "Thanh ghi, lw/sw, hằng số, số bù hai, mở rộng dấu, endian."
+    },
+    {
+      "id": "it006-c2b",
+      "order": 4,
+      "title": "Chương 2b – Biểu diễn lệnh, logic và rẽ nhánh",
+      "description": "Mã máy R/I/J, lệnh logic, beq/bne/slt, if-else, vòng lặp, biên dịch."
+    },
+    {
+      "id": "it006-c2c",
+      "order": 5,
+      "title": "Chương 2c – Thủ tục và stack",
+      "description": "jal/jr, quy ước thanh ghi, stack, thủ tục lồng nhau."
+    }
+  ],
+  "blueprint": {
+    "status": "unverified",
+    "sourceNote": "Tỉ lệ 80% trắc nghiệm, 20% tự luận theo đề cương môn học. Số câu, thời gian 60 phút và phân bố theo chương là cấu hình tham khảo từ đề 18 câu và slide, chưa được giảng viên xác nhận.",
+    "title": "Đề thi thử giữa kỳ IT006",
+    "durationMinutes": 60,
+    "slots": [
+      {
+        "chapterId": "it006-c1a",
+        "type": "mcq",
+        "count": 5,
+        "pointsEach": 0.4
+      },
+      {
+        "chapterId": "it006-c1b",
+        "type": "mcq",
+        "count": 4,
+        "pointsEach": 0.4
+      },
+      {
+        "chapterId": "it006-c2a",
+        "type": "mcq",
+        "count": 4,
+        "pointsEach": 0.4
+      },
+      {
+        "chapterId": "it006-c2b",
+        "type": "mcq",
+        "count": 5,
+        "pointsEach": 0.4
+      },
+      {
+        "chapterId": "it006-c2c",
+        "type": "mcq",
+        "count": 2,
+        "pointsEach": 0.4
+      },
+      {
+        "chapterId": "it006-c2b",
+        "type": "essay",
+        "count": 1,
+        "pointsEach": 1
+      },
+      {
+        "chapterId": "it006-c2c",
+        "type": "essay",
+        "count": 1,
+        "pointsEach": 1,
+        "alsoFrom": [
+          "it006-c1b",
+          "it006-c2a"
+        ]
+      }
+    ],
+    "notes": "Được phép dùng máy tính; đề thật kèm bảng lệnh MIPS và sơ đồ datapath."
+  }
+}

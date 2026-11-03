@@ -1,0 +1,2172 @@
+[
+  {
+    "id": "it006-mid-c1a-001",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Trong các loại bộ nhớ sau, bộ nhớ nào có tốc độ truy xuất nhanh nhất?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "RAM"
+      },
+      {
+        "id": "B",
+        "content": "SSD"
+      },
+      {
+        "id": "C",
+        "content": "Cache"
+      },
+      {
+        "id": "D",
+        "content": "Register"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Thanh ghi (register) nằm ngay trong CPU nên có tốc độ truy xuất nhanh nhất trong hệ thống bộ nhớ.",
+      "whyCorrect": "Thanh ghi (register) nằm ngay trong CPU nên có tốc độ truy xuất nhanh nhất trong hệ thống bộ nhớ.",
+      "whyWrong": {
+        "A": "RAM (DRAM) chậm hơn cache và thanh ghi.",
+        "B": "SSD là bộ nhớ thứ cấp, chậm hơn RAM rất nhiều.",
+        "C": "Cache nhanh nhưng vẫn chậm hơn thanh ghi."
+      },
+      "tip": "Register → Cache → RAM → SSD/HDD: từ nhanh đến chậm."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-002",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Công cụ dùng để dịch từ ngôn ngữ cấp cao thành hợp ngữ gọi là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu), Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Compiler"
+      },
+      {
+        "id": "B",
+        "content": "Assembler"
+      },
+      {
+        "id": "C",
+        "content": "System Program"
+      },
+      {
+        "id": "D",
+        "content": "Operating System"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Trình biên dịch (compiler) chuyển chương trình từ ngôn ngữ cấp cao xuống hợp ngữ.",
+      "whyCorrect": "Trình biên dịch (compiler) chuyển chương trình từ ngôn ngữ cấp cao xuống hợp ngữ.",
+      "whyWrong": {
+        "B": "Assembler chuyển hợp ngữ thành mã máy.",
+        "C": "\"System Program\" là tên nhóm phần mềm hệ thống, không phải công cụ dịch cụ thể.",
+        "D": "Hệ điều hành quản lý tài nguyên, không dịch chương trình."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-003",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Ngôn ngữ dùng để mô tả lệnh nhị phân (mã máy) của máy tính thông qua kí hiệu biểu diễn là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Machine language"
+      },
+      {
+        "id": "B",
+        "content": "Assembly language"
+      },
+      {
+        "id": "C",
+        "content": "C language"
+      },
+      {
+        "id": "D",
+        "content": "Natural language"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Hợp ngữ (Assembly) dùng các từ gợi nhớ để biểu diễn các lệnh mã máy.",
+      "whyCorrect": "Hợp ngữ (Assembly) dùng các từ gợi nhớ để biểu diễn các lệnh mã máy.",
+      "whyWrong": {
+        "A": "Ngôn ngữ máy chính là các bit 0 và 1, không dùng kí hiệu gợi nhớ.",
+        "C": "C là ngôn ngữ cấp cao.",
+        "D": "Ngôn ngữ tự nhiên không dùng để lập trình trực tiếp."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-004",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một máy in màu sử dụng 8 bit để hiển thị một kênh màu trong hệ 4 kênh màu CMYK để in ảnh với độ phân giải $1280 \\times 800$ pixel. Độ lớn nhỏ nhất của bộ đệm để chứa một khung ảnh (đơn vị Byte) là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "3072000"
+      },
+      {
+        "id": "B",
+        "content": "4096000"
+      },
+      {
+        "id": "C",
+        "content": "24576000"
+      },
+      {
+        "id": "D",
+        "content": "32768000"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$1280 \\times 800 \\times 4$ kênh $\\times$ 1 byte = 4 096 000 byte.",
+      "whyCorrect": "$1280 \\times 800 \\times 4$ kênh $\\times$ 1 byte = 4 096 000 byte.",
+      "whyWrong": {
+        "A": "3072000 là kết quả khi tính 3 kênh màu (RGB) thay vì 4 kênh CMYK.",
+        "C": "24576000 là số bit của hệ 3 kênh, sai cả số kênh lẫn đơn vị.",
+        "D": "32768000 là số bit; đề hỏi byte nên phải chia 8."
+      },
+      "tip": "Mỗi kênh 8 bit = 1 byte."
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "1280*800*4"
+    }
+  },
+  {
+    "id": "it006-mid-c1a-005",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một bức ảnh có độ phân giải 4K, kích thước $4096 \\times 2160$ pixel, chứa 3 màu cơ bản Red, Green, Blue. Mỗi màu được thể hiện bởi 12 bit. Dung lượng tối thiểu của bộ nhớ để lưu bức ảnh là bao nhiêu MB (1 MB = $2^{20}$ byte)?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "37"
+      },
+      {
+        "id": "B",
+        "content": "38"
+      },
+      {
+        "id": "C",
+        "content": "39"
+      },
+      {
+        "id": "D",
+        "content": "40"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$3 \\times 12 \\times 4096 \\times 2160 = 318\\,504\\,960$ bit = 37,97 MB; phải làm tròn lên để đủ chỗ nên cần tối thiểu 38 MB.",
+      "whyCorrect": "$3 \\times 12 \\times 4096 \\times 2160 = 318\\,504\\,960$ bit = 37,97 MB; phải làm tròn lên để đủ chỗ nên cần tối thiểu 38 MB.",
+      "whyWrong": {
+        "A": "37 MB chưa đủ chứa 37,97 MB.",
+        "C": "39 MB đủ chứa nhưng không phải mức tối thiểu trong các lựa chọn.",
+        "D": "40 MB đủ chứa nhưng không phải mức tối thiểu trong các lựa chọn."
+      },
+      "tip": "Dung lượng tối thiểu: làm tròn **lên**."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-006",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Loại máy tính nào được tối ưu cho một ứng dụng cụ thể nhằm tối ưu công suất, giá cả, năng lượng?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Máy tính cá nhân"
+      },
+      {
+        "id": "B",
+        "content": "Máy chủ (siêu máy tính)"
+      },
+      {
+        "id": "C",
+        "content": "Máy tính nhúng"
+      },
+      {
+        "id": "D",
+        "content": "Máy trạm đồ họa"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Máy tính nhúng được tích hợp trong thiết bị và tối ưu cho một số chức năng cụ thể.",
+      "whyCorrect": "Máy tính nhúng được tích hợp trong thiết bị và tối ưu cho một số chức năng cụ thể.",
+      "whyWrong": {
+        "A": "Máy tính cá nhân đa dụng, không tối ưu cho một chức năng.",
+        "B": "Máy chủ ưu tiên hiệu năng và lưu trữ lớn.",
+        "D": "Máy trạm đồ họa không thuộc ba lớp ứng dụng trong slide."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-007",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "1 TB bằng bao nhiêu bit?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$2^{40}$"
+      },
+      {
+        "id": "B",
+        "content": "$2^{50}$"
+      },
+      {
+        "id": "C",
+        "content": "$8 \\times 2^{40}$"
+      },
+      {
+        "id": "D",
+        "content": "$8 \\times 2^{50}$"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "1 TB = $2^{40}$ byte, mỗi byte 8 bit nên bằng $8 \\times 2^{40}$ bit.",
+      "whyCorrect": "1 TB = $2^{40}$ byte, mỗi byte 8 bit nên bằng $8 \\times 2^{40}$ bit.",
+      "whyWrong": {
+        "A": "$2^{40}$ là số byte, chưa đổi sang bit.",
+        "B": "$2^{50}$ là số byte của 1 PB.",
+        "D": "$8 \\times 2^{50}$ là số bit của 1 PB."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-008",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Một Terabyte bằng bao nhiêu Byte?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$2^{20}$"
+      },
+      {
+        "id": "B",
+        "content": "$2^{30}$"
+      },
+      {
+        "id": "C",
+        "content": "$2^{40}$"
+      },
+      {
+        "id": "D",
+        "content": "$2^{50}$"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "KB, MB, GB, TB, PB lần lượt là $2^{10}, 2^{20}, 2^{30}, 2^{40}, 2^{50}$ byte.",
+      "whyCorrect": "KB, MB, GB, TB, PB lần lượt là $2^{10}, 2^{20}, 2^{30}, 2^{40}, 2^{50}$ byte.",
+      "whyWrong": {
+        "A": "$2^{20}$ byte là 1 MB.",
+        "B": "$2^{30}$ byte là 1 GB.",
+        "D": "$2^{50}$ byte là 1 PB."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-009",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Để truyền 1 khung dữ liệu có kích thước 1024 Kbyte qua mạng Wifi có tốc độ 1 Mbps thì thời gian truyền xấp xỉ bao lâu?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2 giây"
+      },
+      {
+        "id": "B",
+        "content": "4 giây"
+      },
+      {
+        "id": "C",
+        "content": "8 giây"
+      },
+      {
+        "id": "D",
+        "content": "16 giây"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "1024 Kbyte = 1 MB = 8 Mbit; truyền ở 1 Mbps mất khoảng 8 giây.",
+      "whyCorrect": "1024 Kbyte = 1 MB = 8 Mbit; truyền ở 1 Mbps mất khoảng 8 giây.",
+      "whyWrong": {
+        "A": "2 giây là do tính sai số bit của mỗi byte.",
+        "B": "4 giây là do tính sai số bit của mỗi byte.",
+        "D": "16 giây là do nhân 8 hai lần."
+      },
+      "tip": "Mbps tính theo **bit**, dung lượng file tính theo **byte**."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-010",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Công nghệ đặc trưng của máy tính thế hệ 1 là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Transistor"
+      },
+      {
+        "id": "B",
+        "content": "Máy chuyển động cơ học"
+      },
+      {
+        "id": "C",
+        "content": "Mạch tích hợp"
+      },
+      {
+        "id": "D",
+        "content": "Đèn chân không"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Thế hệ 1 dùng đèn chân không, tiêu biểu là máy EDVAC (1949).",
+      "whyCorrect": "Thế hệ 1 dùng đèn chân không, tiêu biểu là máy EDVAC (1949).",
+      "whyWrong": {
+        "B": "Máy cơ học là thế hệ 0.",
+        "A": "Transistor là thế hệ 2.",
+        "C": "Mạch tích hợp là thế hệ 3."
+      },
+      "tip": "Cơ học → Đèn chân không → Transistor → IC → VLSI."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-011",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Máy IBM 7094 (1962) thuộc thế hệ máy tính nào và dùng công nghệ gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thế hệ 4 – VLSI"
+      },
+      {
+        "id": "B",
+        "content": "Thế hệ 1 – đèn chân không"
+      },
+      {
+        "id": "C",
+        "content": "Thế hệ 3 – mạch tích hợp"
+      },
+      {
+        "id": "D",
+        "content": "Thế hệ 2 – transistor"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "IBM 7094 là máy thế hệ 2, dùng transistor.",
+      "whyCorrect": "IBM 7094 là máy thế hệ 2, dùng transistor.",
+      "whyWrong": {
+        "B": "Tiêu biểu thế hệ 1 là EDVAC.",
+        "C": "Tiêu biểu thế hệ 3 là IBM System/360/22.",
+        "A": "Tiêu biểu thế hệ 4 là siêu máy tính IBM Summit."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-012",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Chu kỳ clock của máy tính IBM 7094 là bao nhiêu?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "148,6 petaflops"
+      },
+      {
+        "id": "B",
+        "content": "0,75 µs"
+      },
+      {
+        "id": "C",
+        "content": "2,6 GHz"
+      },
+      {
+        "id": "D",
+        "content": "2 µs"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Theo slide, IBM 7094 có chu kỳ 2 µs.",
+      "whyCorrect": "Theo slide, IBM 7094 có chu kỳ 2 µs.",
+      "whyWrong": {
+        "B": "0,75 µs là chu kỳ của IBM System/360/22.",
+        "C": "2,6 GHz là tần số của MacBook Pro 2019, không phải chu kỳ.",
+        "A": "148,6 petaflops là tốc độ của siêu máy tính Summit."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-013",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Khái niệm chương trình được lưu trữ bắt đầu từ thế hệ máy tính nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thế hệ 3"
+      },
+      {
+        "id": "B",
+        "content": "Thế hệ 0"
+      },
+      {
+        "id": "C",
+        "content": "Thế hệ 2"
+      },
+      {
+        "id": "D",
+        "content": "Thế hệ 1"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Chương trình được lưu trữ bắt đầu từ thế hệ 1 (như EDVAC).",
+      "whyCorrect": "Chương trình được lưu trữ bắt đầu từ thế hệ 1 (như EDVAC).",
+      "whyWrong": {
+        "B": "Thế hệ 0 là máy cơ học, tính toán dựa trên bảng tra.",
+        "C": "Thế hệ 2 đã kế thừa khái niệm này.",
+        "A": "Thế hệ 3 đã kế thừa khái niệm này."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-014",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Siêu máy tính IBM Summit (2018) thuộc thế hệ máy tính nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thế hệ 1"
+      },
+      {
+        "id": "B",
+        "content": "Thế hệ 3"
+      },
+      {
+        "id": "C",
+        "content": "Thế hệ 4"
+      },
+      {
+        "id": "D",
+        "content": "Thế hệ 2"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Summit dùng công nghệ VLSI nên thuộc thế hệ 4.",
+      "whyCorrect": "Summit dùng công nghệ VLSI nên thuộc thế hệ 4.",
+      "whyWrong": {
+        "A": "Thế hệ 1 dùng đèn chân không.",
+        "D": "Thế hệ 2 dùng transistor rời.",
+        "B": "Thế hệ 3 dùng mạch tích hợp mật độ thấp hơn."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-015",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Máy sai phân No.2 (1849) có đặc điểm nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Dùng transistor, bộ nhớ 32K word"
+      },
+      {
+        "id": "B",
+        "content": "Dùng vi mạch tích hợp"
+      },
+      {
+        "id": "C",
+        "content": "Dùng đèn chân không, tính được +, −, ×, ÷"
+      },
+      {
+        "id": "D",
+        "content": "Là máy cơ học, kết quả tính toán dựa trên các bảng tra"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Máy sai phân thuộc thế hệ 0: máy chuyển động cơ học, tính toán dựa trên các bảng tra.",
+      "whyCorrect": "Máy sai phân thuộc thế hệ 0: máy chuyển động cơ học, tính toán dựa trên các bảng tra.",
+      "whyWrong": {
+        "C": "Đây là mô tả máy EDVAC.",
+        "A": "Đây là mô tả máy IBM 7094.",
+        "B": "Vi mạch tích hợp xuất hiện từ thế hệ 3."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-016",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Loại máy tính nào phù hợp nhất với yêu cầu \"tính toán khoa học phức tạp và cao cấp\"?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Máy tính cá nhân"
+      },
+      {
+        "id": "B",
+        "content": "Máy tính bảng"
+      },
+      {
+        "id": "C",
+        "content": "Máy tính nhúng"
+      },
+      {
+        "id": "D",
+        "content": "Máy chủ (siêu máy tính)"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Siêu máy tính thuộc nhóm máy chủ, dùng cho tính toán khoa học và kỹ thuật phức tạp với hiệu năng cao nhất.",
+      "whyCorrect": "Siêu máy tính thuộc nhóm máy chủ, dùng cho tính toán khoa học và kỹ thuật phức tạp với hiệu năng cao nhất.",
+      "whyWrong": {
+        "A": "Máy tính cá nhân chạy các ứng dụng phổ thông.",
+        "C": "Máy nhúng tối ưu cho chức năng cụ thể, tốc độ không cần cao.",
+        "B": "Máy tính bảng dành cho người dùng phổ thông."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-017",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Máy tính cá nhân có đặc điểm nào sau đây?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Đa dụng cho các ứng dụng văn phòng, học tập, giải trí"
+      },
+      {
+        "id": "B",
+        "content": "Có tốc độ lên đến 148,6 petaflops"
+      },
+      {
+        "id": "C",
+        "content": "Được tích hợp bên trong thiết bị như máy giặt, xe hơi"
+      },
+      {
+        "id": "D",
+        "content": "Chỉ phục vụ tính toán khoa học"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Máy tính cá nhân nhỏ gọn và đa dụng cho văn phòng, học tập, giải trí.",
+      "whyCorrect": "Máy tính cá nhân nhỏ gọn và đa dụng cho văn phòng, học tập, giải trí.",
+      "whyWrong": {
+        "C": "Đây là đặc điểm của máy tính nhúng.",
+        "B": "Đây là tốc độ của siêu máy tính.",
+        "D": "Đây là mục đích của siêu máy tính."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-018",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Tốc độ xử lý của máy tính nhúng theo slide thường:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lên đến 238 310 MIPS"
+      },
+      {
+        "id": "B",
+        "content": "Lên đến 148,6 petaflops"
+      },
+      {
+        "id": "C",
+        "content": "Dưới 400 MHz"
+      },
+      {
+        "id": "D",
+        "content": "Trên 3 GHz"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Máy tính nhúng không cần tốc độ cao, thường dưới 400 MHz.",
+      "whyCorrect": "Máy tính nhúng không cần tốc độ cao, thường dưới 400 MHz.",
+      "whyWrong": {
+        "D": "3 GHz là tốc độ của máy tính cá nhân.",
+        "A": "238 310 MIPS ở 3 GHz là của máy tính cá nhân.",
+        "B": "Đây là tốc độ của siêu máy tính."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-019",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Datacenter được sử dụng bởi các công ty như Google, eBay thường được xem là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Các cụm máy tính lớn chứa hàng ngàn bộ xử lý"
+      },
+      {
+        "id": "B",
+        "content": "Một bộ nhớ flash dung lượng lớn"
+      },
+      {
+        "id": "C",
+        "content": "Máy tính nhúng cỡ lớn"
+      },
+      {
+        "id": "D",
+        "content": "Một máy tính cá nhân hiệu năng cao"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Datacenter chứa hàng ngàn bộ xử lý, bộ nhớ hàng terabyte, lưu trữ hàng petabyte và được xem như các cụm máy tính lớn.",
+      "whyCorrect": "Datacenter chứa hàng ngàn bộ xử lý, bộ nhớ hàng terabyte, lưu trữ hàng petabyte và được xem như các cụm máy tính lớn.",
+      "whyWrong": {
+        "C": "Máy nhúng tích hợp trong thiết bị và tối ưu cho chức năng cụ thể.",
+        "D": "Máy cá nhân phục vụ một người dùng.",
+        "B": "Datacenter là hệ thống máy tính, không phải một bộ nhớ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-020",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Low-end server theo slide phù hợp với mục đích nào?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Mô phỏng khí hậu toàn cầu"
+      },
+      {
+        "id": "B",
+        "content": "Tính toán khoa học phức tạp với hàng ngàn bộ xử lý"
+      },
+      {
+        "id": "C",
+        "content": "Điều khiển máy giặt, lò vi sóng"
+      },
+      {
+        "id": "D",
+        "content": "Ứng dụng lưu trữ, doanh nghiệp nhỏ, dịch vụ web"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Low-end server dùng cho ứng dụng lưu trữ, doanh nghiệp nhỏ và dịch vụ web, chi phí khoảng 1000 USD.",
+      "whyCorrect": "Low-end server dùng cho ứng dụng lưu trữ, doanh nghiệp nhỏ và dịch vụ web, chi phí khoảng 1000 USD.",
+      "whyWrong": {
+        "B": "Đây là supercomputer.",
+        "C": "Đây là máy tính nhúng.",
+        "A": "Đây là bài toán của supercomputer."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-021",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Lớp phần mềm nào nằm giữa phần cứng và các chương trình ứng dụng?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Bộ nhớ đệm"
+      },
+      {
+        "id": "B",
+        "content": "Trình duyệt web"
+      },
+      {
+        "id": "C",
+        "content": "Phần mềm hệ thống"
+      },
+      {
+        "id": "D",
+        "content": "Mã máy"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Phần mềm hệ thống (hệ điều hành, trình biên dịch) nằm giữa ứng dụng và phần cứng.",
+      "whyCorrect": "Phần mềm hệ thống (hệ điều hành, trình biên dịch) nằm giữa ứng dụng và phần cứng.",
+      "whyWrong": {
+        "B": "Trình duyệt là một ứng dụng.",
+        "D": "Mã máy là dạng biểu diễn chương trình, không phải một lớp phần mềm.",
+        "A": "Bộ nhớ đệm là phần cứng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-022",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Nhiệm vụ nào KHÔNG phải của hệ điều hành theo slide?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Xử lý nhập/xuất"
+      },
+      {
+        "id": "B",
+        "content": "Quản lý bộ nhớ"
+      },
+      {
+        "id": "C",
+        "content": "Lập lịch và chia sẻ tài nguyên cho nhiều chương trình"
+      },
+      {
+        "id": "D",
+        "content": "Chuyển chương trình từ ngôn ngữ cấp cao sang mã máy"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Việc chuyển ngôn ngữ cấp cao sang mã máy là của trình biên dịch, không phải hệ điều hành.",
+      "whyCorrect": "Việc chuyển ngôn ngữ cấp cao sang mã máy là của trình biên dịch, không phải hệ điều hành.",
+      "whyWrong": {
+        "A": "Đây là nhiệm vụ của hệ điều hành.",
+        "B": "Đây là nhiệm vụ của hệ điều hành.",
+        "C": "Đây là nhiệm vụ của hệ điều hành."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-023",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Hệ thống số nào được sử dụng trong các máy tính hiện đại?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Hệ La Mã"
+      },
+      {
+        "id": "B",
+        "content": "Hệ bát phân"
+      },
+      {
+        "id": "C",
+        "content": "Hệ thập phân"
+      },
+      {
+        "id": "D",
+        "content": "Hệ nhị phân (0 và 1)"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Máy tính biểu diễn lệnh và dữ liệu bằng các tín hiệu cao/thấp, tức hệ nhị phân.",
+      "whyCorrect": "Máy tính biểu diễn lệnh và dữ liệu bằng các tín hiệu cao/thấp, tức hệ nhị phân.",
+      "whyWrong": {
+        "C": "Hệ thập phân dành cho con người.",
+        "B": "Hệ bát phân chỉ là cách viết gọn của nhị phân.",
+        "A": "Hệ La Mã không dùng trong máy tính."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-024",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Đặc điểm của ngôn ngữ cấp cao là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Dùng từ gợi nhớ tương ứng một–một với mã máy"
+      },
+      {
+        "id": "B",
+        "content": "Gần ngôn ngữ tự nhiên, viết nhanh và dễ sửa chữa"
+      },
+      {
+        "id": "C",
+        "content": "Gồm các bit 0 và 1"
+      },
+      {
+        "id": "D",
+        "content": "CPU thực thi trực tiếp không cần chuyển đổi"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Ngôn ngữ cấp cao gần ngôn ngữ con người nên viết nhanh và linh động khi sửa chữa.",
+      "whyCorrect": "Ngôn ngữ cấp cao gần ngôn ngữ con người nên viết nhanh và linh động khi sửa chữa.",
+      "whyWrong": {
+        "C": "Đây là mã máy.",
+        "A": "Đây là hợp ngữ.",
+        "D": "CPU chỉ thực thi mã máy, chương trình cấp cao phải được chuyển đổi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-025",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Phần cứng của một máy tính KHÔNG thực hiện chức năng cơ bản nào sau đây?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nhập dữ liệu"
+      },
+      {
+        "id": "B",
+        "content": "Biên dịch chương trình C"
+      },
+      {
+        "id": "C",
+        "content": "Xuất dữ liệu"
+      },
+      {
+        "id": "D",
+        "content": "Lưu trữ và xử lý dữ liệu"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Bốn chức năng cơ bản là nhập, xuất, lưu trữ và xử lý dữ liệu; biên dịch là việc của phần mềm.",
+      "whyCorrect": "Bốn chức năng cơ bản là nhập, xuất, lưu trữ và xử lý dữ liệu; biên dịch là việc của phần mềm.",
+      "whyWrong": {
+        "A": "Đây là chức năng cơ bản.",
+        "C": "Đây là chức năng cơ bản.",
+        "D": "Đây là chức năng cơ bản."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-026",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Năm thành phần căn bản của máy tính gồm:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Input, Output, Memory, Datapath, Control"
+      },
+      {
+        "id": "B",
+        "content": "Compiler, Assembler, Linker, Loader, OS"
+      },
+      {
+        "id": "C",
+        "content": "CPU, RAM, ROM, Disk, Mainboard"
+      },
+      {
+        "id": "D",
+        "content": "Input, Output, Cache, Disk, Network"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Năm thành phần: ngõ nhập, ngõ xuất, bộ nhớ, đường dữ liệu và khối điều khiển.",
+      "whyCorrect": "Năm thành phần: ngõ nhập, ngõ xuất, bộ nhớ, đường dữ liệu và khối điều khiển.",
+      "whyWrong": {
+        "D": "Cache, Disk, Network không phải là các thành phần căn bản theo slide.",
+        "C": "Đây là các linh kiện, không phải năm thành phần căn bản.",
+        "B": "Đây là các phần mềm."
+      },
+      "tip": "Processor = Datapath + Control."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-027",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Bên trong bộ xử lý trung tâm (CPU) gồm những phần chính nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Input và Output"
+      },
+      {
+        "id": "B",
+        "content": "Cache và DRAM"
+      },
+      {
+        "id": "C",
+        "content": "Datapath và Control"
+      },
+      {
+        "id": "D",
+        "content": "ROM và RAM"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "CPU gồm đường dữ liệu (datapath) và khối điều khiển (control).",
+      "whyCorrect": "CPU gồm đường dữ liệu (datapath) và khối điều khiển (control).",
+      "whyWrong": {
+        "B": "DRAM là bộ nhớ chính, nằm ngoài CPU.",
+        "A": "Input/Output là thiết bị ngoại vi.",
+        "D": "ROM và RAM là bộ nhớ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-028",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Khối nào của bộ xử lý thực hiện các phép tính toán học?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Control"
+      },
+      {
+        "id": "B",
+        "content": "Memory"
+      },
+      {
+        "id": "C",
+        "content": "Input"
+      },
+      {
+        "id": "D",
+        "content": "Datapath"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Datapath thực hiện các phép tính và thao tác trên dữ liệu.",
+      "whyCorrect": "Datapath thực hiện các phép tính và thao tác trên dữ liệu.",
+      "whyWrong": {
+        "A": "Control điều khiển các khối khác theo lệnh.",
+        "B": "Memory lưu chương trình và dữ liệu.",
+        "C": "Input đưa dữ liệu vào bộ nhớ."
+      },
+      "tip": "Datapath là \"cơ bắp\", Control là \"bộ não\"."
+    }
+  },
+  {
+    "id": "it006-mid-c1a-029",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Khối Control trong bộ xử lý có vai trò gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thực hiện các phép cộng, trừ và logic trên dữ liệu"
+      },
+      {
+        "id": "B",
+        "content": "Hiển thị dữ liệu lên màn hình thông qua frame buffer"
+      },
+      {
+        "id": "C",
+        "content": "Điều khiển đường dữ liệu, bộ nhớ và thiết bị I/O tùy theo lệnh đang thực thi"
+      },
+      {
+        "id": "D",
+        "content": "Lưu trữ chương trình đang chạy cùng dữ liệu của nó"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Control điều khiển datapath, bộ nhớ và I/O dựa trên lệnh đang được thực thi.",
+      "whyCorrect": "Control điều khiển datapath, bộ nhớ và I/O dựa trên lệnh đang được thực thi.",
+      "whyWrong": {
+        "D": "Đây là vai trò của bộ nhớ.",
+        "A": "Đây là vai trò của datapath.",
+        "B": "Đây là vai trò của thiết bị xuất."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-030",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Phát biểu nào đúng về ngõ nhập và ngõ xuất theo slide?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ngõ nhập đọc dữ liệu từ bộ nhớ; ngõ xuất ghi dữ liệu vào bộ nhớ"
+      },
+      {
+        "id": "B",
+        "content": "Ngõ nhập ghi dữ liệu vào bộ nhớ; ngõ xuất đọc dữ liệu từ bộ nhớ"
+      },
+      {
+        "id": "C",
+        "content": "Cả hai đều chỉ giao tiếp với datapath"
+      },
+      {
+        "id": "D",
+        "content": "Cả hai đều nằm bên trong CPU"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Ngõ nhập ghi dữ liệu vào bộ nhớ, ngõ xuất đọc dữ liệu ra từ bộ nhớ.",
+      "whyCorrect": "Ngõ nhập ghi dữ liệu vào bộ nhớ, ngõ xuất đọc dữ liệu ra từ bộ nhớ.",
+      "whyWrong": {
+        "A": "Đảo ngược chiều dữ liệu.",
+        "C": "Ngõ nhập/xuất làm việc với bộ nhớ.",
+        "D": "Chúng là thiết bị ngoại vi, nằm ngoài CPU."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-031",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Thiết bị nào vừa là thiết bị nhập vừa là thiết bị xuất?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chuột"
+      },
+      {
+        "id": "B",
+        "content": "Màn hình LCD"
+      },
+      {
+        "id": "C",
+        "content": "Card mạng"
+      },
+      {
+        "id": "D",
+        "content": "Bàn phím"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Ổ đĩa và card mạng vừa nhập vừa xuất dữ liệu.",
+      "whyCorrect": "Ổ đĩa và card mạng vừa nhập vừa xuất dữ liệu.",
+      "whyWrong": {
+        "D": "Bàn phím chỉ là thiết bị nhập.",
+        "A": "Chuột chỉ là thiết bị nhập.",
+        "B": "Màn hình LCD trong slide là thiết bị xuất."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-032",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Bộ nhớ (Memory) trong máy tính có vai trò gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lưu trữ chương trình đang chạy và dữ liệu cần bởi chương trình đó"
+      },
+      {
+        "id": "B",
+        "content": "Điều khiển thiết bị I/O và đường dữ liệu theo lệnh"
+      },
+      {
+        "id": "C",
+        "content": "Kết nối máy tính với mạng và các thiết bị bên ngoài"
+      },
+      {
+        "id": "D",
+        "content": "Thực hiện các phép tính số học và logic theo lệnh"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Bộ nhớ lưu chương trình đang chạy và dữ liệu mà chương trình cần.",
+      "whyCorrect": "Bộ nhớ lưu chương trình đang chạy và dữ liệu mà chương trình cần.",
+      "whyWrong": {
+        "D": "Đây là vai trò của datapath.",
+        "B": "Đây là vai trò của control.",
+        "C": "Đây là vai trò của card mạng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-033",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Vì sao bộ nhớ RAM được gọi là \"truy cập ngẫu nhiên\"?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vì dữ liệu được đặt ở vị trí ngẫu nhiên trong bộ nhớ"
+      },
+      {
+        "id": "B",
+        "content": "Vì thời gian truy cập vào bất kỳ vị trí nào cơ bản là như nhau"
+      },
+      {
+        "id": "C",
+        "content": "Vì chỉ truy cập được một cách tuần tự từ đầu bộ nhớ"
+      },
+      {
+        "id": "D",
+        "content": "Vì dữ liệu có thể bị mất ngẫu nhiên khi mất nguồn điện"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Khác với bộ nhớ truy cập tuần tự như băng từ, thời gian truy cập mọi vị trí trong RAM cơ bản là như nhau.",
+      "whyCorrect": "Khác với bộ nhớ truy cập tuần tự như băng từ, thời gian truy cập mọi vị trí trong RAM cơ bản là như nhau.",
+      "whyWrong": {
+        "A": "Dữ liệu nằm tại địa chỉ xác định.",
+        "D": "RAM mất dữ liệu khi mất điện, không phải mất ngẫu nhiên.",
+        "C": "Truy cập tuần tự là đặc điểm của băng từ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-034",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Theo slide, SRAM thường được dùng làm gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Bộ nhớ chính"
+      },
+      {
+        "id": "B",
+        "content": "Lưu BIOS"
+      },
+      {
+        "id": "C",
+        "content": "Bộ nhớ cache"
+      },
+      {
+        "id": "D",
+        "content": "Bộ nhớ thứ cấp"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "SRAM nhanh, giá cao nên dùng làm bộ nhớ cache.",
+      "whyCorrect": "SRAM nhanh, giá cao nên dùng làm bộ nhớ cache.",
+      "whyWrong": {
+        "A": "Bộ nhớ chính dùng DRAM.",
+        "D": "Bộ nhớ thứ cấp là flash, ổ cứng, CD/DVD.",
+        "B": "BIOS lưu trong ROM."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-035",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "So với SRAM, DRAM có đặc điểm nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nhanh hơn và đắt hơn"
+      },
+      {
+        "id": "B",
+        "content": "Chậm hơn và rẻ hơn, dùng làm bộ nhớ chính"
+      },
+      {
+        "id": "C",
+        "content": "Không mất dữ liệu khi tắt nguồn"
+      },
+      {
+        "id": "D",
+        "content": "Chỉ đọc, không ghi được"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "DRAM chậm hơn, giá thấp hơn và mật độ cao hơn SRAM nên dùng làm bộ nhớ chính.",
+      "whyCorrect": "DRAM chậm hơn, giá thấp hơn và mật độ cao hơn SRAM nên dùng làm bộ nhớ chính.",
+      "whyWrong": {
+        "A": "Đây là đặc điểm của SRAM.",
+        "C": "DRAM là bộ nhớ mất dữ liệu khi mất điện.",
+        "D": "Chỉ đọc là đặc điểm của ROM."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-036",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Loại bộ nhớ nào KHÔNG mất dữ liệu khi tắt nguồn?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cache"
+      },
+      {
+        "id": "B",
+        "content": "Flash"
+      },
+      {
+        "id": "C",
+        "content": "SRAM"
+      },
+      {
+        "id": "D",
+        "content": "DRAM"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Flash là bộ nhớ thứ cấp, không mất dữ liệu khi tắt nguồn (nonvolatile).",
+      "whyCorrect": "Flash là bộ nhớ thứ cấp, không mất dữ liệu khi tắt nguồn (nonvolatile).",
+      "whyWrong": {
+        "C": "SRAM mất dữ liệu khi mất điện.",
+        "D": "DRAM mất dữ liệu khi mất điện.",
+        "A": "Cache được xây dựng từ SRAM nên mất dữ liệu khi mất điện."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-037",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "BIOS của máy tính thường được lưu trong loại bộ nhớ nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "ROM"
+      },
+      {
+        "id": "B",
+        "content": "Cache"
+      },
+      {
+        "id": "C",
+        "content": "DRAM"
+      },
+      {
+        "id": "D",
+        "content": "Thanh ghi"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Slide nêu ROM (Read Only Memory) dùng cho BIOS.",
+      "whyCorrect": "Slide nêu ROM (Read Only Memory) dùng cho BIOS.",
+      "whyWrong": {
+        "C": "DRAM mất dữ liệu khi tắt máy.",
+        "B": "Cache chỉ là bộ đệm cho DRAM.",
+        "D": "Thanh ghi nằm trong CPU, dùng khi tính toán."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-038",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Sự khác nhau giữa DIMM và SIMM là gì?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "DIMM có chip DRAM trên cả hai mặt board; SIMM chỉ có trên một mặt"
+      },
+      {
+        "id": "B",
+        "content": "DIMM dùng chip SRAM; SIMM dùng chip DRAM"
+      },
+      {
+        "id": "C",
+        "content": "DIMM là bộ nhớ flash; SIMM là ổ cứng thể rắn"
+      },
+      {
+        "id": "D",
+        "content": "DIMM nằm trong CPU; SIMM nằm ngoài CPU trên bo mạch"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "DIMM (dual inline) có chip DRAM trên hai mặt board, SIMM (single inline) chỉ có trên một mặt.",
+      "whyCorrect": "DIMM (dual inline) có chip DRAM trên hai mặt board, SIMM (single inline) chỉ có trên một mặt.",
+      "whyWrong": {
+        "B": "Cả hai đều dùng chip DRAM.",
+        "C": "Cả hai đều là module RAM.",
+        "D": "Cả hai đều cắm trên mainboard."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-039",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Phát biểu nào đúng về bộ nhớ đệm (cache)?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Là bộ nhớ lớn, chậm, thay thế ổ cứng"
+      },
+      {
+        "id": "B",
+        "content": "Được xây dựng trên công nghệ DRAM nên rẻ hơn RAM"
+      },
+      {
+        "id": "C",
+        "content": "Là bộ nhớ nhỏ, nhanh, làm bộ đệm cho DRAM, xây dựng trên SRAM"
+      },
+      {
+        "id": "D",
+        "content": "Nằm ngoài máy tính và kết nối qua mạng"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Cache là bộ nhớ nhỏ, nhanh, đệm cho DRAM và dựa trên SRAM.",
+      "whyCorrect": "Cache là bộ nhớ nhỏ, nhanh, đệm cho DRAM và dựa trên SRAM.",
+      "whyWrong": {
+        "A": "Cache nhỏ và nhanh.",
+        "B": "Cache dùng SRAM, đắt hơn DRAM.",
+        "D": "Cache nằm bên trong bộ xử lý."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-040",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Board mạch chủ (mainboard) là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vỏ thùng máy chứa và bảo vệ toàn bộ các linh kiện bên trong máy tính"
+      },
+      {
+        "id": "B",
+        "content": "Bảng mạch chứa các mạch tích hợp: bộ xử lý, cache, bộ nhớ và thành phần kết nối thiết bị I/O"
+      },
+      {
+        "id": "C",
+        "content": "Một loại bộ nhớ thứ cấp lưu dữ liệu lâu dài khi không có nguồn điện"
+      },
+      {
+        "id": "D",
+        "content": "Phần mềm điều khiển máy tính, được lưu trong ROM và chạy khi khởi động"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Mainboard là bảng mạch plastic chứa các khối mạch tích hợp gồm bộ xử lý, cache, bộ nhớ và phần kết nối I/O.",
+      "whyCorrect": "Mainboard là bảng mạch plastic chứa các khối mạch tích hợp gồm bộ xử lý, cache, bộ nhớ và phần kết nối I/O.",
+      "whyWrong": {
+        "D": "Mainboard là phần cứng.",
+        "C": "Bộ nhớ thứ cấp là ổ đĩa, flash.",
+        "A": "Thùng máy chỉ là vỏ chứa các linh kiện."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-041",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Máy tính kết nối mạng KHÔNG có thuận lợi nào theo slide?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Truy cập từ xa"
+      },
+      {
+        "id": "B",
+        "content": "Giao tiếp"
+      },
+      {
+        "id": "C",
+        "content": "Chia sẻ tài nguyên"
+      },
+      {
+        "id": "D",
+        "content": "Tăng tần số xung clock của CPU"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Thuận lợi của mạng là giao tiếp, chia sẻ tài nguyên và truy cập từ xa; tần số CPU không đổi khi kết nối mạng.",
+      "whyCorrect": "Thuận lợi của mạng là giao tiếp, chia sẻ tài nguyên và truy cập từ xa; tần số CPU không đổi khi kết nối mạng.",
+      "whyWrong": {
+        "B": "Đây là thuận lợi của mạng.",
+        "C": "Đây là thuận lợi của mạng.",
+        "A": "Đây là thuận lợi của mạng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-042",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Ethernet kết nối các máy tính trong cùng một tầng của tòa nhà là ví dụ của loại mạng nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "WAN"
+      },
+      {
+        "id": "B",
+        "content": "Mạng sợi quang viễn thông"
+      },
+      {
+        "id": "C",
+        "content": "LAN"
+      },
+      {
+        "id": "D",
+        "content": "Mạng xuyên lục địa"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Ethernet là ví dụ của mạng cục bộ (LAN).",
+      "whyCorrect": "Ethernet là ví dụ của mạng cục bộ (LAN).",
+      "whyWrong": {
+        "A": "WAN là mạng diện rộng, xương sống của Internet.",
+        "D": "Mạng xuyên lục địa thuộc WAN.",
+        "B": "Mạng sợi quang của các công ty viễn thông thuộc WAN."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-043",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Chuẩn phổ biến của mạng không dây hiện nay theo slide là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "IEEE 802.3"
+      },
+      {
+        "id": "B",
+        "content": "IEEE 802.11"
+      },
+      {
+        "id": "C",
+        "content": "HDMI"
+      },
+      {
+        "id": "D",
+        "content": "USB 3.0"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Mạng không dây phổ biến theo chuẩn IEEE 802.11 (Wi-Fi).",
+      "whyCorrect": "Mạng không dây phổ biến theo chuẩn IEEE 802.11 (Wi-Fi).",
+      "whyWrong": {
+        "A": "802.3 là chuẩn Ethernet có dây.",
+        "D": "USB là cổng ngoại vi.",
+        "C": "HDMI là cổng hình ảnh, âm thanh."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-044",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Phần tử vật lý cơ bản nào được sử dụng trong công nghệ chế tạo chip hiện nay?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Đèn chân không"
+      },
+      {
+        "id": "B",
+        "content": "Tụ giấy"
+      },
+      {
+        "id": "C",
+        "content": "Transistor (bán dẫn)"
+      },
+      {
+        "id": "D",
+        "content": "Rơ-le cơ khí"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Transistor là công tắc đóng/mở được điều khiển bằng điện, phần tử cơ bản của chip.",
+      "whyCorrect": "Transistor là công tắc đóng/mở được điều khiển bằng điện, phần tử cơ bản của chip.",
+      "whyWrong": {
+        "A": "Đèn chân không dùng ở thế hệ 1.",
+        "D": "Rơ-le cơ khí không dùng trong chip.",
+        "B": "Tụ giấy không phải phần tử chế tạo chip."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-045",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Định luật Moore phát biểu:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Giá máy tính giảm còn một nửa sau mỗi 5 năm"
+      },
+      {
+        "id": "B",
+        "content": "Dung lượng ổ cứng tăng gấp 10 lần sau mỗi năm"
+      },
+      {
+        "id": "C",
+        "content": "Số lượng transistor của mạch tích hợp tăng gấp đôi mỗi 18–24 tháng"
+      },
+      {
+        "id": "D",
+        "content": "Tốc độ CPU tăng gấp đôi sau mỗi năm sản xuất"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Định luật Moore nói về số transistor trên mạch tích hợp: tăng gấp đôi sau khoảng 18–24 tháng.",
+      "whyCorrect": "Định luật Moore nói về số transistor trên mạch tích hợp: tăng gấp đôi sau khoảng 18–24 tháng.",
+      "whyWrong": {
+        "D": "Định luật nói về số transistor, không trực tiếp nói về tốc độ CPU.",
+        "A": "Không phải nội dung định luật Moore.",
+        "B": "Không phải nội dung định luật Moore."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-046",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Mạch có độ tích hợp LSI chứa khoảng bao nhiêu cổng logic theo slide?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trên 1 000 000 cổng"
+      },
+      {
+        "id": "B",
+        "content": "1 đến 20 cổng"
+      },
+      {
+        "id": "C",
+        "content": "20 đến 200 cổng"
+      },
+      {
+        "id": "D",
+        "content": "200 đến 1 000 000 cổng"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "LSI có từ 200 đến 1 000 000 cổng.",
+      "whyCorrect": "LSI có từ 200 đến 1 000 000 cổng.",
+      "whyWrong": {
+        "B": "Đây là SSI.",
+        "C": "Đây là MSI.",
+        "A": "Đây là VLSI."
+      },
+      "related": "| Mức | Số cổng |\n|---|---|\n| SSI | 1 – 20 |\n| MSI | 20 – 200 |\n| LSI | 200 – 1 000 000 |\n| VLSI | trên 1 000 000 |"
+    }
+  },
+  {
+    "id": "it006-mid-c1a-047",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Pixel là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Một loại bộ nhớ đệm"
+      },
+      {
+        "id": "B",
+        "content": "Một lệnh của bộ xử lý"
+      },
+      {
+        "id": "C",
+        "content": "Một đơn vị đo tốc độ màn hình"
+      },
+      {
+        "id": "D",
+        "content": "Phần tử ảnh nhỏ nhất"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Ảnh và màn hình được chia thành ma trận ô; mỗi ô là một pixel, phần tử ảnh nhỏ nhất.",
+      "whyCorrect": "Ảnh và màn hình được chia thành ma trận ô; mỗi ô là một pixel, phần tử ảnh nhỏ nhất.",
+      "whyWrong": {
+        "B": "Lệnh là khái niệm của CPU.",
+        "C": "Tốc độ màn hình đo bằng Hz.",
+        "A": "Bộ nhớ đệm khung hình là frame buffer."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-048",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Frame buffer có chức năng gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Truyền dữ liệu hiển thị qua mạng máy tính"
+      },
+      {
+        "id": "B",
+        "content": "Lưu nội dung bitmap trước khi hiển thị ra màn hình"
+      },
+      {
+        "id": "C",
+        "content": "Tăng tốc độ của CPU khi xử lý dữ liệu đồ họa"
+      },
+      {
+        "id": "D",
+        "content": "Lưu chương trình BIOS để máy tính khởi động"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Frame buffer (raster refresh buffer) lưu nội dung bitmap trước khi thể hiện ra màn hình.",
+      "whyCorrect": "Frame buffer (raster refresh buffer) lưu nội dung bitmap trước khi thể hiện ra màn hình.",
+      "whyWrong": {
+        "C": "Frame buffer không làm tăng tốc CPU.",
+        "D": "BIOS nằm trong ROM.",
+        "A": "Truyền dữ liệu qua mạng là của card mạng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1a-049",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Màn hình Full HD $1920 \\times 1080$ có tổng cộng bao nhiêu pixel?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "6 220 800 pixel"
+      },
+      {
+        "id": "B",
+        "content": "2 073 600 pixel"
+      },
+      {
+        "id": "C",
+        "content": "3000 pixel"
+      },
+      {
+        "id": "D",
+        "content": "1 036 800 pixel"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$1920 \\times 1080 = 2\\,073\\,600$ pixel, tức khoảng 2,07 megapixel.",
+      "whyCorrect": "$1920 \\times 1080 = 2\\,073\\,600$ pixel, tức khoảng 2,07 megapixel.",
+      "whyWrong": {
+        "C": "3000 là phép cộng thay vì phép nhân.",
+        "D": "1 036 800 chỉ bằng một nửa kết quả đúng.",
+        "A": "6 220 800 là đã nhân thêm 3 kênh màu, không phải số pixel."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "1920*1080"
+    }
+  },
+  {
+    "id": "it006-mid-c1a-050",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1a",
+    "content": "Màn hình $640 \\times 480$ dùng 8 bit cho mỗi màu cơ bản RGB. Frame buffer phải có kích thước tối thiểu bao nhiêu bit để lưu một hình?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "921 600"
+      },
+      {
+        "id": "B",
+        "content": "2 457 600"
+      },
+      {
+        "id": "C",
+        "content": "307 200"
+      },
+      {
+        "id": "D",
+        "content": "7 372 800"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Mỗi pixel cần $3 \\times 8 = 24$ bit, nên cần $640 \\times 480 \\times 24 = 7\\,372\\,800$ bit.",
+      "whyCorrect": "Mỗi pixel cần $3 \\times 8 = 24$ bit, nên cần $640 \\times 480 \\times 24 = 7\\,372\\,800$ bit.",
+      "whyWrong": {
+        "C": "307 200 chỉ là số pixel.",
+        "B": "2 457 600 quên nhân 3 màu cơ bản.",
+        "A": "921 600 là số byte, đề hỏi bit."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "640*480*24"
+    }
+  }
+]

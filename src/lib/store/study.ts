@@ -62,6 +62,8 @@ interface StudyState {
   setEssayGrading(key: string, questionId: string): void;
   setEssayResult(key: string, questionId: string, grade: EssayGradeState): void;
   setEssayError(key: string, questionId: string, error: string): void;
+  /** Mở lại câu tự luận đã chấm để sửa bài và chấm lại. */
+  reopenEssay(key: string, questionId: string): void;
   resetSession(key: string): void;
   toggleBookmark(questionId: string): void;
   removeWrong(questionId: string): void;
@@ -152,6 +154,9 @@ export const useStudyStore = create<StudyState>()(
         },
         setEssayError(key, questionId, error) {
           patchAnswer(key, questionId, (prev) => (prev?.kind === "essay" ? { ...prev, status: "error", error, at: Date.now() } : undefined));
+        },
+        reopenEssay(key, questionId) {
+          patchAnswer(key, questionId, (prev) => (prev?.kind === "essay" ? { kind: "essay", text: prev.text, status: "draft", at: Date.now() } : undefined));
         },
         resetSession(key) {
           const { [key]: _removed, ...rest } = get().sessions;

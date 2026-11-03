@@ -1,0 +1,234 @@
+[
+  {
+    "id": "it006-mid-c1b-e01",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy A có xung nhịp 2 GHz, chạy chương trình hết 10 giây. Cần thiết kế máy B chạy chương trình đó trong 6 giây, nhưng số chu kỳ của B gấp 1,2 lần A. Tính tần số xung nhịp của B. Trình bày đầy đủ công thức.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "Số chu kỳ của A = thời gian × tần số = $10 \\times 2 \\times 10^9 = 20 \\times 10^9$.\n\nSố chu kỳ của B = $1{,}2 \\times 20 \\times 10^9 = 24 \\times 10^9$.\n\nTần số của B = $\\dfrac{24 \\times 10^9}{6} = 4 \\times 10^9$ Hz = **4 GHz**.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Tính số chu kỳ của A",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Tính số chu kỳ của B",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Tính tần số của B = 4 GHz",
+          "points": 4
+        }
+      ],
+      "format": "text",
+      "placeholder": "Viết công thức, thay số, nêu kết luận."
+    }
+  },
+  {
+    "id": "it006-mid-c1b-e02",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Trình biên dịch có hai cách dịch cùng một đoạn mã. CPI của các lớp lệnh là A = 1, B = 2, C = 3.\n\n| Dãy lệnh | Lớp A | Lớp B | Lớp C |\n|---|---|---|---|\n| 1 | 2 | 1 | 2 |\n| 2 | 4 | 1 | 1 |\n\nDãy nào có nhiều lệnh hơn? Dãy nào chạy nhanh hơn? Tính CPI trung bình của từng dãy.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "- Dãy 1: 5 lệnh; số chu kỳ = $2 \\times 1 + 1 \\times 2 + 2 \\times 3 = 10$; CPI = $10/5 = 2$.\n- Dãy 2: 6 lệnh; số chu kỳ = $4 \\times 1 + 1 \\times 2 + 1 \\times 3 = 9$; CPI = $9/6 = 1{,}5$.\n\nDãy 2 có nhiều lệnh hơn nhưng ít chu kỳ hơn nên **chạy nhanh hơn** (cùng xung nhịp).",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đếm số lệnh: 5 và 6",
+          "points": 2
+        },
+        {
+          "id": "r2",
+          "criterion": "Tính số chu kỳ: 10 và 9",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "CPI: 2 và 1,5",
+          "points": 3
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết luận dãy 2 nhanh hơn dù nhiều lệnh hơn",
+          "points": 2
+        }
+      ],
+      "format": "text",
+      "placeholder": "Lập bảng hoặc trình bày từng lớp lệnh."
+    }
+  },
+  {
+    "id": "it006-mid-c1b-e03",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Hai máy cùng kiến trúc tập lệnh chạy cùng một chương trình. Máy A có chu kỳ xung nhịp 250 ps, CPI = 2,0. Máy B có chu kỳ xung nhịp 500 ps, CPI = 1,2. Máy nào nhanh hơn và nhanh hơn bao nhiêu lần?",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "Với cùng số lệnh $I$:\n\n- $T_A = I \\times 2{,}0 \\times 250 = 500I$ ps\n- $T_B = I \\times 1{,}2 \\times 500 = 600I$ ps\n\n$\\dfrac{T_B}{T_A} = \\dfrac{600}{500} = 1{,}2$ nên **máy A nhanh hơn 1,2 lần**.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng công thức $T = I \\times CPI \\times T_c$",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Tính đúng $T_A$ và $T_B$",
+          "points": 4
+        },
+        {
+          "id": "r3",
+          "criterion": "Kết luận đúng: A nhanh hơn 1,2 lần",
+          "points": 3
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  },
+  {
+    "id": "it006-mid-c1b-e04",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Ba bộ xử lý cùng tập lệnh: P1 (3 GHz, CPI 1,5), P2 (2,5 GHz, CPI 1,0), P3 (4 GHz, CPI 2,2).\n\na) Bộ xử lý nào có hiệu suất cao nhất tính theo số lệnh mỗi giây?\n\nb) Mỗi bộ xử lý chạy một chương trình hết 10 giây. Tính số chu kỳ và số lệnh của từng bộ xử lý.",
+    "difficulty": "medium",
+    "points": 10.0,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "a) Số lệnh mỗi giây = $f / CPI$:\n- P1: $2 \\times 10^9$\n- P2: $2{,}5 \\times 10^9$ → **cao nhất**\n- P3: $\\approx 1{,}82 \\times 10^9$\n\nb) Số chu kỳ = $f \\times 10$, số lệnh = số chu kỳ / CPI:\n- P1: $30 \\times 10^9$ chu kỳ; $20 \\times 10^9$ lệnh\n- P2: $25 \\times 10^9$ chu kỳ; $25 \\times 10^9$ lệnh\n- P3: $40 \\times 10^9$ chu kỳ; $\\approx 18{,}2 \\times 10^9$ lệnh",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Câu a: công thức và giá trị đúng",
+          "points": 3
+        },
+        {
+          "id": "r2",
+          "criterion": "Câu a: kết luận P2 cao nhất dù xung nhịp không cao nhất",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "Câu b: số chu kỳ đúng",
+          "points": 2.5
+        },
+        {
+          "id": "r4",
+          "criterion": "Câu b: số lệnh đúng",
+          "points": 2.5
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  },
+  {
+    "id": "it006-mid-c1b-e05",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Thuật toán, ngôn ngữ lập trình, trình biên dịch và kiến trúc tập lệnh ảnh hưởng tới những yếu tố nào trong công thức thời gian CPU? Vì sao không nên chỉ dựa vào tần số xung nhịp (GHz) để so sánh hai máy tính?",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "$T = \\text{Số lệnh} \\times CPI \\times T_c$\n\n- **Thuật toán**: số lệnh, có thể cả CPI.\n- **Ngôn ngữ lập trình**: số lệnh, CPI.\n- **Trình biên dịch**: số lệnh, CPI.\n- **Kiến trúc tập lệnh**: số lệnh, CPI, chu kỳ xung nhịp.\n\nThời gian thực thi phụ thuộc đồng thời cả 3 yếu tố. Máy có tần số cao hơn nhưng CPI lớn hơn nhiều vẫn có thể chậm hơn, nên phải so sánh bằng thời gian thực thi.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Viết đúng công thức thời gian CPU",
+          "points": 2
+        },
+        {
+          "id": "r2",
+          "criterion": "Ảnh hưởng của 4 yếu tố đúng",
+          "points": 5
+        },
+        {
+          "id": "r3",
+          "criterion": "Giải thích vì sao GHz không đủ",
+          "points": 3
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  },
+  {
+    "id": "it006-mid-c1b-e06",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Phân biệt thời gian đáp ứng (response time) và thông lượng (throughput). Nếu thay bộ xử lý bằng loại nhanh hơn, và nếu thêm nhiều bộ xử lý cho các tác vụ độc lập, thì mỗi đại lượng thay đổi như thế nào?",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "- **Thời gian đáp ứng**: thời gian hoàn thành một tác vụ.\n- **Thông lượng**: tổng công việc hoàn thành trong một đơn vị thời gian.\n\nBộ xử lý nhanh hơn: thời gian đáp ứng giảm và thông lượng tăng.\n\nThêm bộ xử lý: thông lượng tăng; thời gian thực thi một tác vụ riêng lẻ không giảm (có thể giảm thời gian chờ nếu trước đó phải xếp hàng).",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Định nghĩa đúng hai đại lượng",
+          "points": 4
+        },
+        {
+          "id": "r2",
+          "criterion": "Đúng trường hợp bộ xử lý nhanh hơn",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đúng trường hợp thêm bộ xử lý",
+          "points": 3
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  }
+]

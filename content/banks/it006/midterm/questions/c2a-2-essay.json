@@ -1,0 +1,544 @@
+[
+  {
+    "id": "it006-mid-c2a-e01",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Dịch câu lệnh C sau sang MIPS, các biến `f, g, h, i, j` lần lượt nằm trong `$s0, $s1, $s2, $s3, $s4`:\n\n```c\nf = (g + h) - (i + j);\n```",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nadd $t0, $s1, $s2      # t0 = g + h\nadd $t1, $s3, $s4      # t1 = i + j\nsub $s0, $t0, $t1      # f = t0 - t1\n```\n\nCần hai thanh ghi tạm vì mỗi lệnh `add`/`sub` chỉ có đúng 2 toán hạng nguồn.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Tính đúng `g + h` và `i + j` vào hai thanh ghi tạm",
+          "points": 5,
+          "keyPoints": [
+            "add với đúng thanh ghi",
+            "có thể đảo thứ tự toán hạng của phép cộng"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Dùng `sub` đúng thứ tự và ghi kết quả vào `$s0`",
+          "points": 5,
+          "keyPoints": [
+            "sub $s0, (g+h), (i+j)"
+          ]
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 10,
+            "$s2": 20,
+            "$s3": 3,
+            "$s4": 4
+          },
+          "expectRegs": {
+            "$s0": 23
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e02",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Dịch sang MIPS. `g = $s1`, `h = $s2`, địa chỉ nền của mảng số nguyên (mỗi phần tử 1 word) `A` nằm trong `$s3`:\n\n```c\ng = h + A[8];\n```",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nlw  $t0, 32($s3)       # t0 = A[8], offset = 8 * 4\nadd $s1, $s2, $t0      # g = h + A[8]\n```\n\nĐộ dời của `lw` tính theo byte, nên phần tử thứ 8 có offset là 32.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Dùng `lw` với offset 32 và thanh ghi nền `$s3`",
+          "points": 6,
+          "keyPoints": [
+            "offset = 8 × 4 = 32",
+            "offset 8 là sai"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Cộng và ghi đúng vào `$s1`",
+          "points": 4
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s2": 5,
+            "$s3": 4096
+          },
+          "words": {
+            "4128": 7
+          },
+          "expectRegs": {
+            "$s1": 12
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e03",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Dịch sang MIPS. `h = $s2`, địa chỉ nền của mảng `A` nằm trong `$s3`:\n\n```c\nA[12] = h + A[8];\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nlw  $t0, 32($s3)       # t0 = A[8]\nadd $t0, $s2, $t0      # t0 = h + A[8]\nsw  $t0, 48($s3)       # A[12] = t0\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đọc `A[8]` bằng `lw` với offset 32",
+          "points": 4
+        },
+        {
+          "id": "r2",
+          "criterion": "Cộng với `h`",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "Ghi vào `A[12]` bằng `sw` với offset 48",
+          "points": 4,
+          "keyPoints": [
+            "offset = 12 × 4 = 48",
+            "phải là sw, không phải lw"
+          ]
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s2": 5,
+            "$s3": 4096
+          },
+          "words": {
+            "4128": 7
+          },
+          "expectWords": {
+            "4144": 12
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e04",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Dịch sang MIPS. `f = $s0`, `g = $s1`, địa chỉ nền của mảng `A` và `B` lần lượt nằm trong `$s6`, `$s7`:\n\n```c\nf = g - A[B[13] - 2];\n```",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nlw   $t0, 52($s7)      # t0 = B[13], offset = 13 * 4\naddi $t0, $t0, -2      # t0 = B[13] - 2\nsll  $t0, $t0, 2       # đổi chỉ số sang độ dời byte\nadd  $t0, $t0, $s6     # t0 = địa chỉ của A[B[13] - 2]\nlw   $t1, 0($t0)       # t1 = A[B[13] - 2]\nsub  $s0, $s1, $t1     # f = g - t1\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đọc `B[13]` với offset 52",
+          "points": 2
+        },
+        {
+          "id": "r2",
+          "criterion": "Trừ 2 để được chỉ số",
+          "points": 2
+        },
+        {
+          "id": "r3",
+          "criterion": "Nhân chỉ số với 4 trước khi cộng với nền `$s6`",
+          "points": 3,
+          "keyPoints": [
+            "sll 2 hoặc cách nhân 4 tương đương"
+          ]
+        },
+        {
+          "id": "r4",
+          "criterion": "Đọc phần tử bằng `lw` và tính `g - ...` đúng thứ tự",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 20,
+            "$s6": 4096,
+            "$s7": 8192
+          },
+          "words": {
+            "8244": 5,
+            "4108": 7
+          },
+          "expectRegs": {
+            "$s0": 13
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e05",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Dịch sang MIPS. `f = $s0`, `g = $s1`, địa chỉ nền của `A` và `B` lần lượt nằm trong `$s6`, `$s7`:\n\n```c\nf = A[B[g] + 1];\n```",
+    "difficulty": "hard",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nsll  $t0, $s1, 2       # t0 = g * 4\nadd  $t0, $t0, $s7     # t0 = địa chỉ B[g]\nlw   $t0, 0($t0)       # t0 = B[g]\naddi $t0, $t0, 1       # t0 = B[g] + 1\nsll  $t0, $t0, 2       # đổi sang độ dời byte\nadd  $t0, $t0, $s6     # t0 = địa chỉ A[B[g] + 1]\nlw   $s0, 0($t0)       # f = A[B[g] + 1]\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Tính địa chỉ `B[g]` (nhân 4 rồi cộng nền `$s7`) và đọc giá trị",
+          "points": 4,
+          "keyPoints": [
+            "chỉ số là biến nên không dùng offset hằng"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Cộng 1 **trước** khi nhân 4",
+          "points": 3,
+          "keyPoints": [
+            "(B[g] + 1) × 4"
+          ]
+        },
+        {
+          "id": "r3",
+          "criterion": "Cộng nền `$s6` và đọc vào `$s0`",
+          "points": 3
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s1": 2,
+            "$s6": 4096,
+            "$s7": 8192
+          },
+          "words": {
+            "8200": 3,
+            "4112": 99
+          },
+          "expectRegs": {
+            "$s0": 99
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e06",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Dịch sang MIPS. `i = $s0`, `k = $s1`, địa chỉ nền của `A`, `B` lần lượt nằm trong `$s6`, `$s7`:\n\n```c\nA[i] = B[i] + k;\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nsll $t0, $s0, 2        # t0 = i * 4\nadd $t1, $t0, $s7      # t1 = địa chỉ B[i]\nlw  $t2, 0($t1)        # t2 = B[i]\nadd $t2, $t2, $s1      # t2 = B[i] + k\nadd $t1, $t0, $s6      # t1 = địa chỉ A[i]\nsw  $t2, 0($t1)        # A[i] = t2\n```",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Nhân `i` với 4",
+          "points": 2
+        },
+        {
+          "id": "r2",
+          "criterion": "Tính địa chỉ và đọc `B[i]` từ nền `$s7`",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Cộng `k`",
+          "points": 1
+        },
+        {
+          "id": "r4",
+          "criterion": "Tính địa chỉ `A[i]` từ nền `$s6` và ghi bằng `sw`",
+          "points": 4
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s0": 3,
+            "$s1": 5,
+            "$s6": 4096,
+            "$s7": 8192
+          },
+          "words": {
+            "8204": 10
+          },
+          "expectWords": {
+            "4108": 15
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e07",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Biểu diễn số `-2023` dưới dạng bù hai 16 bit và 32 bit. Viết kết quả ở cả dạng nhị phân và hex, trình bày các bước.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "- $2023_{10}$ = `0000 0111 1110 0111` = `0x07E7`\n- Đảo bit: `1111 1000 0001 1000`\n- Cộng 1: `1111 1000 0001 1001` = `0xF819` → đây là kết quả **16 bit**.\n- Mở rộng có dấu lên 32 bit (lặp bit dấu 1): `1111 1111 1111 1111 1111 1000 0001 1001` = `0xFFFFF819`.\n\nKiểm tra: `0x10000 - 0x07E7 = 0xF819`.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Đổi đúng 2023 sang nhị phân",
+          "points": 2,
+          "keyPoints": [
+            "0x07E7"
+          ]
+        },
+        {
+          "id": "r2",
+          "criterion": "Đảo bit và cộng 1 đúng",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Kết quả 16 bit là `0xF819`",
+          "points": 2
+        },
+        {
+          "id": "r4",
+          "criterion": "Kết quả 32 bit là `0xFFFFF819` nhờ mở rộng dấu",
+          "points": 3
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày từng bước: đổi sang nhị phân → đảo bit → cộng 1 → đổi sang hex."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e08",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "a) Cho biết giá trị thập phân của `0xFFFFFFF6` khi hiểu là số có dấu bù hai và khi hiểu là số không dấu.\n\nb) Mở rộng có dấu các số 16 bit `0x8000` và `0x7FFF` lên 32 bit; mỗi số có giá trị thập phân bao nhiêu?\n\nc) Khoảng giá trị của số có dấu bù hai $n$ bit là gì?",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "a) Có dấu: bit dấu = 1, đảo bit và cộng 1 được `0x0000000A` nên giá trị là **-10**. Không dấu: $2^{32} - 10$ = **4294967286**.\n\nb) `0x8000` → `0xFFFF8000` = **-32768**; `0x7FFF` → `0x00007FFF` = **32767**.\n\nc) Từ $-2^{n-1}$ đến $2^{n-1} - 1$.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Câu a: hai giá trị -10 và 4294967286",
+          "points": 4
+        },
+        {
+          "id": "r2",
+          "criterion": "Câu b: kết quả mở rộng và giá trị thập phân của cả hai số",
+          "points": 4
+        },
+        {
+          "id": "r3",
+          "criterion": "Câu c: khoảng giá trị đúng",
+          "points": 2
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e09",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Word `0x12345678` được lưu tại địa chỉ 100. Hãy vẽ nội dung các byte tại địa chỉ 100, 101, 102, 103 theo Big Endian và Little Endian. Nêu sự khác biệt giữa hai cách lưu.",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "| Địa chỉ | Big Endian | Little Endian |\n|---|---|---|\n| 100 | `12` | `78` |\n| 101 | `34` | `56` |\n| 102 | `56` | `34` |\n| 103 | `78` | `12` |\n\nBig Endian lưu byte có trọng số cao nhất (MSB) tại địa chỉ thấp nhất; Little Endian lưu byte có trọng số thấp nhất (LSB) tại địa chỉ thấp nhất.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Bảng Big Endian đúng",
+          "points": 4
+        },
+        {
+          "id": "r2",
+          "criterion": "Bảng Little Endian đúng",
+          "points": 4
+        },
+        {
+          "id": "r3",
+          "criterion": "Nêu đúng khác biệt MSB/LSB ở địa chỉ thấp nhất",
+          "points": 2
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e10",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Giải thích ngắn gọn:\n\na) Vì sao thanh ghi nhanh hơn bộ nhớ và trình biên dịch nên ưu tiên dùng thanh ghi?\n\nb) Vì sao muốn truy cập `A[8]` (mảng word) thì độ dời phải là 32?\n\nc) Thanh ghi `$zero` có công dụng gì?",
+    "difficulty": "easy",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "a) MIPS có 32 thanh ghi nằm ngay trong bộ xử lý, số lượng ít nên truy xuất nhanh, còn bộ nhớ lớn hơn nhiều nên chậm hơn và cần lệnh `lw`/`sw`. Dùng thanh ghi giúp chương trình chạy nhanh và tốn ít lệnh hơn; biến ít dùng mới đưa ra bộ nhớ.\n\nb) MIPS định địa chỉ theo byte, mỗi word chiếm 4 byte nên phần tử thứ 8 cách nền $8 \\times 4 = 32$ byte.\n\nc) `$zero` luôn bằng 0, dùng cho các thao tác hay gặp như gán `add $t0, $s1, $zero` hoặc so sánh với 0.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Câu a: thanh ghi ít, nằm trong CPU nên nhanh; bộ nhớ lớn, chậm và cần lw/sw",
+          "points": 4
+        },
+        {
+          "id": "r2",
+          "criterion": "Câu b: định địa chỉ theo byte, 1 word = 4 byte",
+          "points": 4
+        },
+        {
+          "id": "r3",
+          "criterion": "Câu c: luôn bằng 0 và ví dụ công dụng",
+          "points": 2
+        }
+      ],
+      "format": "text",
+      "placeholder": "Trình bày bài làm..."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-e11",
+    "type": "essay",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Một bạn dịch `A[3] = h + A[2];` (`h = $s2`, nền `A = $s3`) thành đoạn sau. Chỉ ra **tất cả** lỗi sai và viết lại đoạn đúng.\n\n```mips\nlw  $t0, 2($s3)\nadd $t0, $s2, $t0\nlw  $t0, 3($s3)\n```",
+    "difficulty": "medium",
+    "points": 10,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "essay": {
+      "modelAnswer": "```mips\nlw  $t0, 8($s3)        # A[2]: offset = 2 * 4\nadd $t0, $s2, $t0\nsw  $t0, 12($s3)       # A[3]: offset = 3 * 4\n```\n\nCác lỗi:\n1. Offset `2` phải là `8` vì địa chỉ tính theo byte.\n2. Offset `3` phải là `12`.\n3. Lệnh cuối phải là `sw` (ghi vào bộ nhớ), `lw` sẽ đọc đè lên kết quả và không thay đổi `A[3]`.",
+      "rubric": [
+        {
+          "id": "r1",
+          "criterion": "Chỉ ra offset phải nhân 4 (8 và 12)",
+          "points": 5
+        },
+        {
+          "id": "r2",
+          "criterion": "Chỉ ra lệnh cuối phải là `sw`",
+          "points": 3
+        },
+        {
+          "id": "r3",
+          "criterion": "Đoạn viết lại đúng",
+          "points": 2
+        }
+      ],
+      "format": "code",
+      "placeholder": "Viết đoạn lệnh MIPS và giải thích (nếu cần)...",
+      "verify": [
+        {
+          "regs": {
+            "$s2": 5,
+            "$s3": 4096
+          },
+          "words": {
+            "4104": 7
+          },
+          "expectWords": {
+            "4108": 12
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,1969 @@
+[
+  {
+    "id": "it006-mid-c2a-001",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cho giá trị ban đầu trong thanh ghi `$s0` là `0x20222023`. Giá trị của `$s1` sau khi chạy đoạn lệnh sau là (giả sử bộ nhớ little-endian như khi chạy trên MARS):\n\n```mips\naddi $t0, $0, 0x10010008\nsw   $s0, 0($t0)\nlb   $s1, 0($t0)\n```",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x00000023`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00002023`"
+      },
+      {
+        "id": "C",
+        "content": "`0x00222023`"
+      },
+      {
+        "id": "D",
+        "content": "`0x20222023`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`lb` chỉ nạp 1 byte tại địa chỉ đó. Với little-endian, byte ở địa chỉ thấp nhất là byte thấp `0x23`; bit dấu của nó là 0 nên mở rộng thành `0x00000023`.",
+      "whyCorrect": "`lb` chỉ nạp 1 byte tại địa chỉ đó. Với little-endian, byte ở địa chỉ thấp nhất là byte thấp `0x23`; bit dấu của nó là 0 nên mở rộng thành `0x00000023`.",
+      "whyWrong": {
+        "B": "`lb` chỉ nạp 1 byte, không phải 2 byte.",
+        "C": "`lb` chỉ nạp 1 byte.",
+        "D": "Đây là kết quả của `lw`, nạp cả word."
+      },
+      "related": "Nếu là big-endian, byte tại địa chỉ thấp nhất là byte cao `0x20`. Trên máy thật hoặc MARS chạy trên x86, MIPS dùng little-endian; đề gốc không ghi rõ nhưng đáp án tương ứng little-endian."
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s1",
+      "regs": {
+        "$s0": 539107363
+      },
+      "littleEndian": true
+    }
+  },
+  {
+    "id": "it006-mid-c2a-002",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cho đoạn chương trình Assembly sau. Giá trị của `$t1` sẽ được lưu tại địa chỉ nào trong vùng nhớ?\n\n```mips\naddi $t0, $0, 0x10010004\naddi $t1, $0, 0x10010008\nsw   $t1, 8($t0)\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x10010008`"
+      },
+      {
+        "id": "B",
+        "content": "`0x10010024`"
+      },
+      {
+        "id": "C",
+        "content": "`0x10010012`"
+      },
+      {
+        "id": "D",
+        "content": "`0x1001000C`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Địa chỉ = `$t0` + 8 = `0x10010004` + 8 = `0x1001000C` (hệ 16: 4 + 8 = C).",
+      "whyCorrect": "Địa chỉ = `$t0` + 8 = `0x10010004` + 8 = `0x1001000C` (hệ 16: 4 + 8 = C).",
+      "whyWrong": {
+        "A": "Đây là giá trị của `$t1`, không phải địa chỉ lưu.",
+        "B": "Sai khi cộng hệ 16.",
+        "C": "Cộng theo hệ 10 (4 + 8 = 12) rồi ghi như hệ 16 là sai."
+      },
+      "tip": "Địa chỉ = thanh ghi nền + offset, tính trong hệ 16."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-003",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Một ô nhớ lưu trữ 1 word (32 bit), đánh địa chỉ theo word. Sử dụng 32 bit địa chỉ, có thể truy cập bộ nhớ có dung lượng lớn nhất là bao nhiêu byte?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$32 \\times 32$"
+      },
+      {
+        "id": "B",
+        "content": "$2^{32}$"
+      },
+      {
+        "id": "C",
+        "content": "$2^{32} \\times 4$"
+      },
+      {
+        "id": "D",
+        "content": "$2^{32} \\times 32$"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Có $2^{32}$ địa chỉ, mỗi địa chỉ ứng với 1 word = 4 byte nên dung lượng là $2^{32} \\times 4$ byte.",
+      "whyCorrect": "Có $2^{32}$ địa chỉ, mỗi địa chỉ ứng với 1 word = 4 byte nên dung lượng là $2^{32} \\times 4$ byte.",
+      "whyWrong": {
+        "A": "Số địa chỉ là $2^{32}$, không phải $32 \\times 32$.",
+        "B": "Đây là dung lượng nếu đánh địa chỉ theo byte.",
+        "D": "$2^{32} \\times 32$ là số bit, không phải byte."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-004",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Mảng A có địa chỉ cơ sở là 0, định địa chỉ theo byte; mỗi ô nhớ chứa giá trị bằng địa chỉ của nó. Bộ nhớ Big-endian. Giá trị của `$s0` sau khi thực hiện các lệnh sau là:\n\n```mips\naddi $s0, $zero, 0\nlw   $t0, 4($s0)\nadd  $s0, $s0, $t0\n```",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`00000100 00000101 00000110 00000111`"
+      },
+      {
+        "id": "B",
+        "content": "`00000111 00000110 00000101 00000100`"
+      },
+      {
+        "id": "C",
+        "content": "`00000100`"
+      },
+      {
+        "id": "D",
+        "content": "`00000111`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`lw` nạp 4 byte tại địa chỉ 4, 5, 6, 7. Với big-endian, byte ở địa chỉ thấp nhất là byte cao nhất nên `$t0` = 04 05 06 07 (hệ 16); `$s0` = 0 + `$t0`.",
+      "whyCorrect": "`lw` nạp 4 byte tại địa chỉ 4, 5, 6, 7. Với big-endian, byte ở địa chỉ thấp nhất là byte cao nhất nên `$t0` = 04 05 06 07 (hệ 16); `$s0` = 0 + `$t0`.",
+      "whyWrong": {
+        "B": "Đây là kết quả với little-endian.",
+        "C": "`lw` nạp cả 4 byte, không chỉ 1 byte.",
+        "D": "`lw` nạp cả 4 byte, không chỉ 1 byte."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-005",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "A là mảng 100 phần tử (mỗi phần tử 1 word), g = `$s1`, h = `$s2`, địa chỉ nền của A trong `$s3`. Lệnh `lw` đúng để biên dịch `g = h + A[8];` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`lw $t0, 8($s3)`"
+      },
+      {
+        "id": "B",
+        "content": "`lw $t0, 32($s3)`"
+      },
+      {
+        "id": "C",
+        "content": "`lw $s3, 32($t0)`"
+      },
+      {
+        "id": "D",
+        "content": "`sw $t0, 32($s3)`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Mỗi word 4 byte nên offset của A[8] là 8 × 4 = 32.",
+      "whyCorrect": "Mỗi word 4 byte nên offset của A[8] là 8 × 4 = 32.",
+      "whyWrong": {
+        "A": "Quên nhân 4; đây chính là lỗi slide cố ý nêu ra.",
+        "C": "Thanh ghi nền phải nằm trong ngoặc.",
+        "D": "`sw` ghi ra bộ nhớ; ở đây cần nạp vào thanh ghi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-006",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "`$t1` chứa địa chỉ nền của mảng số nguyên A, `$s2` là h. Đoạn lệnh nào thực hiện đúng `A[300] = h + A[300]`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`lw $t0,300($t1)`; `add $t0,$s2,$t0`; `sw $t0,300($t1)`"
+      },
+      {
+        "id": "B",
+        "content": "`lw $t0,1200($t1)`; `add $t0,$s2,$t0`; `sw $t0,1200($t1)`"
+      },
+      {
+        "id": "C",
+        "content": "`sw $t0,1200($t1)`; `add $t0,$s2,$t0`; `lw $t0,1200($t1)`"
+      },
+      {
+        "id": "D",
+        "content": "`lw $t0,1200($t1)`; `add $t0,$s2,$t0`; `lw $t0,1200($t1)`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Offset = 300 × 4 = 1200. Nạp A[300], cộng h, rồi lưu trở lại.",
+      "whyCorrect": "Offset = 300 × 4 = 1200. Nạp A[300], cộng h, rồi lưu trở lại.",
+      "whyWrong": {
+        "A": "Quên nhân 4 cho offset.",
+        "C": "Đảo thứ tự: phải nạp trước, lưu sau.",
+        "D": "Lệnh cuối phải là `sw` để lưu kết quả vào bộ nhớ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-007",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "f, g ở `$s0`, `$s1`; địa chỉ nền A, B ở `$s6`, `$s7`. Trong đoạn biên dịch `f = g - A[B[4]]`, lệnh đầu tiên phải là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`sll $t0, $s7, 2`"
+      },
+      {
+        "id": "B",
+        "content": "`lw $t0, 16($s7)`"
+      },
+      {
+        "id": "C",
+        "content": "`lw $t0, 4($s7)`"
+      },
+      {
+        "id": "D",
+        "content": "`lw $t0, 16($s6)`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Phải lấy B[4] trước: offset = 4 × 4 = 16, nền của B là `$s7`.",
+      "whyCorrect": "Phải lấy B[4] trước: offset = 4 × 4 = 16, nền của B là `$s7`.",
+      "whyWrong": {
+        "C": "Quên nhân 4.",
+        "D": "`$s6` là nền của A; phải truy cập mảng trong cùng (B) trước.",
+        "A": "Không dịch địa chỉ nền; cần nạp B[4] trước."
+      },
+      "tip": "Mảng lồng: truy cập mảng **trong cùng** trước."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-008",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Vì sao lệnh `lw $t0, $t1($s6)` không hợp lệ khi muốn lấy `A[i]`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vì `$t0` không nhận được dữ liệu từ bộ nhớ"
+      },
+      {
+        "id": "B",
+        "content": "Vì `$s6` không được làm thanh ghi nền"
+      },
+      {
+        "id": "C",
+        "content": "Vì offset của `lw` phải là hằng số, không được là thanh ghi"
+      },
+      {
+        "id": "D",
+        "content": "Vì `lw` không dùng cho mảng"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Trường offset của `lw` là số tức thời 16 bit. Phải tính địa chỉ vào thanh ghi rồi dùng `lw $s0, 0($t2)`.",
+      "whyCorrect": "Trường offset của `lw` là số tức thời 16 bit. Phải tính địa chỉ vào thanh ghi rồi dùng `lw $s0, 0($t2)`.",
+      "whyWrong": {
+        "B": "Bất kỳ thanh ghi nào cũng làm thanh ghi nền được.",
+        "D": "`lw` chính là lệnh dùng để đọc phần tử mảng.",
+        "A": "`$t0` nhận được dữ liệu bình thường."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-009",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "`sll $t1, $s3, 2` thường được dùng khi truy cập mảng để làm gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Sổ tay"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nhân chỉ số với 4"
+      },
+      {
+        "id": "B",
+        "content": "Lấy phần tử thứ 2"
+      },
+      {
+        "id": "C",
+        "content": "Chia chỉ số cho 4"
+      },
+      {
+        "id": "D",
+        "content": "Cộng 2 vào chỉ số"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Dịch trái 2 bit tương đương nhân 4, đúng bằng kích thước một word.",
+      "whyCorrect": "Dịch trái 2 bit tương đương nhân 4, đúng bằng kích thước một word.",
+      "whyWrong": {
+        "C": "Chia 4 tương ứng với `srl 2`.",
+        "D": "Cộng hằng số dùng `addi`.",
+        "B": "Lệnh này không truy cập bộ nhớ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-010",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Lệnh (Instruction) là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Một loại ngôn ngữ lập trình cấp cao dùng để viết phần mềm"
+      },
+      {
+        "id": "B",
+        "content": "Một chỉ dẫn để máy tính thực hiện một công việc nào đó"
+      },
+      {
+        "id": "C",
+        "content": "Một ô nhớ trong RAM dùng để lưu dữ liệu của chương trình"
+      },
+      {
+        "id": "D",
+        "content": "Một thanh ghi của CPU dùng để lưu kết quả phép tính"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Lệnh là một chỉ dẫn để máy tính thực hiện công việc nào đó, ví dụ `add` chỉ dẫn phép cộng.",
+      "whyCorrect": "Lệnh là một chỉ dẫn để máy tính thực hiện công việc nào đó, ví dụ `add` chỉ dẫn phép cộng.",
+      "whyWrong": {
+        "C": "Ô nhớ là nơi lưu dữ liệu.",
+        "D": "Thanh ghi là bộ nhớ trong CPU.",
+        "A": "Lệnh là thành phần của ngôn ngữ máy, không phải ngôn ngữ lập trình."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-011",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Kiến trúc tập lệnh được định nghĩa trong slide là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tập lệnh + Hệ điều hành"
+      },
+      {
+        "id": "B",
+        "content": "Phần cứng + Phần mềm"
+      },
+      {
+        "id": "C",
+        "content": "Thanh ghi + Bộ nhớ"
+      },
+      {
+        "id": "D",
+        "content": "Tập lệnh + Biểu diễn lệnh"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Kiến trúc tập lệnh = Tập lệnh + Biểu diễn lệnh.",
+      "whyCorrect": "Kiến trúc tập lệnh = Tập lệnh + Biểu diễn lệnh.",
+      "whyWrong": {
+        "A": "Hệ điều hành là phần mềm hệ thống.",
+        "B": "Đây là định nghĩa quá rộng.",
+        "C": "Đây chỉ là các toán hạng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-012",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Phát biểu nào đúng về tập lệnh?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tập lệnh chỉ gồm các lệnh số học; các thao tác khác do phần mềm đảm nhận"
+      },
+      {
+        "id": "B",
+        "content": "Tập lệnh do hệ điều hành tạo ra và có thể thay đổi sau mỗi lần cài đặt"
+      },
+      {
+        "id": "C",
+        "content": "Tập lệnh quy định máy tính có thể làm những gì; máy khác nhau có thể có tập lệnh khác nhau"
+      },
+      {
+        "id": "D",
+        "content": "Mọi máy tính đều có tập lệnh giống nhau để phần mềm chạy được ở mọi nơi"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Tập lệnh quy định khả năng của máy tính, và các kiến trúc khác nhau có tập lệnh khác nhau.",
+      "whyCorrect": "Tập lệnh quy định khả năng của máy tính, và các kiến trúc khác nhau có tập lệnh khác nhau.",
+      "whyWrong": {
+        "D": "MIPS, ARM, x86 có tập lệnh khác nhau.",
+        "A": "Tập lệnh gồm cả logic, trao đổi dữ liệu và nhảy.",
+        "B": "Tập lệnh do kiến trúc phần cứng quy định."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-013",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Hai bộ lệnh thông dụng nhất ngày nay theo slide là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "PowerPC và MIPS"
+      },
+      {
+        "id": "B",
+        "content": "RISC-V và MIPS"
+      },
+      {
+        "id": "C",
+        "content": "ARM và Intel x86"
+      },
+      {
+        "id": "D",
+        "content": "MIPS và SPARC"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Slide nêu hai bộ lệnh thông dụng nhất là ARM (rất giống MIPS) và Intel x86.",
+      "whyCorrect": "Slide nêu hai bộ lệnh thông dụng nhất là ARM (rất giống MIPS) và Intel x86.",
+      "whyWrong": {
+        "D": "Không phải hai bộ lệnh được nêu trong slide.",
+        "B": "Không phải hai bộ lệnh được nêu trong slide.",
+        "A": "Không phải hai bộ lệnh được nêu trong slide."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-014",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Trong MIPS, số toán hạng tối đa của một lệnh thuộc những loại nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thanh ghi, bộ nhớ, hằng số"
+      },
+      {
+        "id": "B",
+        "content": "Bộ nhớ, cache, biến"
+      },
+      {
+        "id": "C",
+        "content": "Biến, mảng, con trỏ"
+      },
+      {
+        "id": "D",
+        "content": "Thanh ghi, ổ đĩa, hằng số"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "MIPS có 3 loại toán hạng: thanh ghi, bộ nhớ và hằng số (số tức thời).",
+      "whyCorrect": "MIPS có 3 loại toán hạng: thanh ghi, bộ nhớ và hằng số (số tức thời).",
+      "whyWrong": {
+        "D": "Ổ đĩa không phải toán hạng của lệnh.",
+        "B": "Cache và biến không phải loại toán hạng của lệnh MIPS.",
+        "C": "Đây là khái niệm của ngôn ngữ cấp cao."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-015",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "MIPS-32 có bao nhiêu thanh ghi tổng quát, mỗi thanh ghi bao nhiêu bit?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "16 thanh ghi, 32 bit"
+      },
+      {
+        "id": "B",
+        "content": "32 thanh ghi, 32 bit"
+      },
+      {
+        "id": "C",
+        "content": "64 thanh ghi, 32 bit"
+      },
+      {
+        "id": "D",
+        "content": "32 thanh ghi, 64 bit"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "MIPS-32 có 32 thanh ghi, mỗi thanh ghi 32 bit.",
+      "whyCorrect": "MIPS-32 có 32 thanh ghi, mỗi thanh ghi 32 bit.",
+      "whyWrong": {
+        "A": "Số thanh ghi là 32.",
+        "D": "64 bit là của MIPS-64.",
+        "C": "Số thanh ghi là 32."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-016",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Một word trong MIPS-32 bằng:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "8 bit = 1 byte"
+      },
+      {
+        "id": "B",
+        "content": "16 bit = 2 byte"
+      },
+      {
+        "id": "C",
+        "content": "64 bit = 8 byte"
+      },
+      {
+        "id": "D",
+        "content": "32 bit = 4 byte"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Nhóm 32 bit được gọi là một word, tức 4 byte.",
+      "whyCorrect": "Nhóm 32 bit được gọi là một word, tức 4 byte.",
+      "whyWrong": {
+        "A": "Đây là 1 byte.",
+        "B": "Đây là halfword.",
+        "C": "Word của MIPS-32 là 32 bit."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-017",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Vì sao phép tính số học của MIPS cần đến lệnh `lw` và `sw`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vì bộ nhớ nhanh hơn thanh ghi nên cần đọc dữ liệu trước khi tính"
+      },
+      {
+        "id": "B",
+        "content": "Vì `add` có thể cộng trực tiếp hai ô nhớ nhưng tốn nhiều chu kỳ hơn"
+      },
+      {
+        "id": "C",
+        "content": "Vì phép tính số học chỉ xảy ra trên thanh ghi, trong khi dữ liệu lớn nằm trong bộ nhớ"
+      },
+      {
+        "id": "D",
+        "content": "Vì thanh ghi không lưu được số nguyên có dấu của chương trình"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Số học chỉ thực hiện trên thanh ghi nên phải có lệnh chuyển dữ liệu giữa bộ nhớ và thanh ghi.",
+      "whyCorrect": "Số học chỉ thực hiện trên thanh ghi nên phải có lệnh chuyển dữ liệu giữa bộ nhớ và thanh ghi.",
+      "whyWrong": {
+        "D": "Thanh ghi lưu được số nguyên 32 bit.",
+        "A": "Thanh ghi nhanh hơn bộ nhớ.",
+        "B": "`add` chỉ làm việc với thanh ghi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-018",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Thanh ghi `$zero` có đặc điểm gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lưu tham số đầu tiên"
+      },
+      {
+        "id": "B",
+        "content": "Luôn có giá trị 0"
+      },
+      {
+        "id": "C",
+        "content": "Lưu địa chỉ trả về"
+      },
+      {
+        "id": "D",
+        "content": "Trỏ đến đỉnh stack"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`$zero` (thanh ghi số 0) luôn có giá trị 0.",
+      "whyCorrect": "`$zero` (thanh ghi số 0) luôn có giá trị 0.",
+      "whyWrong": {
+        "C": "Đây là `$ra`.",
+        "A": "Đây là `$a0`.",
+        "D": "Đây là `$sp`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-019",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Thanh ghi `$t0` và `$s0` lần lượt có chỉ số là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "16 và 8"
+      },
+      {
+        "id": "B",
+        "content": "8 và 16"
+      },
+      {
+        "id": "C",
+        "content": "0 và 8"
+      },
+      {
+        "id": "D",
+        "content": "8 và 24"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`$t0`–`$t7` là 8–15, `$s0`–`$s7` là 16–23.",
+      "whyCorrect": "`$t0`–`$t7` là 8–15, `$s0`–`$s7` là 16–23.",
+      "whyWrong": {
+        "C": "0 là `$zero`.",
+        "A": "Đảo hai giá trị.",
+        "D": "24 là `$t8`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-020",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Thanh ghi `$t8` và `$t9` có chỉ số:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "24 và 25"
+      },
+      {
+        "id": "B",
+        "content": "30 và 31"
+      },
+      {
+        "id": "C",
+        "content": "16 và 17"
+      },
+      {
+        "id": "D",
+        "content": "22 và 23"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`$t8`, `$t9` là 24, 25.",
+      "whyCorrect": "`$t8`, `$t9` là 24, 25.",
+      "whyWrong": {
+        "C": "16, 17 là `$s0`, `$s1`.",
+        "D": "22, 23 là `$s6`, `$s7`.",
+        "B": "30, 31 là `$fp`, `$ra`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-021",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Thanh ghi nào có chỉ số 29?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`$fp`"
+      },
+      {
+        "id": "B",
+        "content": "`$ra`"
+      },
+      {
+        "id": "C",
+        "content": "`$sp`"
+      },
+      {
+        "id": "D",
+        "content": "`$gp`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`$gp` = 28, `$sp` = 29, `$fp` = 30, `$ra` = 31.",
+      "whyCorrect": "`$gp` = 28, `$sp` = 29, `$fp` = 30, `$ra` = 31.",
+      "whyWrong": {
+        "D": "`$gp` là 28.",
+        "A": "`$fp` là 30.",
+        "B": "`$ra` là 31."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-022",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "MIPS định địa chỉ bộ nhớ theo:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Khối 16 byte"
+      },
+      {
+        "id": "B",
+        "content": "Byte"
+      },
+      {
+        "id": "C",
+        "content": "Word"
+      },
+      {
+        "id": "D",
+        "content": "Bit"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "MIPS định địa chỉ theo byte; địa chỉ của word là địa chỉ byte đầu tiên trong word.",
+      "whyCorrect": "MIPS định địa chỉ theo byte; địa chỉ của word là địa chỉ byte đầu tiên trong word.",
+      "whyWrong": {
+        "D": "Không có địa chỉ cho từng bit.",
+        "C": "Một word chiếm 4 địa chỉ liên tiếp.",
+        "A": "Không có cách định địa chỉ này trong MIPS."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-023",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Alignment Restriction trong MIPS là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lệnh phải có đúng 3 toán hạng"
+      },
+      {
+        "id": "B",
+        "content": "Thanh ghi phải được dùng theo thứ tự"
+      },
+      {
+        "id": "C",
+        "content": "Địa chỉ của word phải là bội số của 4"
+      },
+      {
+        "id": "D",
+        "content": "Bộ nhớ phải đầy mới được dùng"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Word phải bắt đầu từ địa chỉ là bội số của 4, nhằm giúp truyền dữ liệu nhanh hơn.",
+      "whyCorrect": "Word phải bắt đầu từ địa chỉ là bội số của 4, nhằm giúp truyền dữ liệu nhanh hơn.",
+      "whyWrong": {
+        "A": "Không phải quy định căn chỉnh bộ nhớ.",
+        "B": "Không có quy định này.",
+        "D": "Không có quy định này."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-024",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Địa chỉ word nào sau đây KHÔNG hợp lệ trong MIPS?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x00000010`"
+      },
+      {
+        "id": "B",
+        "content": "`0x00000000`"
+      },
+      {
+        "id": "C",
+        "content": "`0x00000022`"
+      },
+      {
+        "id": "D",
+        "content": "`0x0000001C`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`0x22` = 34 không chia hết cho 4 nên không phải địa chỉ word hợp lệ.",
+      "whyCorrect": "`0x22` = 34 không chia hết cho 4 nên không phải địa chỉ word hợp lệ.",
+      "whyWrong": {
+        "B": "0 chia hết cho 4.",
+        "A": "`0x10` = 16 chia hết cho 4.",
+        "D": "`0x1C` = 28 chia hết cho 4."
+      },
+      "tip": "Địa chỉ word hợp lệ có 2 bit cuối bằng 0 (hex tận cùng 0, 4, 8, C)."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-025",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Trong lệnh `lw $s1, 20($s2)`, số 20 được gọi là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Địa chỉ nền"
+      },
+      {
+        "id": "B",
+        "content": "Thanh ghi nền"
+      },
+      {
+        "id": "C",
+        "content": "Số thứ tự lệnh"
+      },
+      {
+        "id": "D",
+        "content": "Độ dời (offset)"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "20 là offset, `$s2` là thanh ghi nền chứa địa chỉ nền.",
+      "whyCorrect": "20 là offset, `$s2` là thanh ghi nền chứa địa chỉ nền.",
+      "whyWrong": {
+        "A": "Địa chỉ nền nằm trong `$s2`.",
+        "B": "Thanh ghi nền là `$s2`.",
+        "C": "Không phải số thứ tự lệnh."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-026",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Lệnh `lw $s1, 20($s2)` thực hiện:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`$s2 = Memory[$s1 + 20]`"
+      },
+      {
+        "id": "B",
+        "content": "`$s1 = $s2 + 20`"
+      },
+      {
+        "id": "C",
+        "content": "`Memory[$s2 + 20] = $s1`"
+      },
+      {
+        "id": "D",
+        "content": "`$s1 = Memory[$s2 + 20]`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`lw` nạp một word từ bộ nhớ vào thanh ghi.",
+      "whyCorrect": "`lw` nạp một word từ bộ nhớ vào thanh ghi.",
+      "whyWrong": {
+        "C": "Đây là `sw`.",
+        "B": "Đây là `addi`.",
+        "A": "Sai vai trò hai thanh ghi."
+      },
+      "tip": "lw: Bộ nhớ → Thanh ghi; sw: Thanh ghi → Bộ nhớ."
+    }
+  },
+  {
+    "id": "it006-mid-c2a-027",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Lệnh `sw $s1, 20($s2)` thực hiện:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`Memory[$s2 + 20] = $s1`"
+      },
+      {
+        "id": "B",
+        "content": "`Memory[$s1 + 20] = $s2`"
+      },
+      {
+        "id": "C",
+        "content": "`$s2 = $s1 + 20`"
+      },
+      {
+        "id": "D",
+        "content": "`$s1 = Memory[$s2 + 20]`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`sw` lưu nội dung `$s1` vào ô nhớ có địa chỉ `$s2 + 20`.",
+      "whyCorrect": "`sw` lưu nội dung `$s1` vào ô nhớ có địa chỉ `$s2 + 20`.",
+      "whyWrong": {
+        "D": "Đây là `lw`.",
+        "B": "Sai vai trò hai thanh ghi.",
+        "C": "Đây không phải truy cập bộ nhớ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-028",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Đoạn lệnh nào đúng cho `A[12] = h + A[8];` (h = `$s2`, nền A = `$s3`)?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`lw $t0,8($s3)`; `add $t0,$s2,$t0`; `sw $t0,12($s3)`"
+      },
+      {
+        "id": "B",
+        "content": "`lw $t0,48($s3)`; `add $t0,$s2,$t0`; `sw $t0,32($s3)`"
+      },
+      {
+        "id": "C",
+        "content": "`lw $t0,32($s3)`; `add $t0,$s2,$t0`; `sw $t0,48($s3)`"
+      },
+      {
+        "id": "D",
+        "content": "`sw $t0,32($s3)`; `add $t0,$s2,$t0`; `lw $t0,48($s3)`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "A[8] có offset 32, A[12] có offset 48. Nạp A[8], cộng h, lưu vào A[12].",
+      "whyCorrect": "A[8] có offset 32, A[12] có offset 48. Nạp A[8], cộng h, lưu vào A[12].",
+      "whyWrong": {
+        "A": "Quên nhân 4 cho offset.",
+        "D": "Đảo `lw` và `sw`.",
+        "B": "Đảo A[8] và A[12]."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-029",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Đoạn lệnh nào gán đúng `A[i] = h` với i = `$s3`, h = `$s2`, nền A = `$s6`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`sll $t1,$s3,2`; `add $t2,$s6,$t1`; `sw $s2,0($t2)`"
+      },
+      {
+        "id": "B",
+        "content": "`sll $t1,$s3,2`; `add $t2,$s6,$t1`; `lw $s2,0($t2)`"
+      },
+      {
+        "id": "C",
+        "content": "`add $t2,$s6,$s3`; `sw $s2,0($t2)`"
+      },
+      {
+        "id": "D",
+        "content": "`sw $s2,$s3($s6)`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Tính địa chỉ A[i] = nền + i × 4 rồi dùng `sw` để ghi.",
+      "whyCorrect": "Tính địa chỉ A[i] = nền + i × 4 rồi dùng `sw` để ghi.",
+      "whyWrong": {
+        "B": "`lw` đọc bộ nhớ; ở đây phải ghi.",
+        "C": "Quên nhân i với 4.",
+        "D": "Offset không được là thanh ghi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-030",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Lệnh nào cộng hằng số 4 vào `$s3`?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`lw $s3, 4($s3)`"
+      },
+      {
+        "id": "B",
+        "content": "`sll $s3, $s3, 4`"
+      },
+      {
+        "id": "C",
+        "content": "`add $s3, $s3, 4`"
+      },
+      {
+        "id": "D",
+        "content": "`addi $s3, $s3, 4`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`addi` cộng thanh ghi với số tức thời.",
+      "whyCorrect": "`addi` cộng thanh ghi với số tức thời.",
+      "whyWrong": {
+        "C": "`add` chỉ nhận 3 thanh ghi.",
+        "A": "`lw` đọc bộ nhớ.",
+        "B": "`sll` dịch bit, nhân với 16."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-031",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Vì sao MIPS không cần lệnh trừ một thanh ghi với số tức thời?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vì phép trừ không dùng thanh ghi nên không cần lệnh riêng"
+      },
+      {
+        "id": "B",
+        "content": "Vì MIPS không có bất kỳ lệnh trừ nào cho số nguyên"
+      },
+      {
+        "id": "C",
+        "content": "Vì `sub` đã nhận số tức thời trong trường immediate"
+      },
+      {
+        "id": "D",
+        "content": "Vì hằng số trong MIPS có thể âm nên dùng `addi` với số âm"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Số tức thời có thể âm nên `addi $t0, $t0, -1` thay cho phép trừ với số tức thời.",
+      "whyCorrect": "Số tức thời có thể âm nên `addi $t0, $t0, -1` thay cho phép trừ với số tức thời.",
+      "whyWrong": {
+        "A": "Phép trừ vẫn dùng thanh ghi.",
+        "C": "`sub` chỉ nhận 3 thanh ghi.",
+        "B": "MIPS có lệnh `sub`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-032",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Word 32 bit không dấu của MIPS biểu diễn được miền giá trị nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$-2^{31}$ đến $2^{31} - 1$"
+      },
+      {
+        "id": "B",
+        "content": "$-2^{32}$ đến $2^{32}$"
+      },
+      {
+        "id": "C",
+        "content": "$0$ đến $2^{31} - 1$"
+      },
+      {
+        "id": "D",
+        "content": "$0$ đến $2^{32} - 1$"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Số không dấu 32 bit biểu diễn từ 0 đến $2^{32} - 1$ (4 294 967 295).",
+      "whyCorrect": "Số không dấu 32 bit biểu diễn từ 0 đến $2^{32} - 1$ (4 294 967 295).",
+      "whyWrong": {
+        "C": "Đây là phần dương của số có dấu.",
+        "A": "Đây là miền số có dấu bù hai.",
+        "B": "Không đúng với 32 bit."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-033",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Miền giá trị của số có dấu bù hai 32 bit là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$0$ đến $2^{32} - 1$"
+      },
+      {
+        "id": "B",
+        "content": "$-2^{31}$ đến $2^{31}$"
+      },
+      {
+        "id": "C",
+        "content": "$-2^{31}$ đến $2^{31} - 1$"
+      },
+      {
+        "id": "D",
+        "content": "$-(2^{31} - 1)$ đến $2^{31} - 1$"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Bù hai 32 bit: từ $-2^{31}$ đến $2^{31} - 1$.",
+      "whyCorrect": "Bù hai 32 bit: từ $-2^{31}$ đến $2^{31} - 1$.",
+      "whyWrong": {
+        "A": "Đây là số không dấu.",
+        "D": "Bù hai có thêm số $-2^{31}$.",
+        "B": "Không có số dương $+2^{31}$."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-034",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Bit nào là bit trọng số lớn nhất (MSB) trong một word MIPS?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Bit 16"
+      },
+      {
+        "id": "B",
+        "content": "Bit 31, ngoài cùng bên trái"
+      },
+      {
+        "id": "C",
+        "content": "Bit 15, ở giữa"
+      },
+      {
+        "id": "D",
+        "content": "Bit 0, ngoài cùng bên phải"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "MSB là bit 31, ngoài cùng bên trái; LSB là bit 0, ngoài cùng bên phải.",
+      "whyCorrect": "MSB là bit 31, ngoài cùng bên trái; LSB là bit 0, ngoài cùng bên phải.",
+      "whyWrong": {
+        "D": "Đây là LSB.",
+        "C": "Bit 15 không phải MSB của word.",
+        "A": "Bit 16 không phải MSB của word."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-035",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Với số có dấu bù hai, MSB = 1 có nghĩa là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Số 0"
+      },
+      {
+        "id": "B",
+        "content": "Số dương"
+      },
+      {
+        "id": "C",
+        "content": "Số chẵn"
+      },
+      {
+        "id": "D",
+        "content": "Số âm"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "MSB là bit dấu: MSB = 1 là số âm, MSB = 0 là số không âm.",
+      "whyCorrect": "MSB là bit dấu: MSB = 1 là số âm, MSB = 0 là số không âm.",
+      "whyWrong": {
+        "B": "Số không âm có MSB = 0.",
+        "A": "Số 0 có tất cả bit bằng 0.",
+        "C": "Tính chẵn lẻ phụ thuộc vào LSB."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-036",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Chuỗi 32 bit `1111 1111 1111 1111 1111 1111 1111 1100` theo bù hai có giá trị:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "-4"
+      },
+      {
+        "id": "B",
+        "content": "4294967292"
+      },
+      {
+        "id": "C",
+        "content": "4"
+      },
+      {
+        "id": "D",
+        "content": "-3"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Đảo bit được 3, cộng 1 được 4, vậy giá trị là -4.",
+      "whyCorrect": "Đảo bit được 3, cộng 1 được 4, vậy giá trị là -4.",
+      "whyWrong": {
+        "D": "Quên cộng 1 sau khi đảo bit.",
+        "C": "MSB = 1 nên là số âm.",
+        "B": "Đây là giá trị nếu coi là số không dấu."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-037",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Số có dấu nào trong bù hai 32 bit KHÔNG có số đối tương ứng?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "0"
+      },
+      {
+        "id": "B",
+        "content": "-1"
+      },
+      {
+        "id": "C",
+        "content": "$-2^{31}$"
+      },
+      {
+        "id": "D",
+        "content": "$2^{31} - 1$"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Bù hai có số $-2^{31}$ nhưng không có số dương $+2^{31}$.",
+      "whyCorrect": "Bù hai có số $-2^{31}$ nhưng không có số dương $+2^{31}$.",
+      "whyWrong": {
+        "B": "Số đối của -1 là 1.",
+        "A": "Số đối của 0 là chính nó.",
+        "D": "Số đối của $2^{31} - 1$ là $-(2^{31} - 1)$."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-038",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Sign-extend là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thêm các bit 0 vào bên phải của số"
+      },
+      {
+        "id": "B",
+        "content": "Lặp lại bit dấu ở các bit mới bên trái"
+      },
+      {
+        "id": "C",
+        "content": "Thêm các bit 0 vào các bit mới bên trái"
+      },
+      {
+        "id": "D",
+        "content": "Đảo tất cả các bit rồi cộng thêm 1"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Sign-extend giữ nguyên giá trị số có dấu bằng cách lặp bit dấu sang bên trái.",
+      "whyCorrect": "Sign-extend giữ nguyên giá trị số có dấu bằng cách lặp bit dấu sang bên trái.",
+      "whyWrong": {
+        "A": "Thêm bên phải làm thay đổi giá trị.",
+        "C": "Đây là zero-extend.",
+        "D": "Đây là phép NOT."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-039",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Số -2 dạng 16 bit (`0xFFFE`) khi mở rộng có dấu thành 32 bit là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x7FFFFFFE`"
+      },
+      {
+        "id": "B",
+        "content": "`0xFFFE0000`"
+      },
+      {
+        "id": "C",
+        "content": "`0x0000FFFE`"
+      },
+      {
+        "id": "D",
+        "content": "`0xFFFFFFFE`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "MSB = 1 nên điền 16 bit 1 bên trái: `0xFFFFFFFE`, vẫn là -2.",
+      "whyCorrect": "MSB = 1 nên điền 16 bit 1 bên trái: `0xFFFFFFFE`, vẫn là -2.",
+      "whyWrong": {
+        "C": "Đây là zero-extend, giá trị thành 65534.",
+        "B": "Phần mở rộng nằm bên trái.",
+        "A": "Phải điền đầy đủ bit dấu."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-040",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Phát biểu nào đúng về big-endian và little-endian?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Big-endian lưu byte thấp nhất ở địa chỉ thấp nhất; little-endian lưu byte cao nhất ở địa chỉ thấp nhất"
+      },
+      {
+        "id": "B",
+        "content": "Little-endian chỉ dùng để lưu số âm; big-endian chỉ dùng để lưu số dương trong bộ nhớ"
+      },
+      {
+        "id": "C",
+        "content": "Big-endian lưu byte cao nhất ở địa chỉ thấp nhất; little-endian lưu byte thấp nhất ở địa chỉ thấp nhất"
+      },
+      {
+        "id": "D",
+        "content": "Hai cách có cùng thứ tự byte và chỉ khác nhau ở tốc độ truy cập bộ nhớ của bộ xử lý"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Big-endian đặt đầu lớn (byte cao) tại địa chỉ thấp nhất; little-endian đặt đầu nhỏ tại địa chỉ thấp nhất.",
+      "whyCorrect": "Big-endian đặt đầu lớn (byte cao) tại địa chỉ thấp nhất; little-endian đặt đầu nhỏ tại địa chỉ thấp nhất.",
+      "whyWrong": {
+        "A": "Đây là little-endian.",
+        "D": "Khác nhau ở thứ tự byte trong word.",
+        "B": "Không liên quan đến dấu."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-041",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Khi biên dịch `f = (g + h) - (i + j);` với f, g, h, i, j ở `$s0`–`$s4`, số lệnh cần tối thiểu là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "3"
+      },
+      {
+        "id": "B",
+        "content": "2"
+      },
+      {
+        "id": "C",
+        "content": "1"
+      },
+      {
+        "id": "D",
+        "content": "5"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Cần 2 lệnh `add` vào thanh ghi tạm và 1 lệnh `sub`: tổng cộng 3 lệnh.",
+      "whyCorrect": "Cần 2 lệnh `add` vào thanh ghi tạm và 1 lệnh `sub`: tổng cộng 3 lệnh.",
+      "whyWrong": {
+        "C": "Mỗi lệnh chỉ thực hiện một phép toán.",
+        "B": "Biểu thức có 3 phép toán.",
+        "D": "Chỉ cần 3 lệnh."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-042",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Trong `add $t0, $s1, $s2`, thanh ghi nào nhận kết quả?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`$s1`"
+      },
+      {
+        "id": "B",
+        "content": "`$t0`"
+      },
+      {
+        "id": "C",
+        "content": "`$s2`"
+      },
+      {
+        "id": "D",
+        "content": "Cả `$s1` và `$s2`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Toán hạng đầu tiên là thanh ghi đích: `$t0 = $s1 + $s2`.",
+      "whyCorrect": "Toán hạng đầu tiên là thanh ghi đích: `$t0 = $s1 + $s2`.",
+      "whyWrong": {
+        "A": "`$s1` là toán hạng nguồn.",
+        "C": "`$s2` là toán hạng nguồn.",
+        "D": "Chỉ có một thanh ghi đích."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-043",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Lệnh `addi $t0, $zero, 25` có tác dụng:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "So sánh `$t0` với 25"
+      },
+      {
+        "id": "B",
+        "content": "Nạp giá trị từ địa chỉ 25"
+      },
+      {
+        "id": "C",
+        "content": "Gán `$t0 = 25`"
+      },
+      {
+        "id": "D",
+        "content": "Gán `$zero = 25`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`$t0 = 0 + 25 = 25`; đây là cách gán hằng số thông dụng.",
+      "whyCorrect": "`$t0 = 0 + 25 = 25`; đây là cách gán hằng số thông dụng.",
+      "whyWrong": {
+        "D": "`$zero` luôn bằng 0 và là nguồn ở đây.",
+        "B": "Nạp từ bộ nhớ dùng `lw`.",
+        "A": "So sánh dùng `slti`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-044",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cho `$s0 = 0x10`, `M[0x10] = 7`, `M[0x14] = 9`. Sau đoạn lệnh, `$t1` bằng:\n\n```mips\nlw   $t0, 4($s0)\naddi $t1, $t0, 1\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "9"
+      },
+      {
+        "id": "B",
+        "content": "8"
+      },
+      {
+        "id": "C",
+        "content": "7"
+      },
+      {
+        "id": "D",
+        "content": "10"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`$t0 = M[0x14] = 9`, sau đó `$t1 = 9 + 1 = 10`.",
+      "whyCorrect": "`$t0 = M[0x14] = 9`, sau đó `$t1 = 9 + 1 = 10`.",
+      "whyWrong": {
+        "B": "Đọc nhầm `M[0x10]`.",
+        "C": "Đây là `M[0x10]`.",
+        "A": "Quên cộng 1."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t1",
+      "regs": {
+        "$s0": 16
+      },
+      "words": {
+        "16": 7,
+        "20": 9
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2a-045",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2a",
+    "content": "Cho `$s0 = 0x20`, `$t0 = 5`. Sau đoạn lệnh, `$t1` bằng:\n\n```mips\nsw  $t0, 8($s0)\nlw  $t1, 8($s0)\nadd $t1, $t1, $t0\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "5"
+      },
+      {
+        "id": "B",
+        "content": "13"
+      },
+      {
+        "id": "C",
+        "content": "10"
+      },
+      {
+        "id": "D",
+        "content": "8"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Ghi 5 vào `M[0x28]`, đọc lại `$t1 = 5`, rồi `$t1 = 5 + 5 = 10`.",
+      "whyCorrect": "Ghi 5 vào `M[0x28]`, đọc lại `$t1 = 5`, rồi `$t1 = 5 + 5 = 10`.",
+      "whyWrong": {
+        "A": "Quên lệnh `add` cuối.",
+        "D": "8 là offset, không phải dữ liệu.",
+        "B": "Cộng nhầm offset."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t1",
+      "regs": {
+        "$s0": 32,
+        "$t0": 5
+      }
+    }
+  }
+]

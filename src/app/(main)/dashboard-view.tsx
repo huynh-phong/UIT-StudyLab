@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, BookOpenCheck, CheckCircle2, CircleDot, FlaskConical, ListChecks, PlayCircle, Target, Timer, Trophy } from "lucide-react";
+import { ArrowRight, BookOpenCheck, CheckCircle2, Cpu, FlaskConical, ListChecks, Network, PlayCircle, Target, Timer, Trophy } from "lucide-react";
 import type { ExamSummary } from "@/lib/bank/repo";
 import { EXAM_TYPE_LABEL } from "@/lib/bank/schema";
 import type { FeatureFlags } from "@/lib/server/env";
 import { useStudyStore } from "@/lib/store/study";
 import { useExamStore } from "@/lib/store/exam";
 import { useHydrated } from "@/lib/hooks";
-import { computeChapterProgress, overallStats } from "@/lib/progress";
+import { computeChapterProgress, overallStats, type ChapterProgress } from "@/lib/progress";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -18,6 +18,8 @@ import { Callout, Skeleton } from "@/components/ui/misc";
 import { AnimatedNumber, StatCard } from "@/components/stat";
 import { LogoMark } from "@/components/logo";
 import { formatDateTime, formatScore, pct } from "@/lib/utils";
+
+const COURSE_ICON: Record<string, React.ReactNode> = { it005: <Network />, it006: <Cpu /> };
 
 export function DashboardView({ exams, features }: { exams: ExamSummary[]; features: FeatureFlags }) {
   const hydrated = useHydrated();
@@ -34,19 +36,17 @@ export function DashboardView({ exams, features }: { exams: ExamSummary[]; featu
   const accuracy = pct(overall.correctLast, overall.attempted);
   const lastExam = history[0];
   const continueChapter = chapters.filter((c) => c.started && c.done < c.total).sort((a, b) => b.updatedAt - a.updatedAt)[0];
-  const hasDemo = exams.some((e) => e.isDemo);
-  const realExam = exams.find((e) => !e.isDemo);
-  const current = realExam ?? exams[0];
+  const demoShown = exams.some((e) => e.isDemo);
+  const withContent = exams.filter((e) => e.chapters.length > 0);
 
   return (
     <div className="space-y-6">
-      {/* Hero */}
       <section>
         <Card className="relative overflow-hidden p-6 sm:p-8">
           <div aria-hidden className="pointer-events-none absolute -right-16 -top-20 size-64 rounded-full bg-primary-soft" />
           <div aria-hidden className="pointer-events-none absolute -bottom-24 right-24 size-48 rounded-full bg-secondary-soft/70" />
           <div className="relative">
-            <div className="mb-5 flex items-center gap-3">
+            <div className="mb-4 flex items-center gap-3">
               <LogoMark className="size-11" />
               <div>
                 <h1 className="text-xl font-bold tracking-tight sm:text-2xl">UIT StudyLab</h1>
@@ -54,50 +54,36 @@ export function DashboardView({ exams, features }: { exams: ExamSummary[]; featu
               </div>
             </div>
             <p className="max-w-xl text-[15px] leading-relaxed text-foreground/80">
-              Làm trực tiếp các câu hỏi trong bộ đề, xem giải thích ngay sau mỗi câu và thi thử theo cấu trúc đề chuẩn.
+              Làm trực tiếp các câu hỏi trong bộ đề, xem giải thích ngay sau mỗi câu và thi thử theo cấu trúc đề chuẩn. Chọn học phần bên dưới để bắt đầu.
             </p>
-            <div className="mt-5 flex flex-wrap items-center gap-2">
-              <Badge variant="outline" className="bg-surface py-1 text-foreground">
-                <BookOpenCheck /> {current ? `${current.courseCode} — ${current.courseName}` : "Chưa có học phần"}
-              </Badge>
-              {current && (
-                <Badge variant="secondary" className="py-1">
-                  <CircleDot /> {EXAM_TYPE_LABEL[current.examType]}
-                </Badge>
-              )}
-            </div>
-            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
-              <Button asChild size="lg">
-                <Link href="/on-tap">
-                  <BookOpenCheck /> Ôn tập
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/thi-thu">
-                  <Timer /> Thi thử
-                </Link>
-              </Button>
-            </div>
           </div>
         </Card>
       </section>
 
-      {hasDemo && (
+      <section aria-labelledby="courses-heading">
+        <h2 id="courses-heading" className="mb-3 text-base font-semibold">
+          Học phần
+        </h2>
+        <div className="grid gap-4 md:grid-cols-2">
+          {withContent.map((exam, i) => (
+            <CourseCard key={exam.key} exam={exam} chapters={chapters.filter((c) => c.examKey === exam.key)} hydrated={hydrated} index={i} />
+          ))}
+        </div>
+      </section>
+
+      {demoShown && (
         <Callout tone="demo" icon={<FlaskConical />} title="Đang hiển thị dữ liệu minh họa">
-          {realExam && realExam.chapters.length === 0
-            ? "Ngân hàng đề IT005 giữa kỳ chưa được nạp. Các câu hỏi gắn nhãn “Minh họa” chỉ để kiểm tra chức năng, không phải đề thi chính thức."
-            : "Các câu hỏi gắn nhãn “Minh họa” chỉ để kiểm tra chức năng, không phải đề thi chính thức."}
+          Các câu hỏi gắn nhãn “Minh họa” chỉ để kiểm tra chức năng, không phải đề thi chính thức.
         </Callout>
       )}
 
-      {/* Tiếp tục */}
       {hydrated && (activeExam || continueChapter) && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="grid gap-3 sm:grid-cols-2">
           {activeExam && (
             <ContinueCard
               href="/thi-thu/phong-thi"
               icon={<Timer />}
-              label="Bài thi đang làm"
+              label={`Bài thi đang làm · ${activeExam.exam.courseCode}`}
               title={activeExam.exam.title}
               meta={`${Object.keys(activeExam.responses).length}/${activeExam.exam.questions.length} câu đã trả lời`}
             />
@@ -115,7 +101,6 @@ export function DashboardView({ exams, features }: { exams: ExamSummary[]; featu
         </motion.div>
       )}
 
-      {/* Thống kê */}
       <section aria-label="Thống kê nhanh" className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {!hydrated ? (
           Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} className="h-[132px] rounded-2xl" />)
@@ -149,47 +134,82 @@ export function DashboardView({ exams, features }: { exams: ExamSummary[]; featu
                   "—"
                 )
               }
-              hint={lastExam ? formatDateTime(lastExam.submittedAt) : "Chưa thi lần nào"}
+              hint={lastExam ? `${lastExam.courseCode} · ${formatDateTime(lastExam.submittedAt)}` : "Chưa thi lần nào"}
               delay={0.12}
             />
           </>
         )}
       </section>
 
-      {/* Tiến độ theo chương */}
-      <section>
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-base font-semibold">Tiến độ theo chương</h2>
-          <Link href="/on-tap" className="flex items-center gap-1 text-sm font-medium text-primary hover:underline">
-            Tất cả <ArrowRight className="size-4" />
-          </Link>
-        </div>
-        <Card className="divide-y divide-border">
-          {chapters.length === 0 && <p className="p-5 text-sm text-muted">Chưa có chương nào. Hãy nạp bộ đề theo hướng dẫn trong README.</p>}
-          {chapters.slice(0, 6).map((c) => (
-            <Link key={`${c.examKey}:${c.chapterId}`} href={c.href} className="flex items-center gap-4 p-4 transition-colors hover:bg-subtle/60 sm:px-5">
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <p className="truncate text-sm font-medium">{c.title}</p>
-                  {c.isDemo && <Badge variant="secondary">Minh họa</Badge>}
-                </div>
-                <div className="mt-2 flex items-center gap-3">
-                  {hydrated ? <Progress value={pct(c.done, c.total)} className="h-1.5" label={`Tiến độ ${c.title}`} /> : <Skeleton className="h-1.5 w-full" />}
-                  <span className="w-14 shrink-0 text-right text-xs tabular-nums text-muted">{hydrated ? `${c.done}/${c.total}` : ""}</span>
-                </div>
-              </div>
-              <ArrowRight className="size-4 shrink-0 text-muted" />
-            </Link>
-          ))}
-        </Card>
-      </section>
-
       {!features.ai && (
-        <Callout tone="info" title="Tính năng AI chưa được cấu hình">
-          Chấm tự luận và tạo đề thi thử bằng AI cần khóa AI trên máy chủ (<code>GEMINI_API_KEY</code> + <code>GEMINI_MODEL</code> hoặc <code>OPENAI_API_KEY</code> + <code>OPENAI_MODEL</code>). Trắc nghiệm vẫn hoạt động đầy đủ.
+        <Callout tone="info" title="Chấm tự luận bằng AI chưa được cấu hình">
+          Chấm tự luận cần khóa AI trên máy chủ (<code>GEMINI_API_KEY</code> + <code>GEMINI_MODEL</code>). Trắc nghiệm vẫn hoạt động đầy đủ.
         </Callout>
       )}
     </div>
+  );
+}
+
+function CourseCard({ exam, chapters, hydrated, index }: { exam: ExamSummary; chapters: ChapterProgress[]; hydrated: boolean; index: number }) {
+  const total = chapters.reduce((a, c) => a + c.total, 0);
+  const done = chapters.reduce((a, c) => a + c.done, 0);
+  const history = useExamStore((s) => s.history);
+  const last = history.find((h) => h.examKey === exam.key);
+  return (
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.28, delay: index * 0.05 }} className="h-full">
+      <Card className="flex h-full flex-col p-5 transition-[box-shadow,transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[var(--shadow-card-hover)] sm:p-6">
+        <div className="flex items-start gap-3">
+          <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary [&_svg]:size-5">{COURSE_ICON[exam.courseId] ?? <BookOpenCheck />}</div>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <h3 className="font-bold tracking-tight">{exam.courseCode}</h3>
+              <Badge variant="secondary">{EXAM_TYPE_LABEL[exam.examType]}</Badge>
+              {exam.isDemo && <Badge variant="muted">Minh họa</Badge>}
+            </div>
+            <p className="mt-0.5 text-sm font-medium text-foreground/80">{exam.courseName}</p>
+          </div>
+        </div>
+
+        <div className="mt-4">
+          <div className="mb-1.5 flex justify-between text-xs text-muted">
+            <span>
+              {chapters.length} phần · {total} câu hỏi
+            </span>
+            <span className="tabular-nums">{hydrated ? `${done}/${total} đã làm` : ""}</span>
+          </div>
+          {hydrated ? <Progress value={pct(done, total)} label={`Tiến độ ${exam.courseCode}`} /> : <Skeleton className="h-2 w-full" />}
+          <p className="mt-2 text-xs text-muted">
+            {hydrated && last
+              ? `Thi thử gần nhất: ${last.result.score10 !== null ? `${formatScore(last.result.score10)}/10` : "đang chờ chấm"} · ${formatDateTime(last.submittedAt)}`
+              : "Chưa thi thử môn này"}
+          </p>
+        </div>
+
+        <ul className="mt-3 space-y-1">
+          {chapters.map((c) => (
+            <li key={c.chapterId}>
+              <Link href={c.href} className="group flex items-center gap-2 rounded-lg px-2 py-1 text-sm transition-colors hover:bg-subtle">
+                <span className="min-w-0 flex-1 truncate text-foreground/80 group-hover:text-primary">{c.title}</span>
+                <span className="shrink-0 text-xs tabular-nums text-muted">{hydrated ? `${c.done}/${c.total}` : c.total}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-auto flex gap-2 pt-4">
+          <Button asChild className="flex-1">
+            <Link href={`/on-tap?mon=${exam.courseId}`}>
+              <BookOpenCheck /> Ôn tập
+            </Link>
+          </Button>
+          <Button asChild variant="outline" className="flex-1">
+            <Link href={`/thi-thu?mon=${exam.courseId}`}>
+              <Timer /> Thi thử
+            </Link>
+          </Button>
+        </div>
+      </Card>
+    </motion.div>
   );
 }
 

@@ -80,7 +80,8 @@ export async function assembleExam(o: AssembleOptions): Promise<AssembleResult> 
       for (const i of indexes) {
         const slot = bp.slots[i];
         const chapter = o.exam.chapters.find((c) => c.id === slot.chapterId)!;
-        const bankPool = o.exam.questions.filter((q) => q.chapterId === slot.chapterId && q.type === slot.type && isExamEligible(q));
+        const sourceChapters = new Set([slot.chapterId, ...(slot.alsoFrom ?? [])]);
+        const bankPool = o.exam.questions.filter((q) => sourceChapters.has(q.chapterId) && q.type === slot.type && isExamEligible(q));
         const out = picked[i].questions;
 
         if (o.mode === "ai") {
@@ -169,7 +170,7 @@ export async function assembleExam(o: AssembleOptions): Promise<AssembleResult> 
 
   // Trắc nghiệm trước, tự luận sau; giữ thứ tự ô trong blueprint
   const ordered = [...picked.filter((p) => p.slot.type === "mcq"), ...picked.filter((p) => p.slot.type === "essay")].flatMap((p) =>
-    p.questions.map((q) => ({ question: q, points: p.slot.pointsEach, chapterTitle: chapterTitle(p.slot.chapterId) })),
+    p.questions.map((q) => ({ question: q, points: p.slot.pointsEach, chapterTitle: chapterTitle(q.chapterId) })),
   );
   const ids = ordered.map((x) => x.question.id);
   const version = `${GENERATOR_VERSION}-${createHash("sha256").update(ids.join("|")).digest("hex").slice(0, 10)}`;
@@ -209,6 +210,8 @@ export function toPublicExam(
     chapterTitle,
     difficulty: q.difficulty,
     origin: q.source.kind,
+    answerFormat: q.type === "essay" ? q.essay?.format : undefined,
+    placeholder: q.type === "essay" ? q.essay?.placeholder : undefined,
   }));
   return {
     attemptId: s.attemptId,

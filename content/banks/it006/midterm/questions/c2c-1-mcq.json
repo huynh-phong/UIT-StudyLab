@@ -1,0 +1,1389 @@
+[
+  {
+    "id": "it006-mid-c2c-001",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Giả sử dữ liệu lưu trong stack là 1 byte cho mỗi tác vụ PUSH hoặc POP (stack phát triển xuống địa chỉ thấp). Tuần tự các bước của tác vụ PUSH là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tăng stack lên 2, sau đó lưu dữ liệu 8 bit vào stack tại địa chỉ trỏ bởi SP"
+      },
+      {
+        "id": "B",
+        "content": "Giảm stack đi 1, sau đó lưu dữ liệu 16 bit vào stack tại địa chỉ trỏ bởi SP"
+      },
+      {
+        "id": "C",
+        "content": "Giảm stack đi 1, sau đó lưu dữ liệu 8 bit vào stack tại địa chỉ trỏ bởi SP"
+      },
+      {
+        "id": "D",
+        "content": "Lưu dữ liệu 8 bit vào stack tại địa chỉ trỏ bởi SP, sau đó tăng stack lên 1"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "PUSH giảm con trỏ stack trước (ở đây 1 byte), rồi lưu dữ liệu tại địa chỉ SP trỏ tới.",
+      "whyCorrect": "PUSH giảm con trỏ stack trước (ở đây 1 byte), rồi lưu dữ liệu tại địa chỉ SP trỏ tới.",
+      "whyWrong": {
+        "A": "Stack phát triển xuống nên phải giảm, và dữ liệu là 1 byte.",
+        "B": "Dữ liệu là 8 bit, không phải 16 bit.",
+        "D": "Đây là thứ tự sai và tăng SP là sai chiều."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-002",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Chức năng của thanh ghi PC là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lưu địa chỉ bộ nhớ chương trình của lệnh trước đó"
+      },
+      {
+        "id": "B",
+        "content": "Lưu địa chỉ bộ nhớ chương trình của lệnh hiện tại"
+      },
+      {
+        "id": "C",
+        "content": "Lưu địa chỉ bộ nhớ chương trình của lệnh kế tiếp sẽ thực thi"
+      },
+      {
+        "id": "D",
+        "content": "Cả 3 đáp án trên đều sai"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Theo slide, Program Counter là thanh ghi chứa địa chỉ của lệnh kế tiếp được thực thi.",
+      "whyCorrect": "Theo slide, Program Counter là thanh ghi chứa địa chỉ của lệnh kế tiếp được thực thi.",
+      "whyWrong": {
+        "A": "PC không lưu địa chỉ lệnh đã xong.",
+        "B": "Theo slide, PC trỏ tới lệnh kế tiếp.",
+        "D": "Phương án C đúng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-003",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Lệnh `jal <address>` thực hiện những việc gì theo thứ tự?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`PC = $ra`"
+      },
+      {
+        "id": "B",
+        "content": "`$ra = PC + 4`, sau đó `PC = address`"
+      },
+      {
+        "id": "C",
+        "content": "`PC = address`, sau đó `$ra = PC + 4`"
+      },
+      {
+        "id": "D",
+        "content": "`$ra = PC`, sau đó `PC = PC + 4`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Trước hết lưu địa chỉ lệnh ngay sau `jal` vào `$ra`, rồi mới chuyển PC tới thủ tục.",
+      "whyCorrect": "Trước hết lưu địa chỉ lệnh ngay sau `jal` vào `$ra`, rồi mới chuyển PC tới thủ tục.",
+      "whyWrong": {
+        "C": "Nếu đổi PC trước thì mất địa chỉ quay về.",
+        "D": "`$ra` phải là PC + 4 và PC phải chuyển tới thủ tục.",
+        "A": "Đây là tác dụng của `jr $ra`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-004",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Lệnh nào dùng để quay về nơi gọi từ thủ tục?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`jr $ra`"
+      },
+      {
+        "id": "B",
+        "content": "`j $ra`"
+      },
+      {
+        "id": "C",
+        "content": "`beq $ra, $zero, 0`"
+      },
+      {
+        "id": "D",
+        "content": "`jal $ra`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`jr $ra` đặt PC = `$ra`, quay về lệnh ngay sau lệnh gọi.",
+      "whyCorrect": "`jr $ra` đặt PC = `$ra`, quay về lệnh ngay sau lệnh gọi.",
+      "whyWrong": {
+        "D": "`jal` nhận nhãn và dùng để gọi thủ tục.",
+        "B": "`j` nhận nhãn, không nhận thanh ghi.",
+        "C": "`beq` rẽ nhánh theo điều kiện."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-005",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Các thanh ghi `$a0`–`$a3` dùng để:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lưu địa chỉ trả về của thủ tục"
+      },
+      {
+        "id": "B",
+        "content": "Chứa các giá trị trả về của hàm"
+      },
+      {
+        "id": "C",
+        "content": "Truyền bốn tham số đầu tiên cho thủ tục"
+      },
+      {
+        "id": "D",
+        "content": "Dành riêng cho hệ điều hành và ngắt"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`$a0`–`$a3` (thanh ghi 4–7) truyền tối đa 4 tham số.",
+      "whyCorrect": "`$a0`–`$a3` (thanh ghi 4–7) truyền tối đa 4 tham số.",
+      "whyWrong": {
+        "B": "Giá trị trả về nằm trong `$v0`, `$v1`.",
+        "A": "Địa chỉ trả về nằm trong `$ra`.",
+        "D": "Thanh ghi cho hệ điều hành là `$k0`, `$k1`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-006",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Các thanh ghi `$v0`–`$v1` dùng để:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trỏ tới đầu frame của thủ tục"
+      },
+      {
+        "id": "B",
+        "content": "Truyền bốn tham số đầu tiên"
+      },
+      {
+        "id": "C",
+        "content": "Lưu các biến cục bộ của hàm"
+      },
+      {
+        "id": "D",
+        "content": "Lưu giá trị trả về của hàm"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`$v0`, `$v1` (thanh ghi 2–3) lưu giá trị trả về.",
+      "whyCorrect": "`$v0`, `$v1` (thanh ghi 2–3) lưu giá trị trả về.",
+      "whyWrong": {
+        "B": "Truyền tham số là `$a0`–`$a3`.",
+        "C": "Biến cục bộ thường dùng `$s` hoặc stack.",
+        "A": "Con trỏ frame là `$fp`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-007",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Nếu thủ tục có nhiều hơn 4 tham số hoặc nhiều hơn 2 giá trị trả về thì sao?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Dùng thêm thanh ghi `$k0`, `$k1`"
+      },
+      {
+        "id": "B",
+        "content": "Dùng stack để lưu phần dư"
+      },
+      {
+        "id": "C",
+        "content": "Không thể viết thủ tục đó"
+      },
+      {
+        "id": "D",
+        "content": "Báo lỗi biên dịch"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Theo quy ước, phần tham số/giá trị trả về vượt quá số thanh ghi được lưu trên stack.",
+      "whyCorrect": "Theo quy ước, phần tham số/giá trị trả về vượt quá số thanh ghi được lưu trên stack.",
+      "whyWrong": {
+        "D": "Trường hợp này hợp lệ.",
+        "A": "`$k0`, `$k1` dành cho hệ điều hành.",
+        "C": "Hoàn toàn viết được nhờ stack."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-008",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Theo quy ước MIPS trong slide, khi một thủ tục sử dụng thanh ghi `$s0` thì:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phải đổi sang dùng `$a0` để không ảnh hưởng tới nơi gọi"
+      },
+      {
+        "id": "B",
+        "content": "Không cần lưu lại vì `$s0` là thanh ghi tạm thời của thủ tục"
+      },
+      {
+        "id": "C",
+        "content": "Phải lưu giá trị cũ vào stack trước khi dùng và phục hồi trước khi thoát"
+      },
+      {
+        "id": "D",
+        "content": "Phải sao chép giá trị cũ sang `$t0` và không cần dùng stack"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`$s` là nhóm thanh ghi bền vững: thủ tục dùng thì phải lưu giá trị cũ và phục hồi trước khi thoát.",
+      "whyCorrect": "`$s` là nhóm thanh ghi bền vững: thủ tục dùng thì phải lưu giá trị cũ và phục hồi trước khi thoát.",
+      "whyWrong": {
+        "B": "Thanh ghi tạm là nhóm `$t`.",
+        "D": "Giá trị cũ được lưu trên stack.",
+        "A": "`$a0` dùng để truyền tham số."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-009",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Theo quy ước trong slide, thanh ghi nào KHÔNG cần lưu lại khi dùng trong thủ tục?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`$s0`"
+      },
+      {
+        "id": "B",
+        "content": "`$s3`"
+      },
+      {
+        "id": "C",
+        "content": "`$t0`"
+      },
+      {
+        "id": "D",
+        "content": "`$s7`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Nhóm `$t` là thanh ghi tạm, không cần lưu lại như nhóm `$s`.",
+      "whyCorrect": "Nhóm `$t` là thanh ghi tạm, không cần lưu lại như nhóm `$s`.",
+      "whyWrong": {
+        "A": "`$s0` phải lưu và phục hồi.",
+        "D": "`$s7` phải lưu và phục hồi.",
+        "B": "`$s3` phải lưu và phục hồi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-010",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Stack hoạt động theo nguyên tắc nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Theo thứ tự địa chỉ tăng dần"
+      },
+      {
+        "id": "B",
+        "content": "FIFO – vào trước ra trước"
+      },
+      {
+        "id": "C",
+        "content": "LIFO – vào sau ra trước"
+      },
+      {
+        "id": "D",
+        "content": "Truy cập ngẫu nhiên có ưu tiên"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Stack hoạt động theo LIFO: vào sau, ra trước.",
+      "whyCorrect": "Stack hoạt động theo LIFO: vào sau, ra trước.",
+      "whyWrong": {
+        "B": "FIFO là hàng đợi (queue).",
+        "D": "Stack không truy cập ngẫu nhiên theo nguyên tắc.",
+        "A": "Stack MIPS phát triển từ địa chỉ cao xuống thấp."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-011",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Stack trong MIPS phát triển theo hướng nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Từ địa chỉ cao xuống thấp"
+      },
+      {
+        "id": "B",
+        "content": "Từ địa chỉ thấp lên cao"
+      },
+      {
+        "id": "C",
+        "content": "Theo cả hai hướng"
+      },
+      {
+        "id": "D",
+        "content": "Không thay đổi địa chỉ"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Theo quy ước MIPS, stack phát triển từ địa chỉ cao xuống thấp.",
+      "whyCorrect": "Theo quy ước MIPS, stack phát triển từ địa chỉ cao xuống thấp.",
+      "whyWrong": {
+        "B": "Hướng này là của heap.",
+        "C": "Chỉ có một hướng theo quy ước.",
+        "D": "Stack thay đổi `$sp` khi cấp phát."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-012",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Thanh ghi `$sp` chứa gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Địa chỉ của lệnh kế tiếp sẽ được thực thi"
+      },
+      {
+        "id": "B",
+        "content": "Địa chỉ quay về của thủ tục đang chạy"
+      },
+      {
+        "id": "C",
+        "content": "Giá trị trả về của thủ tục vừa kết thúc"
+      },
+      {
+        "id": "D",
+        "content": "Địa chỉ của phần tử được cấp phát gần nhất trên stack"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Stack pointer `$sp` (thanh ghi 29) trỏ tới phần tử được cấp phát cuối cùng.",
+      "whyCorrect": "Stack pointer `$sp` (thanh ghi 29) trỏ tới phần tử được cấp phát cuối cùng.",
+      "whyWrong": {
+        "C": "Đây là `$v0`.",
+        "B": "Đây là `$ra`.",
+        "A": "Đây là PC."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-013",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Vì stack phát triển xuống địa chỉ thấp, quan hệ giữa `$fp` và `$sp` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Frame pointer luôn ở dưới (địa chỉ thấp hơn) stack pointer"
+      },
+      {
+        "id": "B",
+        "content": "Hai con trỏ luôn bằng nhau trong suốt quá trình chạy thủ tục"
+      },
+      {
+        "id": "C",
+        "content": "Hai con trỏ không liên quan vì thuộc hai vùng nhớ khác nhau"
+      },
+      {
+        "id": "D",
+        "content": "Frame pointer luôn ở trên (địa chỉ cao hơn hoặc bằng) stack pointer"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Slide nêu frame pointer luôn ở trên stack pointer do stack xây dựng từ cao xuống thấp.",
+      "whyCorrect": "Slide nêu frame pointer luôn ở trên stack pointer do stack xây dựng từ cao xuống thấp.",
+      "whyWrong": {
+        "A": "Ngược chiều.",
+        "B": "Chỉ bằng nhau khi frame trống.",
+        "C": "Cả hai cùng xác định phạm vi frame."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-014",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Đoạn lệnh nào thực hiện đúng PUSH thanh ghi `$s0` vào stack?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`sw $s0,0($sp)`; `addi $sp,$sp,-4`"
+      },
+      {
+        "id": "B",
+        "content": "`addi $sp,$sp,-4`; `sw $s0,0($sp)`"
+      },
+      {
+        "id": "C",
+        "content": "`lw $s0,0($sp)`; `addi $sp,$sp,-4`"
+      },
+      {
+        "id": "D",
+        "content": "`addi $sp,$sp,4`; `sw $s0,0($sp)`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Push: giảm `$sp` 4 byte trước, sau đó lưu dữ liệu vào `0($sp)`.",
+      "whyCorrect": "Push: giảm `$sp` 4 byte trước, sau đó lưu dữ liệu vào `0($sp)`.",
+      "whyWrong": {
+        "A": "Sai thứ tự theo quy ước: sẽ ghi đè phần tử đang ở đỉnh stack.",
+        "D": "Phải giảm `$sp`, không phải tăng.",
+        "C": "`lw` là đọc, không phải ghi."
+      },
+      "tip": "Push: `addi` rồi `sw`. Pop: `lw` rồi `addi`."
+    }
+  },
+  {
+    "id": "it006-mid-c2c-015",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Đoạn lệnh nào thực hiện đúng POP một word vào `$s0`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`sw $s0,0($sp)`; `addi $sp,$sp,4`"
+      },
+      {
+        "id": "B",
+        "content": "`lw $s0,0($sp)`; `addi $sp,$sp,-4`"
+      },
+      {
+        "id": "C",
+        "content": "`addi $sp,$sp,4`; `lw $s0,0($sp)`"
+      },
+      {
+        "id": "D",
+        "content": "`lw $s0,0($sp)`; `addi $sp,$sp,4`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Pop: đọc dữ liệu từ `0($sp)` trước, rồi cộng `$sp` thêm 4.",
+      "whyCorrect": "Pop: đọc dữ liệu từ `0($sp)` trước, rồi cộng `$sp` thêm 4.",
+      "whyWrong": {
+        "C": "Tăng `$sp` trước sẽ đọc sai phần tử.",
+        "B": "Phải tăng `$sp` để thu hồi.",
+        "A": "`sw` là ghi, không phải đọc."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-016",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Một thủ tục cần lưu 3 thanh ghi lên stack. Cần cấp phát bao nhiêu byte?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "12"
+      },
+      {
+        "id": "B",
+        "content": "24"
+      },
+      {
+        "id": "C",
+        "content": "6"
+      },
+      {
+        "id": "D",
+        "content": "3"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Mỗi thanh ghi 1 word = 4 byte: 3 × 4 = 12 byte.",
+      "whyCorrect": "Mỗi thanh ghi 1 word = 4 byte: 3 × 4 = 12 byte.",
+      "whyWrong": {
+        "D": "Mỗi thanh ghi 4 byte, không phải 1 byte.",
+        "C": "Mỗi thanh ghi 4 byte, không phải 2 byte.",
+        "B": "Mỗi thanh ghi 4 byte, không phải 8 byte."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-017",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Thủ tục dùng `$s0`, `$s1`. Phần đầu đúng của thủ tục là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`addi $sp,$sp,8`; `sw $s0,0($sp)`; `sw $s1,4($sp)`"
+      },
+      {
+        "id": "B",
+        "content": "`addi $sp,$sp,-8`; `sw $s0,0($sp)`; `sw $s1,4($sp)`"
+      },
+      {
+        "id": "C",
+        "content": "`addi $sp,$sp,-8`; `lw $s0,0($sp)`; `lw $s1,4($sp)`"
+      },
+      {
+        "id": "D",
+        "content": "`sw $s0,0($sp)`; `sw $s1,0($sp)`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Cấp phát 8 byte, rồi lưu `$s0`, `$s1` vào hai word của stack.",
+      "whyCorrect": "Cấp phát 8 byte, rồi lưu `$s0`, `$s1` vào hai word của stack.",
+      "whyWrong": {
+        "A": "Phải giảm `$sp`.",
+        "C": "Phần đầu phải lưu (`sw`), không phải nạp.",
+        "D": "Hai thanh ghi không thể lưu chung một vị trí, và chưa cấp phát."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-018",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Phần cuối đúng của thủ tục đã lưu `$s0`, `$s1` (cấp phát 8 byte) là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`addi $sp,$sp,8`; `lw $s0,0($sp)`; `lw $s1,4($sp)`; `jr $ra`"
+      },
+      {
+        "id": "B",
+        "content": "`jr $ra`; `lw $s0,0($sp)`; `lw $s1,4($sp)`; `addi $sp,$sp,8`"
+      },
+      {
+        "id": "C",
+        "content": "`lw $s0,0($sp)`; `lw $s1,4($sp)`; `addi $sp,$sp,-8`; `jr $ra`"
+      },
+      {
+        "id": "D",
+        "content": "`lw $s0,0($sp)`; `lw $s1,4($sp)`; `addi $sp,$sp,8`; `jr $ra`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Phục hồi thanh ghi, thu hồi stack, rồi mới quay về.",
+      "whyCorrect": "Phục hồi thanh ghi, thu hồi stack, rồi mới quay về.",
+      "whyWrong": {
+        "A": "Thu hồi stack trước khi đọc là sai vị trí.",
+        "C": "Thu hồi phải cộng, không phải trừ.",
+        "B": "`jr $ra` trước thì các lệnh sau không chạy."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-019",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Một thủ tục gồm 3 phần, phần nào bắt buộc phải có?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phần thân"
+      },
+      {
+        "id": "B",
+        "content": "Cả phần đầu và phần cuối"
+      },
+      {
+        "id": "C",
+        "content": "Phần đầu"
+      },
+      {
+        "id": "D",
+        "content": "Phần cuối"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Phần thân tính toán chức năng của thủ tục, bắt buộc phải có; phần đầu và phần cuối có thể không cần.",
+      "whyCorrect": "Phần thân tính toán chức năng của thủ tục, bắt buộc phải có; phần đầu và phần cuối có thể không cần.",
+      "whyWrong": {
+        "C": "Phần đầu có thể không cần nếu không lưu thanh ghi.",
+        "D": "Phần cuối có thể không cần phục hồi stack.",
+        "B": "Hai phần này không bắt buộc."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-020",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Caller là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thủ tục được gọi, thực thi rồi trả điều khiển về"
+      },
+      {
+        "id": "B",
+        "content": "Chương trình gọi một thủ tục và cung cấp tham số"
+      },
+      {
+        "id": "C",
+        "content": "Thanh ghi lưu địa chỉ quay về sau khi thủ tục kết thúc"
+      },
+      {
+        "id": "D",
+        "content": "Trình biên dịch sinh ra lệnh gọi thủ tục trong hợp ngữ"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Caller gọi thủ tục và cung cấp giá trị tham số.",
+      "whyCorrect": "Caller gọi thủ tục và cung cấp giá trị tham số.",
+      "whyWrong": {
+        "A": "Đây là callee.",
+        "C": "Đây là `$ra`.",
+        "D": "Trình biên dịch không phải caller."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-021",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Callee là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vùng nhớ stack được cấp phát riêng khi thủ tục bắt đầu chạy"
+      },
+      {
+        "id": "B",
+        "content": "Lệnh `jal` dùng để lưu địa chỉ về và nhảy tới thủ tục khác"
+      },
+      {
+        "id": "C",
+        "content": "Thủ tục được gọi, thực thi dựa trên tham số rồi trả điều khiển về caller"
+      },
+      {
+        "id": "D",
+        "content": "Chương trình gọi một thủ tục và cung cấp giá trị các tham số"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Callee thực thi chuỗi lệnh dựa trên tham số do caller cung cấp, sau đó trả điều khiển về caller.",
+      "whyCorrect": "Callee thực thi chuỗi lệnh dựa trên tham số do caller cung cấp, sau đó trả điều khiển về caller.",
+      "whyWrong": {
+        "D": "Đây là caller.",
+        "A": "Stack là vùng nhớ.",
+        "B": "`jal` là lệnh gọi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-022",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Leaf procedure là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thủ tục gọi lồng nhau"
+      },
+      {
+        "id": "B",
+        "content": "Thủ tục có nhiều hơn 4 tham số"
+      },
+      {
+        "id": "C",
+        "content": "Thủ tục đệ quy"
+      },
+      {
+        "id": "D",
+        "content": "Thủ tục không gọi thủ tục khác"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Thủ tục lá là thủ tục không gọi thủ tục khác; ngược lại là nested procedure.",
+      "whyCorrect": "Thủ tục lá là thủ tục không gọi thủ tục khác; ngược lại là nested procedure.",
+      "whyWrong": {
+        "A": "Đây là nested procedure.",
+        "B": "Số tham số không quyết định.",
+        "C": "Thủ tục đệ quy có gọi thủ tục khác (chính nó)."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-023",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Vì sao một nested procedure phải lưu `$ra` lên stack trước khi gọi thủ tục khác?",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vì `$ra` là thanh ghi tạm nên mọi thủ tục đều phải lưu nó lại"
+      },
+      {
+        "id": "B",
+        "content": "Vì lệnh `jal` bên trong sẽ ghi đè `$ra`, làm mất địa chỉ quay về của thủ tục hiện tại"
+      },
+      {
+        "id": "C",
+        "content": "Vì truy cập stack nhanh hơn truy cập trực tiếp thanh ghi `$ra`"
+      },
+      {
+        "id": "D",
+        "content": "Vì `jr` không đọc được `$ra` nên phải nạp qua một thanh ghi khác"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`jal` ghi PC + 4 vào `$ra`; nếu không lưu, thủ tục hiện tại không thể quay về nơi đã gọi nó.",
+      "whyCorrect": "`jal` ghi PC + 4 vào `$ra`; nếu không lưu, thủ tục hiện tại không thể quay về nơi đã gọi nó.",
+      "whyWrong": {
+        "A": "`$ra` là địa chỉ trả về, không phải thanh ghi tạm.",
+        "C": "Thanh ghi nhanh hơn bộ nhớ.",
+        "D": "`jr $ra` đọc `$ra` bình thường."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-024",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Trong MIPS 32 bit, trong luồng thực thi bình thường PC tăng lên bao nhiêu sau mỗi lệnh?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "1"
+      },
+      {
+        "id": "B",
+        "content": "8"
+      },
+      {
+        "id": "C",
+        "content": "2"
+      },
+      {
+        "id": "D",
+        "content": "4"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Mỗi lệnh dài 1 word = 4 byte nên PC tăng 4 (trừ lệnh nhảy).",
+      "whyCorrect": "Mỗi lệnh dài 1 word = 4 byte nên PC tăng 4 (trừ lệnh nhảy).",
+      "whyWrong": {
+        "A": "MIPS định địa chỉ theo byte.",
+        "C": "Lệnh dài 4 byte.",
+        "B": "Lệnh dài 4 byte, không phải 8 byte."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-025",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Sáu bước thực thi thủ tục: sau khi đặt tham số và chuyển quyền điều khiển, bước tiếp theo là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thực hiện công việc chính của thủ tục"
+      },
+      {
+        "id": "B",
+        "content": "Lưu kết quả vào vị trí nơi gọi đọc được"
+      },
+      {
+        "id": "C",
+        "content": "Yêu cầu tài nguyên lưu trữ cần thiết (phần đầu)"
+      },
+      {
+        "id": "D",
+        "content": "Trả điều khiển về nơi gọi thủ tục"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Thứ tự: đặt tham số → chuyển điều khiển → cấp tài nguyên → thực hiện → lưu kết quả → trả điều khiển.",
+      "whyCorrect": "Thứ tự: đặt tham số → chuyển điều khiển → cấp tài nguyên → thực hiện → lưu kết quả → trả điều khiển.",
+      "whyWrong": {
+        "D": "Đây là bước cuối cùng.",
+        "B": "Đây là bước thứ 5.",
+        "A": "Đây là bước thứ 4, sau khi đã cấp tài nguyên."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-026",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Heap là gì theo slide?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Khu vực bộ nhớ cấp phát động, có thể được cấp phát thêm khi đạt đến giới hạn"
+      },
+      {
+        "id": "B",
+        "content": "Thanh ghi đặc biệt trỏ tới dữ liệu cấp phát trong lúc chạy"
+      },
+      {
+        "id": "C",
+        "content": "Vùng lưu địa chỉ trả về và biến cục bộ của từng thủ tục"
+      },
+      {
+        "id": "D",
+        "content": "Đoạn mã chương trình được nạp vào bộ nhớ khi bắt đầu chạy"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Heap là khu vực cấp phát động.",
+      "whyCorrect": "Heap là khu vực cấp phát động.",
+      "whyWrong": {
+        "D": "Đây là Text segment.",
+        "B": "Heap là vùng bộ nhớ, không phải thanh ghi.",
+        "C": "Địa chỉ trả về nằm trong `$ra` hoặc stack."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-027",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Text segment là vùng chứa gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Đoạn mã chương trình"
+      },
+      {
+        "id": "B",
+        "content": "Dữ liệu cấp phát động"
+      },
+      {
+        "id": "C",
+        "content": "Biến cục bộ"
+      },
+      {
+        "id": "D",
+        "content": "Các chuỗi ký tự trên màn hình"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Text segment là đoạn mã chương trình.",
+      "whyCorrect": "Text segment là đoạn mã chương trình.",
+      "whyWrong": {
+        "C": "Biến cục bộ nằm trên stack.",
+        "B": "Dữ liệu cấp phát động nằm trên heap.",
+        "D": "Tên gọi \"text\" không có nghĩa là văn bản hiển thị."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-028",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "MIPS chuẩn có lệnh PUSH và POP không?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Có cả hai lệnh, thuộc nhóm lệnh truyền dữ liệu I-format"
+      },
+      {
+        "id": "B",
+        "content": "Chỉ có PUSH; POP được thay bằng lệnh `lw` kết hợp `addi`"
+      },
+      {
+        "id": "C",
+        "content": "Không có; lập trình viên tự thực hiện bằng `addi` và `sw`/`lw`"
+      },
+      {
+        "id": "D",
+        "content": "Chỉ có POP; PUSH được thay bằng lệnh `sw` kết hợp `addi`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Tập lệnh MIPS chuẩn không có Push/Pop; phải dùng `addi` kết hợp `sw`/`lw`.",
+      "whyCorrect": "Tập lệnh MIPS chuẩn không có Push/Pop; phải dùng `addi` kết hợp `sw`/`lw`.",
+      "whyWrong": {
+        "A": "MIPS chuẩn không có các lệnh này.",
+        "B": "MIPS chuẩn không có các lệnh này.",
+        "D": "MIPS chuẩn không có các lệnh này."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-029",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Sau đoạn lệnh, `$s6` bằng bao nhiêu nếu `$s0 = 7`, `$s1 = 2`, `$s2 = 1`, `$s3 = 3`?\n\n```mips\nadd  $a0, $s0, $zero\nadd  $a1, $s1, $zero\nadd  $a2, $s2, $zero\nadd  $a3, $s3, $zero\njal  proc\nadd  $s6, $v0, $zero\nj    EXIT\nproc:\nadd  $t0, $a0, $a1\nadd  $t1, $a2, $a3\nsub  $v0, $t0, $t1\njr   $ra\nEXIT:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "13"
+      },
+      {
+        "id": "B",
+        "content": "5"
+      },
+      {
+        "id": "C",
+        "content": "9"
+      },
+      {
+        "id": "D",
+        "content": "4"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "(a + b) − (c + d) = (7 + 2) − (1 + 3) = 5, trả về qua `$v0`.",
+      "whyCorrect": "(a + b) − (c + d) = (7 + 2) − (1 + 3) = 5, trả về qua `$v0`.",
+      "whyWrong": {
+        "A": "13 là tổng cả bốn số.",
+        "C": "9 mới là a + b.",
+        "D": "4 mới là c + d."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s6",
+      "regs": {
+        "$s0": 7,
+        "$s1": 2,
+        "$s2": 1,
+        "$s3": 3
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-030",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Cho `$sp = 0x1000`, `$s0 = 5`. Sau đoạn lệnh, giá trị trong `$s0` và `$sp` là:\n\n```mips\naddi $sp, $sp, -4\nsw   $s0, 0($sp)\naddi $s0, $zero, 9\nlw   $s0, 0($sp)\naddi $sp, $sp, 4\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`$s0 = 9`, `$sp = 0x1000`"
+      },
+      {
+        "id": "B",
+        "content": "`$s0 = 9`, `$sp = 0xFFC`"
+      },
+      {
+        "id": "C",
+        "content": "`$s0 = 5`, `$sp = 0x1000`"
+      },
+      {
+        "id": "D",
+        "content": "`$s0 = 5`, `$sp = 0xFFC`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Giá trị 5 được lưu lên stack, đổi thành 9 rồi phục hồi về 5; `$sp` trở lại như cũ.",
+      "whyCorrect": "Giá trị 5 được lưu lên stack, đổi thành 9 rồi phục hồi về 5; `$sp` trở lại như cũ.",
+      "whyWrong": {
+        "A": "`lw` đã phục hồi giá trị cũ.",
+        "D": "Lệnh cuối đã thu hồi stack.",
+        "B": "Sai cả hai giá trị."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-031",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Vì sao thanh ghi `$s` được gọi là thanh ghi lưu giá trị bền vững?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vì chúng không bao giờ thay đổi trong khi chương trình chạy"
+      },
+      {
+        "id": "B",
+        "content": "Vì chúng vẫn lưu được giá trị khi máy tính mất nguồn điện"
+      },
+      {
+        "id": "C",
+        "content": "Vì chúng nằm trong ROM nên nội dung không thể bị ghi đè"
+      },
+      {
+        "id": "D",
+        "content": "Vì giá trị của chúng được giữ nguyên qua lời gọi thủ tục theo quy ước"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Thủ tục dùng `$s` phải phục hồi trước khi thoát, nên với nơi gọi giá trị được giữ nguyên.",
+      "whyCorrect": "Thủ tục dùng `$s` phải phục hồi trước khi thoát, nên với nơi gọi giá trị được giữ nguyên.",
+      "whyWrong": {
+        "B": "Thanh ghi mất dữ liệu khi mất điện.",
+        "C": "Thanh ghi nằm trong CPU.",
+        "A": "Giá trị thay đổi được trong lúc tính toán."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2c-032",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2c",
+    "content": "Thanh ghi `$at`, `$k0`, `$k1` theo quy ước:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Dành cho hệ điều hành và assembler, không nên dùng khi lập trình thông thường"
+      },
+      {
+        "id": "B",
+        "content": "Dùng để lưu giá trị trả về khi hàm có nhiều kết quả"
+      },
+      {
+        "id": "C",
+        "content": "Là thanh ghi tạm tự do, thủ tục dùng mà không cần lưu lại"
+      },
+      {
+        "id": "D",
+        "content": "Dùng để truyền các tham số thứ năm trở đi cho thủ tục"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`$at` ($1), `$k0` ($26), `$k1` ($27) dành cho assembler và hệ điều hành.",
+      "whyCorrect": "`$at` ($1), `$k0` ($26), `$k1` ($27) dành cho assembler và hệ điều hành.",
+      "whyWrong": {
+        "D": "Truyền tham số là `$a0`–`$a3`.",
+        "B": "Giá trị trả về là `$v0`, `$v1`.",
+        "C": "Thanh ghi tạm là nhóm `$t`."
+      }
+    }
+  }
+]

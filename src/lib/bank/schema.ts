@@ -34,8 +34,11 @@ export const VerificationSchema = z.enum(["verified", "unverified", "needs_revie
 export type Verification = z.infer<typeof VerificationSchema>;
 
 export const SourceSchema = z.object({
-  /** original: từ đề gốc; generated: sinh bằng thuật toán (đáp án tính bằng code); ai_generated: AI tạo; demo: dữ liệu minh họa */
-  kind: z.enum(["original", "generated", "ai_generated", "demo"]),
+  /**
+   * original: từ đề gốc; authored: soạn thêm dựa trên lý thuyết trong tài liệu;
+   * generated: sinh bằng thuật toán (đáp án tính bằng code); ai_generated: AI tạo khi chạy; demo: dữ liệu minh họa
+   */
+  kind: z.enum(["original", "authored", "generated", "ai_generated", "demo"]),
   /** Tên tài liệu / bộ đề / năm học (nếu có) */
   reference: z.string().optional(),
   /** Câu gốc dùng làm mẫu khi AI tạo câu mới */
@@ -73,9 +76,25 @@ export const RubricItemSchema = z.object({
 });
 export type RubricItem = z.infer<typeof RubricItemSchema>;
 
+/** Một trường hợp chạy thử để kiểm chứng đáp án mẫu dạng code bằng bộ mô phỏng MIPS. */
+export const RunCaseSchema = z.object({
+  regs: z.record(z.string(), z.number()).optional(),
+  /** Word ban đầu trong bộ nhớ: khóa là địa chỉ byte. */
+  words: z.record(z.string(), z.number()).optional(),
+  expectRegs: z.record(z.string(), z.number()).optional(),
+  expectWords: z.record(z.string(), z.number()).optional(),
+});
+export type RunCase = z.infer<typeof RunCaseSchema>;
+
 export const EssaySpecSchema = z.object({
   modelAnswer: z.string().min(1),
   rubric: z.array(RubricItemSchema).min(1),
+  /** code: ô nhập dùng font đơn cách; text: văn bản thường. */
+  format: z.enum(["code", "text"]).optional(),
+  /** Gợi ý cách trình bày, hiển thị trong ô nhập. */
+  placeholder: z.string().optional(),
+  /** Khối mips đầu tiên của đáp án mẫu phải chạy đúng các trường hợp này. */
+  verify: z.array(RunCaseSchema).optional(),
 });
 export type EssaySpec = z.infer<typeof EssaySpecSchema>;
 
@@ -87,6 +106,26 @@ export const CalcCheckSchema = z.object({
   ask: z.enum(["network", "broadcast", "mask", "firstHost", "lastHost", "usableHosts", "totalAddresses", "wildcard"]),
 });
 export type CalcCheck = z.infer<typeof CalcCheckSchema>;
+
+/** Kiểm chứng đáp án trắc nghiệm bằng code khi build ngân hàng. */
+export const McqVerifySchema = z.discriminatedUnion("kind", [
+  /** Phương án đúng phải bằng mã máy (hex hoặc nhị phân) của lệnh. */
+  z.object({ kind: z.literal("encode"), asm: z.string(), pc: z.number().optional(), labels: z.record(z.string(), z.number()).optional() }),
+  /** Phương án đúng phải là lệnh Assembly của mã máy. */
+  z.object({ kind: z.literal("decode"), hex: z.string() }),
+  /** Chạy khối mips trong đề: thanh ghi `reg` phải bằng số trong phương án đúng. */
+  z.object({
+    kind: z.literal("run"),
+    reg: z.string(),
+    code: z.string().optional(),
+    regs: z.record(z.string(), z.number()).optional(),
+    words: z.record(z.string(), z.number()).optional(),
+    littleEndian: z.boolean().optional(),
+  }),
+  /** Phương án đúng phải bằng giá trị tính sẵn (bài hiệu suất, ảnh…), sai số 0,5%. */
+  z.object({ kind: z.literal("value"), expr: z.string() }),
+]);
+export type McqVerify = z.infer<typeof McqVerifySchema>;
 
 const QuestionBase = z.object({
   id: z.string().regex(/^[a-z0-9][a-z0-9._-]*$/i, "ID chỉ gồm chữ, số, dấu chấm, gạch nối, gạch dưới"),
@@ -111,6 +150,7 @@ export const McqQuestionSchema = QuestionBase.extend({
   correctOptionId: OptionIdSchema,
   explanation: McqExplanationSchema,
   calc: CalcCheckSchema.optional(),
+  verify: McqVerifySchema.optional(),
 }).superRefine((q, ctx) => {
   const ids = q.options.map((o) => o.id);
   if (new Set(ids).size !== ids.length) ctx.addIssue({ code: "custom", message: "Mã phương án bị trùng" });
@@ -143,6 +183,8 @@ export const BlueprintSlotSchema = z.object({
   type: z.enum(["mcq", "essay"]),
   count: z.number().int().positive(),
   pointsEach: z.number().positive(),
+  /** Có thể lấy câu từ các chương này ngoài chapterId. */
+  alsoFrom: z.array(z.string()).optional(),
   difficulty: z
     .object({ easy: z.number().min(0), medium: z.number().min(0), hard: z.number().min(0) })
     .partial()

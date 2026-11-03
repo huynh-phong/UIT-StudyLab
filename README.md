@@ -22,7 +22,7 @@ Làm trực tiếp câu hỏi trong các bộ đề · Hiểu vì sao đúng, v�
 
 **UIT StudyLab** giúp sinh viên UIT ôn tập giữa kỳ, cuối kỳ và luyện thi thử một cách có hệ thống. Thay vì đọc lại lý thuyết dài, sinh viên làm trực tiếp từng câu hỏi trong các bộ đề, nhận phản hồi ngay sau mỗi câu và hiểu rõ lỗi sai của mình.
 
-Phiên bản đầu tiên tập trung vào học phần **IT005 – Nhập môn mạng máy tính (ôn tập giữa kỳ)**. Kiến trúc được thiết kế để mở rộng theo cấu trúc:
+Hiện có hai học phần ôn tập giữa kỳ: **IT005 – Nhập môn mạng máy tính** và **IT006 – Kiến trúc máy tính**. Kiến trúc được thiết kế để mở rộng theo cấu trúc:
 
 ```
 Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
@@ -45,13 +45,15 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 
 - Bài tự luận được AI (Google Gemini) chấm theo **đáp án mẫu và rubric**, chấp nhận cách diễn đạt tương đương.
 - Kết quả gồm điểm tham khảo, các ý đúng, ý còn thiếu, ý sai, nhận xét và gợi ý cải thiện.
+- Với bài code MIPS, AI chấm theo **ý nghĩa của đoạn lệnh** (dùng thanh ghi khác đáp án mẫu vẫn được tính đúng) và **trích đúng lệnh sai** kèm cách sửa.
+- Sinh viên có thể sửa bài ngay trên kết quả rồi gửi chấm lại.
 - Câu hỏi chưa có đáp án mẫu hoặc rubric tin cậy **không bị chấm điểm giả tạo**.
 - AI không bao giờ được gọi trực tiếp từ trình duyệt; mọi lượt gọi đều qua máy chủ với giới hạn tần suất, timeout và model dự phòng.
 
 ### ⏱️ Thi thử sát cấu trúc đề thật
 
-- Đề thi được tạo theo cấu trúc đề giữa kỳ thực tế: **30 câu · 65 phút**, phân bố đúng tỉ trọng từng chương.
-- **Thuật toán tạo đề**: kết hợp câu hỏi đã xác minh trong ngân hàng (ưu tiên câu chưa gặp) với các **bài tính toán mới** sinh tự động từ 21 dạng bài: độ trễ, thông lượng, số RTT của HTTP, checksum, Seq/ACK của TCP, cửa sổ trượt, điều khiển tắc nghẽn… Đáp án của bài sinh mới được **tính bằng code** nên luôn chính xác.
+- Đề thi được tạo theo cấu trúc riêng của từng môn: **IT005** gồm 30 câu trắc nghiệm trong 65 phút; **IT006** gồm 20 câu trắc nghiệm (8 điểm) và 2 câu tự luận (2 điểm) trong 60 phút.
+- **Thuật toán tạo đề**: kết hợp câu hỏi đã xác minh trong ngân hàng (ưu tiên câu chưa gặp) với các **bài tính toán mới** sinh tự động từ 21 dạng bài của IT005 và 23 dạng bài của IT006. Với IT005: độ trễ, thông lượng, số RTT của HTTP, checksum, Seq/ACK của TCP, cửa sổ trượt, điều khiển tắc nghẽn… Đáp án của bài sinh mới được **tính bằng code** nên luôn chính xác.
 - Phòng thi có đồng hồ đếm ngược, danh sách câu, đánh dấu xem lại, cảnh báo trước khi nộp và tự động nộp khi hết giờ.
 - **Đáp án được niêm phong (mã hóa AES-256-GCM)** cho tới khi nộp bài: trong lúc thi, trình duyệt không thể đọc được đáp án.
 - Bài làm được lưu liên tục, tải lại trang không mất bài.
@@ -76,6 +78,22 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 - Câu hỏi được tổng hợp từ các đề giữa kỳ đã thi và bộ đề ôn tập, loại bỏ câu trùng lặp.
 - **Mọi đáp án đều được xét lại từng câu.** Các đáp án tham khảo sai trong tài liệu gốc đã được sửa và ghi chú ngay trong lời giải; các câu mơ hồ hoặc có nhiều đáp án đúng đã bị loại.
 - Mỗi câu có lời giải riêng cho đáp án đúng và cho **từng phương án sai**.
+
+## Ngân hàng câu hỏi IT006
+
+| Phần | Nội dung | Trắc nghiệm | Tự luận |
+|---|---|:---:|:---:|
+| **Chương 1a** – Các khái niệm và công nghệ | Phân loại máy tính, các lớp phần mềm, thành phần máy tính, bộ nhớ, frame buffer | 50 | 3 |
+| **Chương 1b** – Hiệu suất | Thời gian CPU, CPI, xung nhịp, so sánh máy, thông lượng | 33 | 6 |
+| **Chương 2a** – Phép tính và toán hạng | Thanh ghi, `lw`/`sw`, hằng số, số bù hai, mở rộng dấu, endian | 45 | 11 |
+| **Chương 2b** – Biểu diễn lệnh và rẽ nhánh | Mã máy R/I/J, lệnh logic, `beq`/`bne`/`slt`, if-else, vòng lặp, biên dịch | 64 | 21 |
+| **Chương 2c** – Thủ tục và stack | `jal`/`jr`, quy ước thanh ghi, stack, thủ tục lồng nhau và đệ quy | 32 | 10 |
+| | **Tổng cộng** | **224** | **51** |
+
+- Gồm câu trong các đề và tài liệu training, cùng các câu **soạn thêm từ slide và sổ tay** để phủ toàn bộ Chương 1 và Chương 2; mỗi câu đều ghi rõ nguồn.
+- Tự luận có nhiều dạng: dịch C sang MIPS, chuyển đổi mã máy, truy vết, đọc hiểu đoạn lệnh, tìm và sửa lỗi, tính địa chỉ rẽ nhánh, viết thủ tục, đệ quy, bài toán hiệu suất và câu hỏi lý thuyết.
+- **Bộ mô phỏng MIPS** viết riêng kiểm chứng mã máy và kết quả chạy của đáp án mỗi lần build; đáp án mẫu dạng code được chạy thử với dữ liệu thật.
+- Bảng tham khảo MIPS có thể mở ngay khi ôn tập và khi làm bài thi.
 
 ## Giao diện
 
@@ -112,6 +130,7 @@ src/
     ├── exam/          Thuật toán tạo đề, sinh bài tính toán, niêm phong đáp án, chấm điểm
     ├── ai/            Chấm tự luận bằng AI
     ├── net/           Bộ tính toán địa chỉ IPv4 độc lập
+    ├── mips/          Bộ mã hóa, giải mã và mô phỏng MIPS, kiểm chứng đáp án
     └── store/         Tiến độ ôn tập, phiên thi, lịch sử
 content/               Ngân hàng câu hỏi theo học phần → kỳ thi → chương
 tests/                 Kiểm thử chấm điểm, tạo đề, niêm phong đáp án, kết quả AI
@@ -127,8 +146,9 @@ tests/                 Kiểm thử chấm điểm, tạo đề, niêm phong đ�
 ## Lộ trình
 
 - [x] IT005 – Ôn tập giữa kỳ
+- [x] IT006 – Ôn tập giữa kỳ, có tự luận chấm bằng AI
 - [ ] IT005 – Ôn tập cuối kỳ
-- [ ] Bổ sung câu hỏi tự luận có đáp án mẫu và rubric
+- [ ] IT006 – Ôn tập cuối kỳ
 - [ ] Mở rộng sang các học phần khác tại UIT
 
 ## Tác giả

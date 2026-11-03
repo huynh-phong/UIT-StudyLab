@@ -31,12 +31,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Callout, EmptyState, PageHeader, Skeleton } from "@/components/ui/misc";
+import { CourseTabs, uniqueCourses, useSelectedCourse } from "@/components/course-tabs";
 import { cn, formatDateTime, formatDuration, formatScore } from "@/lib/utils";
 
 type Mode = "algo" | "bank" | "ai";
 
 export interface ExamOffer {
   key: string;
+  courseId: string;
   courseCode: string;
   courseName: string;
   examType: ExamType;
@@ -61,6 +63,8 @@ export function ExamLanding({ offers, features }: { offers: ExamOffer[]; feature
   const active = useExamStore((s) => s.active);
   const history = useExamStore((s) => s.history);
   const discardActive = useExamStore((s) => s.discardActive);
+  const courses = uniqueCourses(offers, (o) => ({ id: o.courseId, code: o.courseCode, name: o.courseName }));
+  const selected = useSelectedCourse(courses);
 
   return (
     <div>
@@ -103,7 +107,8 @@ export function ExamLanding({ offers, features }: { offers: ExamOffer[]; feature
       )}
 
       <div className="space-y-5">
-        {offers.map((o) => (
+        <CourseTabs courses={courses} selected={selected} />
+        {offers.filter((o) => o.courseId === selected).map((o) => (
           <OfferCard key={o.key} offer={o} features={features} />
         ))}
       </div>
@@ -236,15 +241,15 @@ function OfferCard({ offer, features }: { offer: ExamOffer; features: FeatureFla
             onSelect={() => setMode("algo")}
             icon={<Shuffle />}
             title="Đề mới theo thuật toán"
-            description="Câu từ ngân hàng đã xác minh (ưu tiên câu chưa gặp) kết hợp khoảng 30% bài tính toán mới với số liệu khác, đáp án được tính bằng code."
+            description="Câu trong ngân hàng (ưu tiên câu chưa gặp) kết hợp khoảng 30% bài tính toán mới với số liệu khác, đáp án được tính bằng code."
           />
           <ModeCard
             selected={mode === "bank"}
             onSelect={() => setMode("bank")}
             disabled={!bankEnough}
             icon={<Library />}
-            title="Chỉ câu từ đề gốc"
-            description={bankEnough ? "Chọn ngẫu nhiên câu đã xác minh trong các đề và bộ đề ôn tập." : "Ngân hàng chưa đủ câu đã xác minh cho mọi chương trong cấu trúc."}
+            title="Chỉ câu trong ngân hàng"
+            description={bankEnough ? "Chọn ngẫu nhiên câu đã xác minh trong ngân hàng của môn, không sinh thêm bài mới." : "Ngân hàng chưa đủ câu đã xác minh cho mọi chương trong cấu trúc."}
           />
           {features.aiExamGeneration && (
             <ModeCard

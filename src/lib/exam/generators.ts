@@ -1,4 +1,6 @@
-import type { Difficulty, McqQuestion } from "@/lib/bank/schema";
+import type { McqQuestion } from "@/lib/bank/schema";
+import { int, pick, seededRng, vn, vnSig, type Choice, type Draft, type GeneratorTemplate, type Rng } from "./generator-utils";
+import { IT006_TEMPLATES } from "./generators-it006";
 
 /**
  * Sinh câu hỏi tính toán MỚI bằng thuật toán (không dùng AI).
@@ -6,57 +8,8 @@ import type { Difficulty, McqQuestion } from "@/lib/bank/schema";
  * kèm lời giải có số liệu cụ thể. Đáp án luôn đúng vì được tính trực tiếp.
  */
 
-export type Rng = () => number;
-
-/** PRNG có seed (mulberry32) — cùng seed cho cùng câu hỏi. */
-export function seededRng(seed: number): Rng {
-  let a = seed >>> 0;
-  return () => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-const pick = <T,>(rng: Rng, arr: readonly T[]): T => arr[Math.floor(rng() * arr.length)];
-const int = (rng: Rng, min: number, max: number) => min + Math.floor(rng() * (max - min + 1));
-
-/** Định dạng số kiểu Việt Nam: dấu phẩy thập phân, bỏ số 0 thừa. */
-export function vn(n: number, maxDecimals = 3): string {
-  const r = Number(n.toFixed(maxDecimals));
-  return r.toLocaleString("vi-VN", { maximumFractionDigits: maxDecimals, useGrouping: false });
-}
-
-/** Số rất nhỏ: giữ 2 chữ số có nghĩa. */
-export function vnSig(n: number): string {
-  if (n === 0) return "0";
-  const digits = Math.max(0, 1 - Math.floor(Math.log10(Math.abs(n))));
-  return vn(Number(n.toPrecision(2)), Math.min(digits + 1, 10));
-}
-
-interface Choice {
-  text: string;
-  why?: string;
-}
-
-interface Draft {
-  template: string;
-  chapterId: string;
-  content: string;
-  correct: string;
-  distractors: Choice[];
-  explanation: { correct: string; whyCorrect?: string; related?: string; tip?: string };
-  difficulty: Difficulty;
-}
-
-export interface GeneratorTemplate {
-  id: string;
-  chapterId: string;
-  title: string;
-  build(rng: Rng): Draft;
-}
+export { seededRng, vn, vnSig } from "./generator-utils";
+export type { GeneratorTemplate, Rng } from "./generator-utils";
 
 /** Ghép thành McqQuestion: loại phương án trùng, xáo vị trí, gắn lời giải từng phương án sai. */
 export function finalize(d: Draft, rng: Rng, id: string): McqQuestion | null {
@@ -81,7 +34,7 @@ export function finalize(d: Draft, rng: Rng, id: string): McqQuestion | null {
   });
   return {
     id,
-    courseId: "it005",
+    courseId: d.courseId ?? "it005",
     examType: "midterm",
     chapterId: d.chapterId,
     type: "mcq",
@@ -103,7 +56,7 @@ const CH3 = "ch3-transport";
 
 const ms = (seconds: number) => `${vn(seconds * 1000)} ms`;
 
-export const TEMPLATES: GeneratorTemplate[] = [
+const IT005_TEMPLATES: GeneratorTemplate[] = [
   // ───────────── Chương 1 ─────────────
   {
     id: "trans-delay",
@@ -249,7 +202,7 @@ export const TEMPLATES: GeneratorTemplate[] = [
     build(rng) {
       const link = pick(rng, [100, 200, 500, 1000, 2000]);
       const per = pick(rng, [5, 10, 20, 25, 50, 100]);
-      if (per >= link) return TEMPLATES[5].build(rng);
+      if (per >= link) return IT005_TEMPLATES[5].build(rng);
       const n = Math.floor(link / per);
       const linkTxt = link >= 1000 ? `${link / 1000} Gbps` : `${link} Mbps`;
       return {
@@ -673,6 +626,8 @@ export const TEMPLATES: GeneratorTemplate[] = [
     },
   },
 ];
+
+export const TEMPLATES: GeneratorTemplate[] = [...IT005_TEMPLATES, ...IT006_TEMPLATES];
 
 export function templatesFor(chapterId: string) {
   return TEMPLATES.filter((t) => t.chapterId === chapterId);

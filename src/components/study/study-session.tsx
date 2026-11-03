@@ -24,6 +24,7 @@ import { RichContent } from "@/components/rich-content";
 import { OptionCard, type OptionState } from "@/components/question/option-card";
 import { McqFeedback } from "@/components/question/mcq-feedback";
 import { EssayPanel } from "./essay-panel";
+import { MipsReferenceButton } from "@/components/mips-reference";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -168,6 +169,7 @@ function SessionInner({ sessionKey, title, courseLabel, href, backHref, backLabe
             <span className="text-muted">/{questions.length}</span>
           </p>
           <div className="flex items-center gap-1">
+            {questions.some((x) => x.courseId === "it006") && <MipsReferenceButton />}
             <Button variant="ghost" size="sm" onClick={() => setShowGrid((v) => !v)} aria-expanded={showGrid}>
               <LayoutGrid /> <span className="hidden sm:inline">Danh sách câu</span>
             </Button>
@@ -218,6 +220,8 @@ function SessionInner({ sessionKey, title, courseLabel, href, backHref, backLabe
                 <FlaskConical /> Minh họa
               </Badge>
             )}
+            {q.source.kind === "authored" && <Badge variant="outline">Soạn từ lý thuyết</Badge>}
+            {q.source.kind === "original" && q.courseId === "it006" && <Badge variant="default">Câu trong đề</Badge>}
             {q.verification !== "verified" && (
               <Badge variant="warning">
                 <ShieldAlert /> Chưa xác minh

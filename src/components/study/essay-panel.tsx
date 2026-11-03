@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Eye, Info, RefreshCw, Sparkles } from "lucide-react";
+import { ArrowRight, Eye, Info, PencilLine, RefreshCw, Sparkles } from "lucide-react";
 import type { EssayQuestion } from "@/lib/bank/schema";
 import type { EssayGradeResult } from "@/lib/grading/types";
 import { useStudyStore, type EssayAnswer } from "@/lib/store/study";
@@ -25,7 +25,7 @@ export function EssayPanel({
   aiAvailable: boolean;
   onNext: () => void;
 }) {
-  const { setEssayText, setEssayGrading, setEssayResult, setEssayError } = useStudyStore.getState();
+  const { setEssayText, setEssayGrading, setEssayResult, setEssayError, reopenEssay } = useStudyStore.getState();
   const [text, setText] = useState(answer?.text ?? "");
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inFlight = useRef(false);
@@ -98,7 +98,9 @@ export function EssayPanel({
           value={text}
           disabled={locked}
           maxLength={MAX_CHARS}
-          placeholder="Trình bày câu trả lời. Có thể xuống dòng, liệt kê từng ý…"
+          placeholder={question.essay?.placeholder ?? "Trình bày câu trả lời. Có thể xuống dòng, liệt kê từng ý…"}
+          spellCheck={question.essay?.format !== "code"}
+          className={question.essay?.format === "code" ? "font-mono text-sm" : undefined}
           onChange={(e) => {
             setText(e.target.value);
             scheduleSave(e.target.value);
@@ -140,9 +142,14 @@ export function EssayPanel({
       {status === "done" && answer?.grade && (
         <>
           <EssayResultView state={answer.grade} fallbackModelAnswer={question.essay?.modelAnswer} />
-          <Button size="lg" className="w-full sm:w-auto sm:min-w-44" onClick={onNext}>
-            Câu tiếp theo <ArrowRight />
-          </Button>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Button size="lg" className="sm:min-w-44" onClick={onNext}>
+              Câu tiếp theo <ArrowRight />
+            </Button>
+            <Button size="lg" variant="outline" onClick={() => reopenEssay(sessionKey, question.id)}>
+              <PencilLine /> Sửa bài và chấm lại
+            </Button>
+          </div>
         </>
       )}
     </div>

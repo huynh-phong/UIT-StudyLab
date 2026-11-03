@@ -13,7 +13,9 @@ export interface PublicExamQuestion {
   chapterId: string;
   chapterTitle: string;
   difficulty?: Difficulty;
-  origin: "ai_generated" | "generated" | "original" | "demo";
+  origin: "ai_generated" | "authored" | "generated" | "original" | "demo";
+  answerFormat?: "code" | "text";
+  placeholder?: string;
 }
 
 export interface PublicExam {

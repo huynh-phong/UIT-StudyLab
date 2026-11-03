@@ -65,10 +65,26 @@ export function EssayResultView({ state, fallbackModelAnswer }: { state: EssayGr
   }
 
   const ratio = pct(state.score, state.maxScore);
-  const tone = ratio >= 80 ? "text-green-600" : ratio >= 50 ? "text-primary" : "text-red-600";
-  const bar = ratio >= 80 ? "bg-success" : ratio >= 50 ? "bg-primary" : "bg-error";
+  const perfect = state.score >= state.maxScore;
+  const tone = perfect ? "text-green-600" : ratio >= 50 ? "text-primary" : "text-red-600";
+  const bar = perfect ? "bg-success" : ratio >= 50 ? "bg-primary" : "bg-error";
+  const verdict = perfect
+    ? { title: "Chính xác!", note: "Bài làm đạt đủ các ý theo đáp án.", cls: "border-success/25 bg-success-soft text-green-700", icon: <CheckCircle2 className="size-5" /> }
+    : ratio >= 50
+      ? { title: "Gần đúng — còn điểm cần sửa", note: "Xem các điểm sai và ý còn thiếu bên dưới.", cls: "border-primary/20 bg-primary-soft text-primary", icon: <AlertTriangle className="size-5" /> }
+      : { title: "Chưa chính xác!", note: "Xem các điểm sai và ý còn thiếu bên dưới.", cls: "border-error/20 bg-error-soft text-red-700", icon: <XCircle className="size-5" /> };
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="space-y-4" aria-live="polite">
+      <div className={`rounded-2xl border px-4 py-3 ${verdict.cls}`}>
+        <p className="flex items-center gap-2 font-semibold">
+          {verdict.icon} {verdict.title}
+        </p>
+        <p className="mt-0.5 pl-7 text-sm opacity-90">{verdict.note}</p>
+      </div>
+
+      {!perfect && <PointList icon={<XCircle className="size-4 text-red-600" />} title="Điểm sai cần sửa" items={state.incorrectPoints} empty="Không có ý sai; bài làm chủ yếu còn thiếu ý." />}
+      {!perfect && <PointList icon={<MinusCircle className="size-4 text-amber-600" />} title="Ý còn thiếu" items={state.missingPoints} empty="Không thiếu ý quan trọng." />}
+
       <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5">
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
@@ -99,8 +115,6 @@ export function EssayResultView({ state, fallbackModelAnswer }: { state: EssayGr
       </div>
 
       <PointList icon={<CheckCircle2 className="size-4 text-green-600" />} title="Ý đã trả lời đúng" items={state.correctPoints} empty="Chưa có ý nào đạt yêu cầu." />
-      <PointList icon={<MinusCircle className="size-4 text-amber-600" />} title="Ý còn thiếu" items={state.missingPoints} empty="Không thiếu ý quan trọng." />
-      <PointList icon={<XCircle className="size-4 text-red-600" />} title="Ý sai hoặc chưa chính xác" items={state.incorrectPoints} empty="Không có ý sai." />
 
       <div className="rounded-xl bg-subtle px-4 py-3.5">
         <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted">Nhận xét</p>

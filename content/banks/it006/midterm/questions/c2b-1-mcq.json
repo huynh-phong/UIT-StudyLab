@@ -1,0 +1,2898 @@
+[
+  {
+    "id": "it006-mid-c2b-001",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Lệnh Assembly MIPS nào dưới đây thuộc định dạng lệnh R-format?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`beq`"
+      },
+      {
+        "id": "B",
+        "content": "`subu`"
+      },
+      {
+        "id": "C",
+        "content": "`lbu`"
+      },
+      {
+        "id": "D",
+        "content": "`sw`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`subu` chỉ làm việc với 3 thanh ghi nên thuộc R-format.",
+      "whyCorrect": "`subu` chỉ làm việc với 3 thanh ghi nên thuộc R-format.",
+      "whyWrong": {
+        "A": "`beq` là I-format.",
+        "C": "`lbu` là I-format.",
+        "D": "`sw` là I-format."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-002",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cho giá trị ban đầu trong `$t0` là `0x20222023`. Giá trị của `$t1` sau khi chạy đoạn lệnh sau là:\n\n```mips\nsrl  $t1, $t0, 3\nandi $t1, $t1, 0x0FEF\n```",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x00004404`"
+      },
+      {
+        "id": "B",
+        "content": "`0x04040404`"
+      },
+      {
+        "id": "C",
+        "content": "`0x00000404`"
+      },
+      {
+        "id": "D",
+        "content": "`0x04044404`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`srl 3` cho `0x04044404`. `andi` mở rộng `0x0FEF` bằng zero-extend nên 16 bit cao về 0; `0x4404 & 0x0FEF = 0x0404`.",
+      "whyCorrect": "`srl 3` cho `0x04044404`. `andi` mở rộng `0x0FEF` bằng zero-extend nên 16 bit cao về 0; `0x4404 & 0x0FEF = 0x0404`.",
+      "whyWrong": {
+        "A": "`0x4404` chưa AND với `0x0FEF`.",
+        "B": "16 bit cao phải bằng 0 vì `andi` zero-extend.",
+        "D": "Đây là kết quả của `srl`, chưa thực hiện `andi`."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t1",
+      "regs": {
+        "$t0": 539107363
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-003",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy hệ 16 nào biểu diễn lệnh `srl $s5, $t8, 27`?",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x001800C2`"
+      },
+      {
+        "id": "B",
+        "content": "`0x0018AEC2`"
+      },
+      {
+        "id": "C",
+        "content": "`0x001565C2`"
+      },
+      {
+        "id": "D",
+        "content": "`0x001845C2`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "op = 0, rs = 0, rt = `$t8` = 24, rd = `$s5` = 21, shamt = 27, funct = 2 → `0x0018AEC2`.",
+      "whyCorrect": "op = 0, rs = 0, rt = `$t8` = 24, rd = `$s5` = 21, shamt = 27, funct = 2 → `0x0018AEC2`.",
+      "whyWrong": {
+        "A": "Thiếu rd và shamt.",
+        "C": "Đảo rt và rd.",
+        "D": "Sai shamt và rd."
+      },
+      "tip": "Lệnh dịch: rs = 0, thanh ghi nguồn nằm ở rt."
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "srl $s5, $t8, 27"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-004",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Sau khi đoạn chương trình thực thi xong, giá trị trong `$s0` là bao nhiêu?\n\n```mips\naddi $s0, $zero, 5\naddi $t1, $zero, 12\nloop: beq $t1, $zero, end\nsll  $s0, $s0, 1\naddi $t1, $t1, -4\nj loop\nend: addi $s1, $s0, 5\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "40"
+      },
+      {
+        "id": "B",
+        "content": "45"
+      },
+      {
+        "id": "C",
+        "content": "47"
+      },
+      {
+        "id": "D",
+        "content": "35"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`$t1` đi từ 12 về 0 qua 3 vòng; mỗi vòng `$s0` nhân đôi: 5 → 10 → 20 → 40.",
+      "whyCorrect": "`$t1` đi từ 12 về 0 qua 3 vòng; mỗi vòng `$s0` nhân đôi: 5 → 10 → 20 → 40.",
+      "whyWrong": {
+        "B": "45 là `$s1`, lệnh cuối không đổi `$s0`.",
+        "C": "47 tính sai.",
+        "D": "35 tính sai."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s0"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-005",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "i, k tương ứng `$s0`, `$s1`; địa chỉ nền của mảng `arr` lưu trong `$s2`. Đoạn C/C++ tương ứng với chuỗi lệnh sau là:\n\n```mips\nfunction: sll $t1, $s0, 2\nadd  $t1, $t1, $s2\nlw   $t0, 0($t1)\nbne  $t0, $s1, exit\naddi $s0, $s0, 1\nj function\nexit:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`while (arr[i] != k) { i += 1; }`"
+      },
+      {
+        "id": "B",
+        "content": "`while (arr[i] == k) { i += 1; }`"
+      },
+      {
+        "id": "C",
+        "content": "`while (i != k) { arr[i] += 1; }`"
+      },
+      {
+        "id": "D",
+        "content": "`while (i == k) { arr[i] += 1; }`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Vòng lặp thoát khi `arr[i] != k`, nghĩa là tiếp tục khi `arr[i] == k`; mỗi vòng tăng i.",
+      "whyCorrect": "Vòng lặp thoát khi `arr[i] != k`, nghĩa là tiếp tục khi `arr[i] == k`; mỗi vòng tăng i.",
+      "whyWrong": {
+        "A": "Điều kiện bị đảo: `bne` là điều kiện thoát.",
+        "C": "So sánh `arr[i]` với k, không phải i với k.",
+        "D": "Thân vòng lặp tăng i, không tăng `arr[i]`."
+      },
+      "tip": "Điều kiện thoát trong Assembly là **phủ định** điều kiện lặp trong C."
+    }
+  },
+  {
+    "id": "it006-mid-c2b-006",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy hệ 16 nào biểu diễn lệnh `addi $s1, $s7, -55`?",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x22F2FFC8`"
+      },
+      {
+        "id": "B",
+        "content": "`0x22F1FFC9`"
+      },
+      {
+        "id": "C",
+        "content": "`0x22F1FFF9`"
+      },
+      {
+        "id": "D",
+        "content": "`0x22F1FFF8`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "op = 8, rs = `$s7` = 23, rt = `$s1` = 17, imm = -55 = `0xFFC9` → `0x22F1FFC9`.",
+      "whyCorrect": "op = 8, rs = `$s7` = 23, rt = `$s1` = 17, imm = -55 = `0xFFC9` → `0x22F1FFC9`.",
+      "whyWrong": {
+        "A": "Sai rt và số bù hai.",
+        "C": "Sai số bù hai của -55.",
+        "D": "Sai số bù hai của -55."
+      },
+      "tip": "-55: 55 = `0x0037`, đảo bit `0xFFC8`, cộng 1 = `0xFFC9`."
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "addi $s1, $s7, -55"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-007",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Lệnh Assembly nào được biểu diễn bởi mã máy `0x01F37024`?",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`or $t1, $t7, $s5`"
+      },
+      {
+        "id": "B",
+        "content": "`and $t6, $t7, $s3`"
+      },
+      {
+        "id": "C",
+        "content": "`or $t3, $t4, $s3`"
+      },
+      {
+        "id": "D",
+        "content": "`and $t6, $s7, $s5`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`0000 0001 1111 0011 0111 0000 0010 0100`: rs = 15 (`$t7`), rt = 19 (`$s3`), rd = 14 (`$t6`), funct = `0x24` là `and`.",
+      "whyCorrect": "`0000 0001 1111 0011 0111 0000 0010 0100`: rs = 15 (`$t7`), rt = 19 (`$s3`), rd = 14 (`$t6`), funct = `0x24` là `and`.",
+      "whyWrong": {
+        "A": "funct `0x24` là `and`, không phải `or`.",
+        "C": "Đọc sai cả lệnh lẫn thanh ghi.",
+        "D": "Đọc sai rs và rt."
+      }
+    },
+    "verify": {
+      "kind": "decode",
+      "hex": "0x01F37024"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-008",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Biết `$s1 = 0x2021`, `$s2 = 0x1`. `$s2` bằng bao nhiêu sau khi thực hiện đoạn lệnh sau?\n\n```mips\nslti $t0, $s1, 0x2022\nbeq  $t0, $zero, ELSE\nsrl  $t1, $s1, 1\nadd  $s2, $s2, $t1\nj End\nELSE: andi $s2, $s1, 0x2023\nEnd:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x1010`"
+      },
+      {
+        "id": "B",
+        "content": "`0x2021`"
+      },
+      {
+        "id": "C",
+        "content": "`0x2022`"
+      },
+      {
+        "id": "D",
+        "content": "`0x1011`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`0x2021 < 0x2022` nên `$t0 = 1`, không nhảy. `$t1 = 0x2021 >> 1 = 0x1010`; `$s2 = 1 + 0x1010 = 0x1011`.",
+      "whyCorrect": "`0x2021 < 0x2022` nên `$t0 = 1`, không nhảy. `$t1 = 0x2021 >> 1 = 0x1010`; `$s2 = 1 + 0x1010 = 0x1011`.",
+      "whyWrong": {
+        "A": "Quên cộng giá trị ban đầu của `$s2`.",
+        "B": "Đi nhầm nhánh ELSE.",
+        "C": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s2",
+      "regs": {
+        "$s1": 8225,
+        "$s2": 1
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-009",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Câu lệnh `beq $s3, $s5, CNTT` thuộc định dạng nào trong lệnh Assembly MIPS?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Định dạng R"
+      },
+      {
+        "id": "B",
+        "content": "Định dạng I"
+      },
+      {
+        "id": "C",
+        "content": "Định dạng J"
+      },
+      {
+        "id": "D",
+        "content": "Định dạng L"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`beq` có 2 thanh ghi và trường địa chỉ 16 bit nên thuộc I-format.",
+      "whyCorrect": "`beq` có 2 thanh ghi và trường địa chỉ 16 bit nên thuộc I-format.",
+      "whyWrong": {
+        "A": "R-format chỉ làm việc với thanh ghi.",
+        "C": "J-format chỉ có op và địa chỉ 26 bit (`j`, `jal`).",
+        "D": "MIPS không có định dạng L."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-010",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Câu lệnh nào sử dụng trường `shamt` khi thực hiện phép toán ở ALU?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`slt $t0, $t2, $t1`"
+      },
+      {
+        "id": "B",
+        "content": "`sll $t0, $t2, 2`"
+      },
+      {
+        "id": "C",
+        "content": "`andi $t0, $t2, 2`"
+      },
+      {
+        "id": "D",
+        "content": "`beq $t0, $t2, CNTT`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`shamt` chứa số bit cần dịch, chỉ dùng trong lệnh dịch như `sll`.",
+      "whyCorrect": "`shamt` chứa số bit cần dịch, chỉ dùng trong lệnh dịch như `sll`.",
+      "whyWrong": {
+        "A": "`slt` có shamt = 0.",
+        "C": "`andi` là I-format, không có trường shamt.",
+        "D": "`beq` là I-format, không có trường shamt."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-011",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Biết `$s1 = 1`, `$s2 = 0`. `$s2` bằng bao nhiêu sau khi thực hiện đoạn lệnh?\n\n```mips\nslti $t0, $s1, 5\nbeq  $t0, $zero, ELSE\nsll  $t1, $s1, 2\nadd  $s2, $s2, $t1\nj End\nELSE: add $s2, $s1, $zero\nEnd:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "4"
+      },
+      {
+        "id": "B",
+        "content": "5"
+      },
+      {
+        "id": "C",
+        "content": "40"
+      },
+      {
+        "id": "D",
+        "content": "60"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "1 < 5 nên `$t0 = 1`, không nhảy. `$t1 = 1 << 2 = 4`; `$s2 = 0 + 4 = 4`.",
+      "whyCorrect": "1 < 5 nên `$t0 = 1`, không nhảy. `$t1 = 1 << 2 = 4`; `$s2 = 0 + 4 = 4`.",
+      "whyWrong": {
+        "B": "5 là hằng số so sánh.",
+        "C": "Không có phép nhân 10.",
+        "D": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s2",
+      "regs": {
+        "$s1": 1,
+        "$s2": 0
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-012",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Khi biểu diễn lệnh `add $s3, $s5, $s7` sang nhị phân, trường `shamt` có giá trị:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "10011"
+      },
+      {
+        "id": "B",
+        "content": "10101"
+      },
+      {
+        "id": "C",
+        "content": "10111"
+      },
+      {
+        "id": "D",
+        "content": "00000"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`add` không phải lệnh dịch nên shamt = 00000.",
+      "whyCorrect": "`add` không phải lệnh dịch nên shamt = 00000.",
+      "whyWrong": {
+        "A": "10011 = 19 là rd (`$s3`).",
+        "B": "10101 = 21 là rs (`$s5`).",
+        "C": "10111 = 23 là rt (`$s7`)."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-013",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy MIPS của lệnh `sub $t3, $t1, $t2` là (`$t1` = 9, `$t2` = 10, `$t3` = 11; op = 0, shamt = 0, funct = `0x22`):",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027, Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`000000 01001 01010 01011 00000 100010`"
+      },
+      {
+        "id": "B",
+        "content": "`000000 01011 01001 01010 00000 100010`"
+      },
+      {
+        "id": "C",
+        "content": "`000000 01011 01010 01001 00000 100010`"
+      },
+      {
+        "id": "D",
+        "content": "`000000 01001 01010 01011 00000 010110`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "rs = `$t1` = 01001, rt = `$t2` = 01010, rd = `$t3` = 01011, funct = `0x22` = 100010.",
+      "whyCorrect": "rs = `$t1` = 01001, rt = `$t2` = 01010, rd = `$t3` = 01011, funct = `0x22` = 100010.",
+      "whyWrong": {
+        "B": "Đặt rd lên trước; thứ tự đúng là rs, rt, rd.",
+        "C": "Sai vị trí thanh ghi.",
+        "D": "`0x22` = 100010, không phải 010110 (22 hệ 10)."
+      }
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "sub $t3, $t1, $t2"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-014",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Đoạn lệnh nào thực hiện phép tính `$s2 = $s1 * 36`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`sll $t0,$s1,2`; `sll $t1,$s1,5`; `add $s2,$t0,$t1`"
+      },
+      {
+        "id": "B",
+        "content": "`srl $t0,$s1,2`; `srl $t1,$s1,5`; `add $s2,$t0,$t1`"
+      },
+      {
+        "id": "C",
+        "content": "`addi $t0,$s1,32`; `addi $t1,$t0,4`; `add $s2,$t0,$t1`"
+      },
+      {
+        "id": "D",
+        "content": "`sll $t0,$s1,2`; `sll $t1,$s1,5`; `add $t1,$t0,$s2`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "36 = 4 + 32: `$s1 << 2` cộng `$s1 << 5` bằng `$s1 × 36`.",
+      "whyCorrect": "36 = 4 + 32: `$s1 << 2` cộng `$s1 << 5` bằng `$s1 × 36`.",
+      "whyWrong": {
+        "B": "`srl` là chia, không phải nhân.",
+        "C": "`addi` cộng hằng số, không nhân.",
+        "D": "Kết quả ghi vào `$t1`, không phải `$s2`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-015",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cho đoạn mã và địa chỉ:\n\n```\n0xA4        beq  $t0, $0, else\n0xA8        addi $v0, $0, 1\n0xAC        addi $sp, $sp, 8\n0xB0        jr   $ra\n0xB4  else: addi $a0, $a0, -1\n```\n\nMã máy của lệnh `beq $t0, $0, else` là:",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x11000003`"
+      },
+      {
+        "id": "B",
+        "content": "`0x11000004`"
+      },
+      {
+        "id": "C",
+        "content": "`0x10800003`"
+      },
+      {
+        "id": "D",
+        "content": "`0x10800004`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "immediate = (`0xB4` − (`0xA4` + 4)) / 4 = 3; op = 4, rs = `$t0` = 8, rt = 0 → `0x11000003`.",
+      "whyCorrect": "immediate = (`0xB4` − (`0xA4` + 4)) / 4 = 3; op = 4, rs = `$t0` = 8, rt = 0 → `0x11000003`.",
+      "whyWrong": {
+        "B": "Tính offset từ PC thay vì PC + 4.",
+        "C": "Sai trường rs (`$a0` thay vì `$t0`).",
+        "D": "Sai cả rs và offset."
+      },
+      "tip": "Đích = PC + 4 + immediate × 4."
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "beq $t0, $0, else",
+      "pc": 164,
+      "labels": {
+        "else": 180
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-016",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Đoạn `int i = 0; while (x[i] == y[i]) i += 1;` được dịch sang MIPS (nền x = `$s0`, nền y = `$s1`) như sau. Thanh ghi `$t0` chứa nội dung của?\n\n```mips\nand  $t0, $t0, $zero\nLOOP: sll $t1, $t0, 2\nadd  $t2, $t1, $s0\nlw   $t2, 0($t2)\nadd  $t3, $t1, $s1\nlw   $t4, 0($t3)\nbne  $t2, $t4, EXIT\naddi $t0, $t0, 1\nj LOOP\nEXIT:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Biến `x[i]`"
+      },
+      {
+        "id": "B",
+        "content": "Biến `y[i]`"
+      },
+      {
+        "id": "C",
+        "content": "Biến `i`"
+      },
+      {
+        "id": "D",
+        "content": "Giá trị 0"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`$t0` được khởi tạo 0, dịch trái 2 để tính offset và tăng 1 mỗi vòng, nên nó là biến i.",
+      "whyCorrect": "`$t0` được khởi tạo 0, dịch trái 2 để tính offset và tăng 1 mỗi vòng, nên nó là biến i.",
+      "whyWrong": {
+        "A": "`x[i]` nằm trong `$t2`.",
+        "B": "`y[i]` nằm trong `$t4`.",
+        "D": "`$t0` chỉ bằng 0 lúc khởi tạo."
+      },
+      "related": "Mã gốc trong tài liệu training tính `add $t3, $t1, $s1` khi `$t1` đã cộng `$s0`, làm sai địa chỉ `y[i]`; đoạn trên đã sửa lại."
+    }
+  },
+  {
+    "id": "it006-mid-c2b-017",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Trong đoạn dịch `while (x[i] == y[i]) i += 1;` sau đây, thanh ghi `$t2` (sau lệnh `lw`) chứa nội dung của?\n\n```mips\nand  $t0, $t0, $zero\nLOOP: sll $t1, $t0, 2\nadd  $t2, $t1, $s0\nlw   $t2, 0($t2)\nadd  $t3, $t1, $s1\nlw   $t4, 0($t3)\nbne  $t2, $t4, EXIT\naddi $t0, $t0, 1\nj LOOP\nEXIT:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Biến `x[i]`"
+      },
+      {
+        "id": "B",
+        "content": "Biến `y[i]`"
+      },
+      {
+        "id": "C",
+        "content": "Biến `i`"
+      },
+      {
+        "id": "D",
+        "content": "Giá trị 0"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`$t2 = M[$s0 + i × 4]`, với `$s0` là nền của x, nên chính là `x[i]`.",
+      "whyCorrect": "`$t2 = M[$s0 + i × 4]`, với `$s0` là nền của x, nên chính là `x[i]`.",
+      "whyWrong": {
+        "B": "`y[i]` nằm trong `$t4`.",
+        "C": "`i` nằm trong `$t0`.",
+        "D": "`$t2` chứa dữ liệu đọc từ bộ nhớ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-018",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Đoạn lệnh sau tương ứng với câu lệnh C nào (f, g, h, i, j ở `$s0`–`$s4`)?\n\n```mips\nbne $s3, $s4, Else\nadd $s0, $s1, $s2\nj exit\nElse: sub $s0, $s1, $s2\nexit:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`if (i == j) f = g - h; else f = g + h;`"
+      },
+      {
+        "id": "B",
+        "content": "`if (i == j) f = g + h; else f = g - h;`"
+      },
+      {
+        "id": "C",
+        "content": "`if (i != j) f = g + h; else f = g - h;`"
+      },
+      {
+        "id": "D",
+        "content": "`if (i != j) f = g - h; else f = g - h;`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Khi i != j thì nhảy tới `Else` (trừ); khi i == j thì thực hiện cộng.",
+      "whyCorrect": "Khi i != j thì nhảy tới `Else` (trừ); khi i == j thì thực hiện cộng.",
+      "whyWrong": {
+        "A": "Đảo hai nhánh.",
+        "C": "`bne` nhảy tới nhánh trừ, nên i != j phải là phép trừ.",
+        "D": "Khi i == j phải là phép cộng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-019",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cho `$t0 = 0x55555555`, `$t1 = 0x12345678`. Giá trị của `$t2` sau đoạn lệnh là:\n\n```mips\nsll $t2, $t0, 4\nor  $t2, $t2, $t1\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x57755778`"
+      },
+      {
+        "id": "B",
+        "content": "`0x55555550`"
+      },
+      {
+        "id": "C",
+        "content": "`0x10145670`"
+      },
+      {
+        "id": "D",
+        "content": "`0x12345678`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`sll 4` cho `0x55555550`; OR với `0x12345678` được `0x57755778`.",
+      "whyCorrect": "`sll 4` cho `0x55555550`; OR với `0x12345678` được `0x57755778`.",
+      "whyWrong": {
+        "C": "Đây là phép AND, không phải OR.",
+        "B": "Quên lệnh `or`.",
+        "D": "Đây là giá trị ban đầu của `$t1`."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t2",
+      "regs": {
+        "$t0": 1431655765,
+        "$t1": 305419896
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-020",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cho `$t0 = 0x55555555`. Theo tập lệnh MIPS chuẩn (`andi` mở rộng số tức thời bằng zero-extend), giá trị của `$t2` sau đoạn lệnh là:\n\n```mips\nsrl  $t2, $t0, 3\nandi $t2, $t2, 0xFFEF\n```",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0xAAAAAAAA`"
+      },
+      {
+        "id": "B",
+        "content": "`0x0000AABA`"
+      },
+      {
+        "id": "C",
+        "content": "`0x0000AAAA`"
+      },
+      {
+        "id": "D",
+        "content": "`0x0AAAAAAA`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "`srl 3` cho `0x0AAAAAAA`. `andi` zero-extend số tức thời thành `0x0000FFEF`, nên 16 bit cao về 0: `0xAAAA & 0xFFEF = 0xAAAA`.",
+      "whyCorrect": "`srl 3` cho `0x0AAAAAAA`. `andi` zero-extend số tức thời thành `0x0000FFEF`, nên 16 bit cao về 0: `0xAAAA & 0xFFEF = 0xAAAA`.",
+      "whyWrong": {
+        "D": "Kết quả này xảy ra nếu sign-extend `0xFFEF`, nhưng `andi` phải dùng zero-extend.",
+        "A": "`srl` điền bit 0 bên trái.",
+        "B": "Tính sai phép AND."
+      },
+      "related": "> **Lưu ý:** slide 2b minh họa ví dụ này bằng cách mở rộng `0xFFEF` với các bit 1 và ra `0x0AAAAAAA`. Theo tập lệnh MIPS chuẩn, `andi` dùng zero-extend nên kết quả là `0x0000AAAA`. Nếu gặp dạng này khi thi, hãy hỏi giảng viên quy ước đang áp dụng."
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t2",
+      "regs": {
+        "$t0": 1431655765
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-021",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Một thanh ghi đặc biệt chứa lệnh đang thực thi"
+      },
+      {
+        "id": "B",
+        "content": "Chương trình viết bằng ngôn ngữ cấp cao như C"
+      },
+      {
+        "id": "C",
+        "content": "Tên gợi nhớ của lệnh như `add`, `lw`, `beq`"
+      },
+      {
+        "id": "D",
+        "content": "Chuỗi bit 0 và 1 biểu diễn một lệnh trong máy tính"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Lệnh lưu trong máy tính được biểu diễn như một chuỗi 0 và 1, gọi là mã máy.",
+      "whyCorrect": "Lệnh lưu trong máy tính được biểu diễn như một chuỗi 0 và 1, gọi là mã máy.",
+      "whyWrong": {
+        "C": "Đây là hợp ngữ.",
+        "B": "Đây là ngôn ngữ cấp cao.",
+        "A": "Mã máy không phải thanh ghi."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-022",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mỗi lệnh của MIPS-32 dài bao nhiêu bit?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "32 bit"
+      },
+      {
+        "id": "B",
+        "content": "Thay đổi tùy lệnh"
+      },
+      {
+        "id": "C",
+        "content": "16 bit"
+      },
+      {
+        "id": "D",
+        "content": "48 bit"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Mọi lệnh MIPS-32 đều dài 32 bit, tức 1 word.",
+      "whyCorrect": "Mọi lệnh MIPS-32 đều dài 32 bit, tức 1 word.",
+      "whyWrong": {
+        "C": "32 bit, không phải 16 bit.",
+        "D": "Không có lệnh 48 bit.",
+        "B": "MIPS dùng độ dài lệnh cố định."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-023",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cấu trúc của định dạng R-format là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "op(6) rs(5) rt(5) immediate(16)"
+      },
+      {
+        "id": "B",
+        "content": "op(8) rs(8) rt(8) rd(8)"
+      },
+      {
+        "id": "C",
+        "content": "op(6) rs(5) rt(5) rd(5) shamt(5) funct(6)"
+      },
+      {
+        "id": "D",
+        "content": "op(6) address(26)"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "R-format gồm 6 trường với độ dài 6-5-5-5-5-6 bit.",
+      "whyCorrect": "R-format gồm 6 trường với độ dài 6-5-5-5-5-6 bit.",
+      "whyWrong": {
+        "A": "Đây là I-format.",
+        "D": "Đây là J-format.",
+        "B": "Không phải định dạng của MIPS."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-024",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cấu trúc của định dạng I-format là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "op(6) rs(5) rt(5) immediate(16)"
+      },
+      {
+        "id": "B",
+        "content": "op(6) rs(5) rt(5) rd(5) shamt(5) funct(6)"
+      },
+      {
+        "id": "C",
+        "content": "op(6) rs(5) immediate(21)"
+      },
+      {
+        "id": "D",
+        "content": "op(6) address(26)"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "I-format gồm op, rs, rt và trường số tức thời/địa chỉ 16 bit.",
+      "whyCorrect": "I-format gồm op, rs, rt và trường số tức thời/địa chỉ 16 bit.",
+      "whyWrong": {
+        "B": "Đây là R-format.",
+        "D": "Đây là J-format.",
+        "C": "Không phải định dạng của MIPS."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-025",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Định dạng J-format dành cho lệnh nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`lw`"
+      },
+      {
+        "id": "B",
+        "content": "`beq`"
+      },
+      {
+        "id": "C",
+        "content": "`j`"
+      },
+      {
+        "id": "D",
+        "content": "`add`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "J-format gồm op(6) và address(26), dùng cho `j`, `jal`.",
+      "whyCorrect": "J-format gồm op(6) và address(26), dùng cho `j`, `jal`.",
+      "whyWrong": {
+        "D": "`add` là R-format.",
+        "B": "`beq` là I-format.",
+        "A": "`lw` là I-format."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-026",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Trong nhóm lệnh R-format, các lệnh có op bằng bao nhiêu và được phân biệt bằng trường nào?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "op = 0, phân biệt bằng rd"
+      },
+      {
+        "id": "B",
+        "content": "op = 0, phân biệt bằng funct"
+      },
+      {
+        "id": "C",
+        "content": "op = 1, phân biệt bằng shamt"
+      },
+      {
+        "id": "D",
+        "content": "op khác nhau, không cần trường khác"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Nhóm R-format có op = 0, trường funct xác định chính xác lệnh; ví dụ `add` funct = `0x20`, `sub` funct = `0x22`.",
+      "whyCorrect": "Nhóm R-format có op = 0, trường funct xác định chính xác lệnh; ví dụ `add` funct = `0x20`, `sub` funct = `0x22`.",
+      "whyWrong": {
+        "C": "op của R-format là 0; shamt dùng cho số bit dịch.",
+        "A": "rd là thanh ghi đích.",
+        "D": "Các lệnh R-format có cùng op."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-027",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Trường `rd` trong R-format có ý nghĩa gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thanh ghi nguồn thứ nhất"
+      },
+      {
+        "id": "B",
+        "content": "Thanh ghi đích nhận kết quả"
+      },
+      {
+        "id": "C",
+        "content": "Thanh ghi nguồn thứ hai"
+      },
+      {
+        "id": "D",
+        "content": "Số bit cần dịch"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "rd là thanh ghi toán hạng đích, nhận kết quả phép toán.",
+      "whyCorrect": "rd là thanh ghi toán hạng đích, nhận kết quả phép toán.",
+      "whyWrong": {
+        "A": "Đây là rs.",
+        "C": "Đây là rt.",
+        "D": "Đây là shamt."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-028",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Giá trị funct của lệnh `add` và `sub` lần lượt là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x22` và `0x20`"
+      },
+      {
+        "id": "B",
+        "content": "`0x08` và `0x2A`"
+      },
+      {
+        "id": "C",
+        "content": "`0x24` và `0x25`"
+      },
+      {
+        "id": "D",
+        "content": "`0x20` và `0x22`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`add` có funct = 32 (`0x20`), `sub` có funct = 34 (`0x22`).",
+      "whyCorrect": "`add` có funct = 32 (`0x20`), `sub` có funct = 34 (`0x22`).",
+      "whyWrong": {
+        "A": "Đảo hai giá trị.",
+        "C": "`0x24`, `0x25` là `and`, `or`.",
+        "B": "`0x08` là `jr`, `0x2A` là `slt`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-029",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy (hex) của lệnh `add $t0, $s1, $s2` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x02324022`"
+      },
+      {
+        "id": "B",
+        "content": "`0x02324020`"
+      },
+      {
+        "id": "C",
+        "content": "`0x01095020`"
+      },
+      {
+        "id": "D",
+        "content": "`0x02514020`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "op = 0, rs = 17, rt = 18, rd = 8, shamt = 0, funct = `0x20` → `0x02324020`.",
+      "whyCorrect": "op = 0, rs = 17, rt = 18, rd = 8, shamt = 0, funct = `0x20` → `0x02324020`.",
+      "whyWrong": {
+        "D": "Đảo rs và rt.",
+        "C": "Sai các trường thanh ghi.",
+        "A": "funct `0x22` là `sub`."
+      }
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "add $t0, $s1, $s2"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-030",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy của lệnh `and $t3, $s0, $s2` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`000000 10010 10000 01011 00000 100100`"
+      },
+      {
+        "id": "B",
+        "content": "`000000 01011 10000 10010 00000 100100`"
+      },
+      {
+        "id": "C",
+        "content": "`000000 10000 10010 01011 00000 100101`"
+      },
+      {
+        "id": "D",
+        "content": "`000000 10000 10010 01011 00000 100100`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "rs = `$s0` = 16, rt = `$s2` = 18, rd = `$t3` = 11, funct = `0x24`.",
+      "whyCorrect": "rs = `$s0` = 16, rt = `$s2` = 18, rd = `$t3` = 11, funct = `0x24`.",
+      "whyWrong": {
+        "B": "Đặt rd lên đầu là sai.",
+        "A": "Đảo rs và rt.",
+        "C": "funct `100101` là `or`."
+      }
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "and $t3, $s0, $s2"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-031",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy của lệnh `sll $t1, $t5, 7` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`000000 01101 00000 01001 00111 000000`"
+      },
+      {
+        "id": "B",
+        "content": "`000000 00000 01101 01001 00000 000111`"
+      },
+      {
+        "id": "C",
+        "content": "`000000 00000 01001 01101 00111 000000`"
+      },
+      {
+        "id": "D",
+        "content": "`000000 00000 01101 01001 00111 000000`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Lệnh dịch: rs = 0, rt = `$t5` = 13, rd = `$t1` = 9, shamt = 7, funct = 0.",
+      "whyCorrect": "Lệnh dịch: rs = 0, rt = `$t5` = 13, rd = `$t1` = 9, shamt = 7, funct = 0.",
+      "whyWrong": {
+        "A": "Thanh ghi nguồn phải ở rt, rs = 0.",
+        "C": "Đảo rt và rd.",
+        "B": "Số bit dịch nằm ở shamt, không phải funct."
+      }
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "sll $t1, $t5, 7"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-032",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy (hex) của lệnh `lw $t0, 32($s3)` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0xAE680020`"
+      },
+      {
+        "id": "B",
+        "content": "`0x8E680020`"
+      },
+      {
+        "id": "C",
+        "content": "`0x8D130020`"
+      },
+      {
+        "id": "D",
+        "content": "`0x8E680008`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "op = `0x23`, rs = `$s3` = 19, rt = `$t0` = 8, immediate = 32 → `0x8E680020`.",
+      "whyCorrect": "op = `0x23`, rs = `$s3` = 19, rt = `$t0` = 8, immediate = 32 → `0x8E680020`.",
+      "whyWrong": {
+        "A": "op `0x2B` là `sw`.",
+        "C": "Đảo rs và rt.",
+        "D": "Immediate phải là 32 (byte), không phải 8."
+      }
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "lw $t0, 32($s3)"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-033",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy (hex) của lệnh `sw $t0, 48($s3)` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0xAE680048`"
+      },
+      {
+        "id": "B",
+        "content": "`0xAE680030`"
+      },
+      {
+        "id": "C",
+        "content": "`0x8E680030`"
+      },
+      {
+        "id": "D",
+        "content": "`0xAD130030`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "op = `0x2B`, rs = 19, rt = 8, immediate = 48 = `0x30` → `0xAE680030`.",
+      "whyCorrect": "op = `0x2B`, rs = 19, rt = 8, immediate = 48 = `0x30` → `0xAE680030`.",
+      "whyWrong": {
+        "C": "op `0x23` là `lw`.",
+        "D": "Đảo rs và rt.",
+        "A": "48 đổi sang hệ 16 là `0x30`."
+      }
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "sw $t0, 48($s3)"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-034",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Lệnh Assembly tương ứng với mã máy `0x8D280004` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`lw $t0, 4($t1)`"
+      },
+      {
+        "id": "B",
+        "content": "`lw $t1, 4($t0)`"
+      },
+      {
+        "id": "C",
+        "content": "`sw $t0, 4($t1)`"
+      },
+      {
+        "id": "D",
+        "content": "`addi $t0, $t1, 4`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "op = `0x23` là `lw`, rs = 9 (`$t1`), rt = 8 (`$t0`), immediate = 4.",
+      "whyCorrect": "op = `0x23` là `lw`, rs = 9 (`$t1`), rt = 8 (`$t0`), immediate = 4.",
+      "whyWrong": {
+        "C": "op của `sw` là `0x2B`.",
+        "B": "rs là thanh ghi nền, rt là thanh ghi nhận dữ liệu.",
+        "D": "op của `addi` là 8."
+      }
+    },
+    "verify": {
+      "kind": "decode",
+      "hex": "0x8D280004"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-035",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Với lệnh `lw`, `sw`, địa chỉ ô nhớ được tính thế nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Giá trị thanh ghi rt + số 16 bit"
+      },
+      {
+        "id": "B",
+        "content": "Giá trị thanh ghi rs + số 16 bit mở rộng có dấu"
+      },
+      {
+        "id": "C",
+        "content": "Chỉ lấy số 16 bit"
+      },
+      {
+        "id": "D",
+        "content": "PC + 4 + số 16 bit"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Địa chỉ = nội dung rs + số 16 bit trong lệnh.",
+      "whyCorrect": "Địa chỉ = nội dung rs + số 16 bit trong lệnh.",
+      "whyWrong": {
+        "A": "rt là thanh ghi dữ liệu.",
+        "C": "Phải cộng với thanh ghi nền.",
+        "D": "Đây giống cách tính của lệnh rẽ nhánh."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-036",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Phép dịch trái `sll` k bit tương đương (nếu không tràn):",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chia cho $2^k$"
+      },
+      {
+        "id": "B",
+        "content": "Cộng k"
+      },
+      {
+        "id": "C",
+        "content": "Trừ k"
+      },
+      {
+        "id": "D",
+        "content": "Nhân với $2^k$"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Mỗi lần dịch trái 1 bit tương đương nhân 2.",
+      "whyCorrect": "Mỗi lần dịch trái 1 bit tương đương nhân 2.",
+      "whyWrong": {
+        "A": "Đây là `srl` với số không dấu.",
+        "B": "Cộng k dùng `addi`.",
+        "C": "Trừ k dùng `addi` với số âm."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-037",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "`$s1` chứa `00000110` (số 6). Sau lệnh `sll $t1, $s1, 2`, `$t1` bằng:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "24"
+      },
+      {
+        "id": "B",
+        "content": "3"
+      },
+      {
+        "id": "C",
+        "content": "6"
+      },
+      {
+        "id": "D",
+        "content": "12"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Dịch trái 2 bit: `00011000` = 24.",
+      "whyCorrect": "Dịch trái 2 bit: `00011000` = 24.",
+      "whyWrong": {
+        "B": "3 là `srl 1`.",
+        "D": "12 là `sll 1`.",
+        "C": "Giá trị đã thay đổi."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t1",
+      "code": "sll $t1, $s1, 2",
+      "regs": {
+        "$s1": 6
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-038",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "`$s1` chứa số 6. Sau lệnh `srl $t2, $s1, 1`, `$t2` bằng:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "12"
+      },
+      {
+        "id": "B",
+        "content": "2"
+      },
+      {
+        "id": "C",
+        "content": "24"
+      },
+      {
+        "id": "D",
+        "content": "3"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Dịch phải 1 bit: `00000011` = 3.",
+      "whyCorrect": "Dịch phải 1 bit: `00000011` = 3.",
+      "whyWrong": {
+        "A": "12 là `sll 1`.",
+        "C": "24 là `sll 2`.",
+        "B": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t2",
+      "code": "srl $t2, $s1, 1",
+      "regs": {
+        "$s1": 6
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-039",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Lệnh MIPS tương ứng với toán tử `|` (OR từng bit) của C là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`or`, `ori`"
+      },
+      {
+        "id": "B",
+        "content": "`nor`"
+      },
+      {
+        "id": "C",
+        "content": "`and`, `andi`"
+      },
+      {
+        "id": "D",
+        "content": "`sll`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`or`, `ori` thực hiện OR từng bit.",
+      "whyCorrect": "`or`, `ori` thực hiện OR từng bit.",
+      "whyWrong": {
+        "C": "Đây là phép AND.",
+        "B": "`nor` là NOT OR.",
+        "D": "`sll` là dịch trái."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-040",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "MIPS không có lệnh NOT riêng. Có thể thực hiện `$t0 = ~$t1` bằng lệnh nào?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`nor $t0, $t1, $zero`"
+      },
+      {
+        "id": "B",
+        "content": "`or $t0, $t1, $zero`"
+      },
+      {
+        "id": "C",
+        "content": "`sub $t0, $t1, $zero`"
+      },
+      {
+        "id": "D",
+        "content": "`and $t0, $t1, $zero`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "NOR với 0 chính là đảo tất cả các bit: ~(a | 0) = ~a.",
+      "whyCorrect": "NOR với 0 chính là đảo tất cả các bit: ~(a | 0) = ~a.",
+      "whyWrong": {
+        "B": "OR với 0 giữ nguyên giá trị.",
+        "D": "AND với 0 cho kết quả 0.",
+        "C": "Trừ 0 giữ nguyên giá trị."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-041",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "`andi` và `ori` mở rộng số tức thời 16 bit như thế nào?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Sign-extend"
+      },
+      {
+        "id": "B",
+        "content": "Không mở rộng"
+      },
+      {
+        "id": "C",
+        "content": "Zero-extend"
+      },
+      {
+        "id": "D",
+        "content": "Dịch trái 16 bit"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Các lệnh logic với số tức thời dùng zero-extend: 16 bit cao được điền 0.",
+      "whyCorrect": "Các lệnh logic với số tức thời dùng zero-extend: 16 bit cao được điền 0.",
+      "whyWrong": {
+        "A": "Sign-extend dùng cho `addi`, `slti`, `lw`, `sw`.",
+        "D": "Dịch trái 16 bit là `lui`.",
+        "B": "Phải mở rộng để phép toán đủ 32 bit."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-042",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Sau đoạn lệnh, `$t2` bằng bao nhiêu nếu `$t0 = 0x0000FF0F`, `$t1 = 0x0000F0F0`?\n\n```mips\nand $t2, $t0, $t1\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x0000F0F0`"
+      },
+      {
+        "id": "B",
+        "content": "`0x0000FFFF`"
+      },
+      {
+        "id": "C",
+        "content": "`0x0000F000`"
+      },
+      {
+        "id": "D",
+        "content": "`0x00000FFF`"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "AND từng bit: FF0F & F0F0 = F000.",
+      "whyCorrect": "AND từng bit: FF0F & F0F0 = F000.",
+      "whyWrong": {
+        "B": "Đây là phép OR.",
+        "D": "Đây là phép XOR.",
+        "A": "Đây là giá trị `$t1`."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t2",
+      "regs": {
+        "$t0": 65295,
+        "$t1": 61680
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-043",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Lệnh `beq $s1, $s2, L1` có nghĩa là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nhảy tới L1 nếu `$s1 != $s2`"
+      },
+      {
+        "id": "B",
+        "content": "Luôn nhảy tới L1"
+      },
+      {
+        "id": "C",
+        "content": "Nhảy tới L1 nếu `$s1 < $s2`"
+      },
+      {
+        "id": "D",
+        "content": "Nhảy tới L1 nếu `$s1 == $s2`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "`beq` (branch on equal) rẽ nhánh khi hai thanh ghi bằng nhau.",
+      "whyCorrect": "`beq` (branch on equal) rẽ nhánh khi hai thanh ghi bằng nhau.",
+      "whyWrong": {
+        "A": "Đây là `bne`.",
+        "C": "Đây là `blt` (lệnh giả).",
+        "B": "Đây là `j`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-044",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Lệnh `slt $s1, $s2, $s3` có nghĩa là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nếu `$s2 < $s3` thì `$s1 = 1`, ngược lại `$s1 = 0`"
+      },
+      {
+        "id": "B",
+        "content": "Gán `$s1 = $s2 << $s3`, các bit mới được điền 0"
+      },
+      {
+        "id": "C",
+        "content": "Gán `$s1 = $s2 - $s3`, kết quả âm thì đặt cờ tràn"
+      },
+      {
+        "id": "D",
+        "content": "Nếu `$s1 < $s2` thì nhảy tới nhãn `$s3`, ngược lại đi tiếp"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`slt` (set on less than) đặt thanh ghi đích bằng 1 nếu rs < rt, ngược lại bằng 0.",
+      "whyCorrect": "`slt` (set on less than) đặt thanh ghi đích bằng 1 nếu rs < rt, ngược lại bằng 0.",
+      "whyWrong": {
+        "D": "`slt` không nhảy.",
+        "C": "Đây là `sub`.",
+        "B": "Đây không phải lệnh `slt`."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-045",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cặp lệnh nào hiện thực `if (s0 >= s1) goto ABC`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`slt $t0,$s0,$s1`; `bne $t0,$zero,ABC`"
+      },
+      {
+        "id": "B",
+        "content": "`slt $t0,$s0,$s1`; `beq $t0,$zero,ABC`"
+      },
+      {
+        "id": "C",
+        "content": "`slt $t0,$s1,$s0`; `bne $t0,$zero,ABC`"
+      },
+      {
+        "id": "D",
+        "content": "`beq $s0,$s1,ABC`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "`$t0 = 1` khi `$s0 < $s1`. Nếu `$t0 = 0` tức `$s0 >= $s1` thì nhảy.",
+      "whyCorrect": "`$t0 = 1` khi `$s0 < $s1`. Nếu `$t0 = 0` tức `$s0 >= $s1` thì nhảy.",
+      "whyWrong": {
+        "A": "Đây là `if (s0 < s1)`.",
+        "C": "Đây là `if (s0 > s1)`.",
+        "D": "Chỉ kiểm tra bằng nhau."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-046",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cặp lệnh nào hiện thực `if (s0 < s1) goto ABC`?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`slt $t0,$s0,$s1`; `bne $t0,$zero,ABC`"
+      },
+      {
+        "id": "B",
+        "content": "`slt $t0,$s0,$s1`; `beq $t0,$zero,ABC`"
+      },
+      {
+        "id": "C",
+        "content": "`slt $t0,$s1,$s0`; `beq $t0,$zero,ABC`"
+      },
+      {
+        "id": "D",
+        "content": "`bne $s0,$s1,ABC`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`$t0 = 1` khi `$s0 < $s1`, và `bne $t0,$zero` nhảy khi `$t0 = 1`.",
+      "whyCorrect": "`$t0 = 1` khi `$s0 < $s1`, và `bne $t0,$zero` nhảy khi `$t0 = 1`.",
+      "whyWrong": {
+        "B": "Đây là `if (s0 >= s1)`.",
+        "C": "Đây là `if (s1 >= s0)`, tức `s0 <= s1`.",
+        "D": "Chỉ kiểm tra khác nhau."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-047",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Để biên dịch `if (i > j) ... else ...` với i = `$s0`, j = `$s1`, cặp lệnh đầu tiên đúng (nhảy tới `else` khi điều kiện sai) là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`slt $t0,$s1,$s0`; `bne $t0,$zero,else`"
+      },
+      {
+        "id": "B",
+        "content": "`slt $t0,$s1,$s0`; `beq $t0,$zero,else`"
+      },
+      {
+        "id": "C",
+        "content": "`slt $t0,$s0,$s1`; `beq $t0,$zero,else`"
+      },
+      {
+        "id": "D",
+        "content": "`beq $s0,$s1,else`"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "i > j tương đương j < i: `slt $t0,$s1,$s0` cho `$t0 = 1` khi đúng; `$t0 = 0` thì nhảy tới else.",
+      "whyCorrect": "i > j tương đương j < i: `slt $t0,$s1,$s0` cho `$t0 = 1` khi đúng; `$t0 = 0` thì nhảy tới else.",
+      "whyWrong": {
+        "C": "Kiểm tra i < j là sai điều kiện.",
+        "A": "Nhảy tới else khi điều kiện đúng là ngược.",
+        "D": "Chỉ kiểm tra bằng nhau."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-048",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Nhóm lệnh `blt`, `bgt`, `ble`, `bge` trong MIPS là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lệnh truy cập bộ nhớ"
+      },
+      {
+        "id": "B",
+        "content": "Lệnh giả (pseudo instruction)"
+      },
+      {
+        "id": "C",
+        "content": "Lệnh J-format"
+      },
+      {
+        "id": "D",
+        "content": "Lệnh dấu chấm động"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Đây là các lệnh giả, assembler chuyển chúng thành `slt` kết hợp `beq`/`bne`.",
+      "whyCorrect": "Đây là các lệnh giả, assembler chuyển chúng thành `slt` kết hợp `beq`/`bne`.",
+      "whyWrong": {
+        "C": "Chúng được chuyển thành các lệnh thật khác.",
+        "A": "Chúng không truy cập bộ nhớ.",
+        "D": "Chúng so sánh số nguyên."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-049",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Nhóm lệnh rẽ nhánh không điều kiện của MIPS gồm:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`j`, `jr`, `jal`"
+      },
+      {
+        "id": "B",
+        "content": "`slt`, `slti`"
+      },
+      {
+        "id": "C",
+        "content": "`beq`, `bne`"
+      },
+      {
+        "id": "D",
+        "content": "`lw`, `sw`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`j label`, `jr $ra`, `jal label` là các lệnh nhảy không điều kiện.",
+      "whyCorrect": "`j label`, `jr $ra`, `jal label` là các lệnh nhảy không điều kiện.",
+      "whyWrong": {
+        "C": "Đây là rẽ nhánh có điều kiện.",
+        "B": "Đây là lệnh so sánh.",
+        "D": "Đây là lệnh truyền dữ liệu."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-050",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Khi biên dịch `if (i == j) f = g + h; else f = g - h;`, vì sao cần lệnh `j Exit` sau nhánh then?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Để tránh rơi xuống thực hiện cả khối else"
+      },
+      {
+        "id": "B",
+        "content": "Để so sánh lại i và j"
+      },
+      {
+        "id": "C",
+        "content": "Để lưu kết quả vào bộ nhớ"
+      },
+      {
+        "id": "D",
+        "content": "Để quay lại đầu chương trình"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Không có `j`, sau khi xong nhánh then chương trình chạy tiếp vào khối else.",
+      "whyCorrect": "Không có `j`, sau khi xong nhánh then chương trình chạy tiếp vào khối else.",
+      "whyWrong": {
+        "D": "`j Exit` nhảy tới sau khối else.",
+        "C": "`j` không ghi bộ nhớ.",
+        "B": "So sánh đã thực hiện trước đó."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-051",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Khi biên dịch `while (save[i] == k) i += 1;`, lệnh nào dùng để thoát vòng lặp?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`bne $t0, $s5, Exit`"
+      },
+      {
+        "id": "B",
+        "content": "`slt $t0, $s5, Exit`"
+      },
+      {
+        "id": "C",
+        "content": "`j Exit`"
+      },
+      {
+        "id": "D",
+        "content": "`beq $t0, $s5, Exit`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Vòng lặp chạy khi `save[i] == k`, nên thoát khi khác nhau: `bne`.",
+      "whyCorrect": "Vòng lặp chạy khi `save[i] == k`, nên thoát khi khác nhau: `bne`.",
+      "whyWrong": {
+        "D": "`beq` sẽ thoát đúng lúc cần tiếp tục lặp.",
+        "C": "`j` nhảy vô điều kiện, vòng lặp không chạy lần nào.",
+        "B": "`slt` không nhảy và không nhận nhãn."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-052",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Lệnh `bne $t0, $s5, Exit` tại địa chỉ `0x40000C`; nhãn `Exit` ở `0x400018`. Trường immediate bằng:",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "3"
+      },
+      {
+        "id": "B",
+        "content": "12"
+      },
+      {
+        "id": "C",
+        "content": "2"
+      },
+      {
+        "id": "D",
+        "content": "8"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "(`0x400018` − (`0x40000C` + 4)) / 4 = 8 / 4 = 2.",
+      "whyCorrect": "(`0x400018` − (`0x40000C` + 4)) / 4 = 8 / 4 = 2.",
+      "whyWrong": {
+        "A": "Tính từ PC thay vì PC + 4.",
+        "B": "Quên cả PC + 4 lẫn chia 4.",
+        "D": "Quên chia 4."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "(0x400018-(0x40000C+4))/4"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-053",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Lệnh `beq` có trường immediate 16 bit bằng -3 (lệnh ở địa chỉ `0x100`). Nếu rẽ nhánh, PC mới bằng:",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0xF8`"
+      },
+      {
+        "id": "B",
+        "content": "`0xFD`"
+      },
+      {
+        "id": "C",
+        "content": "`0x104`"
+      },
+      {
+        "id": "D",
+        "content": "`0xF4`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "PC mới = PC + 4 + (-3) × 4 = `0x100` + 4 − 12 = `0xF8`.",
+      "whyCorrect": "PC mới = PC + 4 + (-3) × 4 = `0x100` + 4 − 12 = `0xF8`.",
+      "whyWrong": {
+        "D": "Quên cộng 4.",
+        "B": "Quên nhân 4.",
+        "C": "Đây là PC + 4 khi không rẽ nhánh."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "0x100+4-12"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-054",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Theo cấu trúc lệnh `beq`, trường địa chỉ 16 bit là số lệnh tính từ:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lệnh ngay sau lệnh `beq` (PC + 4)"
+      },
+      {
+        "id": "B",
+        "content": "Chính lệnh `beq` đang thực thi (PC)"
+      },
+      {
+        "id": "C",
+        "content": "Lệnh đầu tiên của chương trình"
+      },
+      {
+        "id": "D",
+        "content": "Địa chỉ 0 của bộ nhớ chính"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Địa chỉ đích = PC + 4 + immediate × 4.",
+      "whyCorrect": "Địa chỉ đích = PC + 4 + immediate × 4.",
+      "whyWrong": {
+        "C": "Địa chỉ tương đối so với lệnh tiếp theo, không phải đầu chương trình.",
+        "B": "Tính từ PC + 4, không phải PC.",
+        "D": "Đây không phải định địa chỉ tuyệt đối."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-055",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Mã máy (hex) của lệnh `jr $ra` là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`0x001F0008`"
+      },
+      {
+        "id": "B",
+        "content": "`0x0FE00008`"
+      },
+      {
+        "id": "C",
+        "content": "`0x08000008`"
+      },
+      {
+        "id": "D",
+        "content": "`0x03E00008`"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "op = 0, rs = 31, các trường còn lại bằng 0, funct = 8 → `0x03E00008`.",
+      "whyCorrect": "op = 0, rs = 31, các trường còn lại bằng 0, funct = 8 → `0x03E00008`.",
+      "whyWrong": {
+        "A": "Đặt `$ra` vào trường rt là sai.",
+        "B": "op phải bằng 0.",
+        "C": "Đây là lệnh `j`."
+      }
+    },
+    "verify": {
+      "kind": "encode",
+      "asm": "jr $ra"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-056",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Cho `$s0 = 7`, `$s1 = 3`. Sau đoạn lệnh, `$t2` bằng:\n\n```mips\nslt  $t0, $s0, $s1\nbne  $t0, $zero, L1\nsub  $t2, $s0, $s1\nj    L2\nL1:  add $t2, $s0, $s1\nL2:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "4"
+      },
+      {
+        "id": "B",
+        "content": "10"
+      },
+      {
+        "id": "C",
+        "content": "7"
+      },
+      {
+        "id": "D",
+        "content": "0"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "7 < 3 sai nên `$t0 = 0`, không nhảy; `$t2 = 7 - 3 = 4`, rồi nhảy tới L2.",
+      "whyCorrect": "7 < 3 sai nên `$t0 = 0`, không nhảy; `$t2 = 7 - 3 = 4`, rồi nhảy tới L2.",
+      "whyWrong": {
+        "B": "Đi nhầm nhánh L1.",
+        "D": "0 là giá trị `$t0`.",
+        "C": "7 là giá trị `$s0`."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$t2",
+      "regs": {
+        "$s0": 7,
+        "$s1": 3
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-057",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Sau đoạn lệnh, `$s0` bằng bao nhiêu?\n\n```mips\naddi $s0, $zero, 0\naddi $t0, $zero, 1\nLoop: slti $t1, $t0, 5\nbeq  $t1, $zero, Exit\nadd  $s0, $s0, $t0\naddi $t0, $t0, 1\nj Loop\nExit:\n```",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "6"
+      },
+      {
+        "id": "B",
+        "content": "5"
+      },
+      {
+        "id": "C",
+        "content": "15"
+      },
+      {
+        "id": "D",
+        "content": "10"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Vòng lặp chạy với `$t0` = 1, 2, 3, 4 và cộng dồn: 1 + 2 + 3 + 4 = 10.",
+      "whyCorrect": "Vòng lặp chạy với `$t0` = 1, 2, 3, 4 và cộng dồn: 1 + 2 + 3 + 4 = 10.",
+      "whyWrong": {
+        "C": "`slti 5` dừng khi `$t0 = 5`, không cộng 5.",
+        "B": "5 là giá trị cuối của `$t0`.",
+        "A": "Tính sai."
+      }
+    },
+    "verify": {
+      "kind": "run",
+      "reg": "$s0"
+    }
+  },
+  {
+    "id": "it006-mid-c2b-058",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Đoạn lệnh sau tương đương đoạn C nào (i = `$s0`, n = `$s1`, sum = `$s2`, nền A = `$s3`)?\n\n```mips\nadd  $s0, $zero, $zero\nLoop: slt $t0, $s0, $s1\nbeq  $t0, $zero, Exit\nsll  $t1, $s0, 2\nadd  $t1, $t1, $s3\nlw   $t2, 0($t1)\nadd  $s2, $s2, $t2\naddi $s0, $s0, 1\nj Loop\nExit:\n```",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "`for (i = 0; i < n; i++) sum += A[i];`"
+      },
+      {
+        "id": "B",
+        "content": "`while (A[i] == n) i++;`"
+      },
+      {
+        "id": "C",
+        "content": "`for (i = 0; i < n; i++) A[i] += sum;`"
+      },
+      {
+        "id": "D",
+        "content": "`for (i = 0; i <= n; i++) sum += A[i];`"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "i chạy từ 0 khi i < n, mỗi vòng đọc A[i] và cộng vào sum.",
+      "whyCorrect": "i chạy từ 0 khi i < n, mỗi vòng đọc A[i] và cộng vào sum.",
+      "whyWrong": {
+        "D": "`slt` là nhỏ hơn thực sự, không phải nhỏ hơn hoặc bằng.",
+        "C": "Kết quả cộng vào `$s2`, không ghi lại A[i].",
+        "B": "So sánh i với n, không so sánh A[i] với n."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-059",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Khi dịch vòng lặp `for (i = 0; i < 40; i++) sum += A[i];` với `slt $t1, $t0, $t3`, `$t3` phải được gán giá trị:",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "40"
+      },
+      {
+        "id": "B",
+        "content": "39"
+      },
+      {
+        "id": "C",
+        "content": "41"
+      },
+      {
+        "id": "D",
+        "content": "0"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "`slt` kiểm tra i < `$t3`, nên `$t3 = 40` để vòng lặp chạy đúng 40 lần (i từ 0 đến 39).",
+      "whyCorrect": "`slt` kiểm tra i < `$t3`, nên `$t3 = 40` để vòng lặp chạy đúng 40 lần (i từ 0 đến 39).",
+      "whyWrong": {
+        "B": "Với 39 vòng lặp chỉ chạy 39 lần, bỏ sót A[39]; lời giải trong tài liệu training mắc lỗi này.",
+        "C": "Với 41 vòng lặp chạy thừa một lần.",
+        "D": "Với 0 vòng lặp không chạy lần nào."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-060",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Thứ tự đúng để biến chương trình C thành chương trình đang chạy là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Sổ tay"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Loader → Linker → Assembler → Compiler"
+      },
+      {
+        "id": "B",
+        "content": "Linker → Loader → Compiler → Assembler"
+      },
+      {
+        "id": "C",
+        "content": "Compiler → Assembler → Linker → Loader"
+      },
+      {
+        "id": "D",
+        "content": "Assembler → Compiler → Loader → Linker"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "C → Compiler → Assembly → Assembler → Object → Linker → Executable → Loader → Memory.",
+      "whyCorrect": "C → Compiler → Assembly → Assembler → Object → Linker → Executable → Loader → Memory.",
+      "whyWrong": {
+        "D": "Compiler phải chạy trước Assembler.",
+        "B": "Linker cần object file do Assembler tạo.",
+        "A": "Loader là bước cuối."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-061",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Assembler có nhiệm vụ gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ghép các object module và thư viện"
+      },
+      {
+        "id": "B",
+        "content": "Nạp chương trình vào bộ nhớ"
+      },
+      {
+        "id": "C",
+        "content": "Chuyển assembly thành mã máy trong object file"
+      },
+      {
+        "id": "D",
+        "content": "Chuyển C thành assembly"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Assembler chuyển chương trình hợp ngữ thành mã máy trong object module.",
+      "whyCorrect": "Assembler chuyển chương trình hợp ngữ thành mã máy trong object module.",
+      "whyWrong": {
+        "D": "Đây là compiler.",
+        "A": "Đây là linker.",
+        "B": "Đây là loader."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-062",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Linker có nhiệm vụ gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ghép các object module và thư viện thành chương trình thực thi"
+      },
+      {
+        "id": "B",
+        "content": "Nạp chương trình thực thi vào bộ nhớ để chuẩn bị chạy"
+      },
+      {
+        "id": "C",
+        "content": "Thực thi lần lượt từng lệnh của chương trình trên CPU"
+      },
+      {
+        "id": "D",
+        "content": "Chuyển chương trình assembly sang mã máy trong object file"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Linker ghép các object module và thư viện thành executable.",
+      "whyCorrect": "Linker ghép các object module và thư viện thành executable.",
+      "whyWrong": {
+        "B": "Đây là loader.",
+        "D": "Đây là assembler.",
+        "C": "Đây là CPU."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-063",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Loader có nhiệm vụ gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nạp chương trình thực thi vào bộ nhớ để chạy"
+      },
+      {
+        "id": "B",
+        "content": "Tối ưu mã nguồn trước khi biên dịch"
+      },
+      {
+        "id": "C",
+        "content": "Ghép các object module và thư viện"
+      },
+      {
+        "id": "D",
+        "content": "Biên dịch chương trình C sang assembly"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Loader nạp chương trình thực thi vào bộ nhớ.",
+      "whyCorrect": "Loader nạp chương trình thực thi vào bộ nhớ.",
+      "whyWrong": {
+        "D": "Đây là compiler.",
+        "C": "Đây là linker.",
+        "B": "Tối ưu mã nguồn thuộc compiler."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c2b-064",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c2b",
+    "content": "Kết luận \"các lệnh được biểu diễn như là các con số\" dẫn đến điều gì?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Mỗi loại lệnh cần một bộ nhớ riêng, tách biệt với dữ liệu"
+      },
+      {
+        "id": "B",
+        "content": "Chương trình được lưu trong bộ nhớ và đọc/ghi giống như dữ liệu"
+      },
+      {
+        "id": "C",
+        "content": "Lệnh phải luôn nằm trong ổ cứng trong lúc chương trình chạy"
+      },
+      {
+        "id": "D",
+        "content": "Chương trình không thể lưu trong bộ nhớ vì khác dữ liệu"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Xem lệnh như dữ liệu đơn giản hóa bộ nhớ và phần mềm: chỉ cần nạp chương trình và dữ liệu vào bộ nhớ rồi bắt đầu thực thi.",
+      "whyCorrect": "Xem lệnh như dữ liệu đơn giản hóa bộ nhớ và phần mềm: chỉ cần nạp chương trình và dữ liệu vào bộ nhớ rồi bắt đầu thực thi.",
+      "whyWrong": {
+        "D": "Trái với khái niệm chương trình được lưu trữ.",
+        "C": "Chương trình chạy từ bộ nhớ chính.",
+        "A": "Lệnh và dữ liệu cùng nằm trong bộ nhớ."
+      }
+    }
+  }
+]

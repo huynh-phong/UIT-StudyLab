@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { visibleExams } from "@/lib/bank/repo";
 import { isExamEligible } from "@/lib/bank/schema";
 import { getFeatureFlags } from "@/lib/server/env";
@@ -13,6 +14,7 @@ export default function ExamPage() {
     const chapterTitle = (id: string) => e.chapters.find((c) => c.id === id)?.title ?? id;
     return {
       key: e.key,
+      courseId: e.courseId,
       courseCode: e.course.code,
       courseName: e.course.name,
       examType: e.examType,
@@ -30,12 +32,17 @@ export default function ExamPage() {
             essayCount: bp.slots.filter((s) => s.type === "essay").reduce((a, s) => a + s.count, 0),
             totalPoints: bp.slots.reduce((a, s) => a + s.count * s.pointsEach, 0),
             slots: bp.slots.map((s) => {
-              const available = e.questions.filter((q) => q.chapterId === s.chapterId && q.type === s.type && isExamEligible(q)).length;
-              return { chapterTitle: chapterTitle(s.chapterId), type: s.type, count: s.count, pointsEach: s.pointsEach, bankAvailable: available };
+              const chapters = [s.chapterId, ...(s.alsoFrom ?? [])];
+              const available = e.questions.filter((q) => chapters.includes(q.chapterId) && q.type === s.type && isExamEligible(q)).length;
+              return { chapterTitle: chapters.map(chapterTitle).join(" / "), type: s.type, count: s.count, pointsEach: s.pointsEach, bankAvailable: available };
             }),
           }
         : null,
     };
   });
-  return <ExamLanding offers={offers} features={getFeatureFlags()} />;
+  return (
+    <Suspense>
+      <ExamLanding offers={offers} features={getFeatureFlags()} />
+    </Suspense>
+  );
 }

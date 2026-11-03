@@ -1,0 +1,1467 @@
+[
+  {
+    "id": "it006-mid-c1b-001",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Kiến trúc tập lệnh của bộ xử lý P1 có 4 lớp lệnh A, B, C, D với CPI lần lượt 1, 2, 3, 4; Clock rate 1,5 GHz. Chương trình có 100 lệnh gồm 10% lớp A, 30% lớp B, 40% lớp C, 20% lớp D. Thời gian thực thi chương trình trên P1 là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "210 ns"
+      },
+      {
+        "id": "B",
+        "content": "405 ns"
+      },
+      {
+        "id": "C",
+        "content": "180 ns"
+      },
+      {
+        "id": "D",
+        "content": "270 ns"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Tổng chu kỳ = 10×1 + 30×2 + 40×3 + 20×4 = 270; thời gian = 270 / (1,5 × $10^9$) = 180 ns.",
+      "whyCorrect": "Tổng chu kỳ = 10×1 + 30×2 + 40×3 + 20×4 = 270; thời gian = 270 / (1,5 × $10^9$) = 180 ns.",
+      "whyWrong": {
+        "A": "210 ns không ứng với phép tính đúng.",
+        "B": "405 ns là nhân 1,5 thay vì chia cho 1,5.",
+        "D": "270 ns mới là số chu kỳ, chưa chia cho tần số."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "(10+60+120+80)/1.5"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-002",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Cho một bộ xử lý với Clock Rate = 3 GHz và CPI = 4,5. Tổng số lệnh thực thi trong một giây (IPS) là bao nhiêu?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "$1{,}5 \\times 10^9$"
+      },
+      {
+        "id": "B",
+        "content": "$0{,}67 \\times 10^9$"
+      },
+      {
+        "id": "C",
+        "content": "$13{,}5 \\times 10^9$"
+      },
+      {
+        "id": "D",
+        "content": "Tất cả đều sai"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "IPS = Clock Rate / CPI = 3 × $10^9$ / 4,5 ≈ 0,67 × $10^9$.",
+      "whyCorrect": "IPS = Clock Rate / CPI = 3 × $10^9$ / 4,5 ≈ 0,67 × $10^9$.",
+      "whyWrong": {
+        "A": "Kết quả sai do chia 3 cho 2 thay vì 4,5.",
+        "C": "Nhân thay vì chia cho CPI.",
+        "D": "Phương án B đã đúng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-003",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Cho bộ xử lý với Clock Rate = 3 GHz, thực thi một chương trình có $30 \\times 10^9$ lệnh trong 4 giây. Số lệnh thực thi trong một chu kỳ (IPC) là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ (bộ 18 câu)"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "1"
+      },
+      {
+        "id": "B",
+        "content": "1,67"
+      },
+      {
+        "id": "C",
+        "content": "2"
+      },
+      {
+        "id": "D",
+        "content": "2,5"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Tổng chu kỳ = 4 × 3 × $10^9$ = 12 × $10^9$. IPC = 30 / 12 = 2,5.",
+      "whyCorrect": "Tổng chu kỳ = 4 × 3 × $10^9$ = 12 × $10^9$. IPC = 30 / 12 = 2,5.",
+      "whyWrong": {
+        "A": "Tính sai tổng số chu kỳ.",
+        "B": "Tính sai tổng số chu kỳ.",
+        "C": "Tính sai tổng số chu kỳ."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "30/(4*3)"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-004",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Bộ xử lý P1 có Clock rate 2 GHz, chạy $20 \\times 10^9$ lệnh trong 5 giây. IPC của bộ xử lý là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "10"
+      },
+      {
+        "id": "B",
+        "content": "20"
+      },
+      {
+        "id": "C",
+        "content": "2"
+      },
+      {
+        "id": "D",
+        "content": "1,0"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Tổng chu kỳ = 5 × 2 × $10^9$ = 10 × $10^9$. IPC = 20 / 10 = 2.",
+      "whyCorrect": "Tổng chu kỳ = 5 × 2 × $10^9$ = 10 × $10^9$. IPC = 20 / 10 = 2.",
+      "whyWrong": {
+        "A": "10 là số tỉ chu kỳ.",
+        "B": "20 là số tỉ lệnh.",
+        "D": "1,0 tính sai số chu kỳ."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "20/(5*2)"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-005",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Phương pháp nào sau đây có thể tăng hiệu suất máy tính?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tăng số chu kỳ xung clock của chương trình"
+      },
+      {
+        "id": "B",
+        "content": "Giảm tần số xung clock CPU"
+      },
+      {
+        "id": "C",
+        "content": "Tăng chu kỳ xung clock CPU"
+      },
+      {
+        "id": "D",
+        "content": "Giảm CPI của máy tính"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "CPU Time = IC × CPI / Clock Rate, nên giảm CPI làm giảm thời gian thực thi, tức tăng hiệu suất.",
+      "whyCorrect": "CPU Time = IC × CPI / Clock Rate, nên giảm CPI làm giảm thời gian thực thi, tức tăng hiệu suất.",
+      "whyWrong": {
+        "A": "Nhiều chu kỳ hơn làm thời gian tăng.",
+        "B": "Giảm tần số làm thời gian tăng.",
+        "C": "Chu kỳ dài hơn tức là tần số thấp hơn, thời gian tăng."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-006",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Chu kỳ xung clock là 4 µs thì tần số xung clock là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "250 MHz"
+      },
+      {
+        "id": "B",
+        "content": "250 KHz"
+      },
+      {
+        "id": "C",
+        "content": "250000 KHz"
+      },
+      {
+        "id": "D",
+        "content": "0,025 GHz"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "$f = 1 / (4 \\times 10^{-6}) = 250\\,000$ Hz = 250 KHz.",
+      "whyCorrect": "$f = 1 / (4 \\times 10^{-6}) = 250\\,000$ Hz = 250 KHz.",
+      "whyWrong": {
+        "A": "Sai một bậc đơn vị (nhầm µs với ns).",
+        "C": "250000 KHz bằng 250 MHz, sai một bậc.",
+        "D": "0,025 GHz bằng 25 MHz, sai."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-007",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy tính M1 có 3 lớp lệnh: A (CPI 1, 50%), B (CPI 3, 30%), C (CPI 4, 20%). CPI trung bình của chương trình X trên M1 là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Training giữa kỳ BHT KTMT 2026–2027"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2,2"
+      },
+      {
+        "id": "B",
+        "content": "1"
+      },
+      {
+        "id": "C",
+        "content": "0,8"
+      },
+      {
+        "id": "D",
+        "content": "1,7"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "CPI = 0,5×1 + 0,3×3 + 0,2×4 = 0,5 + 0,9 + 0,8 = 2,2.",
+      "whyCorrect": "CPI = 0,5×1 + 0,3×3 + 0,2×4 = 0,5 + 0,9 + 0,8 = 2,2.",
+      "whyWrong": {
+        "B": "1 chỉ là CPI của lớp A.",
+        "C": "0,8 chỉ là đóng góp của lớp C.",
+        "D": "1,7 thiếu đóng góp của lớp A."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "0.5*1+0.3*3+0.2*4"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-008",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Cho máy tính A có tần số xung clock 2 GHz, CPI = 1,5 và máy tính B có tần số 3 GHz, CPI = 2,5. Phát biểu nào đúng (cùng chương trình)?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Máy tính A có hiệu suất cao hơn máy tính B"
+      },
+      {
+        "id": "B",
+        "content": "Máy tính A có hiệu suất thấp hơn máy tính B"
+      },
+      {
+        "id": "C",
+        "content": "Máy tính A có hiệu suất bằng máy tính B"
+      },
+      {
+        "id": "D",
+        "content": "Cả 3 phát biểu trên đều sai"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Thời gian mỗi lệnh: A = 1,5/2 = 0,75 ns; B = 2,5/3 ≈ 0,83 ns. A nhanh hơn nên hiệu suất cao hơn.",
+      "whyCorrect": "Thời gian mỗi lệnh: A = 1,5/2 = 0,75 ns; B = 2,5/3 ≈ 0,83 ns. A nhanh hơn nên hiệu suất cao hơn.",
+      "whyWrong": {
+        "B": "Chỉ nhìn GHz sẽ nhầm: B có CPI lớn nên vẫn chậm hơn.",
+        "C": "Thời gian mỗi lệnh của hai máy khác nhau.",
+        "D": "Phát biểu A đúng."
+      },
+      "tip": "GHz cao hơn **chưa chắc** nhanh hơn."
+    }
+  },
+  {
+    "id": "it006-mid-c1b-009",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy tính có tần số xung clock 1 GHz. Thực thi một chương trình gồm 1024 lệnh, trung bình mỗi lệnh kéo dài 16 chu kỳ thì mất bao lâu?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "original",
+      "reference": "Đề giữa kỳ HK1 2016–2017"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "1024 giây"
+      },
+      {
+        "id": "B",
+        "content": "1024 nano giây"
+      },
+      {
+        "id": "C",
+        "content": "16384 giây"
+      },
+      {
+        "id": "D",
+        "content": "16384 nano giây"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Tổng chu kỳ = 1024 × 16 = 16384; ở 1 GHz mỗi chu kỳ 1 ns → 16384 ns.",
+      "whyCorrect": "Tổng chu kỳ = 1024 × 16 = 16384; ở 1 GHz mỗi chu kỳ 1 ns → 16384 ns.",
+      "whyWrong": {
+        "A": "Sai cả số chu kỳ lẫn đơn vị.",
+        "B": "Quên nhân CPI = 16.",
+        "C": "Chu kỳ ở 1 GHz là 1 ns, không phải 1 giây."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "1024*16"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-010",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Chương trình chạy trong 10 giây trên máy A có tần số 2 GHz. Máy B phải chạy trong 6 giây nhưng cần số chu kỳ clock nhiều gấp 1,2 lần máy A. Tần số xung clock của máy B là:",
+    "difficulty": "hard",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "3 GHz"
+      },
+      {
+        "id": "B",
+        "content": "2 GHz"
+      },
+      {
+        "id": "C",
+        "content": "6 GHz"
+      },
+      {
+        "id": "D",
+        "content": "4 GHz"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Chu kỳ máy A = 10 × 2 × $10^9$ = 20 × $10^9$. Máy B cần 1,2 × 20 × $10^9$ = 24 × $10^9$ chu kỳ trong 6 s → 4 GHz.",
+      "whyCorrect": "Chu kỳ máy A = 10 × 2 × $10^9$ = 20 × $10^9$. Máy B cần 1,2 × 20 × $10^9$ = 24 × $10^9$ chu kỳ trong 6 s → 4 GHz.",
+      "whyWrong": {
+        "B": "Bằng máy A thì không thể nhanh hơn.",
+        "A": "3 GHz là chưa tính hệ số 1,2.",
+        "C": "6 GHz tính sai."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "10*1.2*2/6"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-011",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy A có chu kỳ clock 250 ps, CPI 2,0; máy B có chu kỳ clock 500 ps, CPI 1,2 khi chạy cùng chương trình. Phát biểu nào đúng?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Máy A nhanh hơn máy B 1,2 lần"
+      },
+      {
+        "id": "B",
+        "content": "Máy B nhanh hơn máy A 1,2 lần"
+      },
+      {
+        "id": "C",
+        "content": "Máy A nhanh hơn máy B 2 lần"
+      },
+      {
+        "id": "D",
+        "content": "Hai máy bằng nhau"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Thời gian: A = I × 2,0 × 250 = 500I ps; B = I × 1,2 × 500 = 600I ps. A nhanh hơn 600/500 = 1,2 lần.",
+      "whyCorrect": "Thời gian: A = I × 2,0 × 250 = 500I ps; B = I × 1,2 × 500 = 600I ps. A nhanh hơn 600/500 = 1,2 lần.",
+      "whyWrong": {
+        "B": "Máy có thời gian nhỏ hơn mới nhanh hơn; đó là máy A.",
+        "C": "2 lần chỉ so sánh chu kỳ clock, bỏ qua CPI.",
+        "D": "Thời gian thực thi khác nhau."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-012",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Tập lệnh có 3 nhóm với CPI: A = 1, B = 2, C = 3. Đoạn code 1 có 2 lệnh A, 1 lệnh B, 2 lệnh C; đoạn code 2 có 4 lệnh A, 1 lệnh B, 1 lệnh C. Phát biểu nào đúng?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Slide bài giảng"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Hai đoạn chạy bằng nhau"
+      },
+      {
+        "id": "B",
+        "content": "Đoạn 2 có nhiều lệnh hơn nhưng chạy nhanh hơn"
+      },
+      {
+        "id": "C",
+        "content": "Đoạn 1 có ít lệnh hơn và chạy nhanh hơn"
+      },
+      {
+        "id": "D",
+        "content": "Đoạn 2 có nhiều lệnh hơn nên chạy chậm hơn"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Đoạn 1: 5 lệnh, 10 chu kỳ (CPI 2). Đoạn 2: 6 lệnh, 9 chu kỳ (CPI 1,5). Đoạn 2 nhiều lệnh hơn nhưng ít chu kỳ hơn nên nhanh hơn.",
+      "whyCorrect": "Đoạn 1: 5 lệnh, 10 chu kỳ (CPI 2). Đoạn 2: 6 lệnh, 9 chu kỳ (CPI 1,5). Đoạn 2 nhiều lệnh hơn nhưng ít chu kỳ hơn nên nhanh hơn.",
+      "whyWrong": {
+        "C": "Đoạn 1 ít lệnh hơn nhưng tốn 10 chu kỳ, nhiều hơn đoạn 2.",
+        "D": "Số lệnh nhiều hơn chưa chắc chậm hơn; phải xét tổng chu kỳ.",
+        "A": "Tổng chu kỳ khác nhau (10 và 9)."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-013",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Thời gian đáp ứng (response time) của máy tính là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Số tác vụ mà máy tính hoàn thành được trong một đơn vị thời gian, thường tính trên một giây"
+      },
+      {
+        "id": "B",
+        "content": "Tổng thời gian để máy tính hoàn thành một tác vụ, gồm truy cập đĩa, bộ nhớ, I/O, thời gian hệ điều hành…"
+      },
+      {
+        "id": "C",
+        "content": "Thời gian của một chu kỳ clock, bằng nghịch đảo của tần số xung nhịp của bộ xử lý"
+      },
+      {
+        "id": "D",
+        "content": "Số lệnh mà bộ xử lý thực thi được trong một giây, thường tính theo đơn vị triệu lệnh"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "Thời gian đáp ứng là tổng thời gian hoàn thành một tác vụ, bao gồm cả truy cập đĩa, bộ nhớ, I/O và hệ điều hành.",
+      "whyCorrect": "Thời gian đáp ứng là tổng thời gian hoàn thành một tác vụ, bao gồm cả truy cập đĩa, bộ nhớ, I/O và hệ điều hành.",
+      "whyWrong": {
+        "A": "Đây là throughput.",
+        "C": "Đây là clock cycle time.",
+        "D": "Đây là IPS."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-014",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Theo slide, thông năng (throughput) là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Số lượng tác vụ hoàn thành trong một đơn vị thời gian"
+      },
+      {
+        "id": "B",
+        "content": "Tần số xung clock của bộ xử lý tính bằng GHz"
+      },
+      {
+        "id": "C",
+        "content": "Thời gian cần để thực thi xong một lệnh duy nhất"
+      },
+      {
+        "id": "D",
+        "content": "Số chu kỳ clock trung bình cho mỗi lệnh thực thi"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Throughput là số lượng tác vụ hoàn thành trong một đơn vị thời gian.",
+      "whyCorrect": "Throughput là số lượng tác vụ hoàn thành trong một đơn vị thời gian.",
+      "whyWrong": {
+        "C": "Thời gian thực thi không phải throughput.",
+        "B": "Đây là clock rate.",
+        "D": "Đây là CPI."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-015",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Hệ thức nào đúng giữa hiệu suất và thời gian thực thi?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Performance = Execution Time × Clock Rate"
+      },
+      {
+        "id": "B",
+        "content": "Performance = CPI / Execution Time"
+      },
+      {
+        "id": "C",
+        "content": "Performance = 1 / Execution Time"
+      },
+      {
+        "id": "D",
+        "content": "Performance = Execution Time"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Hiệu suất tỉ lệ nghịch với thời gian thực thi: Performance = 1 / Execution Time.",
+      "whyCorrect": "Hiệu suất tỉ lệ nghịch với thời gian thực thi: Performance = 1 / Execution Time.",
+      "whyWrong": {
+        "D": "Thời gian càng lớn thì hiệu suất càng thấp.",
+        "A": "Biểu thức này là số chu kỳ.",
+        "B": "Không có công thức này."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-016",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Máy A chạy một chương trình trong 4 giây, máy B chạy trong 10 giây. Phát biểu nào đúng?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "A nhanh hơn B 6 lần"
+      },
+      {
+        "id": "B",
+        "content": "A nhanh hơn B 0,4 lần"
+      },
+      {
+        "id": "C",
+        "content": "A nhanh hơn B 2,5 lần"
+      },
+      {
+        "id": "D",
+        "content": "B nhanh hơn A 2,5 lần"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Performance_A / Performance_B = Time_B / Time_A = 10 / 4 = 2,5.",
+      "whyCorrect": "Performance_A / Performance_B = Time_B / Time_A = 10 / 4 = 2,5.",
+      "whyWrong": {
+        "D": "Máy có thời gian nhỏ hơn mới nhanh hơn.",
+        "B": "0,4 là tỉ số chưa đảo.",
+        "A": "6 là hiệu thời gian, không phải tỉ số."
+      },
+      "tip": "So sánh hiệu suất: **đảo tỉ số thời gian**."
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "10/4"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-017",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Clock Rate và Clock Cycle Time có quan hệ như thế nào?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nghịch đảo của nhau"
+      },
+      {
+        "id": "B",
+        "content": "Tỉ lệ thuận"
+      },
+      {
+        "id": "C",
+        "content": "Bằng nhau"
+      },
+      {
+        "id": "D",
+        "content": "Không liên quan"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Clock Rate = 1 / Clock Cycle Time.",
+      "whyCorrect": "Clock Rate = 1 / Clock Cycle Time.",
+      "whyWrong": {
+        "C": "Hai đại lượng có đơn vị khác nhau (Hz và s).",
+        "B": "Tần số càng cao thì chu kỳ càng ngắn.",
+        "D": "Chúng liên hệ trực tiếp với nhau."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-018",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "CPU có Clock Rate = 2 GHz. Clock Cycle Time bằng:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "0,5 ns"
+      },
+      {
+        "id": "B",
+        "content": "5 ns"
+      },
+      {
+        "id": "C",
+        "content": "2 ns"
+      },
+      {
+        "id": "D",
+        "content": "0,5 µs"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "$1 / (2 \\times 10^9)$ s = 0,5 ns.",
+      "whyCorrect": "$1 / (2 \\times 10^9)$ s = 0,5 ns.",
+      "whyWrong": {
+        "C": "Chưa lấy nghịch đảo.",
+        "D": "Sai đơn vị: $10^{-9}$ s là ns.",
+        "B": "Sai một bậc."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-019",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "CPI (Clock cycles Per Instruction) là gì?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Số chu kỳ clock trung bình cần để thực thi một lệnh"
+      },
+      {
+        "id": "B",
+        "content": "Số chu kỳ clock trong một giây của bộ xử lý"
+      },
+      {
+        "id": "C",
+        "content": "Số lệnh trung bình thực thi được trong một chu kỳ clock"
+      },
+      {
+        "id": "D",
+        "content": "Tổng số lệnh của chương trình khi thực thi"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "CPI là số chu kỳ clock trung bình cần để thực thi một lệnh.",
+      "whyCorrect": "CPI là số chu kỳ clock trung bình cần để thực thi một lệnh.",
+      "whyWrong": {
+        "C": "Đây là IPC.",
+        "B": "Đây là Clock Rate.",
+        "D": "Đây là Instruction Count."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-020",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Công thức nào đúng để tính thời gian CPU?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "CPU Time = Instruction Count × CPI / Clock Rate"
+      },
+      {
+        "id": "B",
+        "content": "CPU Time = CPI / (Instruction Count × Clock Rate)"
+      },
+      {
+        "id": "C",
+        "content": "CPU Time = Instruction Count × CPI × Clock Rate"
+      },
+      {
+        "id": "D",
+        "content": "CPU Time = Instruction Count / (CPI × Clock Rate)"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "CPU Time = (Instruction Count × CPI) / Clock Rate, hoặc nhân với Clock Cycle Time.",
+      "whyCorrect": "CPU Time = (Instruction Count × CPI) / Clock Rate, hoặc nhân với Clock Cycle Time.",
+      "whyWrong": {
+        "C": "Phải chia cho Clock Rate (hoặc nhân với chu kỳ).",
+        "D": "CPI phải ở tử số.",
+        "B": "Instruction Count phải ở tử số."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-021",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Chương trình có $10^6$ lệnh, CPI = 2, Clock Rate = 1 GHz. CPU Time bằng:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "0,0005 s"
+      },
+      {
+        "id": "B",
+        "content": "2 s"
+      },
+      {
+        "id": "C",
+        "content": "0,002 s"
+      },
+      {
+        "id": "D",
+        "content": "0,02 s"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "$10^6 \\times 2 / 10^9 = 2 \\times 10^{-3}$ s = 0,002 s.",
+      "whyCorrect": "$10^6 \\times 2 / 10^9 = 2 \\times 10^{-3}$ s = 0,002 s.",
+      "whyWrong": {
+        "D": "Sai một bậc.",
+        "B": "Quên đổi GHz sang $10^9$ Hz.",
+        "A": "Chia CPI thay vì nhân."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "1e6*2/1e9"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-022",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Một chương trình có 1000 lệnh, CPI = 2. Tổng số chu kỳ clock là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2000"
+      },
+      {
+        "id": "B",
+        "content": "500"
+      },
+      {
+        "id": "C",
+        "content": "1000"
+      },
+      {
+        "id": "D",
+        "content": "4000"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Clock Cycles = Instruction Count × CPI = 1000 × 2 = 2000.",
+      "whyCorrect": "Clock Cycles = Instruction Count × CPI = 1000 × 2 = 2000.",
+      "whyWrong": {
+        "B": "Chia cho CPI thay vì nhân.",
+        "C": "Quên nhân CPI.",
+        "D": "Nhân thừa."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "1000*2"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-023",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Khi chương trình có nhiều nhóm lệnh, CPI trung bình được tính như thế nào?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trung bình cộng các giá trị CPI của từng nhóm lệnh"
+      },
+      {
+        "id": "B",
+        "content": "Giá trị CPI nhỏ nhất trong các nhóm lệnh của chương trình"
+      },
+      {
+        "id": "C",
+        "content": "Tổng chu kỳ Σ(IC_i × CPI_i) chia cho tổng số lệnh"
+      },
+      {
+        "id": "D",
+        "content": "Giá trị CPI lớn nhất trong các nhóm lệnh của chương trình"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "CPI trung bình = Σ(IC_i × CPI_i) / tổng số lệnh, tức là trung bình có trọng số.",
+      "whyCorrect": "CPI trung bình = Σ(IC_i × CPI_i) / tổng số lệnh, tức là trung bình có trọng số.",
+      "whyWrong": {
+        "A": "Trung bình cộng đơn giản bỏ qua số lượng lệnh mỗi nhóm.",
+        "D": "Mỗi nhóm đều đóng góp vào CPI trung bình.",
+        "B": "Mỗi nhóm đều đóng góp vào CPI trung bình."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-024",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "MIPS trong đo hiệu suất là viết tắt của:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Microprocessor Instruction Processing System"
+      },
+      {
+        "id": "B",
+        "content": "Memory Instructions Per Second"
+      },
+      {
+        "id": "C",
+        "content": "Million Instructions Per Second"
+      },
+      {
+        "id": "D",
+        "content": "Maximum Instructions Per Second"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "MIPS (khi đo hiệu suất) là số triệu lệnh thực thi trong một giây.",
+      "whyCorrect": "MIPS (khi đo hiệu suất) là số triệu lệnh thực thi trong một giây.",
+      "whyWrong": {
+        "A": "Không phải tên đầy đủ của đơn vị đo này.",
+        "B": "Không phải tên đầy đủ của đơn vị đo này.",
+        "D": "Không phải tên đầy đủ của đơn vị đo này."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-025",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Bộ xử lý có Clock Rate = 2 GHz, CPI = 2. Tốc độ theo MIPS là:",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "100"
+      },
+      {
+        "id": "B",
+        "content": "1000"
+      },
+      {
+        "id": "C",
+        "content": "4000"
+      },
+      {
+        "id": "D",
+        "content": "1"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": {
+      "correct": "MIPS = Clock Rate / (CPI × $10^6$) = 2 × $10^9$ / (2 × $10^6$) = 1000.",
+      "whyCorrect": "MIPS = Clock Rate / (CPI × $10^6$) = 2 × $10^9$ / (2 × $10^6$) = 1000.",
+      "whyWrong": {
+        "D": "Quên đơn vị: 2 GHz = 2 × $10^9$ Hz.",
+        "A": "Sai một bậc.",
+        "C": "Nhân CPI thay vì chia."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "2e9/(2*1e6)"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-026",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Quan hệ đúng giữa MIPS và IPS là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "MIPS = IPS × $10^6$"
+      },
+      {
+        "id": "B",
+        "content": "MIPS = IPS"
+      },
+      {
+        "id": "C",
+        "content": "MIPS = IPS / $10^6$"
+      },
+      {
+        "id": "D",
+        "content": "MIPS = IPS / CPI"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "IPS là số lệnh/giây, MIPS là số triệu lệnh/giây nên MIPS = IPS / $10^6$.",
+      "whyCorrect": "IPS là số lệnh/giây, MIPS là số triệu lệnh/giây nên MIPS = IPS / $10^6$.",
+      "whyWrong": {
+        "A": "Phải chia cho $10^6$.",
+        "B": "Hai đơn vị khác nhau $10^6$ lần.",
+        "D": "CPI đã được dùng khi tính IPS."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-027",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Chương trình có $5 \\times 10^8$ lệnh chạy trong 2 giây. Tốc độ theo MIPS là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "2500"
+      },
+      {
+        "id": "B",
+        "content": "25"
+      },
+      {
+        "id": "C",
+        "content": "1000"
+      },
+      {
+        "id": "D",
+        "content": "250"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "MIPS = Instruction Count / (Execution Time × $10^6$) = 5 × $10^8$ / (2 × $10^6$) = 250.",
+      "whyCorrect": "MIPS = Instruction Count / (Execution Time × $10^6$) = 5 × $10^8$ / (2 × $10^6$) = 250.",
+      "whyWrong": {
+        "B": "Sai một bậc.",
+        "A": "Sai một bậc.",
+        "C": "Nhân thời gian thay vì chia."
+      }
+    },
+    "verify": {
+      "kind": "value",
+      "expr": "5e8/(2*1e6)"
+    }
+  },
+  {
+    "id": "it006-mid-c1b-028",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Vì sao CPU có GHz cao hơn chưa chắc chạy chương trình nhanh hơn?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Vì thời gian thực thi còn phụ thuộc Instruction Count và CPI"
+      },
+      {
+        "id": "B",
+        "content": "Vì tốc độ chỉ phụ thuộc bộ nhớ"
+      },
+      {
+        "id": "C",
+        "content": "Vì GHz không liên quan đến thời gian thực thi"
+      },
+      {
+        "id": "D",
+        "content": "Vì tần số cao làm giảm số lệnh"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "CPU Time = IC × CPI / Clock Rate: tần số chỉ là một trong ba yếu tố chính.",
+      "whyCorrect": "CPU Time = IC × CPI / Clock Rate: tần số chỉ là một trong ba yếu tố chính.",
+      "whyWrong": {
+        "C": "Tần số có ảnh hưởng, nhưng không phải yếu tố duy nhất.",
+        "D": "Tần số không làm thay đổi số lệnh.",
+        "B": "Bộ xử lý và chương trình đều ảnh hưởng đến tốc độ."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-029",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Theo bảng trong slide, thuật toán ảnh hưởng đến những yếu tố nào của hiệu suất?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chỉ CPI"
+      },
+      {
+        "id": "B",
+        "content": "Tần số xung clock và kích thước ổ cứng"
+      },
+      {
+        "id": "C",
+        "content": "Chỉ tần số xung clock"
+      },
+      {
+        "id": "D",
+        "content": "Số lượng lệnh, và có thể cả CPI"
+      }
+    ],
+    "correctOptionId": "D",
+    "explanation": {
+      "correct": "Thuật toán quyết định số lệnh và có thể ảnh hưởng CPI (ví dụ nhiều phép tính dấu chấm động).",
+      "whyCorrect": "Thuật toán quyết định số lệnh và có thể ảnh hưởng CPI (ví dụ nhiều phép tính dấu chấm động).",
+      "whyWrong": {
+        "C": "Thuật toán không quyết định tần số xung clock.",
+        "A": "Thuật toán ảnh hưởng trước hết đến số lượng lệnh.",
+        "B": "Không đúng theo bảng trong slide."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-030",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Yếu tố nào tác động đến cả ba thông số: số lượng lệnh, CPI và tần số xung clock?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Kiến trúc tập lệnh"
+      },
+      {
+        "id": "B",
+        "content": "Thuật toán"
+      },
+      {
+        "id": "C",
+        "content": "Trình biên dịch"
+      },
+      {
+        "id": "D",
+        "content": "Ngôn ngữ lập trình"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Kiến trúc tập lệnh quyết định các lệnh cần dùng, số chu kỳ cho một lệnh và tần số clock tổng quan.",
+      "whyCorrect": "Kiến trúc tập lệnh quyết định các lệnh cần dùng, số chu kỳ cho một lệnh và tần số clock tổng quan.",
+      "whyWrong": {
+        "B": "Thuật toán tác động đến số lệnh và có thể CPI.",
+        "D": "Ngôn ngữ tác động đến số lệnh và CPI.",
+        "C": "Trình biên dịch tác động đến số lệnh và CPI."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-031",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Trình biên dịch ảnh hưởng đến những yếu tố nào của hiệu suất?",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Số lượng lệnh và CPI"
+      },
+      {
+        "id": "B",
+        "content": "Tần số xung clock và kích thước bộ nhớ"
+      },
+      {
+        "id": "C",
+        "content": "Chỉ tần số xung clock"
+      },
+      {
+        "id": "D",
+        "content": "Không ảnh hưởng"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": {
+      "correct": "Trình biên dịch chuyển ngôn ngữ cấp cao sang ngôn ngữ máy nên tác động đến số lượng lệnh và CPI.",
+      "whyCorrect": "Trình biên dịch chuyển ngôn ngữ cấp cao sang ngôn ngữ máy nên tác động đến số lượng lệnh và CPI.",
+      "whyWrong": {
+        "C": "Trình biên dịch không thay đổi tần số xung clock.",
+        "B": "Không đúng theo bảng trong slide.",
+        "D": "Trình biên dịch có ảnh hưởng đáng kể."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-032",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Khối nào xác định khi nào một sự kiện được thực hiện trong phần cứng?",
+    "difficulty": "easy",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ổ cứng (đĩa từ)"
+      },
+      {
+        "id": "B",
+        "content": "Bộ nhớ đệm (cache)"
+      },
+      {
+        "id": "C",
+        "content": "Khối tạo xung đồng hồ (clock)"
+      },
+      {
+        "id": "D",
+        "content": "Card mạng (NIC)"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Khối tạo xung clock tạo ra các khoảng thời gian định thời cho phần cứng làm việc.",
+      "whyCorrect": "Khối tạo xung clock tạo ra các khoảng thời gian định thời cho phần cứng làm việc.",
+      "whyWrong": {
+        "B": "Cache chỉ lưu dữ liệu tạm.",
+        "A": "Ổ cứng là bộ nhớ thứ cấp.",
+        "D": "Card mạng phục vụ truyền dữ liệu."
+      }
+    }
+  },
+  {
+    "id": "it006-mid-c1b-033",
+    "type": "mcq",
+    "courseId": "it006",
+    "examType": "midterm",
+    "chapterId": "it006-c1b",
+    "content": "Một lỗi thường gặp khi so sánh hiệu suất hai máy là:",
+    "difficulty": "medium",
+    "points": 1,
+    "source": {
+      "kind": "authored",
+      "reference": "Soạn từ slide và sổ tay môn Kiến trúc máy tính"
+    },
+    "verification": "verified",
+    "options": [
+      {
+        "id": "A",
+        "content": "Đổi GHz thành $10^9$ Hz"
+      },
+      {
+        "id": "B",
+        "content": "Tính tổng chu kỳ trước khi chia cho tần số"
+      },
+      {
+        "id": "C",
+        "content": "Quên đảo tỉ số: tỉ số hiệu suất bằng tỉ số thời gian đảo"
+      },
+      {
+        "id": "D",
+        "content": "Dùng công thức Performance = 1 / Time"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": {
+      "correct": "Performance_A / Performance_B = Time_B / Time_A: nếu không đảo tỉ số sẽ kết luận ngược.",
+      "whyCorrect": "Performance_A / Performance_B = Time_B / Time_A: nếu không đảo tỉ số sẽ kết luận ngược.",
+      "whyWrong": {
+        "D": "Đây là công thức đúng.",
+        "A": "Đây là thao tác đúng.",
+        "B": "Đây là thao tác đúng."
+      }
+    }
+  }
+]

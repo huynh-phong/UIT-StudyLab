@@ -22,6 +22,7 @@ import {
   type Question,
 } from "../src/lib/bank/schema";
 import { verifyCalcOptions } from "../src/lib/net/ipv4";
+import { verifyEssay, verifyMcq } from "../src/lib/mips/verify";
 
 const ROOT = path.resolve(__dirname, "..");
 const CONTENT = path.join(ROOT, "content");
@@ -87,6 +88,14 @@ function loadExam(dir: string, isDemo: boolean, courseId: string, seenIds: Map<s
         const v = verifyCalcOptions(q.calc, q.options, q.correctOptionId);
         if (!v.ok) errors.push(`${label}: kiểm tra phép tính thất bại — ${v.reason}`);
       }
+      if (q.type === "mcq" && q.verify) {
+        const reason = verifyMcq(q);
+        if (reason) errors.push(`${label}: kiểm chứng thất bại — ${reason}`);
+      }
+      if (q.type === "essay" && q.essay?.verify) {
+        const reason = verifyEssay(q);
+        if (reason) errors.push(`${label}: đáp án mẫu chạy sai — ${reason}`);
+      }
       if (q.type === "essay" && !q.essay) warnings.push(`${label}: tự luận chưa có đáp án mẫu/rubric — sẽ không được chấm AI`);
       if (q.verification === "draft") warnings.push(`${label}: đang ở trạng thái draft — bị ẩn khỏi ôn tập và thi thử`);
       questions.push(q);
@@ -95,7 +104,8 @@ function loadExam(dir: string, isDemo: boolean, courseId: string, seenIds: Map<s
 
   if (exam.blueprint) {
     for (const s of exam.blueprint.slots) {
-      if (!chapterIds.has(s.chapterId)) errors.push(`${rel(examPath)}: blueprint dùng chương "${s.chapterId}" chưa khai báo`);
+      for (const id of [s.chapterId, ...(s.alsoFrom ?? [])])
+        if (!chapterIds.has(id)) errors.push(`${rel(examPath)}: blueprint dùng chương "${id}" chưa khai báo`);
     }
   }
   return { ...exam, isDemo, key: `${isDemo ? "demo:" : ""}${exam.courseId}/${exam.examType}`, questions };

@@ -12,6 +12,7 @@ import { postJson } from "@/lib/api-client";
 import { RichContent } from "@/components/rich-content";
 import { OptionCard } from "@/components/question/option-card";
 import { LogoMark } from "@/components/logo";
+import { MipsReferenceButton } from "@/components/mips-reference";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -134,6 +135,7 @@ function Room({ active }: { active: ActiveExam }) {
               {exam.courseCode} · Câu {active.current + 1}/{exam.questions.length}
             </p>
           </div>
+          {exam.courseCode === "IT006" && <MipsReferenceButton />}
           <Timer timeLeft={timeLeft} startedAt={active.startedAt} now={now} />
           <Button onClick={() => setConfirmOpen(true)} disabled={submitting} className="hidden sm:inline-flex">
             <Send /> Nộp bài
@@ -213,9 +215,10 @@ function Room({ active }: { active: ActiveExam }) {
                       onChange={(e) => answer(q.id, { text: e.target.value })}
                       maxLength={8000}
                       disabled={expired || submitting}
-                      placeholder="Nhập câu trả lời của bạn…"
+                      placeholder={q.placeholder ?? "Nhập câu trả lời của bạn…"}
+                      spellCheck={q.answerFormat !== "code"}
                       aria-label={`Câu trả lời câu ${active.current + 1}`}
-                      className="min-h-56"
+                      className={cn("min-h-56", q.answerFormat === "code" && "font-mono text-sm")}
                     />
                     <p className="mt-1 text-right text-xs text-muted">{(active.responses[q.id]?.text ?? "").length}/8000 ký tự · tự động lưu</p>
                   </div>
