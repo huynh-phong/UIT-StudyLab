@@ -101,6 +101,7 @@ Học phần → Giữa kỳ / Cuối kỳ → Chương → Bộ câu hỏi
 - Animation có chủ đích (chuyển trang, phản hồi đáp án, thanh tiến độ, số liệu thống kê), tôn trọng tùy chọn `prefers-reduced-motion`.
 - **Responsive**: sidebar trên máy tính, thanh điều hướng dưới trên điện thoại; các lựa chọn đáp án đủ lớn để thao tác bằng tay.
 - Skeleton loading, trạng thái chờ riêng cho AI và empty state rõ ràng.
+- **Ba chế độ giao diện:** sáng, tối hoặc theo hệ thống, được ghi nhớ trên trình duyệt.
 - Không cần tài khoản: tiến độ học tập được lưu ngay trên trình duyệt.
 
 ## Công nghệ
@@ -153,6 +154,6 @@ tests/                 Kiểm thử chấm điểm, tạo đề, niêm phong đ�
 
 ## Tác giả
 
-Phát triển bởi **[huynh-phong](https://github.com/huynh-phong)** – sinh viên Trường Đại học Công nghệ Thông tin, ĐHQG-HCM.
+Phát triển bởi **Huỳnh Mai Phong** ([huynh-phong](https://github.com/huynh-phong)) – sinh viên Trường Đại học Công nghệ Thông tin, ĐHQG-HCM.
 
 Mọi góp ý về câu hỏi, đáp án hoặc tính năng xin gửi qua mục **Issues** của repository.

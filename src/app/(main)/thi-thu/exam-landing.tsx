@@ -76,7 +76,7 @@ export function ExamLanding({ offers, features }: { offers: ExamOffer[]; feature
       {hydrated && active && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
           <Card className="flex flex-col gap-4 border-primary/25 p-5 sm:flex-row sm:items-center">
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-white">
+            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
               <Timer className="size-5" />
             </div>
             <div className="min-w-0 flex-1">
@@ -348,7 +348,7 @@ function ModeCard({
         disabled && "cursor-not-allowed opacity-55 hover:border-border",
       )}
     >
-      <span className={cn("flex size-9 shrink-0 items-center justify-center rounded-lg [&_svg]:size-[18px]", selected ? "bg-primary text-white" : "bg-subtle text-muted")}>
+      <span className={cn("flex size-9 shrink-0 items-center justify-center rounded-lg [&_svg]:size-[18px]", selected ? "bg-primary text-primary-foreground" : "bg-subtle text-muted")}>
         {icon}
       </span>
       <span className="min-w-0">

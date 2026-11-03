@@ -184,7 +184,7 @@ function Room({ active }: { active: ActiveExam }) {
                   size="sm"
                   onClick={() => toggleMark(q.id)}
                   aria-pressed={Boolean(active.marked[q.id])}
-                  className={cn(active.marked[q.id] && "bg-warning-soft text-amber-700 hover:bg-amber-100")}
+                  className={cn(active.marked[q.id] && "bg-warning-soft text-amber-700 hover:bg-warning-soft-hover")}
                 >
                   <Flag /> {active.marked[q.id] ? "Đã đánh dấu" : "Đánh dấu xem lại"}
                 </Button>
@@ -378,7 +378,7 @@ function QuestionNavigator({ active, onPick, answeredCount, markedCount }: { act
               aria-current={i === active.current ? "step" : undefined}
               className={cn(
                 "relative flex h-10 items-center justify-center rounded-lg border text-sm font-semibold tabular-nums transition-colors duration-150",
-                answered ? "border-primary bg-primary text-white" : "border-border bg-surface text-muted hover:border-primary/40",
+                answered ? "border-primary bg-primary text-primary-foreground" : "border-border bg-surface text-muted hover:border-primary/40",
                 i === active.current && "ring-2 ring-primary/40 ring-offset-2",
               )}
             >

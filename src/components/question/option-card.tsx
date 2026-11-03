@@ -9,11 +9,11 @@ export type OptionState = "idle" | "selected" | "correct" | "wrong" | "dimmed" |
 
 const styles: Record<OptionState, { card: string; key: string }> = {
   idle: { card: "border-border bg-surface hover:border-primary/40 hover:bg-primary-soft/40", key: "bg-subtle text-muted group-hover:bg-primary-soft group-hover:text-primary" },
-  selected: { card: "border-primary bg-primary-soft ring-4 ring-primary/10", key: "bg-primary text-white" },
-  correct: { card: "border-success bg-success-soft ring-4 ring-success/10", key: "bg-success text-white" },
-  wrong: { card: "border-error/70 bg-error-soft", key: "bg-error text-white" },
+  selected: { card: "border-primary bg-primary-soft ring-4 ring-primary/10", key: "bg-primary text-primary-foreground" },
+  correct: { card: "border-success bg-success-soft ring-4 ring-success/10", key: "bg-success text-primary-foreground" },
+  wrong: { card: "border-error/70 bg-error-soft", key: "bg-error text-primary-foreground" },
   /** đáp án đúng được đánh dấu khi người dùng chọn sai */
-  reveal: { card: "border-success bg-success-soft/70", key: "bg-success text-white" },
+  reveal: { card: "border-success bg-success-soft/70", key: "bg-success text-primary-foreground" },
   dimmed: { card: "border-border bg-surface opacity-60", key: "bg-subtle text-muted" },
 };
 
@@ -57,7 +57,7 @@ export function OptionCard({
             initial={{ scale: 0.4, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 500, damping: 25 }}
-            className={cn("mt-1 flex size-6 shrink-0 items-center justify-center rounded-full text-white", icon === "check" ? "bg-success" : "bg-error")}
+            className={cn("mt-1 flex size-6 shrink-0 items-center justify-center rounded-full text-primary-foreground", icon === "check" ? "bg-success" : "bg-error")}
           >
             {icon === "check" ? <Check className="size-4" strokeWidth={3} /> : <X className="size-4" strokeWidth={3} />}
           </motion.span>

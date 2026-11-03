@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { BarChart3, Bookmark, BookOpenCheck, LayoutDashboard, Timer } from "lucide-react";
 import { Logo, LogoMark } from "./logo";
+import { ThemeSwitcher } from "./theme-switcher";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -55,21 +56,33 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             );
           })}
         </nav>
-        <div className="mt-auto rounded-xl bg-subtle p-3 text-xs leading-relaxed text-muted">
-          Nền tảng ôn tập độc lập dành cho sinh viên UIT — không phải hệ thống chính thức của nhà trường.
+        <div className="mt-auto flex flex-col gap-3">
+          <ThemeSwitcher />
+          <div className="rounded-xl bg-subtle p-3 text-xs leading-relaxed text-muted">
+            Nền tảng ôn tập độc lập dành cho sinh viên UIT — không phải hệ thống chính thức của nhà trường.
+          </div>
+          <p className="px-1 text-xs text-muted">
+            Tác giả: <span className="font-semibold text-foreground">Huỳnh Mai Phong</span>
+          </p>
         </div>
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Thanh trên mobile */}
-        <header className="sticky top-0 z-30 flex h-14 items-center border-b border-border bg-surface/85 px-4 backdrop-blur lg:hidden">
+        <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border bg-surface/85 px-4 backdrop-blur lg:hidden">
           <Link href="/" className="flex items-center gap-2" aria-label="UIT StudyLab — Trang chủ">
             <LogoMark className="size-8" />
             <span className="text-[15px] font-bold tracking-tight">UIT StudyLab</span>
           </Link>
+          <ThemeSwitcher compact />
         </header>
 
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:px-10 lg:pb-12 lg:pt-10">{children}</main>
+        <main className="mx-auto w-full max-w-5xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:px-10 lg:pb-12 lg:pt-10">
+          {children}
+          <p className="mt-10 text-center text-xs text-muted lg:hidden">
+            Tác giả: <span className="font-semibold text-foreground">Huỳnh Mai Phong</span>
+          </p>
+        </main>
       </div>
 
       {/* Thanh điều hướng dưới (mobile) */}

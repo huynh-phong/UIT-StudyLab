@@ -11,12 +11,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary-hover hover:shadow-md hover:shadow-primary/25",
-        secondary: "bg-secondary text-white shadow-sm shadow-secondary/20 hover:bg-teal-600",
+        secondary: "bg-secondary text-primary-foreground shadow-sm shadow-secondary/20 hover:bg-secondary-hover",
         outline: "border border-border bg-surface text-foreground hover:border-primary/40 hover:bg-primary-soft hover:text-primary",
-        soft: "bg-primary-soft text-primary hover:bg-blue-100",
+        soft: "bg-primary-soft text-primary hover:bg-primary-soft-hover",
         ghost: "text-muted hover:bg-subtle hover:text-foreground",
-        danger: "bg-error text-white hover:bg-red-700",
-        success: "bg-success text-white hover:bg-green-700",
+        danger: "bg-error text-primary-foreground hover:bg-error-hover",
+        success: "bg-success text-primary-foreground hover:bg-success-hover",
       },
       size: {
         sm: "h-9 px-3",

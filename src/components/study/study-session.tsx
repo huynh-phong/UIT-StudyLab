@@ -396,7 +396,7 @@ function CompletionCard({ progress, onRestart, backHref }: { progress: ReturnTyp
     <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="mb-4">
       <Card className="border-success/25 bg-gradient-to-br from-success-soft to-surface p-5">
         <div className="flex items-start gap-3">
-          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-success text-white">
+          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-success text-primary-foreground">
             <PartyPopper className="size-5" />
           </div>
           <div className="min-w-0 flex-1">

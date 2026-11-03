@@ -217,7 +217,7 @@ function ContinueCard({ href, icon, label, title, meta, progress }: { href: stri
   return (
     <Link href={href} className="group block">
       <Card className="flex items-center gap-4 p-4 transition-[box-shadow,transform,border-color] duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/30 group-hover:shadow-[var(--shadow-card-hover)]">
-        <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-white [&_svg]:size-5">{icon}</div>
+        <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground [&_svg]:size-5">{icon}</div>
         <div className="min-w-0 flex-1">
           <p className="text-xs font-medium text-primary">{label}</p>
           <p className="truncate text-sm font-semibold">{title}</p>

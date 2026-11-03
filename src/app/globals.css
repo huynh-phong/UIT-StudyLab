@@ -15,23 +15,32 @@
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
   --color-primary-soft: #eaf1ff;
+  --color-primary-soft-hover: #dbeafe;
   --color-primary-foreground: #ffffff;
 
   --color-secondary: #14b8a6;
+  --color-secondary-hover: #0d9488;
   --color-secondary-soft: #e6f8f5;
 
   --color-success: #16a34a;
+  --color-success-hover: #15803d;
   --color-success-soft: #eaf8ef;
   --color-error: #dc2626;
+  --color-error-hover: #b91c1c;
   --color-error-soft: #fdeeee;
   --color-warning: #f59e0b;
   --color-warning-soft: #fef6e6;
+  --color-warning-soft-hover: #fef3c7;
 
   --radius-xl: 0.875rem;
   --radius-2xl: 1.125rem;
 
   --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 2px 8px rgb(16 24 40 / 0.04);
   --shadow-card-hover: 0 4px 12px rgb(37 99 235 / 0.08), 0 12px 28px rgb(16 24 40 / 0.06);
+
+  --color-selection: #cfe0ff;
+  --color-skeleton: #eef2f9;
+  --color-skeleton-shine: #f7f9fd;
 
   --animate-shimmer: shimmer 1.6s linear infinite;
   @keyframes shimmer {
@@ -42,6 +51,68 @@
 
 :root {
   color-scheme: light;
+}
+
+/* Chế độ tối: màu nền đặc đủ sáng nên chữ trên đó (primary-foreground) chuyển sang màu tối */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-background: #0b1120;
+  --color-surface: #131c2e;
+  --color-foreground: #e6ebf5;
+  --color-muted: #9aa8bd;
+  --color-subtle: #1c2740;
+  --color-border: #2a3650;
+  --color-ring: #5b8def;
+
+  --color-primary: #60a5fa;
+  --color-primary-hover: #93c5fd;
+  --color-primary-soft: #172a4d;
+  --color-primary-soft-hover: #1e3560;
+  --color-primary-foreground: #0b1120;
+
+  --color-secondary: #2dd4bf;
+  --color-secondary-hover: #5eead4;
+  --color-secondary-soft: #0f2f2d;
+
+  --color-success: #4ade80;
+  --color-success-hover: #86efac;
+  --color-success-soft: #12301f;
+  --color-error: #f87171;
+  --color-error-hover: #fca5a5;
+  --color-error-soft: #3a1a1d;
+  --color-warning: #fbbf24;
+  --color-warning-soft: #33270f;
+  --color-warning-soft-hover: #443411;
+
+  --color-selection: #27406f;
+  --color-skeleton: #1c2740;
+  --color-skeleton-shine: #26324d;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 2px 8px rgb(0 0 0 / 0.25);
+  --shadow-card-hover: 0 4px 12px rgb(0 0 0 / 0.35), 0 12px 28px rgb(0 0 0 / 0.3);
+
+  /* Các màu chữ trạng thái viết trực tiếp trong giao diện */
+  --color-red-600: #f87171;
+  --color-red-700: #fca5a5;
+  --color-red-900: #fecaca;
+  --color-green-600: #4ade80;
+  --color-green-700: #86efac;
+  --color-green-900: #bbf7d0;
+  --color-green-950: #dcfce7;
+  --color-amber-500: #fbbf24;
+  --color-amber-600: #fbbf24;
+  --color-amber-700: #fcd34d;
+  --color-amber-800: #fde68a;
+  --color-amber-900: #fef3c7;
+  --color-teal-600: #2dd4bf;
+  --color-teal-700: #5eead4;
+  --color-teal-900: #ccfbf1;
+  --color-blue-900: #bfdbfe;
+}
+
+:root[data-theme="dark"] .rich pre {
+  border: 1px solid var(--color-border);
 }
 
 html {
@@ -63,7 +134,7 @@ body {
 }
 
 ::selection {
-  background: #cfe0ff;
+  background: var(--color-selection);
 }
 
 /* Nội dung câu hỏi (Markdown/LaTeX/bảng/code) */
@@ -107,7 +178,7 @@ body {
 .rich h1, .rich h2, .rich h3 { font-weight: 600; }
 
 .skeleton {
-  background: linear-gradient(90deg, #eef2f9 0px, #f7f9fd 120px, #eef2f9 240px);
+  background: linear-gradient(90deg, var(--color-skeleton) 0px, var(--color-skeleton-shine) 120px, var(--color-skeleton) 240px);
   background-size: 800px 100%;
   animation: var(--animate-shimmer);
 }

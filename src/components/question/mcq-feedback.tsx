@@ -48,7 +48,7 @@ function WrongPanel({ question, selected, savedNote }: { question: McqQuestion; 
       <div className="space-y-4 p-4 text-[15px] sm:p-5">
         <Section title="Đáp án chính xác">
           <div className="flex items-start gap-2.5 rounded-xl bg-success-soft px-3 py-2.5">
-            <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-success text-xs font-bold text-white">{f.correctOptionId}</span>
+            <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-success text-xs font-bold text-primary-foreground">{f.correctOptionId}</span>
             <RichContent inline className="min-w-0 flex-1">
               {f.correctContent}
             </RichContent>

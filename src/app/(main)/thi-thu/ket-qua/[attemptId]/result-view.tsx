@@ -325,7 +325,7 @@ function ReviewCard({ g, attempt }: { g: GradedQuestion; attempt: ExamAttempt })
         <div className="flex flex-wrap items-center gap-1.5">
           <span
             className={cn(
-              "flex size-7 items-center justify-center rounded-lg text-xs font-bold text-white",
+              "flex size-7 items-center justify-center rounded-lg text-xs font-bold text-primary-foreground",
               status === "correct" ? "bg-success" : status === "wrong" ? "bg-error" : status === "pending" ? "bg-warning" : "bg-slate-400",
             )}
           >
